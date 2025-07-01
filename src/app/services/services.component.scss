@@ -1,0 +1,26 @@
+.scroll-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+}
+
+.filter-btns {
+  display: inline-flex;
+  gap: 0.5rem; /* adjust as needed */
+}
+
+.filter-btns .filter-btn {
+  flex: 0 0 auto; /* prevent shrinking */
+}
+.scroll-container::-webkit-scrollbar {
+  height: 3px; /* adjust as needed */
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #4232C2; /* color of scrollbar */
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
