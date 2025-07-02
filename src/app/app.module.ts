@@ -9,11 +9,11 @@ import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { DetailViewComponent } from './detail-view/detail-view.component';
-import { ServicesComponent } from './services/services.component';
 import { ContactComponent } from './contact/contact.component';
 import { CareerComponent } from './career/career.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { CareerDetailComponent } from './career-detail/career-detail.component';
+import { ServicesProvidedComponent } from './services-provided/services-provided.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +24,11 @@ import { CareerDetailComponent } from './career-detail/career-detail.component';
     MainComponent,
     AboutUsComponent,
     DetailViewComponent,
-    ServicesComponent,
     ContactComponent,
     CareerComponent,
     PortfolioComponent,
-    CareerDetailComponent
+    CareerDetailComponent,
+    ServicesProvidedComponent
   ],
   imports: [
     BrowserModule,
