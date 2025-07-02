@@ -1,4 +1,4 @@
-<div id="work_banner" class="banner-wrapper bg-light w-100 py-5">
+<div id="service_banner" class="banner-wrapper bg-light w-100 py-5">
     <div
         class="banner-vertical-center-work container text-light d-flex justify-content-center align-items-center py-5 p-0">
         <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
@@ -54,55 +54,49 @@
 </section>
 <section class="container py-5">
     <div class="row justify-content-center my-5">
-        <!-- <div class="filter-btns shadow-md rounded-pill text-center col-auto">
-            <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4 active"
-                data-filter=".project" href="#">All</a>
-            <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".business"
-                href="#">SAP CX</a>
-            <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".marketing"
-                href="#">SAP CDC</a>
-            <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".social"
-                href="#">SAP Commerce</a>
-            <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".graphic"
-                href="#">SAP Managed Services</a>
-            <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".graphic"
-                href="#">Salesforce</a>
-            <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".graphic"
-                href="#">AI</a>
-            <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".graphic"
-                href="#">Enterprise Application</a>
-            <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".graphic"
-                href="#">Other Services</a>
-        </div> -->
-        <div class="scroll-container">
-            <div class="filter-btns shadow-md rounded-pill text-center col-auto">
-                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4 active"
-                    data-filter=".project" href="#">All</a>
-                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
-                    data-filter=".business" href="#">SAP CX</a>
-                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
-                    data-filter=".marketing" href="#">SAP CDC</a>
-                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".social"
-                    href="#">SAP Commerce</a>
-                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
-                    data-filter=".graphic" href="#">SAP Managed Services</a>
-                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
-                    data-filter=".graphic" href="#">Salesforce</a>
-                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
-                    data-filter=".graphic" href="#">AI</a>
-                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
-                    data-filter=".graphic" href="#">Enterprise Application</a>
-                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
-                    data-filter=".graphic" href="#">Other Services</a>
+
+        <div class="scroll-wrapper">
+            <!-- Left arrow -->
+            <button class="scroll-btn left" (click)="scrollLeft()">
+                <i class="bx bx-chevron-left"></i>
+            </button>
+
+            <!-- Scrollable container -->
+            <div #scrollContainer class="scroll-container px-4">
+                <div class="filter-btns">
+                    <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4 active"
+                        data-filter=".project" href="#">All</a>
+                    <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
+                        data-filter=".business" href="#">SAP CX</a>
+                    <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
+                        data-filter=".marketing" href="#">SAP CDC</a>
+                    <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
+                        data-filter=".social" href="#">SAP Commerce</a>
+                    <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
+                        data-filter=".graphic" href="#">SAP Managed Services</a>
+                    <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
+                        data-filter=".graphic" href="#">Salesforce</a>
+                    <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
+                        data-filter=".graphic" href="#">AI</a>
+                    <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
+                        data-filter=".graphic" href="#">Enterprise Application</a>
+                    <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4"
+                        data-filter=".graphic" href="#">Other Services</a>
+                </div>
             </div>
+
+            <!-- Right arrow -->
+            <button class="scroll-btn right" (click)="scrollRight()">
+                <i class="bx bx-chevron-right"></i>
+            </button>
         </div>
 
     </div>
 
     <div class="row projects gx-lg-5">
 
-        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
+        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-5">
+            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100">
 
 
                 <img class="card-img-top" src="./assets/img/sapcx.jpg" alt="..." width="100%" height="250px">
@@ -112,7 +106,7 @@
                         Our SAP CX Services provide tailored strategies and seamless implementation using SAP’s
                         advanced technologies.
                     </p>
-                    <a href="work-single.html" class="card-read-more">
+                    <a href="/detail-view" class="card-read-more">
                         <span class="text-decoration-none text-primary light-300">
                             Read more <i class='bx bxs-hand-right ms-1'></i>
                         </span>
@@ -121,8 +115,8 @@
 
             </div>
         </div>
-        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
+        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-5">
+            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100">
 
 
                 <img class="card-img-top" src="./assets/img/cdc-1.jpg" alt="..." width="100%" height="250px">
@@ -131,7 +125,7 @@
                     <p class="card-text light-300 text-dark">
                         Grow a loyal customer base and boost conversions securely with our expert SAP CDC solutions.
                     </p>
-                    <a href="work-single.html" class="card-read-more">
+                    <a href="/detail-view" class="card-read-more">
                         <span class="text-decoration-none text-primary light-300">
                             Read more <i class='bx bxs-hand-right ms-1'></i>
                         </span>
@@ -140,8 +134,8 @@
 
             </div>
         </div>
-        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
+        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-5">
+            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100">
                 <img class="card-img-top" src="./assets/img/sap-commerce.png" alt="..." width="100%" height="250px">
                 <div class="card-body">
                     <h5 class="card-title light-300 text-dark">SAP Commerce</h5>
@@ -149,7 +143,7 @@
                         Drive e-commerce success with seamless, scalable SAP Commerce Cloud solutions for exceptional
                         customer experiences.
                     </p>
-                    <a href="work-single.html" class="card-read-more">
+                    <a href="/detail-view" class="card-read-more">
                         <span class="text-decoration-none text-primary light-300">
                             Read more <i class='bx bxs-hand-right ms-1'></i>
                         </span>
@@ -158,8 +152,8 @@
 
             </div>
         </div>
-        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
+        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-5">
+            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100">
                 <img class="card-img-top" src="./assets/img/managedServices.jpg" alt="..." width="100%" height="250px">
                 <div class="card-body">
                     <h5 class="card-title light-300 text-dark">SAP Managed Services</h5>
@@ -167,7 +161,7 @@
                         Clavrit’s SAP Managed Services keep your SAP systems optimized and secure, so you can focus on
                         growth and innovation.
                     </p>
-                    <a href="work-single.html" class="card-read-more">
+                    <a href="/detail-view" class="card-read-more">
                         <span class="text-decoration-none text-primary light-300">
                             Read more <i class='bx bxs-hand-right ms-1'></i>
                         </span>
@@ -176,8 +170,8 @@
 
             </div>
         </div>
-        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
+        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-5">
+            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100">
                 <img class="card-img-top" src="./assets/img/sf.jpg" alt="..." width="100%" height="250px">
                 <div class="card-body">
                     <h5 class="card-title light-300 text-dark">Salesforce</h5>
@@ -185,7 +179,7 @@
                         Maximize Salesforce’s power with Clavrit’s expert consulting and support to drive growth and
                         elevate customer experiences.
                     </p>
-                    <a href="work-single.html" class="card-read-more">
+                    <a href="/detail-view" class="card-read-more">
                         <span class="text-decoration-none text-primary light-300">
                             Read more <i class='bx bxs-hand-right ms-1'></i>
                         </span>
@@ -195,15 +189,15 @@
             </div>
         </div>
 
-        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
+        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-5">
+            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100">
                 <img class="card-img-top" src="./assets/img/Ai.jpg" alt="..." width="100%" height="250px">
                 <div class="card-body">
                     <h5 class="card-title light-300 text-dark">Artificial Intelligence</h5>
                     <p class="card-text light-300 text-dark">
                         We deliver tailored AI, Deep Learning, and NLP solutions for smarter insights and automation.
                     </p>
-                    <a href="work-single.html" class="card-read-more">
+                    <a href="/detail-view" class="card-read-more">
                         <span class="text-decoration-none text-primary light-300">
                             Read more <i class='bx bxs-hand-right ms-1'></i>
                         </span>
@@ -212,15 +206,15 @@
 
             </div>
         </div>
-        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
+        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-5">
+            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100">
                 <img class="card-img-top" src="./assets/img/enterprise.jpg" alt="..." width="100%" height="250px">
                 <div class="card-body">
                     <h5 class="card-title light-300 text-dark">Enterprise Application</h5>
                     <p class="card-text light-300 text-dark">
                         We build secure, scalable enterprise solutions with Java, Python, SQL, Scala, and Kotlin.
                     </p>
-                    <a href="work-single.html" class="card-read-more">
+                    <a href="/detail-view" class="card-read-more">
                         <span class="text-decoration-none text-primary light-300">
                             Read more <i class='bx bxs-hand-right ms-1'></i>
                         </span>
@@ -229,15 +223,16 @@
 
             </div>
         </div>
-        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
+        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-5">
+            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100">
                 <img class="card-img-top" src="./assets/img/other-service.jpg" alt="..." width="100%" height="250px">
                 <div class="card-body">
                     <h5 class="card-title light-300 text-dark">Other Services</h5>
                     <p class="card-text light-300 text-dark">
-                        We build apps, custom software, provide maintenance, testing, IT resources, marketplaces, and consulting.
+                        We build apps, custom software, provide maintenance, testing, IT resources, marketplaces, and
+                        consulting.
                     </p>
-                    <a href="work-single.html" class="card-read-more">
+                    <a href="/detail-view" class="card-read-more">
                         <span class="text-decoration-none text-primary light-300">
                             Read more <i class='bx bxs-hand-right ms-1'></i>
                         </span>
