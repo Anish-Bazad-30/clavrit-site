@@ -11,7 +11,8 @@
 
             </p>
             <button type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300">Learn More</button>
-            <button type="submit" class="btn rounded-pill btn-secondary text-light px-4 light-300">Contact Us</button>
+            <button type="submit" class="btn rounded-pill btn-secondary text-light px-4 light-300"
+                routerLink="/contact">Contact Us</button>
         </div>
     </div>
 </div>
@@ -243,98 +244,107 @@
         No problem. Send us your details anyway and we’ll figure something out!
     </p>
     <div class="col-lg-12">
-        <form class="career-form row" method="post" action="#" role="form">
+        <form [formGroup]="careerForm" (ngSubmit)="onSubmit()" class="career-form row">
 
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg light-300" id="floatingname" name="inputname"
+                    <input type="text" class="form-control form-control-lg" id="floatingname" formControlName="fullName"
                         placeholder="Name">
-                    <label for="floatingname light-300">Full Name</label>
+                    <label for="floatingname">Full Name</label>
                 </div>
             </div>
 
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg light-300" id="floatingemail"
-                        name="inputemail" placeholder="Email">
-                    <label for="floatingemail light-300">Email</label>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg light-300" id="floatingphone"
-                        name="inputphone" placeholder="Phone">
-                    <label for="floatingphone light-300">Phone</label>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="form-floating">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Select</option>
-                        <option value="1">Java Developer</option>
-                        <option value="2">Angular Developer</option>
-                        <option value="3">Hybris Developer</option>
-                    </select>
-                    <label for="floatingrole light-300">Job Applied for</label>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="form-floating">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Select</option>
-                        <option value="1">Graduation</option>
-                        <option value="2">Post Graduation</option>
-                        <option value="3">Others</option>
-                    </select>
-                    <label for="floatingqual light-300">Qualification</label>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg light-300" id="floatingcompany"
-                        name="inputcompany" placeholder="Company Name">
-                    <label for="floatingcompany light-300">Total YOE</label>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg light-300" id="floatingcompany"
-                        name="inputcompany" placeholder="Company Name">
-                    <label for="floatingcompany light-300">Relevant Experience</label>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg light-300" id="floatingcompany"
-                        name="inputcompany" placeholder="Company Name">
-                    <label for="floatingcompany light-300">Current Company</label>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg light-300" id="floatingcompany"
-                        name="inputcompany" placeholder="Company Name">
-                    <label for="floatingcompany light-300">Current CTC</label>
+                    <input type="email" class="form-control form-control-lg" id="floatingemail" formControlName="email"
+                        placeholder="Email">
+                    <label for="floatingemail">Email</label>
                 </div>
             </div>
 
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Select</option>
-                        <option value="1">Immediate</option>
-                        <option value="2">Less than 30 days</option>
-                        <option value="3">1 - 2 Months</option>
-                    </select>
-                    <label for="floatingjob light-300">Notice Period</label>
+                    <input type="text" class="form-control form-control-lg" id="floatingphone" formControlName="phone"
+                        placeholder="Phone">
+                    <label for="floatingphone">Phone</label>
                 </div>
             </div>
+
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <select class="form-select" formControlName="jobApplied">
+                        <option value="">Select</option>
+                        <option value="Java Developer">Java Developer</option>
+                        <option value="Angular Developer">Angular Developer</option>
+                        <option value="Hybris Developer">Hybris Developer</option>
+                    </select>
+                    <label for="floatingrole">Job Applied for</label>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <select class="form-select" formControlName="qualification">
+                        <option value="">Select</option>
+                        <option value="Graduation">Graduation</option>
+                        <option value="Post Graduation">Post Graduation</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <label for="floatingqual">Qualification</label>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control form-control-lg" id="totalYOE" formControlName="totalYOE"
+                        placeholder="Total Experience">
+                    <label for="totalYOE">Total YOE</label>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control form-control-lg" id="relevantExp"
+                        formControlName="relevantExp" placeholder="Relevant Experience">
+                    <label for="relevantExp">Relevant Experience</label>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control form-control-lg" id="currentCompany"
+                        formControlName="currentCompany" placeholder="Current Company">
+                    <label for="currentCompany">Current Company</label>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control form-control-lg light-300" id="currentCTC" name="currentCTC"
+                        formControlName="currentCTC" placeholder="Current CTC" />
+                    <label for="currentCTC">Current CTC</label>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <select class="form-select" formControlName="noticePeriod">
+                        <option value="">Select</option>
+                        <option value="Immediate">Immediate</option>
+                        <option value="Less than 30 days">Less than 30 days</option>
+                        <option value="1 - 2 Months">1 - 2 Months</option>
+                    </select>
+                    <label for="noticePeriod">Notice Period</label>
+                </div>
+            </div>
+
             <div class="col-md-12 col-12 m-auto text-end">
                 <button type="submit"
-                    class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Submit</button>
+                    class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 text-light">Submit</button>
             </div>
 
         </form>
+
     </div>
 </section>
 <section class="bg-secondary py-5 mb-5">
