@@ -14,6 +14,8 @@ import { CareerComponent } from './career/career.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { CareerDetailComponent } from './career-detail/career-detail.component';
 import { ServicesProvidedComponent } from './services-provided/services-provided.component';
+import { MapComponent } from './map/map.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ServicesProvidedComponent } from './services-provided/services-provided
     CareerComponent,
     PortfolioComponent,
     CareerDetailComponent,
-    ServicesProvidedComponent
+    ServicesProvidedComponent,
+    MapComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
