@@ -1,4 +1,3 @@
-<p>services-provided works!</p>
 <div id="service_banner" class="banner-wrapper bg-light w-100 py-5">
     <div
         class="banner-vertical-center-work container text-light d-flex justify-content-center align-items-center py-5 p-0">
@@ -96,10 +95,10 @@
 
     <div class="row projects gx-lg-5 d-flex">
 
-        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-5 flex-grow-1" *ngFor="let service of ourServices">
-            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-4 h-100">
+        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-5" *ngFor="let service of ourServices">
+            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100">
                 <img class="card-img-top" [src]="service.img" alt="..." width="100%" height="250px">
-                <div class="card-body">
+                <div class="card-body h-100 d-flex flex-column justify-content-evenly">
                     <h5 class="card-title light-300 text-dark">{{service.title}}</h5>
                     <p class="card-text light-300 text-dark" [title]="service.description">
                         {{service.description  | slice:0:80 }}...
@@ -132,3 +131,5 @@
         </div>
     </div> -->
 </section>
+
+
