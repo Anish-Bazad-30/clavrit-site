@@ -10,6 +10,7 @@ import { CareerDetailComponent } from './career-detail/career-detail.component';
 import { ServicesProvidedComponent } from './services-provided/services-provided.component';
 import { BlogComponent } from './blog/blog.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { OurPartnersComponent } from './our-partners/our-partners.component';
 
 const routes: Routes = [
   {path:"" , component: LandingPageComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:"portfolio", component:PortfolioComponent},
   {path:"blog", component:BlogComponent},
   {path:"blog-detail", component:BlogDetailComponent},
+  {path:"our-partners", component:OurPartnersComponent},
   {path:"contact", component:ContactComponent}
 
 ];
