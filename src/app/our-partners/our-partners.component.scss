@@ -1,4 +1,4 @@
-#service_banner {
+#partners_banner {
   background-image: url('../../assets/img/Ai.jpg');
   background-position: center center; background-size: cover;
   height: 100%;
@@ -6,7 +6,7 @@
   overflow: hidden;
   position: relative;
 }
-#service_banner::before {
+#partners_banner::before {
   content: "";
   position: absolute;
   top: 0; 
@@ -17,7 +17,7 @@
   z-index: 1;
 }
 
-#service_banner > * {
+#partners_banner > * {
   position: relative;
   z-index: 2; 
 }

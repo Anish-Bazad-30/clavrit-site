@@ -18,6 +18,7 @@ import { MapComponent } from './map/map.component';
 import { BlogComponent } from './blog/blog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { OurPartnersComponent } from './our-partners/our-partners.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
     ServicesProvidedComponent,
     MapComponent,
     BlogComponent,
-    BlogDetailComponent
+    BlogDetailComponent,
+    OurPartnersComponent
   ],
   imports: [
     BrowserModule,
