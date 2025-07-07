@@ -11,6 +11,7 @@ import { ServicesProvidedComponent } from './services-provided/services-provided
 import { BlogComponent } from './blog/blog.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { OurPartnersComponent } from './our-partners/our-partners.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
   {path:"" , component: LandingPageComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
