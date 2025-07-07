@@ -24,7 +24,10 @@ const routes: Routes = [
   {path:"blog", component:BlogComponent},
   {path:"blog-detail", component:BlogDetailComponent},
   {path:"our-partners", component:OurPartnersComponent},
-  {path:"contact", component:ContactComponent}
+  {path:"contact", component:ContactComponent},
+
+
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
 
 ];
 
