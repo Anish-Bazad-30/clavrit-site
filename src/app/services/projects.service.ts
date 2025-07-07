@@ -12,14 +12,19 @@ export class ProjectsService {
     constructor(private http: HttpClient) { }
   
   
-    getProjects(id: any): Observable<any> {
-      const url = `${this.apiUrl}/`;
+    getProjects(): Observable<any> {
+      const url = `${this.apiUrl}/clavrit/projects`;
       return this.http.get<any>(url);
     }
   
-     createProjects(id: any): Observable<any> {
-      const url = `${this.apiUrl}/`;
-      return this.http.post<any>(url,id);
+    getProjectsById(id: any): Observable<any> {
+      const url = `${this.apiUrl}/clavrit/projects/${id}`;
+      return this.http.get<any>(url);
+    }
+
+     createProjects(data: any): Observable<any> {
+      const url = `${this.apiUrl}/clavrit/projects`;
+      return this.http.post<any>(url,data);
     }
   
     updateProjects(id: any): Observable<any> {
@@ -28,7 +33,7 @@ export class ProjectsService {
     }
   
     deleteProjects(id: any): Observable<any> {
-      const url = `${this.apiUrl}/`;
+      const url = `${this.apiUrl}/clavrit/projects/${id}`;
       return this.http.delete<any>(url);
     }
   

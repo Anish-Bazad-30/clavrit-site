@@ -19,7 +19,7 @@ import { BlogComponent } from './blog/blog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { OurPartnersComponent } from './our-partners/our-partners.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +43,7 @@ import { OurPartnersComponent } from './our-partners/our-partners.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

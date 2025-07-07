@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { JobsService } from '../services/jobs.service';
 
 @Component({
   selector: 'app-career',
@@ -8,12 +9,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CareerComponent implements OnInit {
 
+
+  jobsList:any[]=[];
   careerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private jobsService : JobsService,
+
+  ) { }
 
 
   ngOnInit(): void {
+
+    this.fetchJobs();
+    console.log(this.jobsList);
+    
+
     this.careerForm = this.fb.group({
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -26,6 +38,8 @@ export class CareerComponent implements OnInit {
       currentCTC: ['', Validators.required],
       noticePeriod: ['', Validators.required]
     });
+
+    
   }
 
   onSubmit() {
@@ -34,6 +48,12 @@ export class CareerComponent implements OnInit {
     } else {
       this.careerForm.markAllAsTouched();
     }
+  }
+
+  fetchJobs(){
+    this.jobsService.getJobs().subscribe((res)=>{
+      this.jobsList = res.data;
+    })
   }
 
 }

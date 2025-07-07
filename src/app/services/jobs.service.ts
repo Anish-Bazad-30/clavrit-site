@@ -12,14 +12,19 @@ export class JobsService {
     constructor(private http: HttpClient) { }
   
   
-    getJobs(id: any): Observable<any> {
-      const url = `${this.apiUrl}/`;
+    getJobs(): Observable<any> {
+      const url = `${this.apiUrl}/api/job-details`;
       return this.http.get<any>(url);
     }
   
-     createJobs(id: any): Observable<any> {
-      const url = `${this.apiUrl}/`;
-      return this.http.post<any>(url,id);
+     createJobs(data: any): Observable<any> {
+      const url = `${this.apiUrl}/api/job-details`;
+      return this.http.post<any>(url,data);
+    }
+
+      createJobsMoreDetails(data: any): Observable<any> {
+      const url = `${this.apiUrl}/api/job-more-details`;
+      return this.http.post<any>(url,data);
     }
   
     updateJobs(id: any): Observable<any> {
@@ -32,4 +37,8 @@ export class JobsService {
       return this.http.delete<any>(url);
     }
   
+    applyJob(data: any): Observable<any> {
+      const url = `${this.apiUrl}/api/job-application/apply`;
+      return this.http.post<any>(url,data);
+    }
 }

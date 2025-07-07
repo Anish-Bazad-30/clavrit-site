@@ -13,18 +13,18 @@ export class BlogService {
   constructor(private http: HttpClient) { }
 
 
-  getBlogs(id: any): Observable<any> {
-    const url = `${this.apiUrl}/`;
+  getBlogs(): Observable<any> {
+    const url = `${this.apiUrl}/clavrit/blogs`;
     return this.http.get<any>(url);
   }
 
-   createBlogs(id: any): Observable<any> {
-    const url = `${this.apiUrl}/`;
-    return this.http.post<any>(url,id);
+   createBlogs(data: any): Observable<any> {
+    const url = `${this.apiUrl}/clavrit/blogs`;
+    return this.http.post<any>(url,data);
   }
 
   updateBlogs(id: any): Observable<any> {
-    const url = `${this.apiUrl}/`;
+    const url = `${this.apiUrl}/clavrit/blogs/${id}`;
     return this.http.put<any>(url,id);
   }
 
