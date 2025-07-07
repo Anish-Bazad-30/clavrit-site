@@ -14,7 +14,7 @@ import { CareerComponent } from './career/career.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { CareerDetailComponent } from './career-detail/career-detail.component';
 import { ServicesProvidedComponent } from './services-provided/services-provided.component';
-import { MapComponent } from './map/map.component';
+// import { MapComponent } from './map/map.component';
 import { BlogComponent } from './blog/blog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
@@ -34,7 +34,7 @@ import { OurPartnersComponent } from './our-partners/our-partners.component';
     PortfolioComponent,
     CareerDetailComponent,
     ServicesProvidedComponent,
-    MapComponent,
+
     BlogComponent,
     BlogDetailComponent,
     OurPartnersComponent
