@@ -11,6 +11,7 @@ export class CareerDetailComponent implements OnInit{
 
   careerForm!: FormGroup;
   selectedCVFile: File | null = null;
+  dragedFile: any;
   constructor(
     private jobsService : JobsService,
     private fb: FormBuilder
@@ -22,10 +23,13 @@ export class CareerDetailComponent implements OnInit{
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       coverletter: [''],
-      cv: [null, Validators.required],
+      // cv: [null, Validators.required],
       coverletter_file: [null],
       agree: [false, Validators.requiredTrue]
     });
+    this.jobsService.getJobs().subscribe((res) => {
+      console.log(res);
+    })
   }
 
 
@@ -49,19 +53,25 @@ export class CareerDetailComponent implements OnInit{
   onSubmit() {
      const formData = new FormData();
 
-  formData.append('fullName', this.careerForm.get('fullName')?.value);
+  formData.append('fullName', this.careerForm.get('fullname')?.value);
   formData.append('email', this.careerForm.get('email')?.value);
   formData.append('phone', this.careerForm.get('phone')?.value);
-  formData.append('coverletter', this.careerForm.get('coverletter')?.value);
+  formData.append('coverLetter', this.careerForm.get('coverletter')?.value);
 
-  const resumeFile = this.careerForm.get('uploadResume')?.value;
+  const resumeFile = this.dragedFile
   if (resumeFile) {
     formData.append('uploadResume', resumeFile);
   }
+
 
   this.jobsService.applyJob(formData).subscribe((res)=>{
 
   })
   }
- 
+  handleBrowseFile(event:any){
+    this.dragedFile = event.target.files[0];
+    // this.infomsg = this.dragedFile.name;
+    console.log(this.dragedFile);
+  }
+  
 }
