@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsComponent } from './forms/forms.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ContentListComponent } from './content-list/content-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,11 +14,13 @@ import { ContentListComponent } from './content-list/content-list.component';
     LoginComponent,
     DashboardComponent,
     FormsComponent,
-    ContentListComponent
+    ContentListComponent,
+    
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

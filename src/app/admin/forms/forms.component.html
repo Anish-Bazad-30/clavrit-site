@@ -1,144 +1,219 @@
 
-<div class="container my-5">
+    <div class="container d-flex flex-column justify-content-evenly align-items-center flex-grow-1">
+        <h2 class="text-primary my-5">{{pageTitle}}</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3" enctype="multipart/form-data">
+        <!-- Full Name -->
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="fullName" class="form-control" placeholder="Full Name"
+                    formControlName="fullName">
+                <label for="fullName">Full Name</label>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="name" class="form-control" placeholder="Name"
+                    formControlName="name">
+                <label for="name">Name</label>
+            </div>
+        </div>
 
-<form class="contact-form row" method="post" action="#" role="form">
+        <!-- Email -->
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="email" id="email" class="form-control" placeholder="Email" formControlName="email">
+                <label for="email">Email</label>
+            </div>
+        </div>
 
-    <div class="col-lg-6 mb-4">
-        <div class="form-floating">
-            <input type="text" class="form-control form-control-lg light-300" id="floatingname" name="inputname"
-                placeholder="Name">
-            <label for="floatingname light-300">Full Name</label>
+        <!-- Phone -->
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="phone" class="form-control" placeholder="Phone" formControlName="phone">
+                <label for="phone">Phone</label>
+            </div>
         </div>
-    </div>
 
-    <div class="col-lg-6 mb-4">
-        <div class="form-floating">
-            <input type="text" class="form-control form-control-lg light-300" id="floatingemail" name="inputemail"
-                placeholder="Email">
-            <label for="floatingemail light-300">Email</label>
+        <!-- Company -->
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="company" class="form-control" placeholder="Company" formControlName="company">
+                <label for="company">Company</label>
+            </div>
         </div>
-    </div>
-    <div class="col-lg-6 mb-4">
-        <div class="form-floating">
-            <input type="text" class="form-control form-control-lg light-300" id="floatingname" name="inputname"
-                placeholder="Name">
-            <label for="floatingname light-300">Destination</label>
-        </div>
-    </div>
-    <div class="col-lg-6 mb-4">
-        <div class="form-floating">
-            <input type="text" class="form-control form-control-lg light-300" id="floatingcompany" name="inputcompany"
-                placeholder="Company Name">
-            <label for="floatingcompany light-300">Company Name</label>
-        </div>
-    </div>
-    <div class="col-lg-6 mb-4">
-        <div class="form-floating">
-            <input type="text" class="form-control form-control-lg light-300" id="floatingphone" name="inputphone"
-                placeholder="Phone">
-            <label for="floatingphone light-300">Phone</label>
-        </div>
-    </div>
 
-    <div class="col-lg-6 mb-4">
-        <div class="form-floating">
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Select</option>
-                <option value="1">India</option>
-                <option value="2">America</option>
-                <option value="3">New Zealand</option>
-            </select>
-            <label for="floatingcountry light-300">Country</label>
+        <!-- Destination -->
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="destination" class="form-control" placeholder="Destination"
+                    formControlName="destination">
+                <label for="destination">Destination</label>
+            </div>
         </div>
-    </div>
 
-    <div class="col-12">
-        <div class="form-floating mb-4">
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Select</option>
-                <option value="1">Buisiness Partnership</option>
-                <option value="2">Career</option>
-                <option value="3">Vendor Request</option>
-                <option value="4">Others</option>
-            </select>
-            <label for="floatingcountry light-300">Subject</label>
+        <!-- Country -->
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="country" class="form-control" placeholder="Country" formControlName="country">
+                <label for="country">Country</label>
+            </div>
         </div>
-    </div>
 
-<div class="col-lg-6 mb-4">
-        <div class="form-floating">
-            <input type="text" class="form-control form-control-lg light-300" id="floatingname" name="inputname"
-                placeholder="Name">
-            <label for="floatingname light-300">Full Name</label>
+        <!-- Subject -->
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="subject" class="form-control" placeholder="Subject" formControlName="subject">
+                <label for="subject">Subject</label>
+            </div>
         </div>
-    </div>
 
-    <div class="col-lg-6 mb-4">
-        <div class="form-floating">
-            <input type="text" class="form-control form-control-lg light-300" id="floatingemail" name="inputemail"
-                placeholder="Email">
-            <label for="floatingemail light-300">Email</label>
-        </div>
-    </div>
-    <div class="col-lg-6 mb-4">
-        <div class="form-floating">
-            <input type="text" class="form-control form-control-lg light-300" id="floatingname" name="inputname"
-                placeholder="Name">
-            <label for="floatingname light-300">Destination</label>
-        </div>
-    </div>
-    <div class="col-lg-6 mb-4">
-        <div class="form-floating">
-            <input type="text" class="form-control form-control-lg light-300" id="floatingcompany" name="inputcompany"
-                placeholder="Company Name">
-            <label for="floatingcompany light-300">Company Name</label>
-        </div>
-    </div>
-    <div class="col-lg-6 mb-4">
-        <div class="form-floating">
-            <input type="text" class="form-control form-control-lg light-300" id="floatingphone" name="inputphone"
-                placeholder="Phone">
-            <label for="floatingphone light-300">Phone</label>
-        </div>
-    </div>
+        <!-- Message -->
+        
 
-    <div class="col-lg-6 mb-4">
-        <div class="form-floating">
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Select</option>
-                <option value="1">India</option>
-                <option value="2">America</option>
-                <option value="3">New Zealand</option>
-            </select>
-            <label for="floatingcountry light-300">Country</label>
+        <!-- Job Fields -->
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="jobResponsibility" class="form-control" placeholder="Responsibility"
+                    formControlName="jobResponsibility">
+                <label for="jobResponsibility">Job Responsibility</label>
+            </div>
         </div>
-    </div>
-
-    <div class="col-12">
-        <div class="form-floating mb-4">
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Select</option>
-                <option value="1">Buisiness Partnership</option>
-                <option value="2">Career</option>
-                <option value="3">Vendor Request</option>
-                <option value="4">Others</option>
-            </select>
-            <label for="floatingcountry light-300">Subject</label>
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="jobQualification" class="form-control" placeholder="Qualification"
+                    formControlName="jobQualification">
+                <label for="jobQualification">Job Qualification</label>
+            </div>
         </div>
-    </div>
-
-    <div class="col-12">
-        <div class="form-floating mb-3">
-            <textarea class="form-control light-300" rows="8" placeholder="Message" id="floatingtextarea"></textarea>
-            <label for="floatingtextarea light-300">Message</label>
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="jobCategory" class="form-control" placeholder="Category"
+                    formControlName="jobCategory">
+                <label for="jobCategory">Job Category</label>
+            </div>
         </div>
-    </div>
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="jobType" class="form-control" placeholder="Type" formControlName="jobType">
+                <label for="jobType">Job Type</label>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="jobLocation" class="form-control" placeholder="Location"
+                    formControlName="jobLocation">
+                <label for="jobLocation">Job Location</label>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="industry" class="form-control" placeholder="Industry" formControlName="industry">
+                <label for="industry">Industry</label>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="jobDesignation" class="form-control" placeholder="Designation"
+                    formControlName="jobDesignation">
+                <label for="jobDesignation">Job Designation</label>
+            </div>
+        </div>
 
-    <div class="col-md-12 col-12 m-auto text-end">
-        <button type="submit"
-            class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Send
-            Message</button>
-    </div>
+        <!-- Blog Fields -->
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="title" class="form-control" placeholder="Title" formControlName="title">
+                <label for="title">Blog Title</label>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="subtitle" class="form-control" placeholder="Subtitle" formControlName="subtitle">
+                <label for="subtitle">Subtitle</label>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="authorName" class="form-control" placeholder="Author"
+                    formControlName="authorName">
+                <label for="authorName">Author Name</label>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="advantages" class="form-control" placeholder="Advantages"
+                    formControlName="advantages">
+                <label for="advantages">Advantages</label>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="disadvantages" class="form-control" placeholder="Disadvantages"
+                    formControlName="disadvantages">
+                <label for="disadvantages">Disadvantages</label>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="tags" class="form-control" placeholder="Tags" formControlName="tags">
+                <label for="tags">Tags</label>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-floating">
+                <input type="text" id="imageUrl" class="form-control" placeholder="Image URL"
+                    formControlName="imageUrl">
+                <label for="imageUrl">Image URL</label>
+            </div>
+        </div>
 
-</form>
+        <!-- Upload Resume -->
+        <div class="col-lg-6">
+            <label class="form-label">Upload Resume</label>
+            <input type="file" class="form-control" (change)="onResumeSelected($event)" accept=".pdf,.doc,.docx">
+        </div>
+
+        <!-- Upload Image -->
+        <div class="col-lg-6">
+            <label class="form-label">Upload Image</label>
+            <input type="file" class="form-control" (change)="onImageSelected($event)" accept="image/*">
+        </div>
+        <div class="col-12">
+            <div class="form-floating">
+                <textarea id="conclusion" class="form-control" placeholder="Conclusion" style="height: 100px;"
+                    formControlName="conclusion"></textarea>
+                <label for="conclusion">Conclusion</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-floating">
+                <textarea id="message" class="form-control" placeholder="Message" style="height: 100px;"
+                    formControlName="message"></textarea>
+                <label for="message">Message</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-floating">
+                <textarea id="summary" class="form-control" placeholder="Summary" style="height: 100px;"
+                    formControlName="summary"></textarea>
+                <label for="summary">Summary</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-floating">
+                <textarea id="content" class="form-control" placeholder="Content" style="height: 100px;"
+                    formControlName="content"></textarea>
+                <label for="content">Content</label>
+            </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="col-12 text-end">
+            <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill">Submit</button>
+        </div>
+    </form>
+
+
 </div>

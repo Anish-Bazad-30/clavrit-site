@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./content-list.component.scss']
 })
 export class ContentListComponent {
-  pageTitle = " ";
+  pageTitle!:string;
   type: string | null = null;
 
   constructor(private route: ActivatedRoute, private router: Router) { }
