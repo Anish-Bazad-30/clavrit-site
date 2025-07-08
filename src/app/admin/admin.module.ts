@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsComponent } from './forms/forms.component';
 import { AdminRoutingModule } from './admin-routing.module';
+import { ContentListComponent } from './content-list/content-list.component';
 
 
 
@@ -11,7 +12,8 @@ import { AdminRoutingModule } from './admin-routing.module';
   declarations: [
     LoginComponent,
     DashboardComponent,
-    FormsComponent
+    FormsComponent,
+    ContentListComponent
   ],
   imports: [
     CommonModule,

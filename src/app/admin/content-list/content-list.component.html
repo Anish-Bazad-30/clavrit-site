@@ -1,0 +1,288 @@
+<section class="py-3 bg-light">
+    <div class="container d-flex flex-column justify-content-evenly align-items-center flex-grow-1">
+        <h2 class="text-primary">{{pageTitle}}</h2>
+        <div class="container w-100 d-flex justify-content-between align-items-center py-2">
+            <div class="flex-grow-1 me-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
+                    <button class="btn btn-outline-secondary" type="button">
+                        <i class='bx bx-search'></i>
+                    </button>
+                </div>
+            </div>
+            <div>
+                <button type="button"
+                    class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300"
+                    (click)="form()">
+                    Add New
+                </button>
+            </div>
+        </div>
+
+        <div *ngIf="type === 'client'" class="container">
+            <table class="data-table w-100">
+                <thead class="table-header bg-primary">
+                    <tr class="text-center custom-font">
+                        <th>Sl No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Company Logo</th>
+                        <th>Company Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-data">
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="text-break text-wrap w-100">
+
+                            </div>
+                        </td>
+                        <td class="text-danger fw-semibold"></td>
+                        <td class="d-flex justify-content-center gap-2">
+
+                            <button class="btn p-1">
+                                <i class='bx bx-edit fs-5 text-primary'></i>
+                            </button>
+                            <button class="btn p-1">
+                                <i class='bx bx-trash fs-5 text-danger'></i>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="type === 'blog'" class="container">
+           <table class="data-table w-100">
+                <thead class="table-header bg-primary">
+                    <tr class="text-center custom-font">
+                        <th>Sl No</th>
+                        <th>Title</th>
+                        <th>Subtitle</th>
+                        <th>Author Name</th>
+                        <th>Summary</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-data">
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="text-break text-wrap w-100">
+
+                            </div>
+                        </td>
+                        <td class="text-danger fw-semibold"></td>
+                        <td class="d-flex justify-content-center gap-2">
+
+                            <button class="btn p-1">
+                                <i class='bx bx-edit fs-5 text-primary'></i>
+                            </button>
+                            <button class="btn p-1">
+                                <i class='bx bx-trash fs-5 text-danger'></i>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="type === 'project'" class="container">
+           <table class="data-table w-100">
+                <thead class="table-header bg-primary">
+                    <tr class="text-center custom-font">
+                        <th>Sl No</th>
+                        <th>Title</th>
+                        <th>Summary</th>
+                        <th>Technology</th>
+                        <th>Key Points</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-data">
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="text-break text-wrap w-100">
+
+                            </div>
+                        </td>
+                        <td class="text-danger fw-semibold"></td>
+                        <td class="d-flex justify-content-center gap-2">
+
+                            <button class="btn p-1">
+                                <i class='bx bx-edit fs-5 text-primary'></i>
+                            </button>
+                            <button class="btn p-1">
+                                <i class='bx bx-trash fs-5 text-danger'></i>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="type === 'service'" class="container">
+           <table class="data-table w-100">
+                <thead class="table-header bg-primary">
+                    <tr class="text-center custom-font">
+                        <th>Sl No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Company Logo</th>
+                        <th>Company Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-data">
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="text-break text-wrap w-100">
+
+                            </div>
+                        </td>
+                        <td class="text-danger fw-semibold"></td>
+                        <td class="d-flex justify-content-center gap-2">
+
+                            <button class="btn p-1">
+                                <i class='bx bx-edit fs-5 text-primary'></i>
+                            </button>
+                            <button class="btn p-1">
+                                <i class='bx bx-trash fs-5 text-danger'></i>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="type === 'job-detail'" class="container">
+           <table class="data-table w-100">
+                <thead class="table-header bg-primary">
+                    <tr class="text-center custom-font">
+                        <th>Sl No</th>
+                        <th>Job Category</th>
+                        <th>Designation</th>
+                        <th>Company Logo</th>
+                        <th>Company Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-data">
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="text-break text-wrap w-100">
+
+                            </div>
+                        </td>
+                        <td class="text-danger fw-semibold"></td>
+                        <td class="d-flex justify-content-center gap-2">
+
+                            <button class="btn p-1">
+                                <i class='bx bx-edit fs-5 text-primary'></i>
+                            </button>
+                            <button class="btn p-1">
+                                <i class='bx bx-trash fs-5 text-danger'></i>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="type === 'job-application'" class="container">
+           <table class="data-table w-100">
+                <thead class="table-header bg-primary">
+                    <tr class="text-center custom-font">
+                        <th>Sl No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone No</th>
+                        <th>Job Category</th>
+                        <th>Resume</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-data">
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="text-break text-wrap w-100">
+
+                            </div>
+                        </td>
+                        <td class="text-danger fw-semibold"></td>
+                        <td class="d-flex justify-content-center gap-2">
+
+                            <button class="btn p-1">
+                                <i class='bx bx-edit fs-5 text-primary'></i>
+                            </button>
+                            <button class="btn p-1">
+                                <i class='bx bx-trash fs-5 text-danger'></i>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="type === 'contact'" class="container">
+           <table class="data-table w-100">
+                <thead class="table-header bg-primary">
+                    <tr class="text-center custom-font">
+                        <th>Sl No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone No</th>
+                        <th>Company Name</th>
+                        <th>Coutry</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-data">
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="text-break text-wrap w-100">
+
+                            </div>
+                        </td>
+                        <td class="text-danger fw-semibold"></td>
+                        <td class="d-flex justify-content-center gap-2">
+
+                            <button class="btn p-1">
+                                <i class='bx bx-edit fs-5 text-primary'></i>
+                            </button>
+                            <button class="btn p-1">
+                                <i class='bx bx-trash fs-5 text-danger'></i>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</section>
