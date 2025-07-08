@@ -1,1 +1,55 @@
-<p>dashboard works!</p>
+<section class="py-3 bg-light">
+    <div class="container d-flex flex-column justify-content-evenly align-items-center flex-grow-1">
+        <div class="recent-work-header text-start py-2">
+            <h2 class="col-md-6 m-auto h3 semi-bold-600 text-primary">Welcome!</h2>
+        </div>
+        <div class="w-100 d-flex flex-column px-3">
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3">
+                <span class="text-primary h4">Client info Management</span>
+                <!-- <a routerLink="/admin/content-list"><i class='display-6 bx bx-chevron-right text-primary'></i></a> -->
+                <a [routerLink]="['/admin/content-list', 'client']">
+                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                </a>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3">
+                <span class="text-primary h4">Blog Management</span>
+                <a [routerLink]="['/admin/content-list', 'blog']">
+                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                </a>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3">
+                <span class="text-primary h4">Project Management</span>
+                <a [routerLink]="['/admin/content-list', 'project']">
+                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                </a>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3">
+                <span class="text-primary h4">Service Management</span>
+                <a [routerLink]="['/admin/content-list', 'service']">
+                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                </a>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3">
+                <span class="text-primary h4">Job details Management</span>
+                <a [routerLink]="['/admin/content-list', 'job-detail']">
+                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                </a>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3">
+                <span class="text-primary h4">Job Application Management</span>
+                <a [routerLink]="['/admin/content-list', 'job-application']">
+                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                </a>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3">
+                <span class="text-primary h4">Contact Management</span>
+                <a [routerLink]="['/admin/content-list', 'contact']">
+                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+</section>
