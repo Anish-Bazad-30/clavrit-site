@@ -25,9 +25,9 @@ export class FormsComponent {
 
   ngOnInit() {
 
-    
 
-   this.type = this.route.snapshot.paramMap.get('type') ?? '';
+
+    this.type = this.route.snapshot.paramMap.get('type') ?? '';
     console.log('Content type:', this.type);
     this.loadContent(this.type);
     this.buildFormByType(this.type);
@@ -80,100 +80,100 @@ export class FormsComponent {
         break;
     }
   }
-buildFormByType(type: string): void {
-  const commonFields = {
-    fullName: [''],
-    email: [''],
-    phone: ['']
-  };
+  buildFormByType(type: string): void {
+    const commonFields = {
+      fullName: [''],
+      email: [''],
+      phone: ['']
+    };
 
-  const clientFields = {
-    company: [''],
-    destination: [''],
-    country: [''],
-    subject: [''],
-    message: ['']
-  };
+    const clientFields = {
+      company: [''],
+      destination: [''],
+      country: [''],
+      subject: [''],
+      message: ['']
+    };
 
-  const blogFields = {
-    title: [''],
-    subtitle: [''],
-    authorName: [''],
-    advantages: [''],
-    disadvantages: [''],
-    tags: [''],
-    imageUrl: [''],
-    conclusion: [''],
-    summary: [''],
-    content: ['']
-  };
+    const blogFields = {
+      title: [''],
+      subtitle: [''],
+      authorName: [''],
+      advantages: [''],
+      disadvantages: [''],
+      tags: [''],
+      imageUrl: [''],
+      conclusion: [''],
+      summary: [''],
+      content: ['']
+    };
 
-  const projectFields = {
-    name: [''],
-    description: [''],
-    technology: ['']
-  };
+    const projectFields = {
+      name: [''],
+      description: [''],
+      technology: ['']
+    };
 
-  const serviceFields = {
-    name: [''],
-    description: [''],
-    category: ['']
-  };
+    const serviceFields = {
+      name: [''],
+      description: [''],
+      category: ['']
+    };
 
-  const jobDetailFields = {
-    jobResponsibility: [''],
-    jobQualification: [''],
-    jobCategory: [''],
-    jobType: [''],
-    jobLocation: [''],
-    industry: [''],
-    jobDesignation: ['']
-  };
+    const jobDetailFields = {
+      jobResponsibility: [''],
+      jobQualification: [''],
+      jobCategory: [''],
+      jobType: [''],
+      jobLocation: [''],
+      industry: [''],
+      jobDesignation: ['']
+    };
 
-  const jobApplicationFields = {
-    coverletter: [''],
-    uploadResume: [null]
-  };
+    const jobApplicationFields = {
+      coverletter: [''],
+      uploadResume: [null]
+    };
 
-  const contactFields = {
-    name: [''],
-    subject: [''],
-    company: [''],
-    destination: [''],
-    country: [''],
-    message: ['']
-  };
+    const contactFields = {
+      name: [''],
+      subject: [''],
+      company: [''],
+      destination: [''],
+      country: [''],
+      message: ['']
+    };
 
-  let selectedFields: any = {};
+    let selectedFields: any = {};
 
-  switch (type) {
-    case 'client':
-      selectedFields = { ...commonFields, ...clientFields };
-      break;
-    case 'blog':
-      selectedFields = { ...commonFields, ...blogFields };
-      break;
-    case 'project':
-      selectedFields = { ...commonFields, ...projectFields };
-      break;
-    case 'service':
-      selectedFields = { ...commonFields, ...serviceFields };
-      break;
-    case 'job-detail':
-      selectedFields = { ...commonFields, ...jobDetailFields };
-      break;
-    case 'job-application':
-      selectedFields = { ...commonFields, ...jobApplicationFields };
-      break;
-    case 'contact':
-      selectedFields = { ...commonFields, ...contactFields };
-      break;
-    default:
-      selectedFields = commonFields;
-      break;
+    switch (type) {
+      case 'client':
+        selectedFields = { ...commonFields, ...clientFields };
+        break;
+      case 'blog':
+        selectedFields = { ...commonFields, ...blogFields };
+        break;
+      case 'project':
+        selectedFields = { ...commonFields, ...projectFields };
+        break;
+      case 'service':
+        selectedFields = { ...commonFields, ...serviceFields };
+        break;
+      case 'job-detail':
+        selectedFields = { ...commonFields, ...jobDetailFields };
+        break;
+      case 'job-application':
+        selectedFields = { ...commonFields, ...jobApplicationFields };
+        break;
+      case 'contact':
+        selectedFields = { ...commonFields, ...contactFields };
+        break;
+      default:
+        selectedFields = commonFields;
+        break;
+    }
+
+    this.form = this.fb.group(selectedFields);
   }
-
-  this.form = this.fb.group(selectedFields);
-}
 
 }

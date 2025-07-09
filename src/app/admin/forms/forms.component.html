@@ -3,14 +3,14 @@
         <h2 class="text-primary my-5">{{pageTitle}}</h2>
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3" enctype="multipart/form-data">
         <!-- Full Name -->
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('fullName')">
             <div class="form-floating">
                 <input type="text" id="fullName" class="form-control" placeholder="Full Name"
                     formControlName="fullName">
                 <label for="fullName">Full Name</label>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('name')">
             <div class="form-floating">
                 <input type="text" id="name" class="form-control" placeholder="Name"
                     formControlName="name">
@@ -19,7 +19,7 @@
         </div>
 
         <!-- Email -->
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('email')" >
             <div class="form-floating">
                 <input type="email" id="email" class="form-control" placeholder="Email" formControlName="email">
                 <label for="email">Email</label>
@@ -27,7 +27,7 @@
         </div>
 
         <!-- Phone -->
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('phone')">
             <div class="form-floating">
                 <input type="text" id="phone" class="form-control" placeholder="Phone" formControlName="phone">
                 <label for="phone">Phone</label>
@@ -35,7 +35,7 @@
         </div>
 
         <!-- Company -->
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('company')">
             <div class="form-floating">
                 <input type="text" id="company" class="form-control" placeholder="Company" formControlName="company">
                 <label for="company">Company</label>
@@ -43,7 +43,7 @@
         </div>
 
         <!-- Destination -->
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('destination')">
             <div class="form-floating">
                 <input type="text" id="destination" class="form-control" placeholder="Destination"
                     formControlName="destination">
@@ -52,7 +52,7 @@
         </div>
 
         <!-- Country -->
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('country')">
             <div class="form-floating">
                 <input type="text" id="country" class="form-control" placeholder="Country" formControlName="country">
                 <label for="country">Country</label>
@@ -60,7 +60,7 @@
         </div>
 
         <!-- Subject -->
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('subject')">
             <div class="form-floating">
                 <input type="text" id="subject" class="form-control" placeholder="Subject" formControlName="subject">
                 <label for="subject">Subject</label>
@@ -71,47 +71,47 @@
         
 
         <!-- Job Fields -->
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('jobResponsibility')">
             <div class="form-floating">
                 <input type="text" id="jobResponsibility" class="form-control" placeholder="Responsibility"
                     formControlName="jobResponsibility">
                 <label for="jobResponsibility">Job Responsibility</label>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('jobQualification')">
             <div class="form-floating">
                 <input type="text" id="jobQualification" class="form-control" placeholder="Qualification"
                     formControlName="jobQualification">
                 <label for="jobQualification">Job Qualification</label>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('jobCategory')">
             <div class="form-floating">
                 <input type="text" id="jobCategory" class="form-control" placeholder="Category"
                     formControlName="jobCategory">
                 <label for="jobCategory">Job Category</label>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('jobType')">
             <div class="form-floating">
                 <input type="text" id="jobType" class="form-control" placeholder="Type" formControlName="jobType">
                 <label for="jobType">Job Type</label>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('jobLocation')">
             <div class="form-floating">
                 <input type="text" id="jobLocation" class="form-control" placeholder="Location"
                     formControlName="jobLocation">
                 <label for="jobLocation">Job Location</label>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('industry')">
             <div class="form-floating">
                 <input type="text" id="industry" class="form-control" placeholder="Industry" formControlName="industry">
                 <label for="industry">Industry</label>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('jobDesignation')">
             <div class="form-floating">
                 <input type="text" id="jobDesignation" class="form-control" placeholder="Designation"
                     formControlName="jobDesignation">
@@ -120,19 +120,19 @@
         </div>
 
         <!-- Blog Fields -->
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('title')">
             <div class="form-floating">
                 <input type="text" id="title" class="form-control" placeholder="Title" formControlName="title">
                 <label for="title">Blog Title</label>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('subtitle')">
             <div class="form-floating">
                 <input type="text" id="subtitle" class="form-control" placeholder="Subtitle" formControlName="subtitle">
                 <label for="subtitle">Subtitle</label>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('authorName')">
             <div class="form-floating">
                 <input type="text" id="authorName" class="form-control" placeholder="Author"
                     formControlName="authorName">
@@ -140,14 +140,14 @@
             </div>
         </div>
         
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('advantages')">
             <div class="form-floating">
                 <input type="text" id="advantages" class="form-control" placeholder="Advantages"
                     formControlName="advantages">
                 <label for="advantages">Advantages</label>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('disadvantages')">
             <div class="form-floating">
                 <input type="text" id="disadvantages" class="form-control" placeholder="Disadvantages"
                     formControlName="disadvantages">
@@ -155,13 +155,13 @@
             </div>
         </div>
         
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('tags')">
             <div class="form-floating">
                 <input type="text" id="tags" class="form-control" placeholder="Tags" formControlName="tags">
                 <label for="tags">Tags</label>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('imageUrl')">
             <div class="form-floating">
                 <input type="text" id="imageUrl" class="form-control" placeholder="Image URL"
                     formControlName="imageUrl">
@@ -170,38 +170,38 @@
         </div>
 
         <!-- Upload Resume -->
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('fullName')">
             <label class="form-label">Upload Resume</label>
             <input type="file" class="form-control" (change)="onResumeSelected($event)" accept=".pdf,.doc,.docx">
         </div>
 
         <!-- Upload Image -->
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="form.contains('fullName')">
             <label class="form-label">Upload Image</label>
             <input type="file" class="form-control" (change)="onImageSelected($event)" accept="image/*">
         </div>
-        <div class="col-12">
+        <div class="col-12" *ngIf="form.contains('conclusion')"> 
             <div class="form-floating">
                 <textarea id="conclusion" class="form-control" placeholder="Conclusion" style="height: 100px;"
                     formControlName="conclusion"></textarea>
                 <label for="conclusion">Conclusion</label>
             </div>
         </div>
-        <div class="col-12">
+        <div class="col-12" *ngIf="form.contains('message')">
             <div class="form-floating">
                 <textarea id="message" class="form-control" placeholder="Message" style="height: 100px;"
                     formControlName="message"></textarea>
                 <label for="message">Message</label>
             </div>
         </div>
-        <div class="col-12">
+        <div class="col-12" *ngIf="form.contains('summary')">
             <div class="form-floating">
                 <textarea id="summary" class="form-control" placeholder="Summary" style="height: 100px;"
                     formControlName="summary"></textarea>
                 <label for="summary">Summary</label>
             </div>
         </div>
-        <div class="col-12">
+        <div class="col-12" *ngIf="form.contains('content')">
             <div class="form-floating">
                 <textarea id="content" class="form-control" placeholder="Content" style="height: 100px;"
                     formControlName="content"></textarea>
