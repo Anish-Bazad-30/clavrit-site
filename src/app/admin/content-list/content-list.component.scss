@@ -58,3 +58,30 @@
 th {
   padding: 8px;
 }
+
+.pagination-ul{
+  list-style: none;
+}
+ 
+.pagination-ul li{
+  cursor: pointer;
+  color: #C4C4C4;
+}
+ 
+.pagination-ul li a {
+  padding: 4px 8px;
+}
+ 
+.pagination-ul li.active a {
+  background-color: #5e68ff;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.table-data td {
+  word-wrap: break-word; 
+  word-break: break-all; 
+  white-space: normal;   
+  max-width: 200px;      
+}

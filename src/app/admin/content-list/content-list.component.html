@@ -10,9 +10,9 @@
                     </button>
                 </div>
             </div>
-            <div>
+            <div *ngIf="type !== 'job-application' && type !== 'contact'">
                 <button type="button"
-                    class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300"
+                    class="btn btn-primary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300"
                     (click)="form()">
                     Add New
                 </button>
@@ -26,22 +26,23 @@
                         <th>Sl No</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Phone</th>
                         <th>Company Logo</th>
                         <th>Company Name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-data">
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
+                    <tr class="table-data" *ngFor="let content of contentListview; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{content.name}}</td>
+                        <td>{{content.email}}</td>
+                        <td>{{content.email}}</td>
                         <td>
-                            <div class="text-break text-wrap w-100">
-
-                            </div>
+                           {{content.companyLogo}}
                         </td>
-                        <td class="text-danger fw-semibold"></td>
+                        <td>{{content.companyName}}</td>
+    
                         <td class="d-flex justify-content-center gap-2">
 
                             <button class="btn p-1">
@@ -55,9 +56,29 @@
                     </tr>
                 </tbody>
             </table>
+            <nav>
+                <ul class="pagination-ul d-flex justify-content-center align-items-center mt-4">
+                    <li class="" [class.disabled]="currentPage === 1">
+                        <a class="" (click)="changePage(currentPage - 1)">
+                            <i class='display-6 bx bx-chevron-left text-primary'></i>
+                        </a>
+                    </li>
+
+                    <li class="ms-3 fs-5" *ngFor="let page of [].constructor(getTotalPages()); let i = index"
+                        [class.active]="currentPage === i + 1">
+                        <a class="" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+                    </li>
+
+                    <li class="ms-3" [class.disabled]="currentPage === getTotalPages()">
+                        <a class="" (click)="changePage(currentPage + 1)">
+                            <i class='display-6 bx bx-chevron-right text-primary'></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
         <div *ngIf="type === 'blog'" class="container">
-           <table class="data-table w-100">
+            <table class="data-table w-100">
                 <thead class="table-header bg-primary">
                     <tr class="text-center custom-font">
                         <th>Sl No</th>
@@ -73,12 +94,9 @@
                         <td>1</td>
                         <td></td>
                         <td></td>
-                        <td>
-                            <div class="text-break text-wrap w-100">
-
-                            </div>
-                        </td>
-                        <td class="text-danger fw-semibold"></td>
+                        <td></td>
+                        <td></td>
+                      
                         <td class="d-flex justify-content-center gap-2">
 
                             <button class="btn p-1">
@@ -94,7 +112,7 @@
             </table>
         </div>
         <div *ngIf="type === 'project'" class="container">
-           <table class="data-table w-100">
+            <table class="data-table w-100">
                 <thead class="table-header bg-primary">
                     <tr class="text-center custom-font">
                         <th>Sl No</th>
@@ -110,12 +128,8 @@
                         <td>1</td>
                         <td></td>
                         <td></td>
-                        <td>
-                            <div class="text-break text-wrap w-100">
-
-                            </div>
-                        </td>
-                        <td class="text-danger fw-semibold"></td>
+                        <td></td>
+                       <td></td>
                         <td class="d-flex justify-content-center gap-2">
 
                             <button class="btn p-1">
@@ -131,14 +145,13 @@
             </table>
         </div>
         <div *ngIf="type === 'service'" class="container">
-           <table class="data-table w-100">
+            <table class="data-table w-100">
                 <thead class="table-header bg-primary">
                     <tr class="text-center custom-font">
                         <th>Sl No</th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Company Logo</th>
-                        <th>Company Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -147,12 +160,7 @@
                         <td>1</td>
                         <td></td>
                         <td></td>
-                        <td>
-                            <div class="text-break text-wrap w-100">
-
-                            </div>
-                        </td>
-                        <td class="text-danger fw-semibold"></td>
+                        <td></td>
                         <td class="d-flex justify-content-center gap-2">
 
                             <button class="btn p-1">
@@ -168,14 +176,13 @@
             </table>
         </div>
         <div *ngIf="type === 'job-detail'" class="container">
-           <table class="data-table w-100">
+            <table class="data-table w-100">
                 <thead class="table-header bg-primary">
                     <tr class="text-center custom-font">
                         <th>Sl No</th>
                         <th>Job Category</th>
                         <th>Designation</th>
-                        <th>Company Logo</th>
-                        <th>Company Name</th>
+                        <th>Job Type</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -184,12 +191,7 @@
                         <td>1</td>
                         <td></td>
                         <td></td>
-                        <td>
-                            <div class="text-break text-wrap w-100">
-
-                            </div>
-                        </td>
-                        <td class="text-danger fw-semibold"></td>
+                        <td></td>
                         <td class="d-flex justify-content-center gap-2">
 
                             <button class="btn p-1">
@@ -205,7 +207,7 @@
             </table>
         </div>
         <div *ngIf="type === 'job-application'" class="container">
-           <table class="data-table w-100">
+            <table class="data-table w-100">
                 <thead class="table-header bg-primary">
                     <tr class="text-center custom-font">
                         <th>Sl No</th>
@@ -223,12 +225,9 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>
-                            <div class="text-break text-wrap w-100">
-
-                            </div>
-                        </td>
-                        <td class="text-danger fw-semibold"></td>
+                        <td></td>
+                        <td></td>
+                        
                         <td class="d-flex justify-content-center gap-2">
 
                             <button class="btn p-1">
@@ -244,7 +243,7 @@
             </table>
         </div>
         <div *ngIf="type === 'contact'" class="container">
-           <table class="data-table w-100">
+            <table class="data-table w-100">
                 <thead class="table-header bg-primary">
                     <tr class="text-center custom-font">
                         <th>Sl No</th>
@@ -262,12 +261,8 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>
-                            <div class="text-break text-wrap w-100">
-
-                            </div>
-                        </td>
-                        <td class="text-danger fw-semibold"></td>
+                        <td></td>
+                        <td></td>
                         <td class="d-flex justify-content-center gap-2">
 
                             <button class="btn p-1">

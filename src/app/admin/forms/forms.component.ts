@@ -9,9 +9,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class FormsComponent {
   pageTitle!: string;
-  onSubmit() {
-    throw new Error('Method not implemented.');
+  onSubmit(): void {
+    if (this.form.valid) {
+      console.log('Form submitted:', this.form.value);
+    } else {
+      console.log('Form is invalid:', this.form);
+    }
   }
+
   type: string | null = null;
   form!: FormGroup;
   uploadedResume: File | null = null;
@@ -81,99 +86,100 @@ export class FormsComponent {
     }
   }
   buildFormByType(type: string): void {
-    const commonFields = {
-      fullName: [''],
-      email: [''],
-      phone: ['']
-    };
-
-    const clientFields = {
-      company: [''],
-      destination: [''],
-      country: [''],
-      subject: [''],
-      message: ['']
-    };
-
-    const blogFields = {
-      title: [''],
-      subtitle: [''],
-      authorName: [''],
-      advantages: [''],
-      disadvantages: [''],
-      tags: [''],
-      imageUrl: [''],
-      conclusion: [''],
-      summary: [''],
-      content: ['']
-    };
-
-    const projectFields = {
-      name: [''],
-      description: [''],
-      technology: ['']
-    };
-
-    const serviceFields = {
-      name: [''],
-      description: [''],
-      category: ['']
-    };
-
-    const jobDetailFields = {
-      jobResponsibility: [''],
-      jobQualification: [''],
-      jobCategory: [''],
-      jobType: [''],
-      jobLocation: [''],
-      industry: [''],
-      jobDesignation: ['']
-    };
-
-    const jobApplicationFields = {
-      coverletter: [''],
-      uploadResume: [null]
-    };
-
-    const contactFields = {
-      name: [''],
-      subject: [''],
-      company: [''],
-      destination: [''],
-      country: [''],
-      message: ['']
-    };
-
     let selectedFields: any = {};
 
     switch (type) {
       case 'client':
-        selectedFields = { ...commonFields, ...clientFields };
+        selectedFields = {
+          name: [''],
+          email: [''],
+          companyname: [''],
+          companyLogo: [null]
+        };
         break;
+
       case 'blog':
-        selectedFields = { ...commonFields, ...blogFields };
+        selectedFields = this.fb.group({
+          title: [''],
+          subtitle: [''],
+          authorName: [''],
+          advantages: [''],
+          disadvantages: [''],
+          tags: [''],
+          imageUrl: [''],
+          conclusion: [''],
+          summary: [''],
+          content: ['']
+        });
         break;
+
       case 'project':
-        selectedFields = { ...commonFields, ...projectFields };
+        selectedFields = {
+          name: [''],
+          description: [''],
+          technology: ['']
+        };
         break;
+
       case 'service':
-        selectedFields = { ...commonFields, ...serviceFields };
+        selectedFields = {
+          name: [''],
+          description: [''],
+          category: ['']
+        };
         break;
+
       case 'job-detail':
-        selectedFields = { ...commonFields, ...jobDetailFields };
+        selectedFields = {
+          jobCategory: [''],
+          jobDesignation: [''],
+          jobType: [''],
+          moreDetails: this.fb.group({
+            id: [''],
+            jobResponsibility: [''],
+            jobQualification: [''],
+            jobCategory: [''],
+            jobType: [''],
+            jobLocation: [''],
+            industry: ['']
+          })
+        };
         break;
+
       case 'job-application':
-        selectedFields = { ...commonFields, ...jobApplicationFields };
+        selectedFields = {
+          name: [''],
+          email: [''],
+          phone: [''],
+          coverletter: [''],
+          uploadResume: [null]
+        };
         break;
+
       case 'contact':
-        selectedFields = { ...commonFields, ...contactFields };
+        selectedFields = {
+          name: [''],
+          email: [''],
+          phone: [''],
+          subject: [''],
+          company: [''],
+          destination: [''],
+          country: [''],
+          message: ['']
+        };
         break;
+
       default:
-        selectedFields = commonFields;
+        selectedFields = {
+          name: [''],
+          email: [''],
+          phone: ['']
+        };
         break;
     }
 
     this.form = this.fb.group(selectedFields);
   }
+
 
 }
