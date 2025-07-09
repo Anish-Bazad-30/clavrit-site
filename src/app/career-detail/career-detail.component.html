@@ -133,16 +133,17 @@
   </div>
 
   <div class="col-lg-6 mb-4">
-    <label for="floatingcv" class="form-label light-300">Upload CV/Resume</label>
+    <div class="form-floating">
     <input type="file" class="form-control form-control-lg light-300" accept=".pdf,.doc,.docx"
            id="floatingcv" (change)="handleBrowseFile($event)">
+           <label for="floatingcv" class="form-label light-300">Upload CV/Resume</label>
            <!-- <input
         type="file"
         #fileUpload
         (change)="handleBrowseFile($event)"
       /> -->
        
-    
+    </div>
     <p class="mt-2">Allowed Type(s): .pdf, .doc, .docx</p>
   </div>
 
