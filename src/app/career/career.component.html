@@ -337,7 +337,31 @@
                     <label for="noticePeriod">Notice Period</label>
                 </div>
             </div>
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="file" class="form-control form-control-lg light-300" accept=".pdf,.doc,.docx"
+                        id="floatingcv" (change)="handleBrowseFile($event)">
+                    <label for="floatingcv" class="form-label light-300">Upload CV/Resume</label>
 
+                </div>
+                <p class="mt-2">Allowed Type(s): .pdf, .doc, .docx</p>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <textarea class="form-control light-300" rows="8" id="floatingtextarea"
+                        formControlName="coverletter" placeholder="Write your cover letter here"></textarea>
+                    <label for="floatingtextarea" class="light-300">Cover Letter</label>
+                </div>
+            </div>
+            <div class="col-lg-12 mb-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="agreeCheck" formControlName="agree" required>
+                    <label class="form-check-label" for="agreeCheck">
+                        By using this form you agree with the storage and handling of your data by this website. *
+                    </label>
+                </div>
+            </div>
             <div class="col-md-12 col-12 m-auto text-end">
                 <button type="submit"
                     class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 text-light">Submit</button>
@@ -363,7 +387,7 @@
         <div class="row projects gx-lg-5">
             <div class="col-sm-6 col-lg-4 project graphic social mb-5">
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
-                    <img src="./assets/img/service1.jpg" class="card-img-top" alt="..." height="150px">
+                    <img src="./assets/img/flexible.png" class="card-img-top" alt="..." height="160px">
                     <div class="card-body h-100 d-flex flex-column justify-content-evenly">
                         <h5 class="card-title light-600 text-dark">Flexible Work Hours</h5>
                         <p class="card-text light-300 h-100 text-dark d-flex align-items-center">
@@ -378,9 +402,9 @@
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
 
 
-                    <img class="card-img-top" src="./assets/img/sapcx.jpg" alt="..." width="100%" height="150px">
+                    <img class="card-img-top" src="./assets/img/Workculture.png" alt="..." width="100%" height="160px">
                     <div class="card-body h-100 d-flex flex-column justify-content-evenly">
-                        <h5 class="card-title light-600 text-dark">Culture</h5>
+                        <h5 class="card-title light-600 text-dark">Work Culture</h5>
                         <p class="card-text light-300 h-100 text-dark d-flex align-items-center">
                             At Clavrit, we ensure everyone can embrace their unique identity and cultural experiences.
                             We foster an environment where people can truly be themselves.
@@ -396,7 +420,7 @@
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
 
 
-                    <img class="card-img-top" src="./assets/img/sapcx.jpg" alt="..." width="100%" height="150px">
+                    <img class="card-img-top" src="./assets/img/work-life.jpg" alt="..." width="100%" height="160px">
                     <div class="card-body h-100 d-flex flex-column justify-content-evenly">
                         <h5 class="card-title light-600 text-dark">Work Life Balance</h5>
                         <p class="card-text light-300 h-100 text-dark d-flex align-items-center">
@@ -411,7 +435,7 @@
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
 
 
-                    <img class="card-img-top" src="./assets/img/sapcx.jpg" alt="..." width="100%" height="150px">
+                    <img class="card-img-top" src="./assets/img/Equal-Employment.png" alt="..." width="100%" height="160px">
                     <div class="card-body h-100 d-flex flex-column justify-content-evenly">
                         <h5 class="card-title light-600 text-dark">Equal Opportunities</h5>
                         <p class="card-text light-300 h-100 text-dark d-flex align-items-center">
@@ -429,7 +453,7 @@
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
 
 
-                    <img class="card-img-top" src="./assets/img/sapcx.jpg" alt="..." width="100%" height="150px">
+                    <img class="card-img-top" src="./assets/img/work-env.jpg" alt="..." width="100%" height="160px">
                     <div class="card-body h-100 d-flex flex-column justify-content-evenly">
                         <h5 class="card-title light-600 text-dark">Stimulating Work Environment</h5>
                         <p class="card-text light-300 h-100 text-dark d-flex align-items-center">
@@ -446,7 +470,7 @@
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
 
 
-                    <img class="card-img-top" src="./assets/img/sapcx.jpg" alt="..." width="100%" height="150px">
+                    <img class="card-img-top" src="./assets/img/career-path.jpg" alt="..." width="100%" height="160px">
                     <div class="card-body h-100 d-flex flex-column justify-content-evenly">
                         <h5 class="card-title light-600 text-dark">Career Progression</h5>
                         <p class="card-text light-300 text-dark">
@@ -463,7 +487,7 @@
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
 
 
-                    <img class="card-img-top" src="./assets/img/sapcx.jpg" alt="..." width="100%" height="150px">
+                    <img class="card-img-top" src="./assets/img/we-care.jpg" alt="..." width="100%" height="160px">
                     <div class="card-body h-100 d-flex flex-column justify-content-evenly">
                         <h5 class="card-title light-600 text-dark">We Care</h5>
                         <p class="card-text light-300 text-dark ">
@@ -481,7 +505,7 @@
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
 
 
-                    <img class="card-img-top" src="./assets/img/sapcx.jpg" alt="..." width="100%" height="150px">
+                    <img class="card-img-top" src="./assets/img/remote-work.png" alt="..." width="100%" height="160px">
                     <div class="card-body h-100 d-flex flex-column justify-content-evenly">
                         <h5 class="card-title light-600 text-dark">Remote Work</h5>
                         <p class="card-text light-300 text-dark">
@@ -497,7 +521,7 @@
             <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
 
-                    <img class="card-img-top" src="./assets/img/sapcx.jpg" alt="..." width="100%" height="150px">
+                    <img class="card-img-top" src="./assets/img/awards.jpg" alt="..." width="100%" height="160px">
                     <div class="card-body h-100 d-flex flex-column justify-content-evenly">
                         <h5 class="card-title light-600 text-dark">Acclaim & Accolades</h5>
                         <p class="card-text light-300 text-dark">
