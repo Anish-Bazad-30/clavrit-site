@@ -15,7 +15,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { CareerDetailComponent } from './career-detail/career-detail.component';
 import { ServicesProvidedComponent } from './services-provided/services-provided.component';
 import { BlogComponent } from './blog/blog.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { OurPartnersComponent } from './our-partners/our-partners.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -35,7 +35,6 @@ import { AiComponent } from './ai/ai.component';
     PortfolioComponent,
     CareerDetailComponent,
     ServicesProvidedComponent,
-
     BlogComponent,
     BlogDetailComponent,
     OurPartnersComponent,
@@ -47,7 +46,7 @@ import { AiComponent } from './ai/ai.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

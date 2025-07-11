@@ -32,4 +32,9 @@ private apiUrl: string = environment.apiUrl;
       const url = `${this.apiUrl}/api/clients/${id}`;
       return this.http.delete<any>(url);
     }
+
+      subscribeToCompany(data: any): Observable<any> {
+    const url = `${this.apiUrl}/clavrit/subscribe?email=${data}`;
+    return this.http.post<any>(url, null);
+  }
 }

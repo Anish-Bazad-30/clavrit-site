@@ -12,57 +12,55 @@
             <div class="contact-img col-lg-5 align-items-end col-md-12">
 
                 <h2 class="col-12 col-xl-8 h4 text-left text-primaryregular-400">Join As a Partner</h2>
-                <form [formGroup]="joinAsPatnercontactForm" (ngSubmit)="joinAsPatnerSubmit()" class="contact-form row"
-                    role="form">
+                <form [formGroup]="joinAsPatnercontactForm" (ngSubmit)="joinAsPatnerSubmit()" class="contact-form row" role="form">
 
-                    <div class="col-lg-6 mb-4">
-                        <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="name"
-                                formControlName="name" placeholder="Full Name">
-                            <label for="name" class="light-300">Full Name</label>
-                        </div>
-                    </div>
+  <div class="col-lg-6 mb-4">
+    <div class="form-floating">
+      <input type="text" class="form-control form-control-lg light-300" id="name"
+        formControlName="fullName" placeholder="Full Name">
+      <label for="name" class="light-300">Full Name</label>
+    </div>
+  </div>
 
-                    <div class="col-lg-6 mb-4">
-                        <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="company"
-                                formControlName="company" placeholder="Company Name">
-                            <label for="company" class="light-300">Company Name</label>
-                        </div>
-                    </div>
+  <div class="col-lg-6 mb-4">
+    <div class="form-floating">
+      <input type="text" class="form-control form-control-lg light-300" id="company"
+        formControlName="companyName" placeholder="Company Name">
+      <label for="company" class="light-300">Company Name</label>
+    </div>
+  </div>
 
-                    <div class="col-lg-6 mb-4">
-                        <div class="form-floating">
-                            <input type="email" class="form-control form-control-lg light-300" id="email"
-                                formControlName="email" placeholder="Email">
-                            <label for="email" class="light-300">Email</label>
-                        </div>
-                    </div>
+  <div class="col-lg-6 mb-4">
+    <div class="form-floating">
+      <input type="email" class="form-control form-control-lg light-300" id="email"
+        formControlName="email" placeholder="Email">
+      <label for="email" class="light-300">Email</label>
+    </div>
+  </div>
 
-                    <div class="col-lg-6 mb-4">
-                        <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="phone"
-                                formControlName="phone" placeholder="Phone">
-                            <label for="phone" class="light-300">Phone</label>
-                        </div>
-                    </div>
+  <div class="col-lg-6 mb-4">
+    <div class="form-floating">
+      <input type="text" class="form-control form-control-lg light-300" id="phone"
+        formControlName="phone" placeholder="Phone">
+      <label for="phone" class="light-300">Phone</label>
+    </div>
+  </div>
 
-                    <div class="col-12">
-                        <div class="form-floating mb-3">
-                            <textarea class="form-control light-300" id="message" rows="8"
-                                placeholder="Message / Proposal" formControlName="message"></textarea>
-                            <label for="message" class="light-300">Message / Proposal</label>
-                        </div>
-                    </div>
+  <div class="col-12">
+    <div class="form-floating mb-3">
+      <textarea class="form-control light-300" id="message" rows="8"
+        placeholder="Message / Proposal" formControlName="message"></textarea>
+      <label for="message" class="light-300">Message / Proposal</label>
+    </div>
+  </div>
 
-                    <div class="col-md-12 col-12 m-auto text-end">
-                        <button type="submit"
-                            class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">
-                            Submit
-                        </button>
-                    </div>
+  <div class="col-md-12 col-12 m-auto text-end">
+    <button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">
+      Submit
+    </button>
+  </div>
 
-                </form>
+</form>
 
             </div>
         </div>

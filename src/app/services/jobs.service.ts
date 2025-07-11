@@ -13,17 +13,17 @@ export class JobsService {
   
   
     getJobs(): Observable<any> {
-      const url = `${this.apiUrl}/api/job-details`;
+      const url = `${this.apiUrl}/clavrit/job-details`;
       return this.http.get<any>(url);
     }
   
     getJobsDetails(): Observable<any> {
-      const url = `${this.apiUrl}/api/job-details`;
+      const url = `${this.apiUrl}/clavrit/job-details`;
       return this.http.get<any>(url);
     }
 
      createJobs(data: any): Observable<any> {
-      const url = `${this.apiUrl}/api/job-details`;
+      const url = `${this.apiUrl}/clavrit/job-details`;
       return this.http.post<any>(url,data);
     }
 
