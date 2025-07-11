@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BlogService } from 'src/app/services/blog.service';
+import { ClientService } from 'src/app/services/client.service';
+import { ContactService } from 'src/app/services/contact.service';
+import { JobsService } from 'src/app/services/jobs.service';
+import { OurServicesService } from 'src/app/services/our-services.service';
+import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
   selector: 'app-content-list',
@@ -7,26 +13,24 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./content-list.component.scss']
 })
 export class ContentListComponent {
+
   pageTitle!: string;
   type: string | null = null;
-  contentList = [
-  { name: "Anusha", email: "anusha@example.com", companyLogo: "logo1.png", companyName: "Company A" },
-  { name: "Raj", email: "raj@example.com", companyLogo: "logo2.png", companyName: "Company B" },
-  { name: "Priya", email: "priya@example.com", companyLogo: "logo3.png", companyName: "Company C" },
-  { name: "Amit", email: "amit@example.com", companyLogo: "logo4.png", companyName: "Company D" },
-  { name: "Sara", email: "sara@example.com", companyLogo: "logo5.png", companyName: "Company E" },
-  { name: "John", email: "john@example.com", companyLogo: "logo6.png", companyName: "Company F" },
-  { name: "Meena", email: "meena@example.com", companyLogo: "logo7.png", companyName: "Company G" },
-  { name: "Kumar", email: "kumar@example.com", companyLogo: "logo8.png", companyName: "Company H" },
-  { name: "Rita", email: "rita@example.com", companyLogo: "logo9.png", companyName: "Company I" },
-  { name: "Vikram", email: "vikram@example.com", companyLogo: "logo10.png", companyName: "Company J" },
-  { name: "Sneha", email: "sneha@example.com", companyLogo: "logo11.png", companyName: "Company K" },
-  { name: "Ali", email: "ali@example.com", companyLogo: "logo12.png", companyName: "Company L" }
-];
+  contentList: any[] = [];
 
   currentPage = 1;
   itemsPerPage = 10;
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private contactService: ContactService,
+    private clientService: ClientService,
+    private blogService: BlogService,
+    private projectService: ProjectsService,
+    private ourServiceServices: OurServicesService,
+    private jobService: JobsService,
+
+  ) { }
 
   ngOnInit() {
     this.type = this.route.snapshot.paramMap.get('type');
@@ -41,24 +45,45 @@ export class ContentListComponent {
     switch (type) {
       case 'client':
         this.pageTitle = "Client info Management";
+        this.clientService.getClient().subscribe((res) => {
+          this.contentList = res.data;
+        })
         break;
       case 'blog':
         this.pageTitle = "Blog Management";
+        this.blogService.getBlogs().subscribe((res) => {
+          this.contentList = res.data;
+        })
         break;
       case 'project':
         this.pageTitle = "Project Management";
+        this.projectService.getProjects().subscribe((res) => {
+          this.contentList = res.data;
+        })
         break;
       case 'service':
         this.pageTitle = "Service Management";
+        // this.clientService.getClient().subscribe((res) => {
+        //   this.contentList = res.data;
+        // })
         break;
       case 'job-detail':
         this.pageTitle = "Job Details Management";
+        this.jobService.getJobs().subscribe((res) => {
+          this.contentList = res.data;
+        })
         break;
       case 'job-application':
         this.pageTitle = "Job Application Management";
+        this.jobService.getJobsDetails().subscribe((res) => {
+          this.contentList = res.data;
+        })
         break;
       case 'contact':
         this.pageTitle = "Contact Management";
+        this.contactService.getContact().subscribe((res) => {
+          this.contentList = res.data;
+        })
         break;
       default:
 
@@ -84,5 +109,52 @@ export class ContentListComponent {
     if (newPage > 0 && newPage <= this.getTotalPages()) {
       this.currentPage = newPage;
     }
+  }
+
+  edit(data: any) {
+  }
+
+
+
+  deleteClient(id: any) {
+    this.clientService.deleteClient(id).subscribe((res) => {
+      this.loadContent(this.type);
+    })
+  }
+
+  deleteBlog(id: any) {
+    this.blogService.deleteBlogs(id).subscribe((res) => {
+      this.loadContent(this.type);
+    })
+  }
+
+  deleteProject(id: any) {
+    this.projectService.deleteProjects(id).subscribe((res) => {
+      this.loadContent(this.type);
+    })
+  }
+
+  deleteService(id: any) {
+    // this..deleteJobs(id).subscribe((res) => {
+    //   this.loadContent(this.type);
+    // })
+  }
+
+  deleteJobDetails(id: any) {
+    this.jobService.deleteJobs(id).subscribe((res) => {
+      this.loadContent(this.type);
+    })
+  }
+
+  deletJobApplications(id: any) {
+    this.jobService.deleteJobs(id).subscribe((res) => {
+      this.loadContent(this.type);
+    })
+  }
+
+  deleteContact(id: any) {
+    this.contactService.deleteContact(id).subscribe((res) => {
+      this.loadContent(this.type);
+    })
   }
 }

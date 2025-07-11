@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BlogService } from 'src/app/services/blog.service';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-forms',
@@ -9,23 +11,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class FormsComponent {
   pageTitle!: string;
-  onSubmit(): void {
-    if (this.form.valid) {
-      console.log('Form submitted:', this.form.value);
-    } else {
-      console.log('Form is invalid:', this.form);
-    }
-  }
+
 
   type: string | null = null;
   form!: FormGroup;
   uploadedResume: File | null = null;
   uploadedImage: File | null = null;
   dragedFile: any;
+  selectedFiles: any[] = [];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
+    private blogService: BlogService,
+    private clientService: ClientService,
+
   ) { }
 
   ngOnInit() {
@@ -85,27 +85,30 @@ export class FormsComponent {
         break;
     }
   }
+
+  selectedFields: any = {};
   buildFormByType(type: string): void {
-    let selectedFields: any = {};
+
 
     switch (type) {
       case 'client':
-        selectedFields = {
+        this.selectedFields = {
           name: [''],
           email: [''],
-          companyname: [''],
-          companyLogo: [null]
+          company: [''],
+          phone:['']
+          // companyLogo: [null]
         };
         break;
 
       case 'blog':
-        selectedFields = this.fb.group({
+        this.selectedFields = this.fb.group({
           title: [''],
           subtitle: [''],
           authorName: [''],
           advantages: [''],
           disadvantages: [''],
-          tags: [''],
+          tags: this.fb.array([this.fb.control('')]),
           imageUrl: [''],
           conclusion: [''],
           summary: [''],
@@ -114,7 +117,7 @@ export class FormsComponent {
         break;
 
       case 'project':
-        selectedFields = {
+        this.selectedFields = {
           name: [''],
           description: [''],
           technology: ['']
@@ -122,7 +125,7 @@ export class FormsComponent {
         break;
 
       case 'service':
-        selectedFields = {
+        this.selectedFields = {
           name: [''],
           description: [''],
           category: ['']
@@ -130,7 +133,7 @@ export class FormsComponent {
         break;
 
       case 'job-detail':
-        selectedFields = {
+        this.selectedFields = {
           jobCategory: [''],
           jobDesignation: [''],
           jobType: [''],
@@ -147,7 +150,7 @@ export class FormsComponent {
         break;
 
       case 'job-application':
-        selectedFields = {
+        this.selectedFields = {
           name: [''],
           email: [''],
           phone: [''],
@@ -157,7 +160,7 @@ export class FormsComponent {
         break;
 
       case 'contact':
-        selectedFields = {
+        this.selectedFields = {
           name: [''],
           email: [''],
           phone: [''],
@@ -170,7 +173,7 @@ export class FormsComponent {
         break;
 
       default:
-        selectedFields = {
+        this.selectedFields = {
           name: [''],
           email: [''],
           phone: ['']
@@ -178,8 +181,89 @@ export class FormsComponent {
         break;
     }
 
-    this.form = this.fb.group(selectedFields);
+    this.form = this.fb.group(this.selectedFields);
   }
 
 
+  get tags(): FormArray {
+    return this.selectedFields.get('tags') as FormArray;
+  }
+
+  addTag(): void {
+    this.tags.push(this.fb.control(''));
+  }
+
+  removeTag(index: number): void {
+    if (this.tags.length > 1) {
+      this.tags.removeAt(index);
+    }
+  }
+
+  getTagControl(index: number): FormControl {
+    return this.tags.at(index) as FormControl;
+  }
+
+   onFileSelected(event: any): void {
+    if (event.target.files && event.target.files.length > 0) {
+      this.selectedFiles = Array.from(event.target.files);
+    }
+  }
+
+  
+
+ 
+  onBlogSubmit(): void {
+    console.log(this.selectedFields);
+
+    if (this.selectedFields.valid) {
+       const blogData = this.selectedFields.value;
+
+    const formData = new FormData();
+
+    // 👇 Convert JSON to a File (so we can specify content-type)
+    const blogFile = new File(
+      [JSON.stringify(blogData)],
+      'blog.json',
+      { type: 'application/json' }
+    );
+
+    // ✅ Append blog as application/json file
+    formData.append('blog', blogFile);
+
+    // ✅ Append all selected image files
+    for (let file of this.selectedFiles) {
+      formData.append('images', file);
+    }
+      console.log('Form submitted:', formData);
+      this.blogService.createBlogs(formData).subscribe((res) => {
+
+      })
+    } else {
+      console.log('Form is invalid:', this.form);
+    }
+  }
+
+  onClientSubmit(): void {
+    console.log(this.selectedFields);
+
+    if (this.form.valid) {
+      console.log('Form submitted:', this.form.value);
+      this.clientService.createClient(this.form.value).subscribe((res)=>{
+
+      })
+
+    } else {
+      console.log('Form is invalid:', this.form);
+    }
+  }
+
+  onSubmit(): void {
+    console.log(this.selectedFields);
+
+    if (this.form.valid) {
+      console.log('Form submitted:', this.form.value);
+    } else {
+      console.log('Form is invalid:', this.form);
+    }
+  }
 }

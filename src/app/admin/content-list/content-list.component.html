@@ -27,7 +27,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>Company Logo</th>
+                        <!-- <th>Company Logo</th> -->
                         <th>Company Name</th>
                         <th>Action</th>
                     </tr>
@@ -38,17 +38,17 @@
                         <td>{{content.name}}</td>
                         <td>{{content.email}}</td>
                         <td>{{content.email}}</td>
-                        <td>
-                           {{content.companyLogo}}
-                        </td>
-                        <td>{{content.companyName}}</td>
-    
+                        <!-- <td>
+                            {{content.companyLogo}}
+                        </td> -->
+                        <td>{{content.company}}</td>
+
                         <td class="d-flex justify-content-center gap-2">
 
-                            <button class="btn p-1">
+                            <button class="btn p-1" (click)="edit(content)">
                                 <i class='bx bx-edit fs-5 text-primary'></i>
                             </button>
-                            <button class="btn p-1">
+                            <button class="btn p-1" (click)="deleteClient(content.id)">
                                 <i class='bx bx-trash fs-5 text-danger'></i>
                             </button>
 
@@ -83,26 +83,23 @@
                     <tr class="text-center custom-font">
                         <th>Sl No</th>
                         <th>Title</th>
-                        <th>Subtitle</th>
                         <th>Author Name</th>
-                        <th>Summary</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-data">
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      
+                    <tr class="table-data" *ngFor="let content of contentListview; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{content.title}}</td>
+                        <td>{{content.authorName}}</td>
+                       
+
                         <td class="d-flex justify-content-center gap-2">
 
-                            <button class="btn p-1">
+                           <button class="btn p-1" (click)="edit(content)">
                                 <i class='bx bx-edit fs-5 text-primary'></i>
                             </button>
-                            <button class="btn p-1">
+                            <button class="btn p-1" (click)="deleteBlog(content.id)">
                                 <i class='bx bx-trash fs-5 text-danger'></i>
                             </button>
 
@@ -110,6 +107,26 @@
                     </tr>
                 </tbody>
             </table>
+            <nav>
+                <ul class="pagination-ul d-flex justify-content-center align-items-center mt-4">
+                    <li class="" [class.disabled]="currentPage === 1">
+                        <a class="" (click)="changePage(currentPage - 1)">
+                            <i class='display-6 bx bx-chevron-left text-primary'></i>
+                        </a>
+                    </li>
+
+                    <li class="ms-3 fs-5" *ngFor="let page of [].constructor(getTotalPages()); let i = index"
+                        [class.active]="currentPage === i + 1">
+                        <a class="" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+                    </li>
+
+                    <li class="ms-3" [class.disabled]="currentPage === getTotalPages()">
+                        <a class="" (click)="changePage(currentPage + 1)">
+                            <i class='display-6 bx bx-chevron-right text-primary'></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
         <div *ngIf="type === 'project'" class="container">
             <table class="data-table w-100">
@@ -124,18 +141,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-data">
-                        <td>1</td>
+                    <tr class="table-data" *ngFor="let content of contentListview; let i = index">
                         <td></td>
                         <td></td>
                         <td></td>
-                       <td></td>
+                        <td></td>
+                        <td></td>
                         <td class="d-flex justify-content-center gap-2">
 
-                            <button class="btn p-1">
+                            <button class="btn p-1" (click)="edit(content)">
                                 <i class='bx bx-edit fs-5 text-primary'></i>
                             </button>
-                            <button class="btn p-1">
+                            <button class="btn p-1" (click)="deleteProject(content.id)">
                                 <i class='bx bx-trash fs-5 text-danger'></i>
                             </button>
 
@@ -143,6 +160,26 @@
                     </tr>
                 </tbody>
             </table>
+            <nav>
+                <ul class="pagination-ul d-flex justify-content-center align-items-center mt-4">
+                    <li class="" [class.disabled]="currentPage === 1">
+                        <a class="" (click)="changePage(currentPage - 1)">
+                            <i class='display-6 bx bx-chevron-left text-primary'></i>
+                        </a>
+                    </li>
+
+                    <li class="ms-3 fs-5" *ngFor="let page of [].constructor(getTotalPages()); let i = index"
+                        [class.active]="currentPage === i + 1">
+                        <a class="" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+                    </li>
+
+                    <li class="ms-3" [class.disabled]="currentPage === getTotalPages()">
+                        <a class="" (click)="changePage(currentPage + 1)">
+                            <i class='display-6 bx bx-chevron-right text-primary'></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
         <div *ngIf="type === 'service'" class="container">
             <table class="data-table w-100">
@@ -156,17 +193,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-data">
-                        <td>1</td>
+                    <tr class="table-data" *ngFor="let content of contentListview; let i = index">
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td class="d-flex justify-content-center gap-2">
 
-                            <button class="btn p-1">
+                            <button class="btn p-1" (click)="edit(content)">
                                 <i class='bx bx-edit fs-5 text-primary'></i>
                             </button>
-                            <button class="btn p-1">
+                            <button class="btn p-1" (click)="deleteService(content.id)">
                                 <i class='bx bx-trash fs-5 text-danger'></i>
                             </button>
 
@@ -174,6 +211,26 @@
                     </tr>
                 </tbody>
             </table>
+            <nav>
+                <ul class="pagination-ul d-flex justify-content-center align-items-center mt-4">
+                    <li class="" [class.disabled]="currentPage === 1">
+                        <a class="" (click)="changePage(currentPage - 1)">
+                            <i class='display-6 bx bx-chevron-left text-primary'></i>
+                        </a>
+                    </li>
+
+                    <li class="ms-3 fs-5" *ngFor="let page of [].constructor(getTotalPages()); let i = index"
+                        [class.active]="currentPage === i + 1">
+                        <a class="" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+                    </li>
+
+                    <li class="ms-3" [class.disabled]="currentPage === getTotalPages()">
+                        <a class="" (click)="changePage(currentPage + 1)">
+                            <i class='display-6 bx bx-chevron-right text-primary'></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
         <div *ngIf="type === 'job-detail'" class="container">
             <table class="data-table w-100">
@@ -187,17 +244,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-data">
-                        <td>1</td>
+                    <tr class="table-data" *ngFor="let content of contentListview; let i = index">
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td class="d-flex justify-content-center gap-2">
 
-                            <button class="btn p-1">
+                            <button class="btn p-1" (click)="edit(content)">
                                 <i class='bx bx-edit fs-5 text-primary'></i>
                             </button>
-                            <button class="btn p-1">
+                            <button class="btn p-1" (click)="deleteJobDetails(content.id)">
                                 <i class='bx bx-trash fs-5 text-danger'></i>
                             </button>
 
@@ -205,6 +262,26 @@
                     </tr>
                 </tbody>
             </table>
+            <nav>
+                <ul class="pagination-ul d-flex justify-content-center align-items-center mt-4">
+                    <li class="" [class.disabled]="currentPage === 1">
+                        <a class="" (click)="changePage(currentPage - 1)">
+                            <i class='display-6 bx bx-chevron-left text-primary'></i>
+                        </a>
+                    </li>
+
+                    <li class="ms-3 fs-5" *ngFor="let page of [].constructor(getTotalPages()); let i = index"
+                        [class.active]="currentPage === i + 1">
+                        <a class="" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+                    </li>
+
+                    <li class="ms-3" [class.disabled]="currentPage === getTotalPages()">
+                        <a class="" (click)="changePage(currentPage + 1)">
+                            <i class='display-6 bx bx-chevron-right text-primary'></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
         <div *ngIf="type === 'job-application'" class="container">
             <table class="data-table w-100">
@@ -220,20 +297,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-data">
-                        <td>1</td>
+                    <tr class="table-data" *ngFor="let content of contentListview; let i = index">
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        
+                        <td></td>
+
                         <td class="d-flex justify-content-center gap-2">
 
-                            <button class="btn p-1">
+                            <button class="btn p-1" (click)="edit(content)">
                                 <i class='bx bx-edit fs-5 text-primary'></i>
                             </button>
-                            <button class="btn p-1">
+                            <button class="btn p-1" (click)="deletJobApplications(content.id)">
                                 <i class='bx bx-trash fs-5 text-danger'></i>
                             </button>
 
@@ -241,6 +318,26 @@
                     </tr>
                 </tbody>
             </table>
+            <nav>
+                <ul class="pagination-ul d-flex justify-content-center align-items-center mt-4">
+                    <li class="" [class.disabled]="currentPage === 1">
+                        <a class="" (click)="changePage(currentPage - 1)">
+                            <i class='display-6 bx bx-chevron-left text-primary'></i>
+                        </a>
+                    </li>
+
+                    <li class="ms-3 fs-5" *ngFor="let page of [].constructor(getTotalPages()); let i = index"
+                        [class.active]="currentPage === i + 1">
+                        <a class="" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+                    </li>
+
+                    <li class="ms-3" [class.disabled]="currentPage === getTotalPages()">
+                        <a class="" (click)="changePage(currentPage + 1)">
+                            <i class='display-6 bx bx-chevron-right text-primary'></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
         <div *ngIf="type === 'contact'" class="container">
             <table class="data-table w-100">
@@ -256,19 +353,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-data">
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <tr class="table-data" *ngFor="let content of contentListview; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{content.name}}</td>
+                        <td>{{content.email}}</td>
+                        <td>{{content.phone}}</td>
+                        <td>{{content.company}}</td>
+                        <td>{{content.country}}</td>
                         <td class="d-flex justify-content-center gap-2">
 
-                            <button class="btn p-1">
+                            <button class="btn p-1" (click)="edit(content)">
                                 <i class='bx bx-edit fs-5 text-primary'></i>
                             </button>
-                            <button class="btn p-1">
+                            <button class="btn p-1" (click)="deleteContact(content.id)">
                                 <i class='bx bx-trash fs-5 text-danger'></i>
                             </button>
 
@@ -276,6 +373,26 @@
                     </tr>
                 </tbody>
             </table>
+            <nav>
+                <ul class="pagination-ul d-flex justify-content-center align-items-center mt-4">
+                    <li class="" [class.disabled]="currentPage === 1">
+                        <a class="" (click)="changePage(currentPage - 1)">
+                            <i class='display-6 bx bx-chevron-left text-primary'></i>
+                        </a>
+                    </li>
+
+                    <li class="ms-3 fs-5" *ngFor="let page of [].constructor(getTotalPages()); let i = index"
+                        [class.active]="currentPage === i + 1">
+                        <a class="" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+                    </li>
+
+                    <li class="ms-3" [class.disabled]="currentPage === getTotalPages()">
+                        <a class="" (click)="changePage(currentPage + 1)">
+                            <i class='display-6 bx bx-chevron-right text-primary'></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 

@@ -12,7 +12,7 @@ export class ContactService {
     constructor(private http: HttpClient) { }
   
   
-    getContact(id: any): Observable<any> {
+    getContact(): Observable<any> {
       const url = `${this.apiUrl}/clavrit/contact`;
       return this.http.get<any>(url);
     }

@@ -17,6 +17,11 @@ export class JobsService {
       return this.http.get<any>(url);
     }
   
+    getJobsDetails(): Observable<any> {
+      const url = `${this.apiUrl}/api/job-details`;
+      return this.http.get<any>(url);
+    }
+
      createJobs(data: any): Observable<any> {
       const url = `${this.apiUrl}/api/job-details`;
       return this.http.post<any>(url,data);
@@ -26,7 +31,7 @@ export class JobsService {
       const url = `${this.apiUrl}/api/job-more-details`;
       return this.http.post<any>(url,data);
     }
-  
+    
     updateJobs(id: any): Observable<any> {
       const url = `${this.apiUrl}/`;
       return this.http.put<any>(url,id);

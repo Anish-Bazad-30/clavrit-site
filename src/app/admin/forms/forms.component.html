@@ -2,7 +2,7 @@
     <div class="container d-flex flex-column justify-content-evenly align-items-center flex-grow-1">
         <h2 class="text-primary">{{pageTitle}}</h2>
         <div *ngIf="type === 'client'" class="container">
-            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3" enctype="multipart/form-data">
+            <form [formGroup]="form" (ngSubmit)="onClientSubmit()" class="row g-3" enctype="multipart/form-data">
                 <div class="col-lg-6">
                     <div class="form-floating">
                         <input type="text" id="name" class="form-control" placeholder="Full Name"
@@ -25,24 +25,25 @@
                 <div class="col-lg-6">
                     <div class="form-floating">
                         <input type="text" id="companyname" class="form-control" placeholder="Company"
-                            formControlName="companyname">
+                            formControlName="company">
                         <label for="company">Company Name</label>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                     <div class="form-floating">
                         <input type="file" id="companyLogo" class="form-control" placeholder="Company"
                             formControlName="companyLogo">
                         <label for="company">Company Logo</label>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-12 text-end">
                     <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill">Submit</button>
                 </div>
             </form>
         </div>
         <div *ngIf="type === 'blog'" class="container">
-            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3" enctype="multipart/form-data">
+            <form [formGroup]="selectedFields" (ngSubmit)="onBlogSubmit()" class="row g-3"
+                enctype="multipart/form-data">
                 <div class="col-lg-6">
                     <div class="form-floating">
                         <input type="text" id="title" class="form-control" placeholder="Title" formControlName="title">
@@ -106,9 +107,20 @@
                     </div>
                 </div>
 
+                <div class="col-12">
+                    <label>Tags</label>
+                    <div *ngFor="let tag of tags.controls; let i = index" class="d-flex mb-2">
+                        <input type="text" class="form-control me-2" [formControl]="getTagControl(i)"
+                            placeholder="Enter a tag">
+                        <button type="button" class="btn btn-danger" (click)="removeTag(i)"
+                            *ngIf="tags.length > 1">×</button>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary btn-sm" (click)="addTag()">+ Add Tag</button>
+                </div>
                 <div class="col-lg-6">
                     <div class="form-floating">
-                        <input type="file" id="imageUrl" class="form-control" formControlName="imageUrl" multiple>
+                        <input type="file" id="imageUrl" class="form-control" (change)="onFileSelected($event)"
+                            multiple />
                         <label for="imageUrl">Upload Images</label>
                     </div>
                 </div>
@@ -227,7 +239,7 @@
                         <label for="jobType">Job Type</label>
                     </div>
                 </div>
-                
+
 
                 <div class="col-lg-6">
                     <div class="form-floating">
@@ -254,7 +266,7 @@
                         <label for="jobCompetencies">Job Competencies</label>
                     </div>
                 </div>
-                
+
 
                 <div class="col-lg-6">
                     <div class="form-floating">
@@ -264,7 +276,7 @@
                     </div>
                 </div>
 
-             
+
                 <div class="col-lg-6">
                     <div class="form-floating">
                         <input type="text" id="industry" class="form-control" placeholder="Industry"

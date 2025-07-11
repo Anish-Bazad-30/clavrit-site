@@ -29,7 +29,7 @@ private apiUrl: string = environment.apiUrl;
     }
   
     deleteClient(id: any): Observable<any> {
-      const url = `${this.apiUrl}/`;
+      const url = `${this.apiUrl}/api/clients/${id}`;
       return this.http.delete<any>(url);
     }
 }
