@@ -3,35 +3,55 @@
         <a class="navbar-brand h1" href="index.html">
             <img src="../../assets/img/Clavrit Logo.png" width="150px" height="40px">
         </a>
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success">
             <span class="navbar-toggler-icon"></span>
         </button>
+
 
         <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-center"
             id="navbar-toggler-success">
             <div class="flex-fill mx-xl-5 mb-2">
                 <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                     <li class="nav-item">
-                        <a class="nav-link btn-outline-primary rounded-pill px-3" href="index.html">Home</a>
+                        <!-- <a class="nav-link btn-outline-primary rounded-pill px-3" href="index.html">Home</a> -->
+                        <a class="nav-link btn-outline-primary rounded-pill px-3" href="/index.html"
+                            (click)="closeNavbar()">
+                            Home
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-outline-primary rounded-pill px-3"
-                            routerLink="/sustainability">Sustainability</a>
+                        <a class="nav-link btn-outline-primary rounded-pill px-3" routerLink="/sustainability"
+                            (click)="closeNavbar()">
+                            Sustainability
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-outline-primary rounded-pill px-3" routerLink="/ai">Artificial
-                            Intelligence</a>
+
+                        <a class="nav-link btn-outline-primary rounded-pill px-3" routerLink="/ai"
+                            (click)="closeNavbar()">
+                            Artificial Intelligence
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-outline-primary rounded-pill px-3" routerLink="/services">Services</a>
+
+                        <a class="nav-link btn-outline-primary rounded-pill px-3" routerLink="/services"
+                            (click)="closeNavbar()">
+                            Services
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link btn-outline-primary rounded-pill px-3" routerLink="/portfolio"
+                            (click)="closeNavbar()">
+                            Portfolio
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-outline-primary rounded-pill px-3" routerLink="/portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-outline-primary rounded-pill px-3" routerLink="/blog">Blog </a>
+                        <a class="nav-link btn-outline-primary rounded-pill px-3" routerLink="/blog"
+                            (click)="closeNavbar()">
+                            Blog
+                        </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle btn-outline-primary rounded-pill px-3" href="#"
@@ -40,13 +60,13 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="companyDropdown">
                             <li>
-                                <a class="dropdown-item" routerLink="/career">Career</a>
+                                <a class="dropdown-item" routerLink="/career" (click)="closeNavbar()">Career</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" routerLink="/about-us">About Us</a>
+                                <a class="dropdown-item" routerLink="/about-us" (click)="closeNavbar()">About Us</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" routerLink="/contact">Contact</a>
+                                <a class="dropdown-item" routerLink="/contact" (click)="closeNavbar()">Contact</a>
                             </li>
                         </ul>
                     </li>
