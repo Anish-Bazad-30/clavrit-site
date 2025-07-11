@@ -12,9 +12,13 @@ import { BlogComponent } from './blog/blog.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { OurPartnersComponent } from './our-partners/our-partners.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { SustainabilityComponent } from './sustainability/sustainability.component';
+import { AiComponent } from './ai/ai.component';
 
 const routes: Routes = [
   {path:"" , component: LandingPageComponent},
+  {path:"sustainability", component:SustainabilityComponent},
+  {path:"ai", component:AiComponent},
   {path:"about-us", component:AboutUsComponent},
   {path:"services", component:ServicesProvidedComponent},
   {path:"detail-view", component:DetailViewComponent},

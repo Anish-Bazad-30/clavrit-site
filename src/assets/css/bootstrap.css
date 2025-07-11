@@ -9505,7 +9505,8 @@ fieldset:disabled .btn {
 
 /* line 50, src/assets/scss/mixins/_utilities.scss */
 .text-secondary {
-  color: #6266ea !important;
+  /* color: #6266ea !important; */
+  color: #31B0FD !important;
 }
 
 /* line 50, src/assets/scss/mixins/_utilities.scss */
