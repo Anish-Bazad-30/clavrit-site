@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { JobsService } from '../services/jobs.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from '../services/toast.service';
@@ -17,7 +17,7 @@ export class CareerDetailComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private jobsService: JobsService,
-private toastService: ToastService
+    private toastService: ToastService
   ) { }
 
 
@@ -28,18 +28,18 @@ private toastService: ToastService
 
 
     this.careerForm = this.fb.group({
-      fullName: ['', Validators.required],
+      fullName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]], // 10-digit phone
       jobApplied: ['', Validators.required],
       qualification: ['', Validators.required],
       totalYOE: ['', Validators.required],
-      relevantExp: ['', Validators.required],
+      relevantExp: ['', [Validators.required, Validators.pattern(/^\d{1,2}$/)]],
       currentCompany: ['', Validators.required],
-      currentCTC: ['', Validators.required],
+      currentCTC: ['', [Validators.required, Validators.pattern(/^\d{1,10}$/)]],
       noticePeriod: ['', Validators.required],
-      coverletter: [''],
-      coverletter_file: [null],
+      coverletter: ['', Validators.required],
+      // coverletter_file: [null],
       agree: [false, Validators.requiredTrue]
     });
 
@@ -88,10 +88,11 @@ private toastService: ToastService
       }
 
       this.jobsService.applyJob(formData).subscribe({
-        next: (res) => {console.log('Success', res)
+        next: (res) => {
+          console.log('Success', res)
           this.toastService.showToast('Form submitted successfully', 'success', 3000);
           this.careerForm.reset();
-          this.dragedFile = null;
+          this.resetFileInput();
         },
         error: (err) => console.error('Error', err)
       });
@@ -110,5 +111,19 @@ private toastService: ToastService
     this.dragedFile = event.target.files[0];
     // this.infomsg = this.dragedFile.name;
     console.log(this.dragedFile);
+  }
+
+  allowOnlyNumbers(event: KeyboardEvent): void {
+    const charCode = event.key.charCodeAt(0);
+    // Allow digits (0–9) only
+    if (charCode < 48 || charCode > 57) {
+      event.preventDefault();
+    }
+  }
+
+  @ViewChild('fileInput') fileInput!: ElementRef;
+  resetFileInput() {
+    this.dragedFile = null;
+    this.fileInput.nativeElement.value = '';
   }
 }

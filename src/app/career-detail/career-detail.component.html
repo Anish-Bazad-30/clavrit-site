@@ -106,32 +106,51 @@
     <div class="col-lg-12">
         
 
-      <form [formGroup]="careerForm" (ngSubmit)="onSubmit()" class="career-form row">
+     <form [formGroup]="careerForm" (ngSubmit)="onSubmit()" class="career-form row">
 
+            <!-- Full Name -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-lg" id="floatingname" formControlName="fullName"
                         placeholder="Name">
                     <label for="floatingname">Full Name</label>
                 </div>
+                <div *ngIf="careerForm.get('fullName')?.touched && careerForm.get('fullName')?.invalid"
+                    class="text-danger small mt-1">
+                    <div *ngIf="careerForm.get('fullName')?.errors?.['required']">Full Name is required.</div>
+                    <div *ngIf="careerForm.get('fullName')?.errors?.['minlength']">Minimum 2 characters required.</div>
+                </div>
             </div>
 
+            <!-- Email -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
                     <input type="email" class="form-control form-control-lg" id="floatingemail" formControlName="email"
                         placeholder="Email">
                     <label for="floatingemail">Email</label>
                 </div>
-            </div>
-
-            <div class="col-lg-6 mb-4">
-                <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg" id="floatingphone" formControlName="phone"
-                        placeholder="Phone">
-                    <label for="floatingphone">Phone</label>
+                <div *ngIf="careerForm.get('email')?.touched && careerForm.get('email')?.invalid"
+                    class="text-danger small mt-1">
+                    <div *ngIf="careerForm.get('email')?.errors?.['required']">Email is required.</div>
+                    <div *ngIf="careerForm.get('email')?.errors?.['email']">Invalid email format.</div>
                 </div>
             </div>
 
+            <!-- Phone -->
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control form-control-lg" id="floatingphone" formControlName="phone"
+                        placeholder="Phone" maxlength="10" (keypress)="allowOnlyNumbers($event)">
+                    <label for="floatingphone">Phone</label>
+                </div>
+                <div *ngIf="careerForm.get('phone')?.touched && careerForm.get('phone')?.invalid"
+                    class="text-danger small mt-1">
+                    <div *ngIf="careerForm.get('phone')?.errors?.['required']">Phone is required.</div>
+                    <div *ngIf="careerForm.get('phone')?.errors?.['pattern']">Phone must be exactly 10 digits.</div>
+                </div>
+            </div>
+
+            <!-- Job Applied -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
                     <select class="form-select" formControlName="jobApplied">
@@ -142,8 +161,13 @@
                     </select>
                     <label for="floatingrole">Job Applied for</label>
                 </div>
+                <div *ngIf="careerForm.get('jobApplied')?.touched && careerForm.get('jobApplied')?.invalid"
+                    class="text-danger small mt-1">
+                    Job role is required.
+                </div>
             </div>
 
+            <!-- Qualification -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
                     <select class="form-select" formControlName="qualification">
@@ -154,40 +178,66 @@
                     </select>
                     <label for="floatingqual">Qualification</label>
                 </div>
+                <div *ngIf="careerForm.get('qualification')?.touched && careerForm.get('qualification')?.invalid"
+                    class="text-danger small mt-1">
+                    Qualification is required.
+                </div>
             </div>
 
+            <!-- Total YOE -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-lg" id="totalYOE" formControlName="totalYOE"
                         placeholder="Total Experience">
                     <label for="totalYOE">Total YOE</label>
                 </div>
-            </div>
-
-            <div class="col-lg-6 mb-4">
-                <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg" id="relevantExp"
-                        formControlName="relevantExp" placeholder="Relevant Experience">
-                    <label for="relevantExp">Relevant Experience</label>
+                <div *ngIf="careerForm.get('totalYOE')?.touched && careerForm.get('totalYOE')?.invalid"
+                    class="text-danger small mt-1">
+                    Total experience is required.
                 </div>
             </div>
 
+            <!-- Relevant Exp -->
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control form-control-lg" id="relevantExp"
+                        formControlName="relevantExp" placeholder="Relevant Experience" maxlength="2"
+                        (keypress)="allowOnlyNumbers($event)">
+                    <label for="relevantExp">Relevant Experience</label>
+                </div>
+                <div *ngIf="careerForm.get('relevantExp')?.touched && careerForm.get('relevantExp')?.invalid"
+                    class="text-danger small mt-1">
+                    Relevant experience is required.
+                </div>
+            </div>
+
+            <!-- Current Company -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
                     <input type="text" class="form-control form-control-lg" id="currentCompany"
                         formControlName="currentCompany" placeholder="Current Company">
                     <label for="currentCompany">Current Company</label>
                 </div>
-            </div>
-
-            <div class="col-lg-6 mb-4">
-                <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg light-300" id="currentCTC" name="currentCTC"
-                        formControlName="currentCTC" placeholder="Current CTC" />
-                    <label for="currentCTC">Current CTC</label>
+                <div *ngIf="careerForm.get('currentCompany')?.touched && careerForm.get('currentCompany')?.invalid"
+                    class="text-danger small mt-1">
+                    Current company is required.
                 </div>
             </div>
 
+            <!-- Current CTC -->
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control form-control-lg" id="currentCTC" formControlName="currentCTC"
+                        placeholder="Current CTC" maxlength="10" (keypress)="allowOnlyNumbers($event)">
+                    <label for="currentCTC">Current CTC</label>
+                </div>
+                <div *ngIf="careerForm.get('currentCTC')?.touched && careerForm.get('currentCTC')?.invalid"
+                    class="text-danger small mt-1">
+                    Current CTC is required.
+                </div>
+            </div>
+
+            <!-- Notice Period -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
                     <select class="form-select" formControlName="noticePeriod">
@@ -198,24 +248,38 @@
                     </select>
                     <label for="noticePeriod">Notice Period</label>
                 </div>
+                <div *ngIf="careerForm.get('noticePeriod')?.touched && careerForm.get('noticePeriod')?.invalid"
+                    class="text-danger small mt-1">
+                    Notice period is required.
+                </div>
             </div>
+
+            <!-- Resume Upload -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <input type="file" class="form-control form-control-lg light-300" accept=".pdf,.doc,.docx"
-                        id="floatingcv" (change)="handleBrowseFile($event)">
-                    <label for="floatingcv" class="form-label light-300">Upload CV/Resume</label>
-
+                    <input type="file" class="form-control form-control-lg" accept=".pdf,.doc,.docx" id="floatingcv"
+                        (change)="handleBrowseFile($event)" #fileInput>
+                    <label for="floatingcv" class="form-label">Upload CV/Resume</label>
                 </div>
                 <p class="mt-2">Allowed Type(s): .pdf, .doc, .docx</p>
             </div>
 
+            <!-- Cover Letter -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <textarea class="form-control light-300" rows="8" id="floatingtextarea"
-                        formControlName="coverletter" placeholder="Write your cover letter here"></textarea>
-                    <label for="floatingtextarea" class="light-300">Cover Letter</label>
+                    <textarea class="form-control" rows="8" id="floatingtextarea" formControlName="coverletter"
+                        placeholder="Write your cover letter here"></textarea>
+                    <label for="floatingtextarea">Cover Letter</label>
+                </div>
+                <div *ngIf="careerForm.get('coverletter')?.touched && careerForm.get('coverletter')?.invalid"
+                    class="text-danger small mt-1">
+                    <div *ngIf="careerForm.get('coverletter')?.errors?.['required']">Cover letter is required.</div>
+                    <div *ngIf="careerForm.get('coverletter')?.errors?.['minlength']">Minimum 10 characters required.
+                    </div>
                 </div>
             </div>
+
+            <!-- Agree Checkbox -->
             <div class="col-lg-12 mb-4">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="agreeCheck" formControlName="agree" required>
@@ -223,14 +287,20 @@
                         By using this form you agree with the storage and handling of your data by this website. *
                     </label>
                 </div>
+                <div *ngIf="careerForm.get('agree')?.touched && careerForm.get('agree')?.invalid"
+                    class="text-danger small mt-1">
+                    You must agree before submitting.
+                </div>
             </div>
+
+            <!-- Submit Button -->
             <div class="col-md-12 col-12 m-auto text-end">
-                <button type="submit"
-                    class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 text-light">Submit</button>
+                <button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 text-light"
+                    [disabled]="!careerForm.valid">
+                    Submit
+                </button>
             </div>
-
         </form>
-
 
 
     </div>

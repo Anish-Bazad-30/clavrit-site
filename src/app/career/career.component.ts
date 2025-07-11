@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JobsService } from '../services/jobs.service';
 import { ToastService } from '../services/toast.service';
@@ -30,19 +30,19 @@ export class CareerComponent implements OnInit {
 
 
     this.careerForm = this.fb.group({
-      fullName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
-      jobApplied: ['', Validators.required],
-      qualification: ['', Validators.required],
-      totalYOE: ['', Validators.required],
-      relevantExp: ['', Validators.required],
-      currentCompany: ['', Validators.required],
-      currentCTC: ['', Validators.required],
-      noticePeriod: ['', Validators.required],
-      coverletter: [''],
-      coverletter_file: [null],
-      agree: [false, Validators.requiredTrue]
+        fullName: ['', [Validators.required, Validators.minLength(2)]],
+  email: ['', [Validators.required, Validators.email]],
+  phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]], // 10-digit phone
+  jobApplied: ['', Validators.required],
+  qualification: ['', Validators.required],
+  totalYOE: ['', Validators.required],
+  relevantExp: ['', [Validators.required, Validators.pattern(/^\d{1,2}$/)]],
+  currentCompany: ['', Validators.required],
+ currentCTC: ['', [Validators.required, Validators.pattern(/^\d{1,10}$/)]],
+  noticePeriod: ['', Validators.required],
+  coverletter: ['', Validators.required],
+  // coverletter_file: [null],
+  agree: [false, Validators.requiredTrue]
     });
 
 
@@ -94,7 +94,7 @@ export class CareerComponent implements OnInit {
           console.log('Success', res)
           this.toastService.showToast('Subscribed successfully', 'success', 3000);
           this.careerForm.reset();
-           this.dragedFile = null;
+           this.resetFileInput();
         },
         error: (err) => console.error('Error', err)
       });
@@ -109,9 +109,25 @@ export class CareerComponent implements OnInit {
       this.jobsList = res.data;
     })
   }
+
+@ViewChild('fileInput') fileInput!: ElementRef;
+
   handleBrowseFile(event: any) {
     this.dragedFile = event.target.files[0];
     // this.infomsg = this.dragedFile.name;
     console.log(this.dragedFile);
   }
+
+  resetFileInput() {
+  this.dragedFile = null;
+  this.fileInput.nativeElement.value = '';
+}
+
+allowOnlyNumbers(event: KeyboardEvent): void {
+  const charCode = event.key.charCodeAt(0);
+  // Allow digits (0–9) only
+  if (charCode < 48 || charCode > 57) {
+    event.preventDefault();
+  }
+}
 }

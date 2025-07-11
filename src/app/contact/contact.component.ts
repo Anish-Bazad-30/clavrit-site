@@ -14,27 +14,30 @@ export class ContactComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private contactService: ContactService,
-private toastService: ToastService 
+    private toastService: ToastService
   ) { }
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      destination: [''],
-      company: [''],
-      phone: [''],
-      country: [''],
-      subject: [''],
-      message: ['']
+      destination: ['',Validators.required],
+      company: ['',Validators.required],
+      phone: ['', [
+        Validators.required,
+        Validators.pattern(/^[0-9]{10}$/)  // Exactly 10 digits
+      ]],
+      country: ['',Validators.required],
+      subject: ['', Validators.required],
+      message: ['', [Validators.required, Validators.minLength(5)]]
     });
 
     this.joinAsPatnercontactForm = this.fb.group({
-      fullName: ['', Validators.required],
-      companyName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
-      message: ['', Validators.required]
+      fullName: ['', [Validators.required, Validators.minLength(2)]],
+  companyName: ['', Validators.required],
+  email: ['', [Validators.required, Validators.email]],
+  phone: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+  message: ['', [Validators.required, Validators.minLength(5)]]
     });
   }
 
@@ -44,7 +47,8 @@ private toastService: ToastService
     if (this.contactForm.valid) {
       console.log('Form data:', this.contactForm.value);
       this.contactService.createContact(this.contactForm.value).subscribe((res) => {
-this.toastService.showToast('Form submitted successfully', 'success', 3000);
+        this.toastService.showToast('Form submitted successfully', 'success', 5000);
+        this.contactForm.reset();
       })
     } else {
       this.contactForm.markAllAsTouched();
@@ -75,4 +79,12 @@ this.toastService.showToast('Form submitted successfully', 'success', 3000);
       this.joinAsPatnercontactForm.markAllAsTouched();
     }
   }
+
+  allowOnlyNumbers(event: KeyboardEvent): void {
+  const charCode = event.key.charCodeAt(0);
+  // Allow digits (0–9) only
+  if (charCode < 48 || charCode > 57) {
+    event.preventDefault();
+  }
+}
 }

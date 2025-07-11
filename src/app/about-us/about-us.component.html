@@ -342,18 +342,22 @@
                 <form (ngSubmit)="onSubscribe()" #subscribeForm="ngForm">
                     <h1 class="h2 text-center">Stay up to date with us</h1>
 
-                    <div class="input-group py-3">
+                    <div class="input-group pt-3">
                         <input name="email" [(ngModel)]="subscriberEmail" type="email"
                             class="form-control form-control-lg rounded-pill rounded-end" id="email"
-                            placeholder="Your Email" aria-label="Your Email" required />
+                            placeholder="Your Email" aria-label="Your Email" required email #emailRef="ngModel" />
 
                         <button class="btn btn-secondary text-white btn-lg rounded-pill rounded-start px-lg-4"
                             type="submit" [disabled]="!subscribeForm.form.valid">
                             Subscribe
                         </button>
                     </div>
+                    <div *ngIf="emailRef.touched && emailRef.invalid" class="text-danger small mt-1 ps-2 ">
+                        <div *ngIf="emailRef.errors?.['required']">Email is required.</div>
+                        <div *ngIf="emailRef.errors?.['email']">Enter a valid email address.</div>
+                    </div>
 
-                    <p class="text-center light-300">
+                    <p class="text-center light-300 pt-3">
                         Join our community for updates and expertise.<br />
                         Stay ahead with Clavrit by your side.
                     </p>
