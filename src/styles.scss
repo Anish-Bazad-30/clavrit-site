@@ -26,10 +26,12 @@
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
 
-.bg-secondary {
-  background-color: #6266ea !important;
-}
- 
+// .bg-secondary {
+//   background-color: #6266ea !important;
+// }
+ .btn-secondary{
+  background-color: #31B0FD !important;
+ }
 
 // .bg-secondary {
 //     background-color: #271858 !important;
@@ -59,7 +61,7 @@ p, a {font-weight: 400;}
   width: 150px;
   display:block;
   position: absolute;
-  border-bottom:  5px solid #6266ea;
+  border-bottom:  5px solid #31B0FD;
   padding-top: .5em;
 }
 .typo-space-line-center::after {
@@ -120,7 +122,7 @@ p, a {font-weight: 400;}
 }
 #index_banner .carousel-indicators li,
 #index_banner .carousel-indicators.active {
-  background-color: #6266ea !important;
+  background-color: #31B0FD !important;
 }
 .service-wrapper .service-footer {
   max-width: 720px;
