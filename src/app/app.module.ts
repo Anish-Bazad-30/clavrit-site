@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { OurPartnersComponent } from './our-partners/our-partners.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SustainabilityComponent } from './sustainability/sustainability.component';
+import { AiComponent } from './ai/ai.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,9 @@ import { HttpClientModule } from '@angular/common/http';
 
     BlogComponent,
     BlogDetailComponent,
-    OurPartnersComponent
+    OurPartnersComponent,
+    SustainabilityComponent,
+    AiComponent
   ],
   imports: [
     BrowserModule,
