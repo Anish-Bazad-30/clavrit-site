@@ -12,6 +12,8 @@ export class CareerComponent implements OnInit {
 
   jobsList:any[]=[];
   careerForm!: FormGroup;
+  dragedFile: any;
+  selectedCVFile: any;
 
   constructor(
     private fb: FormBuilder,
@@ -36,10 +38,29 @@ export class CareerComponent implements OnInit {
       relevantExp: ['', Validators.required],
       currentCompany: ['', Validators.required],
       currentCTC: ['', Validators.required],
-      noticePeriod: ['', Validators.required]
+      noticePeriod: ['', Validators.required],
+      coverletter: [''],
+      coverletter_file: [null],
+      agree: [false, Validators.requiredTrue]
     });
 
     
+  }
+  onCVChange(event: Event) {
+    const file = (event.target as HTMLInputElement)?.files?.[0];
+    if (file) {
+      this.selectedCVFile = file;
+      this.careerForm.patchValue({ cv: file });
+      this.careerForm.get('cv')?.updateValueAndValidity();
+    }
+  }
+
+  onCoverLetterFileChange(event: Event) {
+    const file = (event.target as HTMLInputElement)?.files?.[0];
+    if (file) {
+      this.careerForm.patchValue({ coverletter_file: file });
+      this.careerForm.get('coverletter_file')?.updateValueAndValidity();
+    }
   }
 
   onSubmit() {
@@ -55,5 +76,9 @@ export class CareerComponent implements OnInit {
       this.jobsList = res.data;
     })
   }
-
+ handleBrowseFile(event:any){
+    this.dragedFile = event.target.files[0];
+    // this.infomsg = this.dragedFile.name;
+    console.log(this.dragedFile);
+  }
 }

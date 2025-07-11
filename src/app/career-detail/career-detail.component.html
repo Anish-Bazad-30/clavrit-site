@@ -106,79 +106,130 @@
     <div class="col-lg-12">
         
 
-        <form [formGroup]="careerForm" (ngSubmit)="onSubmit()" class="career-form row">
+     <form [formGroup]="careerForm" (ngSubmit)="onSubmit()" class="career-form row">
 
-  <div class="col-lg-6 mb-4">
-    <div class="form-floating">
-      <input type="text" class="form-control form-control-lg light-300" id="floatingname"
-             formControlName="fullname" placeholder="Enter your full name">
-      <label for="floatingname" class="light-300">Full Name</label>
-    </div>
-  </div>
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control form-control-lg" id="floatingname" formControlName="fullName"
+                        placeholder="Name">
+                    <label for="floatingname">Full Name</label>
+                </div>
+            </div>
 
-  <div class="col-lg-6 mb-4">
-    <div class="form-floating">
-      <input type="email" class="form-control form-control-lg light-300" id="floatingemail"
-             formControlName="email" placeholder="Enter your email">
-      <label for="floatingemail" class="light-300">Email</label>
-    </div>
-  </div>
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="email" class="form-control form-control-lg" id="floatingemail" formControlName="email"
+                        placeholder="Email">
+                    <label for="floatingemail">Email</label>
+                </div>
+            </div>
 
-  <div class="col-lg-6 mb-4">
-    <div class="form-floating">
-      <input type="tel" class="form-control form-control-lg light-300" id="floatingphone"
-             formControlName="phone" placeholder="Enter your phone number">
-      <label for="floatingphone" class="light-300">Phone</label>
-    </div>
-  </div>
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control form-control-lg" id="floatingphone" formControlName="phone"
+                        placeholder="Phone">
+                    <label for="floatingphone">Phone</label>
+                </div>
+            </div>
 
-  <div class="col-lg-6 mb-4">
-    <div class="form-floating">
-    <input type="file" class="form-control form-control-lg light-300" accept=".pdf,.doc,.docx"
-           id="floatingcv" (change)="handleBrowseFile($event)">
-           <label for="floatingcv" class="form-label light-300">Upload CV/Resume</label>
-           <!-- <input
-        type="file"
-        #fileUpload
-        (change)="handleBrowseFile($event)"
-      /> -->
-       
-    </div>
-    <p class="mt-2">Allowed Type(s): .pdf, .doc, .docx</p>
-  </div>
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <select class="form-select" formControlName="jobApplied">
+                        <option value="">Select</option>
+                        <option value="Java Developer">Java Developer</option>
+                        <option value="Angular Developer">Angular Developer</option>
+                        <option value="Hybris Developer">Hybris Developer</option>
+                    </select>
+                    <label for="floatingrole">Job Applied for</label>
+                </div>
+            </div>
 
-  <div class="col-lg-12 mb-4">
-    <div class="form-floating">
-      <textarea class="form-control light-300" rows="8" id="floatingtextarea"
-                formControlName="coverletter" placeholder="Write your cover letter here"></textarea>
-      <label for="floatingtextarea" class="light-300">Cover Letter</label>
-    </div>
-  </div>
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <select class="form-select" formControlName="qualification">
+                        <option value="">Select</option>
+                        <option value="Graduation">Graduation</option>
+                        <option value="Post Graduation">Post Graduation</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <label for="floatingqual">Qualification</label>
+                </div>
+            </div>
 
-  
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control form-control-lg" id="totalYOE" formControlName="totalYOE"
+                        placeholder="Total Experience">
+                    <label for="totalYOE">Total YOE</label>
+                </div>
+            </div>
 
-  <!-- <div class="col-lg-6 mb-4">
-    <label for="floatingcoverletter" class="form-label light-300">Upload Cover Letter</label>
-    <input type="file" class="form-control form-control-lg light-300" accept=".pdf,.doc,.docx"
-           id="floatingcoverletter" (change)="onCoverLetterFileChange($event)">
-  </div> -->
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control form-control-lg" id="relevantExp"
+                        formControlName="relevantExp" placeholder="Relevant Experience">
+                    <label for="relevantExp">Relevant Experience</label>
+                </div>
+            </div>
 
-  <div class="col-lg-12 mb-4">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="agreeCheck" formControlName="agree" required>
-      <label class="form-check-label" for="agreeCheck">
-        By using this form you agree with the storage and handling of your data by this website. *
-      </label>
-    </div>
-  </div>
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control form-control-lg" id="currentCompany"
+                        formControlName="currentCompany" placeholder="Current Company">
+                    <label for="currentCompany">Current Company</label>
+                </div>
+            </div>
 
-  <div class="col-md-12 col-12 m-auto text-end">
-    <button type="submit"
-            class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300"
-            [disabled]="careerForm.invalid">Submit</button>
-  </div>
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control form-control-lg light-300" id="currentCTC" name="currentCTC"
+                        formControlName="currentCTC" placeholder="Current CTC" />
+                    <label for="currentCTC">Current CTC</label>
+                </div>
+            </div>
 
-</form>
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <select class="form-select" formControlName="noticePeriod">
+                        <option value="">Select</option>
+                        <option value="Immediate">Immediate</option>
+                        <option value="Less than 30 days">Less than 30 days</option>
+                        <option value="1 - 2 Months">1 - 2 Months</option>
+                    </select>
+                    <label for="noticePeriod">Notice Period</label>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <input type="file" class="form-control form-control-lg light-300" accept=".pdf,.doc,.docx"
+                        id="floatingcv" (change)="handleBrowseFile($event)">
+                    <label for="floatingcv" class="form-label light-300">Upload CV/Resume</label>
+
+                </div>
+                <p class="mt-2">Allowed Type(s): .pdf, .doc, .docx</p>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <div class="form-floating">
+                    <textarea class="form-control light-300" rows="8" id="floatingtextarea"
+                        formControlName="coverletter" placeholder="Write your cover letter here"></textarea>
+                    <label for="floatingtextarea" class="light-300">Cover Letter</label>
+                </div>
+            </div>
+            <div class="col-lg-12 mb-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="agreeCheck" formControlName="agree" required>
+                    <label class="form-check-label" for="agreeCheck">
+                        By using this form you agree with the storage and handling of your data by this website. *
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-12 col-12 m-auto text-end">
+                <button type="submit"
+                    class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 text-light">Submit</button>
+            </div>
+
+        </form>
 
 
 
