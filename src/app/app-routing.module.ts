@@ -17,6 +17,7 @@ import { AiComponent } from './ai/ai.component';
 
 const routes: Routes = [
   {path:"" , component: LandingPageComponent},
+  {path:"home" , component: LandingPageComponent},
   {path:"sustainability", component:SustainabilityComponent},
   {path:"ai", component:AiComponent},
   {path:"about-us", component:AboutUsComponent},
@@ -37,7 +38,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    scrollPositionRestoration: 'enabled'  // 👈 this ensures scroll resets to top
+    scrollPositionRestoration: 'enabled'  
   })],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   exports: [RouterModule]
