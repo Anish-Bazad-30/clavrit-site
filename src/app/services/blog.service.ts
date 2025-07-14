@@ -29,7 +29,7 @@ export class BlogService {
   }
 
   deleteBlogs(id: any): Observable<any> {
-    const url = `${this.apiUrl}/`;
+    const url = `${this.apiUrl}/clavrit/blogs/${id}`;
     return this.http.delete<any>(url);
   }
 
