@@ -5,30 +5,38 @@
                 <div class="recent-work-header text-center mb-4">
                     <h2 class="text-primary h3 semi-bold-600">Login</h2>
                 </div>
-                <form class="w-100" method="post" action="#" role="form">
-                    <div class="mb-4">
-                        <div class="form-floating">
-                            <input type="email" class="form-control form-control-lg light-300" id="floatingemail"
-                                name="inputemail" placeholder="Email">
-                            <label for="floatingemail" class="light-300">Email</label>
-                        </div>
-                    </div>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="w-100" role="form" novalidate>
 
-                    <div class="mb-4">
-                        <div class="form-floating">
-                            <input type="password" class="form-control form-control-lg light-300" id="floatingpassword"
-                                name="inputpassword" placeholder="Password">
-                            <label for="floatingpassword" class="light-300">Password</label>
-                        </div>
-                    </div>
+  <div class="mb-4">
+    <div class="form-floating">
+      <input type="email" class="form-control form-control-lg light-300"
+             id="floatingemail" formControlName="email" placeholder="Email">
+      <label for="floatingemail" class="light-300">Email</label>
+    </div>
+    
+  </div>
 
-                    <div class="text-center">
-                        <button type="submit" routerLink="/admin/dashboard"
-                            class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">
-                            Sign in
-                        </button>
-                    </div>
-                </form>
+  <div class="mb-4">
+    <div class="form-floating">
+      <input type="password" class="form-control form-control-lg light-300"
+             id="floatingpassword" formControlName="password" placeholder="Password">
+      <label for="floatingpassword" class="light-300">Password</label>
+    </div>
+    
+  </div>
+
+  <div *ngIf="errorMessage" class="text-danger text-center mb-2">
+    {{ errorMessage }}
+  </div>
+
+  <div class="text-center">
+    <button type="submit"
+            class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">
+      Sign in
+    </button>
+  </div>
+</form>
+
             </div>
         </div>
     </div>
