@@ -18,7 +18,7 @@ export class FormsComponent {
   uploadedResume: File | null = null;
   uploadedImage: File | null = null;
   dragedFile: any;
-  selectedFiles: any[] = [];
+  selectedFiles: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -92,13 +92,13 @@ export class FormsComponent {
 
     switch (type) {
       case 'client':
-        this.selectedFields = {
+        this.selectedFields = this.fb.group({
           name: [''],
           email: [''],
           company: [''],
-          phone:['']
-          // companyLogo: [null]
-        };
+          phone: [''],
+          logo: [null]
+        });
         break;
 
       case 'blog':
@@ -203,38 +203,54 @@ export class FormsComponent {
     return this.tags.at(index) as FormControl;
   }
 
-   onFileSelected(event: any): void {
+  onFileSelected(event: any): void {
     if (event.target.files && event.target.files.length > 0) {
       this.selectedFiles = Array.from(event.target.files);
     }
   }
 
-  
+  handleFileInput(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFiles = file;
+    }
+  }
 
- 
+
+
   onBlogSubmit(): void {
     console.log(this.selectedFields);
 
     if (this.selectedFields.valid) {
-       const blogData = this.selectedFields.value;
+      const formData = new FormData();
+// "title": "Spring Boot Blogging",
+//   "subtitle": "Handling blog creation",
+//   "authorName": "AMAN SHARMA",
+//   "summary": "This blog covers the basics of blogs in Spring Boot.",
+//   "content": "Full blog content goes here...",
+//   "advantages": "Easy setup, fast dev",
+//   "disadvantages": "Verbose annotations",
+//   "conclusion": "Spring Boot is great!",
+//   "tags": ["Spring", "Java", "Blog"]
+      // Convert JSON part
+      const blogPayload = {
+        title: this.selectedFields.value.title,
+        subtitle: this.selectedFields.value.subtitle,
+        authorName: this.selectedFields.value.authorName,
+        summary: this.selectedFields.value.summary,
+        content: this.selectedFields.value.content,
+        advantages: this.selectedFields.value.advantages,
+        conclusion: this.selectedFields.value.conclusion,
+        tags: this.selectedFields.value.tags,
+      };
 
-    const formData = new FormData();
+      formData.append('blog', JSON.stringify(blogPayload));
 
-    // 👇 Convert JSON to a File (so we can specify content-type)
-    const blogFile = new File(
-      [JSON.stringify(blogData)],
-      'blog.json',
-      { type: 'application/json' }
-    );
+      // Append the file
+      if (this.selectedFiles) {
+        formData.append('images', this.selectedFiles);
+      }
 
-    // ✅ Append blog as application/json file
-    formData.append('blog', blogFile);
-
-    // ✅ Append all selected image files
-    for (let file of this.selectedFiles) {
-      formData.append('images', file);
-    }
-      console.log('Form submitted:', formData);
       this.blogService.createBlogs(formData).subscribe((res) => {
 
       })
@@ -247,8 +263,24 @@ export class FormsComponent {
     console.log(this.selectedFields);
 
     if (this.form.valid) {
-      console.log('Form submitted:', this.form.value);
-      this.clientService.createClient(this.form.value).subscribe((res)=>{
+
+      const formData = new FormData();
+
+      // Convert JSON part
+      const clientPayload = {
+        name: this.selectedFields.value.name,
+        email: this.selectedFields.value.email,
+        company: this.selectedFields.value.company,
+        phone: this.selectedFields.value.phone
+      };
+
+      formData.append('client', JSON.stringify(clientPayload));
+
+      if (this.selectedFiles) {
+        formData.append('logo', this.selectedFiles);
+      }
+
+      this.clientService.createClient(formData).subscribe((res) => {
 
       })
 

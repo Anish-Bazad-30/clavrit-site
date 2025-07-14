@@ -2,7 +2,7 @@
     <div class="container d-flex flex-column justify-content-evenly align-items-center flex-grow-1">
         <h2 class="text-primary">{{pageTitle}}</h2>
         <div *ngIf="type === 'client'" class="container">
-            <form [formGroup]="form" (ngSubmit)="onClientSubmit()" class="row g-3" enctype="multipart/form-data">
+            <form [formGroup]="selectedFields" (ngSubmit)="onClientSubmit()" class="row g-3" enctype="multipart/form-data">
                 <div class="col-lg-6">
                     <div class="form-floating">
                         <input type="text" id="name" class="form-control" placeholder="Full Name"
@@ -29,13 +29,12 @@
                         <label for="company">Company Name</label>
                     </div>
                 </div>
-                <!-- <div class="col-lg-6">
+                <div class="col-lg-6">
                     <div class="form-floating">
-                        <input type="file" id="companyLogo" class="form-control" placeholder="Company"
-                            formControlName="companyLogo">
+                        <input type="file" id="companyLogo" class="form-control" placeholder="Company" (change)="onFileSelected($event)">
                         <label for="company">Company Logo</label>
                     </div>
-                </div> -->
+                </div>
                 <div class="col-12 text-end">
                     <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill">Submit</button>
                 </div>
