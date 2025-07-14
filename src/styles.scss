@@ -156,7 +156,7 @@ p, a {font-weight: 400;}
   background-size: 300% 300%;
   background-position: 0% 100%;
   transition: .5s;
-  cursor: pointer;
+  cursor: default;
 }
 .recent-work .recent-work-vertical:hover {
   background-position: 0% 0%;
