@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from 'src/app/services/blog.service';
 import { ClientService } from 'src/app/services/client.service';
+import { CommonDeleteService } from 'src/app/services/common-delete.service';
 import { ContactService } from 'src/app/services/contact.service';
 import { JobsService } from 'src/app/services/jobs.service';
 import { OurServicesService } from 'src/app/services/our-services.service';
@@ -29,6 +30,7 @@ export class ContentListComponent {
     private projectService: ProjectsService,
     private ourServiceServices: OurServicesService,
     private jobService: JobsService,
+    private  deleteService: CommonDeleteService
 
   ) { }
 
@@ -116,11 +118,73 @@ export class ContentListComponent {
 
 
 
+  // deleteClient(id: any) {
+  //   this.clientService.deleteClient(id).subscribe((res) => {
+  //     this.loadContent(this.type);
+  //   })
+  // }
+
+
+
+  clientIdToDelete: any = null;
+
+  openDeleteModal(id: any) {
+  const type = this.type; // 'client', 'blog', etc.
+  this.deleteService.openConfirmDelete(
+    { id, type },
+    () => this.confirmDelete()
+  );
+
+}
+
+confirmDelete() {
+  const { id, type } = this.deleteService.data;
+   switch (type) {
+      case 'client':
+        return this.clientService.deleteClient(id).subscribe((res)=>{
+          if(res.code === 200){
+            this.clientService.getClient().subscribe((res)=>{
+              this.contentList = res.data;
+            })
+          }
+        });
+      case 'blog':
+        return this.blogService.deleteBlogs(id).subscribe((res)=> {
+          if(res.code === 200){
+            this.blogService.getBlogs().subscribe((res) =>{
+              this.contentList = res.data;
+            })
+          }
+        });
+      // case 'service':
+      //   return this.http.delete(`/api/services/${id}`);
+      // case 'project':
+      //   return this.http.delete(`/api/projects/${id}`);
+      default:
+        throw new Error(`Unknown type: ${type}`);
+    }
+}
+
+
   deleteClient(id: any) {
     this.clientService.deleteClient(id).subscribe((res) => {
       this.loadContent(this.type);
-    })
+    });
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   deleteBlog(id: any) {
     this.blogService.deleteBlogs(id).subscribe((res) => {
@@ -132,12 +196,6 @@ export class ContentListComponent {
     this.projectService.deleteProjects(id).subscribe((res) => {
       this.loadContent(this.type);
     })
-  }
-
-  deleteService(id: any) {
-    // this..deleteJobs(id).subscribe((res) => {
-    //   this.loadContent(this.type);
-    // })
   }
 
   deleteJobDetails(id: any) {
