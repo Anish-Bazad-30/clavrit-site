@@ -30,7 +30,7 @@ export class ContentListComponent {
     private projectService: ProjectsService,
     private ourServiceServices: OurServicesService,
     private jobService: JobsService,
-    private  deleteService: CommonDeleteService
+    private deleteService: CommonDeleteService
 
   ) { }
 
@@ -116,103 +116,62 @@ export class ContentListComponent {
   edit(data: any) {
   }
 
+  showDeleteModal = false;
+  deleteType: string = '';
+  deleteId: number  = 0;
 
+  openDeleteModal(type: string, id: number) {
+    this.deleteType = type;
+    this.deleteId = id;
+    console.log("sadassad");
 
-  // deleteClient(id: any) {
-  //   this.clientService.deleteClient(id).subscribe((res) => {
-  //     this.loadContent(this.type);
-  //   })
-  // }
+    this.showDeleteModal = true;
+  }
 
-
-
-  clientIdToDelete: any = null;
-
-  openDeleteModal(id: any) {
-  const type = this.type; // 'client', 'blog', etc.
-  this.deleteService.openConfirmDelete(
-    { id, type },
-    () => this.confirmDelete()
-  );
-
-}
-
-confirmDelete() {
-  const { id, type } = this.deleteService.data;
-   switch (type) {
+  handleDelete(event: { type: string; id: number }) {
+    console.log(event.id);
+    
+    switch (this.type) {
       case 'client':
-        return this.clientService.deleteClient(id).subscribe((res)=>{
-          if(res.code === 200){
-            this.clientService.getClient().subscribe((res)=>{
-              this.contentList = res.data;
-            })
-          }
+        this.clientService.deleteClient(event.id).subscribe((res) => {
+          this.loadContent(this.type);
         });
+        break;
       case 'blog':
-        return this.blogService.deleteBlogs(id).subscribe((res)=> {
-          if(res.code === 200){
-            this.blogService.getBlogs().subscribe((res) =>{
-              this.contentList = res.data;
-            })
-          }
-        });
-      // case 'service':
-      //   return this.http.delete(`/api/services/${id}`);
-      // case 'project':
-      //   return this.http.delete(`/api/projects/${id}`);
+        this.blogService.deleteBlogs(event.id).subscribe((res) => {
+          this.loadContent(this.type);
+        })
+        break;
+      case 'project':
+        this.projectService.deleteProjects(event.id).subscribe((res) => {
+          this.loadContent(this.type);
+        })
+        break;
+      case 'service':
+        // this.clientService.deleteClient(event.id).subscribe((res) => {
+        //   this.loadContent(this.type);
+        // });
+        break;
+      case 'job-detail':
+        this.jobService.deleteJobs(event.id).subscribe((res) => {
+          this.loadContent(this.type);
+        })
+        break;
+      case 'job-application':
+        this.jobService.deleteJobs(event.id).subscribe((res) => {
+          this.loadContent(this.type);
+        })
+        break;
+      case 'contact':
+        this.contactService.deleteContact(event.id).subscribe((res) => {
+          this.loadContent(this.type);
+        })
+        break;
       default:
-        throw new Error(`Unknown type: ${type}`);
+
+        break;
     }
-}
 
-
-  deleteClient(id: any) {
-    this.clientService.deleteClient(id).subscribe((res) => {
-      this.loadContent(this.type);
-    });
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  deleteBlog(id: any) {
-    this.blogService.deleteBlogs(id).subscribe((res) => {
-      this.loadContent(this.type);
-    })
-  }
-
-  deleteProject(id: any) {
-    this.projectService.deleteProjects(id).subscribe((res) => {
-      this.loadContent(this.type);
-    })
-  }
-
-  deleteJobDetails(id: any) {
-    this.jobService.deleteJobs(id).subscribe((res) => {
-      this.loadContent(this.type);
-    })
-  }
-
-  deletJobApplications(id: any) {
-    this.jobService.deleteJobs(id).subscribe((res) => {
-      this.loadContent(this.type);
-    })
-  }
-
-  deleteContact(id: any) {
-    this.contactService.deleteContact(id).subscribe((res) => {
-      this.loadContent(this.type);
-    })
+    this.showDeleteModal = false;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-delete-popup',
@@ -6,22 +6,17 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./delete-popup.component.scss']
 })
 export class DeletePopupComponent {
-   @Input() entityName: string = '';
-  @Input() data: any;
-  @Input() onConfirm: () => void = () => {};
+ @Input() type: string = '';
+  @Input() id!: number;
 
-
-
-  closeModal() {
-    const modalEl = document.getElementById('globalDeleteModal');
-    const modal = (window as any).bootstrap.Modal.getInstance(modalEl);
-    modal.hide();
-  }
+  @Output() confirmed = new EventEmitter<{ type: string, id: number }>();
+  @Output() cancelled = new EventEmitter<void>();
 
   confirm() {
-    if (this.onConfirm) {
-      this.onConfirm();
-    }
-    this.closeModal();
+    this.confirmed.emit({ type: this.type, id: this.id });
+  }
+
+  cancel() {
+    this.cancelled.emit();
   }
 }
