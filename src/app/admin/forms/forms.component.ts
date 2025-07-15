@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from 'src/app/services/blog.service';
 import { ClientService } from 'src/app/services/client.service';
+import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
   selector: 'app-forms',
@@ -25,6 +26,7 @@ export class FormsComponent {
     private fb: FormBuilder,
     private blogService: BlogService,
     private clientService: ClientService,
+    private projectService: ProjectsService,
 
   ) { }
 
@@ -117,11 +119,12 @@ export class FormsComponent {
         break;
 
       case 'project':
-        this.selectedFields = {
-          name: [''],
-          description: [''],
-          technology: ['']
-        };
+        this.selectedFields = this.fb.group({
+          title: [''],
+          summary: [''],
+          technologies: [''],
+           keyPoints: [''],
+        });
         break;
 
       case 'service':
@@ -216,6 +219,73 @@ export class FormsComponent {
     }
   }
 
+   onServiceSubmit(): void {
+    console.log(this.selectedFields);
+
+    if (this.form.valid) {
+
+      const formData = new FormData();
+
+      // Convert JSON part
+      const servicePayload = {
+        name: this.selectedFields.value.name,
+        type: this.selectedFields.value.email,
+        company: this.selectedFields.value.company,
+        phone: this.selectedFields.value.phone
+      };
+
+      formData.append('', JSON.stringify(servicePayload));
+
+      if (this.selectedFiles) {
+        formData.append('logo', this.selectedFiles);
+      }
+
+      this.clientService.createClient(formData).subscribe((res) => {
+
+      })
+
+    } else {
+      console.log('Form is invalid:', this.form);
+    }
+  }
+
+   onProjectSubmit(): void {
+    console.log(this.selectedFields);
+
+    if (this.form.valid) {
+
+      const formData = new FormData();
+
+      const techArray = this.selectedFields.value.technologies
+      ? this.selectedFields.value.technologies.split(',').map((tech: string) => tech.trim())
+      : [];
+
+      const keyPointsArray = this.selectedFields.value.keyPoints
+      ? this.selectedFields.value.keyPoints.split(',').map((kp: string) => kp.trim())
+      : [];
+
+      // Convert JSON part
+      const projectPayload = {
+        title: this.selectedFields.value.title,
+        summary: this.selectedFields.value.summary,
+        technologies: techArray,
+        keyPoints: keyPointsArray
+      };
+
+      formData.append('project', JSON.stringify(projectPayload));
+
+      if (this.selectedFiles) {
+        formData.append('images', this.selectedFiles);
+      }
+
+      this.projectService.createProjects(formData).subscribe((res) => {
+      console.log(res);
+      })
+
+    } else {
+      console.log('Form is invalid:', this.form);
+    }
+  }
 
 
   onBlogSubmit(): void {

@@ -129,7 +129,7 @@
             </form>
         </div>
         <div *ngIf="type === 'project'" class="container">
-            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3" enctype="multipart/form-data">
+         <form [formGroup]="selectedFields" (ngSubmit)="onProjectSubmit()" class="row g-3" enctype="multipart/form-data">
                 <div class="col-lg-6">
                     <div class="form-floating">
                         <input type="text" id="title" class="form-control" placeholder="Title" formControlName="title">
@@ -175,7 +175,7 @@
             </form>
         </div>
         <div *ngIf="type === 'service'" class="container">
-            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3" enctype="multipart/form-data">
+            <form [formGroup]="selectedFields" (ngSubmit)="onServiceSubmit()" class="row g-3" enctype="multipart/form-data">
 
                 <div class="col-lg-6">
                     <div class="form-floating">
