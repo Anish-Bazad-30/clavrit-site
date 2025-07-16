@@ -3,6 +3,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from 'src/app/services/blog.service';
 import { ClientService } from 'src/app/services/client.service';
+import { JobsService } from 'src/app/services/jobs.service';
+import { OurServicesService } from 'src/app/services/our-services.service';
 import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
@@ -27,6 +29,8 @@ export class FormsComponent {
     private blogService: BlogService,
     private clientService: ClientService,
     private projectService: ProjectsService,
+    private jobService: JobsService,
+    private ourServicesService: OurServicesService,
 
   ) { }
 
@@ -122,34 +126,31 @@ export class FormsComponent {
         this.selectedFields = this.fb.group({
           title: [''],
           summary: [''],
-          technologies: [''],
-           keyPoints: [''],
+          technologies: this.fb.array([new FormControl('')]),
+          keyPoints: this.fb.array([new FormControl('')]),
         });
         break;
 
       case 'service':
-        this.selectedFields = {
+        this.selectedFields = this.fb.group({
           name: [''],
           description: [''],
-          category: ['']
-        };
+          type: [''],
+          // images: ['']
+        });
         break;
 
       case 'job-detail':
-        this.selectedFields = {
-          jobCategory: [''],
+        this.selectedFields = this.fb.group({
           jobDesignation: [''],
+          jobCategory: [''],
           jobType: [''],
-          moreDetails: this.fb.group({
-            id: [''],
-            jobResponsibility: [''],
-            jobQualification: [''],
-            jobCategory: [''],
-            jobType: [''],
-            jobLocation: [''],
-            industry: ['']
-          })
-        };
+          jobLocation: [''],
+          industry: [''],
+          jobResponsibility: this.fb.array([this.fb.control('')]),
+          jobQualification: this.fb.array([this.fb.control('')]),
+          competencies: this.fb.array([this.fb.control('')])
+        });
         break;
 
       case 'job-application':
@@ -206,6 +207,51 @@ export class FormsComponent {
     return this.tags.at(index) as FormControl;
   }
 
+  // Getter for technologies FormArray
+  get technologies(): FormArray {
+    return this.selectedFields.get('technologies') as FormArray;
+  }
+
+  // Add a new technology input
+  addTechnology(): void {
+    this.technologies.push(this.fb.control(''));
+  }
+
+  // Remove a technology input
+  removeTechnology(index: number): void {
+    if (this.technologies.length > 1) {
+      this.technologies.removeAt(index);
+    }
+  }
+
+  // Access a specific technology input
+  getTechnologyControl(index: number): FormControl {
+    return this.technologies.at(index) as FormControl;
+  }
+
+  // Getter for technologies FormArray
+  get keyPoints(): FormArray {
+    return this.selectedFields.get('keyPoints') as FormArray;
+  }
+
+  // Add a new technology input
+  addKeyPoints(): void {
+    this.keyPoints.push(this.fb.control(''));
+  }
+
+  // Remove a technology input
+  removeKeyPoints(index: number): void {
+    if (this.keyPoints.length > 1) {
+      this.keyPoints.removeAt(index);
+    }
+  }
+
+  // Access a specific technology input
+  getKeyPointsControl(index: number): FormControl {
+    return this.keyPoints.at(index) as FormControl;
+  }
+
+
   onFileSelected(event: any): void {
     if (event.target.files && event.target.files.length > 0) {
       this.selectedFiles = Array.from(event.target.files);
@@ -216,25 +262,33 @@ export class FormsComponent {
     const file = event.target.files[0];
     if (file) {
       this.selectedFiles = file;
+      console.log(this.selectedFiles);
+      
     }
   }
 
-   onServiceSubmit(): void {
+
+
+
+
+
+
+
+  onClientSubmit(): void {
     console.log(this.selectedFields);
 
     if (this.form.valid) {
 
       const formData = new FormData();
 
-      // Convert JSON part
-      const servicePayload = {
+      const clientPayload = {
         name: this.selectedFields.value.name,
-        type: this.selectedFields.value.email,
+        email: this.selectedFields.value.email,
         company: this.selectedFields.value.company,
         phone: this.selectedFields.value.phone
       };
 
-      formData.append('', JSON.stringify(servicePayload));
+      formData.append('client', JSON.stringify(clientPayload));
 
       if (this.selectedFiles) {
         formData.append('logo', this.selectedFiles);
@@ -249,60 +303,13 @@ export class FormsComponent {
     }
   }
 
-   onProjectSubmit(): void {
-    console.log(this.selectedFields);
-
-    if (this.form.valid) {
-
-      const formData = new FormData();
-
-      const techArray = this.selectedFields.value.technologies
-      ? this.selectedFields.value.technologies.split(',').map((tech: string) => tech.trim())
-      : [];
-
-      const keyPointsArray = this.selectedFields.value.keyPoints
-      ? this.selectedFields.value.keyPoints.split(',').map((kp: string) => kp.trim())
-      : [];
-
-      // Convert JSON part
-      const projectPayload = {
-        title: this.selectedFields.value.title,
-        summary: this.selectedFields.value.summary,
-        technologies: techArray,
-        keyPoints: keyPointsArray
-      };
-
-      formData.append('project', JSON.stringify(projectPayload));
-
-      if (this.selectedFiles) {
-        formData.append('images', this.selectedFiles);
-      }
-
-      this.projectService.createProjects(formData).subscribe((res) => {
-      console.log(res);
-      })
-
-    } else {
-      console.log('Form is invalid:', this.form);
-    }
-  }
-
 
   onBlogSubmit(): void {
     console.log(this.selectedFields);
 
     if (this.selectedFields.valid) {
       const formData = new FormData();
-// "title": "Spring Boot Blogging",
-//   "subtitle": "Handling blog creation",
-//   "authorName": "AMAN SHARMA",
-//   "summary": "This blog covers the basics of blogs in Spring Boot.",
-//   "content": "Full blog content goes here...",
-//   "advantages": "Easy setup, fast dev",
-//   "disadvantages": "Verbose annotations",
-//   "conclusion": "Spring Boot is great!",
-//   "tags": ["Spring", "Java", "Blog"]
-      // Convert JSON part
+
       const blogPayload = {
         title: this.selectedFields.value.title,
         subtitle: this.selectedFields.value.subtitle,
@@ -329,28 +336,61 @@ export class FormsComponent {
     }
   }
 
-  onClientSubmit(): void {
+  onProjectSubmit(): void {
     console.log(this.selectedFields);
 
     if (this.form.valid) {
 
       const formData = new FormData();
 
+
       // Convert JSON part
-      const clientPayload = {
-        name: this.selectedFields.value.name,
-        email: this.selectedFields.value.email,
-        company: this.selectedFields.value.company,
-        phone: this.selectedFields.value.phone
+      const projectPayload = {
+        title: this.selectedFields.value.title,
+        summary: this.selectedFields.value.summary,
+        technologies: this.selectedFields.value.technologies,
+        keyPoints: this.selectedFields.value.keyPoints
       };
 
-      formData.append('client', JSON.stringify(clientPayload));
+      formData.append('project', JSON.stringify(projectPayload));
+      console.log(this.selectedFiles);
 
       if (this.selectedFiles) {
-        formData.append('logo', this.selectedFiles);
+        formData.append('images', this.selectedFiles);
       }
 
-      this.clientService.createClient(formData).subscribe((res) => {
+      this.projectService.createProjects(formData).subscribe((res) => {
+        console.log(res);
+      })
+
+    } else {
+      console.log('Form is invalid:', this.form);
+    }
+  }
+
+  onServiceSubmit(): void {
+    console.log(this.selectedFields);
+    console.log(this.selectedFiles);
+    if (this.selectedFields.valid) {
+
+      const formData = new FormData();
+
+      // Convert JSON part
+      formData.append('name', this.selectedFields.value.name);
+      formData.append('type', this.selectedFields.value.type);
+      formData.append('description', this.selectedFields.value.description);
+
+
+      // Append files
+      if (this.selectedFiles) {
+        // this.selectedFiles.forEach((file, index) => {
+        console.log("saddsadsasaddsadsa");
+
+        formData.append('images', this.selectedFiles); // 'images' should match BE field name
+        // });
+      }
+
+      this.ourServicesService.createService(formData).subscribe((res) => {
 
       })
 
@@ -359,10 +399,100 @@ export class FormsComponent {
     }
   }
 
+  onjobDetailsSubmit(): void {
+    console.log(this.selectedFields);
+
+    if (this.selectedFields.valid) {
+
+      const formValue = this.selectedFields.value;
+
+      const payload = {
+        jobDesignation: formValue.jobDesignation,
+        jobResponsibility: formValue.jobResponsibility,
+        jobQualification: formValue.jobQualification,
+        competencies: formValue.competencies,
+        jobCategory: formValue.jobCategory,
+        jobType: formValue.jobType,
+        jobLocation: formValue.jobLocation,
+        industry: formValue.industry
+      };
+      this.jobService.createJobs(payload).subscribe((res) => {
+
+      })
+
+    } else {
+      console.log('Form is invalid:', this.form);
+    }
+  }
+
+  get jobResponsibility(): FormArray {
+    return this.selectedFields.get('jobResponsibility') as FormArray;
+  }
+
+  get jobQualification(): FormArray {
+    return this.selectedFields.get('jobQualification') as FormArray;
+  }
+
+  get competencies(): FormArray {
+    return this.selectedFields.get('competencies') as FormArray;
+  }
+
+  addResponsibility() {
+    this.jobResponsibility.push(this.fb.control(''));
+  }
+
+  removeResponsibility(index: number) {
+    this.jobResponsibility.removeAt(index);
+  }
+
+  addQualification() {
+    this.jobQualification.push(this.fb.control(''));
+  }
+
+  removeQualification(index: number) {
+    this.jobQualification.removeAt(index);
+  }
+
+  addCompetency() {
+    this.competencies.push(this.fb.control(''));
+  }
+
+  removeCompetency(index: number) {
+    this.competencies.removeAt(index);
+  }
+
+
+
+  // onServiceSubmit(): void {
+  //   console.log(this.selectedFields);
+
+  //   if (this.selectedFields.valid) {
+
+  //     const formValue = this.selectedFields.value;
+
+  //     const payload = {
+  //       jobDesignation: formValue.jobDesignation,
+  //       jobResponsibility: formValue.jobResponsibility,
+  //       jobQualification: formValue.jobQualification,
+  //       competencies: formValue.competencies,
+  //       jobCategory: formValue.jobCategory,
+  //       jobType: formValue.jobType,
+  //       jobLocation: formValue.jobLocation,
+  //       industry: formValue.industry
+  //     };
+  //     this.jobService.createJobs(payload).subscribe((res) => {
+
+  //     })
+
+  //   } else {
+  //     console.log('Form is invalid:', this.form);
+  //   }
+  // }
+
   onSubmit(): void {
     console.log(this.selectedFields);
 
-    if (this.form.valid) {
+    if (this.selectedFields.valid) {
       console.log('Form submitted:', this.form.value);
     } else {
       console.log('Form is invalid:', this.form);

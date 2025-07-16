@@ -85,6 +85,7 @@
                 </ul>
             </nav>
         </div>
+
         <div *ngIf="type === 'blog'" class="container">
             <table class="data-table w-100">
                 <thead class="table-header bg-primary">
@@ -138,6 +139,7 @@
                 </ul>
             </nav>
         </div>
+
         <div *ngIf="type === 'project'" class="container">
             <table class="data-table w-100">
                 <thead class="table-header bg-primary">
@@ -146,17 +148,23 @@
                         <th>Title</th>
                         <th>Summary</th>
                         <th>Technology</th>
-                        <th>Key Points</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- "id": 5,
+            "title": "Sample Project Title",
+            "summary": "This is a short summary of the project.",
+            "imageUrl": [
+                "http://157.20.190.17/upload/project/images/2a3e8eef-e55a-4a40-ab44-91a0c90c227e_Ai.jpg"
+            ],
+            "technologies": [],
+            "keyPoints": [], -->
                     <tr class="table-data" *ngFor="let content of contentListview; let i = index">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{i+1}}</td>
+                        <td>{{content.title}}</td>
+                        <td>{{content.summary}}</td>
+                        <td>{{content.technologies}}</td>
                         <td class="d-flex justify-content-center gap-2">
 
                             <button class="btn p-1" (click)="edit(content)">
@@ -193,6 +201,7 @@
                 </ul>
             </nav>
         </div>
+
         <div *ngIf="type === 'service'" class="container">
             <table class="data-table w-100">
                 <thead class="table-header bg-primary">
@@ -206,10 +215,10 @@
                 </thead>
                 <tbody>
                     <tr class="table-data" *ngFor="let content of contentListview; let i = index">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{i+1}}</td>
+                        <td>{{content.name}}</td>
+                        <td>{{content.description}}</td>
+                        <td>{{content.type}}</td>
                         <td class="d-flex justify-content-center gap-2">
 
                             <button class="btn p-1" (click)="edit(content)">
@@ -245,6 +254,7 @@
                 </ul>
             </nav>
         </div>
+
         <div *ngIf="type === 'job-detail'" class="container">
             <table class="data-table w-100">
                 <thead class="table-header bg-primary">
@@ -258,10 +268,10 @@
                 </thead>
                 <tbody>
                     <tr class="table-data" *ngFor="let content of contentListview; let i = index">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{i+1}}</td>
+                        <td>{{content.jobCategory}}</td>
+                        <td>{{content.jobDesignation}}</td>
+                        <td>{{content.jobType}}</td>
                         <td class="d-flex justify-content-center gap-2">
 
                             <button class="btn p-1" (click)="edit(content)">
@@ -297,6 +307,7 @@
                 </ul>
             </nav>
         </div>
+
         <div *ngIf="type === 'job-application'" class="container">
             <table class="data-table w-100">
                 <thead class="table-header bg-primary">
@@ -312,13 +323,12 @@
                 </thead>
                 <tbody>
                     <tr class="table-data" *ngFor="let content of contentListview; let i = index">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
+                        <td>{{i+1}}</td>
+                        <td>{{content.fullName}}</td>
+                        <td>{{content.email}}</td>
+                        <td>{{content.phone}}</td>
+                        <td>{{content.jobAppliedFor}}</td>
+                        <td>{{content.resumeFilePath}}</td>
                         <td class="d-flex justify-content-center gap-2">
 
                             <button class="btn p-1" (click)="edit(content)">
@@ -327,9 +337,6 @@
                             <button class="btn p-1" (click)="openDeleteModal(type, content.id)">
                                 <i class='bx bx-trash fs-5 text-danger'></i>
                             </button>
-
-
-
                         </td>
                     </tr>
                 </tbody>
@@ -356,6 +363,7 @@
             </nav>
             
         </div>
+
         <div *ngIf="type === 'contact'" class="container">
             <table class="data-table w-100">
                 <thead class="table-header bg-primary">

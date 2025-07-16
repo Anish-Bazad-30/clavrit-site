@@ -65,9 +65,9 @@ export class ContentListComponent {
         break;
       case 'service':
         this.pageTitle = "Service Management";
-        // this.clientService.getClient().subscribe((res) => {
-        //   this.contentList = res.data;
-        // })
+        this.ourServiceServices.getAllServices().subscribe((res) => {
+          this.contentList = res.data;
+        })
         break;
       case 'job-detail':
         this.pageTitle = "Job Details Management";
@@ -77,7 +77,7 @@ export class ContentListComponent {
         break;
       case 'job-application':
         this.pageTitle = "Job Application Management";
-        this.jobService.getJobsDetails().subscribe((res) => {
+        this.jobService.getJobsApplications().subscribe((res) => {
           this.contentList = res.data;
         })
         break;
@@ -148,9 +148,9 @@ export class ContentListComponent {
         })
         break;
       case 'service':
-        // this.clientService.deleteClient(event.id).subscribe((res) => {
-        //   this.loadContent(this.type);
-        // });
+        this.ourServiceServices.deleteService(event.id).subscribe((res) => {
+          this.loadContent(this.type);
+        });
         break;
       case 'job-detail':
         this.jobService.deleteJobs(event.id).subscribe((res) => {
@@ -158,7 +158,7 @@ export class ContentListComponent {
         })
         break;
       case 'job-application':
-        this.jobService.deleteJobs(event.id).subscribe((res) => {
+        this.jobService.deleteJobsApplication(event.id).subscribe((res) => {
           this.loadContent(this.type);
         })
         break;
