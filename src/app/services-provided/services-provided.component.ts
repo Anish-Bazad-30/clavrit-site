@@ -12,7 +12,7 @@ export class ServicesProvidedComponent {
   ourServices: any[] = [
     {
       title: "SAP CX",
-      img: "./assets/img/sapcx.jpg",
+      img: "./assets/img/sap_cx_1.jpg",
       description: "Our SAP CX Services provide tailored strategies and seamless implementation using SAP’s advanced technologies.",
       subheading : "Unleashing the Power of Customer Experience with Clavrit SAP CX",
       content: "Forget cookie-cutter solutions. At Clavrit, we craft bespoke SAP CX strategies that cater to your unique business DNA. We become an extension of your team, partnering with you from the initial consultation all the way through implementation and beyond. Our goal? Seamless integration and maximizing the value you extract from SAP’s cutting-edge CX technologies. Our team dives deep into your current customer experience landscape, uncovering opportunities and aligning them with your objectives. Through close collaboration with your stakeholders, we develop a customized plan. Then, we leverage the power of SAP CX to design and tailor solutions that perfectly fit your specific needs. We empower you to stay ahead of the curve, delivering exceptional experiences that cultivate customer satisfaction and unwavering loyalty. Partner with Clavrit and transform your customer interactions into a competitive advantage."
@@ -26,7 +26,7 @@ export class ServicesProvidedComponent {
     },
     {
       title: "SAP Commerce",
-      img: "./assets/img/sap-commerce.png",
+      img: "./assets/img/sap-commerce.jpg",
       description: "Drive e-commerce success with seamless, scalable SAP Commerce Cloud solutions for exceptional customer experiences.",
       subheading : "Level Up Your E-Commerce Game with Clavrit’s SAP Commerce Cloud Solutions",
       content: "Ready to dominate the digital marketplace? Clavrit’s SAP Commerce Cloud Solution Services are your one-stop shop for crafting a winning e-commerce business. Our team of seasoned professionals dives deep into your organization to understand your unique challenges, goals, and e-commerce platform aspirations. We leverage the robust capabilities of SAP Commerce Cloud to design and implement a customized solution that perfectly aligns with your vision. Launching a brand new online store? Upgrading an existing platform? No problem. Our experts ensure seamless integration with your current systems and processes, guaranteeing a smooth transition. In today’s omnichannel world, consistency is key. Our services empower you to deliver a unified and personalized experience for your customers – whether they’re browsing your website, engaging on social media, or visiting your brick-and-mortar stores. We don’t stop at design; we also offer performance optimization and scalability enhancements to ensure your platform thrives during peak shopping seasons. Partner with Clavrit’s SAP Commerce Cloud Solution Services and unlock the full potential of your e-commerce business. Drive explosive revenue growth, cultivate unwavering customer loyalty, and solidify your position as a leader in the digital marketplace. "
@@ -47,7 +47,7 @@ export class ServicesProvidedComponent {
     },
     {
       title: "Artificial Intelligence",
-      img: "./assets/img/Ai.jpg",
+      img: "./assets/img/AI_image.jpg",
       description: "We deliver tailored AI, Deep Learning, and NLP solutions for smarter insights and automation.",
       subheading : "Ready to unlock the transformative power of Artificial Intelligence?",
       content: "At Clavrit, we offer a comprehensive suite of AI solutions designed to propel your business forward. We leverage the cutting edge of machine learning and deep learning to develop groundbreaking tools that tackle your toughest challenges. Generative AI, natural language processing, and more – these are just a few of the powerful technologies in our arsenal."
