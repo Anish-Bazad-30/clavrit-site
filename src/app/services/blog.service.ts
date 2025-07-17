@@ -23,9 +23,9 @@ export class BlogService {
     return this.http.post<any>(url,data);
   }
 
-  updateBlogs(id: any): Observable<any> {
+  updateBlogs(id: any, data:any): Observable<any> {
     const url = `${this.apiUrl}/clavrit/blogs/${id}`;
-    return this.http.put<any>(url,id);
+    return this.http.put<any>(url,data);
   }
 
   deleteBlogs(id: any): Observable<any> {

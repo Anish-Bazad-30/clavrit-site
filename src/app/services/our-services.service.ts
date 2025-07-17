@@ -35,9 +35,9 @@ export class OurServicesService {
       return this.http.post<any>(url,data);
     }
   
-    updateService(id: any): Observable<any> {
+    updateService(id: any,data:any): Observable<any> {
       const url = `${this.apiUrl}/api/services/${id}`;
-      return this.http.put<any>(url,id);
+      return this.http.put<any>(url,data);
     }
   
     deleteService(id: any): Observable<any> {

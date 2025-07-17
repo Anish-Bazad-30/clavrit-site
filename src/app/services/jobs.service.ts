@@ -25,9 +25,9 @@ export class JobsService {
 
 
 
-  updateJobs(id: any): Observable<any> {
-    const url = `${this.apiUrl}/`;
-    return this.http.put<any>(url, id);
+  updateJobs(id: any,data:any): Observable<any> {
+    const url = `${this.apiUrl}/clavrit/job-details/${id}`;
+    return this.http.put<any>(url, data);
   }
 
   deleteJobs(id: any): Observable<any> {

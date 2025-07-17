@@ -1,27 +1,28 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from 'src/app/services/blog.service';
 import { ClientService } from 'src/app/services/client.service';
+import { CommonService } from 'src/app/services/common.service';
 import { JobsService } from 'src/app/services/jobs.service';
 import { OurServicesService } from 'src/app/services/our-services.service';
 import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
-  selector: 'app-forms',
-  templateUrl: './forms.component.html',
-  styleUrls: ['./forms.component.scss']
+  selector: 'app-edit-form',
+  templateUrl: './edit-form.component.html',
+  styleUrls: ['./edit-form.component.scss']
 })
-export class FormsComponent {
+export class EditFormComponent implements OnInit {
   pageTitle!: string;
-
+  data: any;
 
   type: string | null = null;
   // form!: FormGroup;
   uploadedResume: File | null = null;
   uploadedImage: File | null = null;
   dragedFile: any;
-  selectedFiles: any[] = [];
+  selectedFiles: any;
   formSubmitted: boolean = false;
   constructor(
     private route: ActivatedRoute,
@@ -32,14 +33,23 @@ export class FormsComponent {
     private projectService: ProjectsService,
     private jobService: JobsService,
     private ourServicesService: OurServicesService,
+    private commonService: CommonService,
 
   ) { }
 
   ngOnInit() {
 
+    this.commonService.editData$.subscribe(data => {
+      if (data) {
+        this.data = data;
+        console.log(this.data);
 
+
+      }
+    });
 
     this.type = this.route.snapshot.paramMap.get('type') ?? '';
+    console.log('Content type:', this.type);
     console.log('Content type:', this.type);
     this.loadContent(this.type);
     this.buildFormByType(this.type);
@@ -108,6 +118,16 @@ export class FormsComponent {
           company: ['', Validators.required],
           logo: [null, Validators.required]
         });
+
+        if (this.data) {
+          this.selectedFields.patchValue({
+            name: this.data.name,
+            email: this.data.email,
+            phone: this.data.phone,
+            company: this.data.company,
+            logo: this.data.logoImage
+          });
+        }
         break;
 
       case 'blog':
@@ -118,11 +138,31 @@ export class FormsComponent {
           advantages: ['', Validators.required],
           disadvantages: ['', Validators.required],
           tags: this.fb.array([this.fb.control('', Validators.required)]),
-          imageUrl: [null, Validators.required],
+          image: [null, Validators.required],
           conclusion: ['', Validators.required],
           summary: ['', [Validators.required, Validators.minLength(20)]],
           content: ['', [Validators.required, Validators.minLength(20)]]
         });
+        if (this.data) {
+          this.selectedFields.patchValue({
+            title: this.data.title,
+            subtitle: this.data.subtitle,
+            authorName: this.data.authorName,
+            advantages: this.data.advantages,
+            disadvantages: this.data.disadvantages,
+            imageUrl: this.data.imageUrl,
+            conclusion: this.data.conclusion,
+            summary: this.data.summary,
+            content: this.data.content,
+
+          });
+          if (this.data.tags && Array.isArray(this.data.tags)) {
+            this.tags.clear();
+            this.data.tags.forEach((tag: string) => {
+              this.tags.push(this.fb.control(tag, Validators.required));
+            });
+          }
+        }
         break;
 
       case 'project':
@@ -133,6 +173,25 @@ export class FormsComponent {
           keyPoints: this.fb.array([new FormControl('', Validators.required)]),
           image: [null, Validators.required] // only if you want to validate file
         });
+        if (this.data) {
+          this.selectedFields.patchValue({
+            title: this.data.title,
+            image: this.data.imageUrl,
+            summary: this.data.summary,
+          });
+          if (this.data.technologies && Array.isArray(this.data.technologies)) {
+            this.technologies.clear();
+            this.data.technologies.forEach((technologies: string) => {
+              this.technologies.push(this.fb.control(technologies, Validators.required));
+            });
+          }
+          if (this.data.keyPoints && Array.isArray(this.data.keyPoints)) {
+            this.keyPoints.clear();
+            this.data.keyPoints.forEach((keyPoints: string) => {
+              this.keyPoints.push(this.fb.control(keyPoints, Validators.required));
+            });
+          }
+        }
         break;
 
       case 'service':
@@ -142,6 +201,15 @@ export class FormsComponent {
           type: ['', Validators.required],
           // images: ['']
         });
+        if (this.data) {
+          this.selectedFields.patchValue({
+            name: this.data.name,
+            description: this.data.description,
+            type: this.data.type,
+           
+          });
+          this.selectedFiles = this.data.imageUrl;
+        }
         break;
 
       case 'job-detail':
@@ -155,6 +223,33 @@ export class FormsComponent {
           jobQualification: this.fb.array([this.fb.control('', Validators.required)]),
           competencies: this.fb.array([this.fb.control('', Validators.required)])
         });
+         if (this.data) {
+          this.selectedFields.patchValue({
+            jobDesignation: this.data.jobDesignation,
+            jobCategory: this.data.jobCategory,
+            jobType: this.data.jobType,
+            jobLocation: this.data.jobLocation,
+            industry: this.data.industry,
+          });
+          if (this.data.jobResponsibility && Array.isArray(this.data.jobResponsibility)) {
+            this.jobResponsibility.clear();
+            this.data.jobResponsibility.forEach((jobResponsibility: string) => {
+              this.jobResponsibility.push(this.fb.control(jobResponsibility, Validators.required));
+            });
+          }
+          if (this.data.jobQualification && Array.isArray(this.data.jobQualification)) {
+            this.jobQualification.clear();
+            this.data.jobQualification.forEach((jobQualification: string) => {
+              this.jobQualification.push(this.fb.control(jobQualification, Validators.required));
+            });
+          }
+          if (this.data.competencies && Array.isArray(this.data.competencies)) {
+            this.competencies.clear();
+            this.data.competencies.forEach((competencies: string) => {
+              this.competencies.push(this.fb.control(competencies, Validators.required));
+            });
+          }
+        }
         break;
 
       case 'job-application':
@@ -265,8 +360,7 @@ export class FormsComponent {
     const files = event.target.files;
 
     this.fileTouched = true;
-    this.selectedFiles.push(files);
-    console.log(this.selectedFiles);
+    this.selectedFiles = files && files.length > 0 ? Array.from(files) : null;
 
     // Only handle validation if the form has an 'image' control
     const imageControl = this.selectedFields.get('image');
@@ -281,7 +375,6 @@ export class FormsComponent {
     }
   }
   fileTouched: boolean = false;
-
   handleFileInput(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -315,10 +408,10 @@ export class FormsComponent {
       formData.append('client', JSON.stringify(clientPayload));
 
       if (this.selectedFiles) {
-        formData.append('logo', this.selectedFiles[0]);
+        formData.append('logo', this.selectedFiles);
       }
 
-      this.clientService.createClient(formData).subscribe((res) => {
+      this.clientService.updateClient(this.data.id,formData).subscribe((res) => {
 
       })
 
@@ -348,17 +441,12 @@ export class FormsComponent {
       };
 
       formData.append('blog', JSON.stringify(blogPayload));
-      // for()
+
       if (this.selectedFiles) {
-        this.selectedFiles.forEach(element => {
-          formData.append('images', element);
-          console.log(element);
-
-        });
-
+        formData.append('images', this.selectedFiles);
       }
 
-      this.blogService.createBlogs(formData).subscribe((res) => {
+      this.blogService.updateBlogs(this.data.id,formData).subscribe((res) => {
 
       })
     } else {
@@ -387,12 +475,10 @@ export class FormsComponent {
       console.log(this.selectedFiles);
 
       if (this.selectedFiles) {
-        this.selectedFiles.forEach(element => {
-          formData.append('images', element);
-        });
+        formData.append('images', this.selectedFiles);
       }
 
-      this.projectService.createProjects(formData).subscribe((res) => {
+      this.projectService.updateProjects(this.data.id,formData).subscribe((res) => {
         console.log(res);
       })
 
@@ -401,24 +487,6 @@ export class FormsComponent {
     }
   }
 
-
-
-  @ViewChild('fileInput') fileInput!: ElementRef;
-
-  triggerFileInput() {
-    this.fileInput.nativeElement.click();
-  }
-
-  onImageUpload(event: any) {
-    const files = event.target.files;
-
-    if (files && files.length > 0) {
-      this.selectedFiles.push(files); // store File objects directly
-    }
-  }
-  removeFile(index: number): void {
-    this.selectedFiles.splice(index, 1);
-  }
   onServiceSubmit(): void {
     this.formSubmitted = true;
     if (this.selectedFields && this.selectedFiles) {
@@ -436,13 +504,11 @@ export class FormsComponent {
         // this.selectedFiles.forEach((file, index) => {
         // console.log("saddsadsasaddsadsa");
 
-        this.selectedFiles.forEach(element => {
-          formData.append('images', element);
-        });// 'images' should match BE field name
+        formData.append('images', this.selectedFiles); // 'images' should match BE field name
         // });
       }
 
-      this.ourServicesService.createService(formData).subscribe((res) => {
+      this.ourServicesService.updateService(this.data.id,formData).subscribe((res) => {
 
       })
 
@@ -467,7 +533,7 @@ export class FormsComponent {
         jobLocation: formValue.jobLocation,
         industry: formValue.industry
       };
-      this.jobService.createJobs(payload).subscribe((res) => {
+      this.jobService.updateJobs(this.data.id,payload).subscribe((res) => {
 
       })
 
@@ -540,13 +606,13 @@ export class FormsComponent {
   //   }
   // }
 
-  onSubmit(): void {
-    console.log(this.selectedFields);
+  // onSubmit(): void {
+  //   console.log(this.selectedFields);
 
-    if (this.selectedFields.valid) {
-      console.log('Form submitted:', this.form.value);
-    } else {
-      console.log('Form is invalid:', this.form);
-    }
-  }
+  //   if (this.selectedFields.valid) {
+  //     console.log('Form submitted:', this.form.value);
+  //   } else {
+  //     console.log('Form is invalid:', this.form);
+  //   }
+  // }
 }

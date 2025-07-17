@@ -185,40 +185,12 @@
                 </div>
 
                 <!-- Image Upload -->
-                <!-- <input type="file" class="form-control" id="imageUrl" (change)="onFileSelected($event)"
+                <input type="file" class="form-control" id="imageUrl" (change)="onFileSelected($event)"
                     formControlName="image"
                     [ngClass]="{'is-invalid': selectedFields.get('image')?.touched && selectedFields.get('image')?.invalid}"
                     multiple />
                 <div class="invalid-feedback">
                     At least one image is required.
-                </div> -->
-                <div class="mb-3">
-                    <!-- Image Upload Section -->
-                    <div class="image-upload-section d-flex justify-content-between align-items-center">
-                        <label for="Add-image" class="form-label secondary-font">Add Images/Videos</label>
-                        <button type="button" class="upload-button mb-3" (click)="triggerFileInput()">
-                            Add <img src="assets/icon/Add.svg" />
-                        </button>
-                    </div>
-
-                    <!-- Hidden File Input -->
-                    <input type="file" id="images" #fileInput accept="image/*,video/*" class="hidden-input" multiple
-                        (change)="onImageUpload($event)" style="display: none;" />
-
-                    <!-- Image/Video Preview Section -->
-
-                    <div class="preview-container w-100"
-                        style="background:none; border: 2px solid #7fdbff; padding: 5px; border-radius: 10px;">
-
-                        <div class="image-container" *ngFor="let file of selectedFiles; let i = index">
-
-                            <img [src]="file" class="main-img" />
-
-
-                            <img src="assets/icon/Minus.svg" class="delete-icon" (click)="removeFile(i)" />
-                        </div>
-
-                    </div>
                 </div>
 
                 <!-- Submit Button -->

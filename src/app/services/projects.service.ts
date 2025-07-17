@@ -27,9 +27,9 @@ export class ProjectsService {
       return this.http.post<any>(url,data);
     }
   
-    updateProjects(id: any): Observable<any> {
-      const url = `${this.apiUrl}/`;
-      return this.http.put<any>(url,id);
+    updateProjects(id: any, data:any): Observable<any> {
+      const url = `${this.apiUrl}/clavrit/projects/${id}`;
+      return this.http.put<any>(url,data);
     }
   
     deleteProjects(id: any): Observable<any> {

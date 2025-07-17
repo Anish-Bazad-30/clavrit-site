@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from 'src/app/services/blog.service';
 import { ClientService } from 'src/app/services/client.service';
 import { CommonDeleteService } from 'src/app/services/common-delete.service';
+import { CommonService } from 'src/app/services/common.service';
 import { ContactService } from 'src/app/services/contact.service';
 import { JobsService } from 'src/app/services/jobs.service';
 import { OurServicesService } from 'src/app/services/our-services.service';
@@ -30,7 +31,9 @@ export class ContentListComponent {
     private projectService: ProjectsService,
     private ourServiceServices: OurServicesService,
     private jobService: JobsService,
-    private deleteService: CommonDeleteService
+    private deleteService: CommonDeleteService,
+    private commonService: CommonService,
+
 
   ) { }
 
@@ -114,6 +117,8 @@ export class ContentListComponent {
   }
 
   edit(data: any) {
+    this.commonService.setEditData(data);
+    this.router.navigate(['/admin/edit-forms', this.type]);
   }
 
   showDeleteModal = false;

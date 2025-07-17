@@ -23,9 +23,9 @@ private apiUrl: string = environment.apiUrl;
       return this.http.post<any>(url, data);
     }
   
-    updateClient(id: any): Observable<any> {
-      const url = `${this.apiUrl}/`;
-      return this.http.put<any>(url,id);
+    updateClient(id: any, data:any): Observable<any> {
+      const url = `${this.apiUrl}/api/clients/${id}`;
+      return this.http.put<any>(url,data);
     }
   
     deleteClient(id: any): Observable<any> {

@@ -7,6 +7,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { ContentListComponent } from './content-list/content-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeletePopupComponent } from './delete-popup/delete-popup.component';
+import { EditFormComponent } from './edit-form/edit-form.component';
 
 
 
@@ -17,6 +18,7 @@ import { DeletePopupComponent } from './delete-popup/delete-popup.component';
     FormsComponent,
     ContentListComponent,
     DeletePopupComponent,
+    EditFormComponent,
     
   ],
   imports: [
