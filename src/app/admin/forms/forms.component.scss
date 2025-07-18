@@ -1,3 +1,37 @@
 .body-container{
     height: 100vh;
 }
+
+  .delete-icon {
+    position: absolute;
+    top: 0px;
+    right: -3px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  .image-container {
+    position: relative;
+    display: inline-block;
+    margin-right: 8px;
+  }
+     
+  .image-container img.main-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+  }
+  .main-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+  }
+    .upload-button {
+      background-color: #ffffff;
+      color: #11405A;
+      border: 1px solid #11405A;
+      padding: 6px 16px;
+      cursor: pointer;
+      border-radius: 10px;
+  }

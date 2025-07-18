@@ -21,7 +21,7 @@ const routes: Routes = [
   {path:"ai", component:AiComponent},
   {path:"about-us", component:AboutUsComponent},
   {path:"services", component:ServicesProvidedComponent},
-  {path:"detail-view", component:DetailViewComponent},
+  {path:"services/:slug", component:DetailViewComponent},
   {path:"career", component:CareerComponent},
   {path:"career-detail", component:CareerDetailComponent},
   {path:"portfolio", component:PortfolioComponent},
@@ -29,8 +29,6 @@ const routes: Routes = [
   {path:"blog-detail", component:BlogDetailComponent},
   {path:"our-partners", component:OurPartnersComponent},
   {path:"contact", component:ContactComponent},
-
-
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
 
 ];

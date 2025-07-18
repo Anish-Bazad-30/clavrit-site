@@ -60,16 +60,17 @@
                 </div>
 
                 <!-- Company Logo -->
-                <div class="col-lg-6">
-                    <div class="form-floating">
-                        <input type="file" id="companyLogo" class="form-control" placeholder="Company Logo"
-                            (change)="onFileSelected($event)">
-                        <label for="companyLogo">Company Logo</label>
-                    </div>
-                    <div *ngIf="fileTouched && !selectedFiles" class="text-danger small mt-1">
-                        Company logo is required.
-                    </div>
-                </div>
+                  <div class="col-lg-6">
+  <div class="form-floating">
+    <input type="file" #fileInput1 id="companyLogo" class="form-control"
+           placeholder="Company Logo"
+           (change)="handleSingleFileInput($event)">
+    <label for="companyLogo">Company Logo</label>
+  </div>
+  <div *ngIf="fileTouched && !selectedFiles" class="text-danger small mt-1">
+    Company logo is required.
+  </div>
+</div>
 
                 <!-- Submit -->
                 <div class="col-12 text-end">
@@ -185,12 +186,43 @@
                 </div>
 
                 <!-- Image Upload -->
-                <input type="file" class="form-control" id="imageUrl" (change)="onFileSelected($event)"
+                <!-- <input type="file" class="form-control" id="imageUrl" (change)="onFileSelected($event)"
                     formControlName="image"
                     [ngClass]="{'is-invalid': selectedFields.get('image')?.touched && selectedFields.get('image')?.invalid}"
                     multiple />
                 <div class="invalid-feedback">
                     At least one image is required.
+                </div> -->
+                <div class="mb-3">
+                    <!-- Image Upload Section -->
+                    <div class="image-upload-section d-flex justify-content-between align-items-center">
+                        <label for="Add-image" class="form-label secondary-font">Add Images</label>
+                        <button type="button" class="upload-button mb-3" (click)="triggerFileInput()">
+                            Add <img src="assets/img/Add.svg" />
+                        </button>
+                    </div>
+
+                    <!-- Hidden File Input -->
+                    <input type="file" id="images" #fileInput accept="image/*,video/*" class="hidden-input" multiple
+                        (change)="onImageUpload($event)" style="display: none;" />
+
+                    <!-- Image/Video Preview Section -->
+
+                    <div class="preview-container w-100 d-flex"
+                        style="background:none; border: 2px solid #7fdbff; padding: 5px; border-radius: 10px;">
+
+                        <div class="image-container d-flex" *ngFor="let file of previewUrls; let i = index">
+
+                            <img [src]="file" class="main-img m-2" />
+
+
+                            <img src="../../../assets/img/Minus.svg" class="delete-icon" (click)="removeFile(i)" />
+                        </div>
+
+                    </div>
+                    <div *ngIf="fileError" class="text-danger mt-2">
+                        Please upload at least one image.
+                    </div>
                 </div>
 
                 <!-- Submit Button -->
@@ -232,15 +264,47 @@
                 </div>
 
                 <!-- Images Upload -->
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                     <div class="form-floating">
                         <input type="file" id="imageUrl" class="form-control" formControlName="image"
-                            (change)="onFileSelected($event)" multiple>
+                            (change)="handleSingleFileInput($event)" multiple>
                         <label for="imageUrl">Upload Images</label>
                     </div>
                     <div *ngIf="selectedFields.get('image')?.touched && selectedFields.get('image')?.invalid"
                         class="text-danger small mt-1">
                         At least one image is required.
+                    </div>
+                </div> -->
+
+                <div class="mb-3">
+                    <!-- Image Upload Section -->
+                    <div class="image-upload-section d-flex justify-content-between align-items-center">
+                        <label for="Add-image" class="form-label secondary-font">Add Images/Videos</label>
+                        <button type="button" class="upload-button mb-3" (click)="triggerFileInput()">
+                            Add <img src="assets/img/Add.svg" />
+                        </button>
+                    </div>
+
+                    <!-- Hidden File Input -->
+                    <input type="file" id="images" #fileInput accept="image/*,video/*" class="hidden-input" multiple
+                        (change)="onImageUpload($event)" style="display: none;" />
+
+                    <!-- Image/Video Preview Section -->
+
+                    <div class="preview-container w-100 d-flex"
+                        style="background:none; border: 2px solid #7fdbff; padding: 5px; border-radius: 10px;">
+
+                        <div class="image-container d-flex" *ngFor="let file of previewUrls; let i = index">
+
+                            <img [src]="file" class="main-img m-2" />
+
+
+                            <img src="../../../assets/img/Minus.svg" class="delete-icon" (click)="removeFile(i)" />
+                        </div>
+
+                    </div>
+                    <div *ngIf="fileError" class="text-danger mt-2">
+                        Please upload at least one image.
                     </div>
                 </div>
 
@@ -328,14 +392,47 @@
                 </div>
 
                 <!-- Image Upload -->
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                     <div class="form-floating">
-                        <input type="file" id="imageUrl" class="form-control" (change)="handleFileInput($event)"
+                        <input type="file" id="imageUrl" class="form-control" (change)="handleSingleFileInput($event)"
                             multiple>
                         <label for="imageUrl">Upload Images</label>
                     </div>
                     <div *ngIf="!selectedFiles && formSubmitted" class="text-danger small mt-1">
                         At least one image is required.
+                    </div>
+                </div> -->
+
+
+                <div class="mb-3">
+                    <!-- Image Upload Section -->
+                    <div class="image-upload-section d-flex justify-content-between align-items-center">
+                        <label for="Add-image" class="form-label secondary-font">Add Images/Videos</label>
+                        <button type="button" class="upload-button mb-3" (click)="triggerFileInput()">
+                            Add <img src="assets/img/Add.svg" />
+                        </button>
+                    </div>
+
+                    <!-- Hidden File Input -->
+                    <input type="file" id="images" #fileInput accept="image/*,video/*" class="hidden-input" multiple
+                        (change)="onImageUpload($event)" style="display: none;" />
+
+                    <!-- Image/Video Preview Section -->
+
+                    <div class="preview-container w-100 d-flex"
+                        style="background:none; border: 2px solid #7fdbff; padding: 5px; border-radius: 10px;">
+
+                        <div class="image-container d-flex" *ngFor="let file of previewUrls; let i = index">
+
+                            <img [src]="file" class="main-img m-2" />
+
+
+                            <img src="../../../assets/img/Minus.svg" class="delete-icon" (click)="removeFile(i)" />
+                        </div>
+
+                    </div>
+                    <div *ngIf="fileError" class="text-danger mt-2">
+                        Please upload at least one image.
                     </div>
                 </div>
 

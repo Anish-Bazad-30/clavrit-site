@@ -5,7 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsComponent } from './forms/forms.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ContentListComponent } from './content-list/content-list.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeletePopupComponent } from './delete-popup/delete-popup.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
 
@@ -24,7 +24,8 @@ import { EditFormComponent } from './edit-form/edit-form.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
   ]
 })
 export class AdminModule { }

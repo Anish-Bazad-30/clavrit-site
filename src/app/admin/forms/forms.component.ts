@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,7 +33,7 @@ export class FormsComponent {
     private projectService: ProjectsService,
     private jobService: JobsService,
     private ourServicesService: OurServicesService,
-
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -118,7 +119,7 @@ export class FormsComponent {
           advantages: ['', Validators.required],
           disadvantages: ['', Validators.required],
           tags: this.fb.array([this.fb.control('', Validators.required)]),
-          imageUrl: [null, Validators.required],
+          // imageUrl: [null, Validators.required],
           conclusion: ['', Validators.required],
           summary: ['', [Validators.required, Validators.minLength(20)]],
           content: ['', [Validators.required, Validators.minLength(20)]]
@@ -131,7 +132,7 @@ export class FormsComponent {
           summary: ['', Validators.required],
           technologies: this.fb.array([new FormControl('', Validators.required)]),
           keyPoints: this.fb.array([new FormControl('', Validators.required)]),
-          image: [null, Validators.required] // only if you want to validate file
+          // image: [null, Validators.required] // only if you want to validate file
         });
         break;
 
@@ -261,36 +262,36 @@ export class FormsComponent {
   }
 
 
-  onFileSelected(event: any): void {
-    const files = event.target.files;
+  // onFileSelected(event: any): void {
+  //   const files = event.target.files;
 
-    this.fileTouched = true;
-    this.selectedFiles.push(files);
-    console.log(this.selectedFiles);
+  //   this.fileTouched = true;
+  //   this.selectedFiles.push(files);
+  //   console.log(this.selectedFiles);
 
-    // Only handle validation if the form has an 'image' control
-    const imageControl = this.selectedFields.get('image');
-    if (imageControl) {
-      if (this.selectedFiles && this.selectedFiles.length > 0) {
-        imageControl.setValue(this.selectedFiles);
-        imageControl.setErrors(null);
-      } else {
-        imageControl.setValue(null);
-        imageControl.setErrors({ required: true });
-      }
-    }
-  }
+  //   // Only handle validation if the form has an 'image' control
+  //   const imageControl = this.selectedFields.get('image');
+  //   if (imageControl) {
+  //     if (this.selectedFiles && this.selectedFiles.length > 0) {
+  //       imageControl.setValue(this.selectedFiles);
+  //       imageControl.setErrors(null);
+  //     } else {
+  //       imageControl.setValue(null);
+  //       imageControl.setErrors({ required: true });
+  //     }
+  //   }
+  // }
   fileTouched: boolean = false;
 
-  handleFileInput(event: any) {
-    const file = event.target.files[0];
-    if (file) {
+  @ViewChild('fileInput1') fileInput1!: ElementRef;
+
+  handleSingleFileInput(event: any) {
+    const file = event.target.files;
+    if (file && file.length > 0) {
       this.selectedFiles = file;
-      console.log(this.selectedFiles);
       this.fileTouched = true;
     }
   }
-
 
 
 
@@ -319,7 +320,15 @@ export class FormsComponent {
       }
 
       this.clientService.createClient(formData).subscribe((res) => {
+        this.selectedFields.reset();
+        this.selectedFiles = [];
+        this.fileTouched = false;
 
+        // ✅ Reset the file input
+        if (this.fileInput1) {
+          this.fileInput1.nativeElement.value = '';
+        }
+        this.location.back();
       })
 
     } else {
@@ -330,126 +339,171 @@ export class FormsComponent {
 
 
   onBlogSubmit(): void {
-    console.log(this.selectedFields);
+    this.fileError = this.selectedFiles.length === 0;
 
-    if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
-      const formData = new FormData();
+    // Mark form fields as touched for validation feedback
+    this.selectedFields.markAllAsTouched();
 
-      const blogPayload = {
-        title: this.selectedFields.value.title,
-        subtitle: this.selectedFields.value.subtitle,
-        authorName: this.selectedFields.value.authorName,
-        summary: this.selectedFields.value.summary,
-        content: this.selectedFields.value.content,
-        advantages: this.selectedFields.value.advantages,
-        disadvantages: this.selectedFields.value.disadvantages,
-        conclusion: this.selectedFields.value.conclusion,
-        tags: this.selectedFields.value.tags,
-      };
-
-      formData.append('blog', JSON.stringify(blogPayload));
-      // for()
-      if (this.selectedFiles) {
-        this.selectedFiles.forEach(element => {
-          formData.append('images', element);
-          console.log(element);
-
-        });
-
-      }
-
-      this.blogService.createBlogs(formData).subscribe((res) => {
-
-      })
-    } else {
-      this.fileTouched = true;
-      this.selectedFields.markAllAsTouched();
+    // If form is invalid or no file selected, stop here
+    if (this.selectedFields.invalid || this.fileError) {
+      return;
     }
+    const formData = new FormData();
+
+    const blogPayload = {
+      title: this.selectedFields.value.title,
+      subtitle: this.selectedFields.value.subtitle,
+      authorName: this.selectedFields.value.authorName,
+      summary: this.selectedFields.value.summary,
+      content: this.selectedFields.value.content,
+      advantages: this.selectedFields.value.advantages,
+      disadvantages: this.selectedFields.value.disadvantages,
+      conclusion: this.selectedFields.value.conclusion,
+      tags: this.selectedFields.value.tags,
+    };
+
+    formData.append('blog', JSON.stringify(blogPayload));
+    // for()
+    if (this.selectedFiles) {
+      this.selectedFiles.forEach(element => {
+        formData.append('images', element);
+        console.log(element);
+
+      });
+
+    }
+
+    this.blogService.createBlogs(formData).subscribe((res) => {
+      this.selectedFields.reset();
+      this.selectedFiles = [];
+      this.previewUrls = [];
+      this.location.back();
+      // Optional: Clear tags or dynamic FormArrays
+      // if (this.tags && this.tags.length > 0) {
+      //   this.tags.clear();
+      //   this.addTag(); // Optionally add one empty field back
+      // }
+    })
+
   }
 
   onProjectSubmit(): void {
-    console.log(this.selectedFields);
+    this.fileError = this.selectedFiles.length === 0;
 
-    if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
+    // Mark form fields as touched for validation feedback
+    this.selectedFields.markAllAsTouched();
 
-      const formData = new FormData();
-
-
-      // Convert JSON part
-      const projectPayload = {
-        title: this.selectedFields.value.title,
-        summary: this.selectedFields.value.summary,
-        technologies: this.selectedFields.value.technologies,
-        keyPoints: this.selectedFields.value.keyPoints
-      };
-
-      formData.append('project', JSON.stringify(projectPayload));
-      console.log(this.selectedFiles);
-
-      if (this.selectedFiles) {
-        this.selectedFiles.forEach(element => {
-          formData.append('images', element);
-        });
-      }
-
-      this.projectService.createProjects(formData).subscribe((res) => {
-        console.log(res);
-      })
-
-    } else {
-      this.selectedFields.markAllAsTouched();
+    // If form is invalid or no file selected, stop here
+    if (this.selectedFields.invalid || this.fileError) {
+      return;
     }
+    const formData = new FormData();
+
+
+    // Convert JSON part
+    const projectPayload = {
+      title: this.selectedFields.value.title,
+      summary: this.selectedFields.value.summary,
+      technologies: this.selectedFields.value.technologies,
+      keyPoints: this.selectedFields.value.keyPoints
+    };
+
+    formData.append('project', JSON.stringify(projectPayload));
+    console.log(this.selectedFiles);
+
+    if (this.selectedFiles) {
+      this.selectedFiles.forEach(element => {
+        formData.append('images', element);
+      });
+    }
+
+    this.projectService.createProjects(formData).subscribe((res) => {
+      this.selectedFields.reset();
+      this.selectedFiles = [];
+      this.previewUrls = [];
+      this.location.back();
+      // Optional: Clear tags or dynamic FormArrays
+      // if (this.tags && this.tags.length > 0) {
+      //   this.tags.clear();
+      //   this.addTag(); // Optionally add one empty field back
+      // }
+    })
+
+
   }
 
 
-
+  fileError: boolean = false;
   @ViewChild('fileInput') fileInput!: ElementRef;
+
+  previewUrls: string[] = [];
 
   triggerFileInput() {
     this.fileInput.nativeElement.click();
   }
 
   onImageUpload(event: any) {
-    const files = event.target.files;
+    const files: FileList = event.target.files;
 
     if (files && files.length > 0) {
-      this.selectedFiles.push(files); // store File objects directly
+      this.fileError = false;
+      Array.from(files).forEach(file => {
+        this.selectedFiles.push(file);
+
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.previewUrls.push(e.target.result); // Store preview URL
+        };
+        reader.readAsDataURL(file);
+      });
     }
   }
+
   removeFile(index: number): void {
     this.selectedFiles.splice(index, 1);
+    this.previewUrls.splice(index, 1);
   }
   onServiceSubmit(): void {
-    this.formSubmitted = true;
-    if (this.selectedFields && this.selectedFiles) {
+    this.fileError = this.selectedFiles.length === 0;
 
-      const formData = new FormData();
+    // Mark form fields as touched for validation feedback
+    this.selectedFields.markAllAsTouched();
 
-      // Convert JSON part
-      formData.append('name', this.selectedFields.value.name);
-      formData.append('type', this.selectedFields.value.type);
-      formData.append('description', this.selectedFields.value.description);
-
-
-      // Append files
-      if (this.selectedFiles) {
-        // this.selectedFiles.forEach((file, index) => {
-        // console.log("saddsadsasaddsadsa");
-
-        this.selectedFiles.forEach(element => {
-          formData.append('images', element);
-        });// 'images' should match BE field name
-        // });
-      }
-
-      this.ourServicesService.createService(formData).subscribe((res) => {
-
-      })
-
-    } else {
-      this.selectedFields.markAllAsTouched();
+    // If form is invalid or no file selected, stop here
+    if (this.selectedFields.invalid || this.fileError) {
+      return;
     }
+
+    const formData = new FormData();
+
+    // Convert JSON part
+    formData.append('name', this.selectedFields.value.name);
+    formData.append('type', this.selectedFields.value.type);
+    formData.append('description', this.selectedFields.value.description);
+
+
+    // Append files
+    if (this.selectedFiles) {
+      // this.selectedFiles.forEach((file, index) => {
+      // console.log("saddsadsasaddsadsa");
+
+      this.selectedFiles.forEach(element => {
+        formData.append('images', element);
+      });// 'images' should match BE field name
+      // });
+    }
+
+    this.ourServicesService.createService(formData).subscribe((res) => {
+      this.selectedFields.reset();
+      this.selectedFiles = [];
+      this.previewUrls = [];
+      this.location.back();
+      // Optional: Clear tags or dynamic FormArrays
+
+    })
+
   }
+
 
   onjobDetailsSubmit(): void {
     this.formSubmitted = true;
@@ -468,6 +522,11 @@ export class FormsComponent {
         industry: formValue.industry
       };
       this.jobService.createJobs(payload).subscribe((res) => {
+        this.selectedFields.reset();
+        this.selectedFiles = [];
+        this.previewUrls = [];
+this.location.back();
+        // Optional: Clear tags or dynamic FormArrays
 
       })
 

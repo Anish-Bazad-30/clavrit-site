@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from 'src/app/services/blog.service';
@@ -22,7 +23,7 @@ export class EditFormComponent implements OnInit {
   uploadedResume: File | null = null;
   uploadedImage: File | null = null;
   dragedFile: any;
-  selectedFiles: any;
+  selectedFiles: any[] = [];
   formSubmitted: boolean = false;
   constructor(
     private route: ActivatedRoute,
@@ -34,7 +35,7 @@ export class EditFormComponent implements OnInit {
     private jobService: JobsService,
     private ourServicesService: OurServicesService,
     private commonService: CommonService,
-
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -127,6 +128,7 @@ export class EditFormComponent implements OnInit {
             company: this.data.company,
             logo: this.data.logoImage
           });
+          this.selectedFiles = this.data.logoImage
         }
         break;
 
@@ -138,7 +140,7 @@ export class EditFormComponent implements OnInit {
           advantages: ['', Validators.required],
           disadvantages: ['', Validators.required],
           tags: this.fb.array([this.fb.control('', Validators.required)]),
-          image: [null, Validators.required],
+          // image: [null, Validators.required],
           conclusion: ['', Validators.required],
           summary: ['', [Validators.required, Validators.minLength(20)]],
           content: ['', [Validators.required, Validators.minLength(20)]]
@@ -162,6 +164,16 @@ export class EditFormComponent implements OnInit {
               this.tags.push(this.fb.control(tag, Validators.required));
             });
           }
+          if (this.data.imageUrl && Array.isArray(this.data.imageUrl)) {
+            this.previewUrls = [...this.data.imageUrl]; // populate preview URLs
+
+            // this.data.imageUrl.forEach((url: string) => {
+            // Simulate a File object from URL
+
+            this.selectedFiles = [...this.data.imageUrl];
+
+            // });
+          }
         }
         break;
 
@@ -171,7 +183,7 @@ export class EditFormComponent implements OnInit {
           summary: ['', Validators.required],
           technologies: this.fb.array([new FormControl('', Validators.required)]),
           keyPoints: this.fb.array([new FormControl('', Validators.required)]),
-          image: [null, Validators.required] // only if you want to validate file
+          // image: [null, Validators.required] // only if you want to validate file
         });
         if (this.data) {
           this.selectedFields.patchValue({
@@ -191,6 +203,16 @@ export class EditFormComponent implements OnInit {
               this.keyPoints.push(this.fb.control(keyPoints, Validators.required));
             });
           }
+          if (this.data.imageUrl && Array.isArray(this.data.imageUrl)) {
+            this.previewUrls = [...this.data.imageUrl]; // populate preview URLs
+
+            // this.data.imageUrl.forEach((url: string) => {
+            // Simulate a File object from URL
+
+            this.selectedFiles = [...this.data.imageUrl];
+
+            // });
+          }
         }
         break;
 
@@ -206,9 +228,18 @@ export class EditFormComponent implements OnInit {
             name: this.data.name,
             description: this.data.description,
             type: this.data.type,
-           
+
           });
-          this.selectedFiles = this.data.imageUrl;
+          if (this.data.imageUrl && Array.isArray(this.data.imageUrl)) {
+            this.previewUrls = [...this.data.imageUrl]; // populate preview URLs
+
+            // this.data.imageUrl.forEach((url: string) => {
+            // Simulate a File object from URL
+
+            this.selectedFiles = [...this.data.imageUrl];
+
+            // });
+          }
         }
         break;
 
@@ -223,7 +254,7 @@ export class EditFormComponent implements OnInit {
           jobQualification: this.fb.array([this.fb.control('', Validators.required)]),
           competencies: this.fb.array([this.fb.control('', Validators.required)])
         });
-         if (this.data) {
+        if (this.data) {
           this.selectedFields.patchValue({
             jobDesignation: this.data.jobDesignation,
             jobCategory: this.data.jobCategory,
@@ -356,43 +387,39 @@ export class EditFormComponent implements OnInit {
   }
 
 
-  onFileSelected(event: any): void {
-    const files = event.target.files;
+  // onFileSelected(event: any): void {
+  //   const files = event.target.files;
 
-    this.fileTouched = true;
-    this.selectedFiles = files && files.length > 0 ? Array.from(files) : null;
+  //   this.fileTouched = true;
+  //   this.selectedFiles = files && files.length > 0 ? Array.from(files) : null;
 
-    // Only handle validation if the form has an 'image' control
-    const imageControl = this.selectedFields.get('image');
-    if (imageControl) {
-      if (this.selectedFiles && this.selectedFiles.length > 0) {
-        imageControl.setValue(this.selectedFiles);
-        imageControl.setErrors(null);
-      } else {
-        imageControl.setValue(null);
-        imageControl.setErrors({ required: true });
-      }
-    }
-  }
+  //   // Only handle validation if the form has an 'image' control
+  //   const imageControl = this.selectedFields.get('image');
+  //   if (imageControl) {
+  //     if (this.selectedFiles && this.selectedFiles.length > 0) {
+  //       imageControl.setValue(this.selectedFiles);
+  //       imageControl.setErrors(null);
+  //     } else {
+  //       imageControl.setValue(null);
+  //       imageControl.setErrors({ required: true });
+  //     }
+  //   }
+  // }
   fileTouched: boolean = false;
-  handleFileInput(event: any) {
-    const file = event.target.files[0];
-    if (file) {
+
+  @ViewChild('fileInput1') fileInput1!: ElementRef;
+
+  handleSingleFileInput(event: any) {
+    const file = event.target.files;
+    if (file && file.length > 0) {
       this.selectedFiles = file;
-      console.log(this.selectedFiles);
       this.fileTouched = true;
     }
   }
 
-
-
-
-
-
-
-
   onClientSubmit(): void {
     console.log(this.selectedFields);
+
 
     if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
 
@@ -408,11 +435,19 @@ export class EditFormComponent implements OnInit {
       formData.append('client', JSON.stringify(clientPayload));
 
       if (this.selectedFiles) {
-        formData.append('logo', this.selectedFiles);
+        formData.append('logo', this.selectedFiles[0]);
       }
 
-      this.clientService.updateClient(this.data.id,formData).subscribe((res) => {
+      this.clientService.updateClient(this.data.id, formData).subscribe((res) => {
+        this.selectedFields.reset();
+        this.selectedFiles = [];
+        this.fileTouched = false;
 
+        // ✅ Reset the file input
+        if (this.fileInput1) {
+          this.fileInput1.nativeElement.value = '';
+        }
+        this.location.back();
       })
 
     } else {
@@ -423,69 +458,93 @@ export class EditFormComponent implements OnInit {
 
 
   onBlogSubmit(): void {
-    console.log(this.selectedFields);
+    this.fileError = this.selectedFiles.length === 0;
 
-    if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
-      const formData = new FormData();
+    // Mark form fields as touched for validation feedback
+    this.selectedFields.markAllAsTouched();
 
-      const blogPayload = {
-        title: this.selectedFields.value.title,
-        subtitle: this.selectedFields.value.subtitle,
-        authorName: this.selectedFields.value.authorName,
-        summary: this.selectedFields.value.summary,
-        content: this.selectedFields.value.content,
-        advantages: this.selectedFields.value.advantages,
-        disadvantages: this.selectedFields.value.disadvantages,
-        conclusion: this.selectedFields.value.conclusion,
-        tags: this.selectedFields.value.tags,
-      };
-
-      formData.append('blog', JSON.stringify(blogPayload));
-
-      if (this.selectedFiles) {
-        formData.append('images', this.selectedFiles);
-      }
-
-      this.blogService.updateBlogs(this.data.id,formData).subscribe((res) => {
-
-      })
-    } else {
-      this.fileTouched = true;
-      this.selectedFields.markAllAsTouched();
+    // If form is invalid or no file selected, stop here
+    if (this.selectedFields.invalid || this.fileError) {
+      return;
     }
+    const formData = new FormData();
+
+    const blogPayload = {
+      title: this.selectedFields.value.title,
+      subtitle: this.selectedFields.value.subtitle,
+      authorName: this.selectedFields.value.authorName,
+      summary: this.selectedFields.value.summary,
+      content: this.selectedFields.value.content,
+      advantages: this.selectedFields.value.advantages,
+      disadvantages: this.selectedFields.value.disadvantages,
+      conclusion: this.selectedFields.value.conclusion,
+      tags: this.selectedFields.value.tags,
+    };
+
+    formData.append('blog', JSON.stringify(blogPayload));
+
+    if (this.selectedFiles) {
+      this.selectedFiles.forEach(element => {
+        formData.append('images', element);
+        console.log(element);
+
+      });
+
+    }
+
+    this.blogService.updateBlogs(this.data.id, formData).subscribe((res) => {
+      this.selectedFields.reset();
+      this.selectedFiles = [];
+      this.previewUrls = [];
+      this.location.back();
+    })
   }
+
 
   onProjectSubmit(): void {
-    console.log(this.selectedFields);
+    this.fileError = this.selectedFiles.length === 0;
 
-    if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
+    // Mark form fields as touched for validation feedback
+    this.selectedFields.markAllAsTouched();
 
-      const formData = new FormData();
-
-
-      // Convert JSON part
-      const projectPayload = {
-        title: this.selectedFields.value.title,
-        summary: this.selectedFields.value.summary,
-        technologies: this.selectedFields.value.technologies,
-        keyPoints: this.selectedFields.value.keyPoints
-      };
-
-      formData.append('project', JSON.stringify(projectPayload));
-      console.log(this.selectedFiles);
-
-      if (this.selectedFiles) {
-        formData.append('images', this.selectedFiles);
-      }
-
-      this.projectService.updateProjects(this.data.id,formData).subscribe((res) => {
-        console.log(res);
-      })
-
-    } else {
-      this.selectedFields.markAllAsTouched();
+    // If form is invalid or no file selected, stop here
+    if (this.selectedFields.invalid || this.fileError) {
+      return;
     }
+    const formData = new FormData();
+
+
+    // Convert JSON part
+    const projectPayload = {
+      title: this.selectedFields.value.title,
+      summary: this.selectedFields.value.summary,
+      technologies: this.selectedFields.value.technologies,
+      keyPoints: this.selectedFields.value.keyPoints
+    };
+
+    formData.append('project', JSON.stringify(projectPayload));
+    console.log(this.selectedFiles);
+
+    if (this.selectedFiles) {
+      this.selectedFiles.forEach(element => {
+        formData.append('images', element);
+      });
+    }
+
+    this.projectService.updateProjects(this.data.id, formData).subscribe((res) => {
+      this.selectedFields.reset();
+      this.selectedFiles = [];
+      this.previewUrls = [];
+      this.location.back();
+      // Optional: Clear tags or dynamic FormArrays
+      // if (this.tags && this.tags.length > 0) {
+      //   this.tags.clear();
+      //   this.addTag(); // Optionally add one empty field back
+      // }
+    })
+
   }
+
 
   onServiceSubmit(): void {
     this.formSubmitted = true;
@@ -497,19 +556,21 @@ export class EditFormComponent implements OnInit {
       formData.append('name', this.selectedFields.value.name);
       formData.append('type', this.selectedFields.value.type);
       formData.append('description', this.selectedFields.value.description);
+      console.log(this.selectedFiles);
 
 
       // Append files
       if (this.selectedFiles) {
-        // this.selectedFiles.forEach((file, index) => {
-        // console.log("saddsadsasaddsadsa");
-
-        formData.append('images', this.selectedFiles); // 'images' should match BE field name
-        // });
+        this.selectedFiles.forEach(element => {
+          formData.append('images', element);
+        });
       }
 
-      this.ourServicesService.updateService(this.data.id,formData).subscribe((res) => {
-
+      this.ourServicesService.updateService(this.data.id, formData).subscribe((res) => {
+        this.selectedFields.reset();
+        this.selectedFiles = [];
+        this.previewUrls = [];
+        this.location.back();
       })
 
     } else {
@@ -533,8 +594,11 @@ export class EditFormComponent implements OnInit {
         jobLocation: formValue.jobLocation,
         industry: formValue.industry
       };
-      this.jobService.updateJobs(this.data.id,payload).subscribe((res) => {
-
+      this.jobService.updateJobs(this.data.id, payload).subscribe((res) => {
+        this.selectedFields.reset();
+        this.selectedFiles = [];
+        this.previewUrls = [];
+        this.location.back();
       })
 
     } else {
@@ -615,4 +679,35 @@ export class EditFormComponent implements OnInit {
   //     console.log('Form is invalid:', this.form);
   //   }
   // }
+
+  fileError: boolean = false;
+  @ViewChild('fileInput') fileInput!: ElementRef;
+
+  previewUrls: string[] = [];
+
+  triggerFileInput() {
+    this.fileInput.nativeElement.click();
+  }
+
+  onImageUpload(event: any) {
+    const files: FileList = event.target.files;
+
+    if (files && files.length > 0) {
+      this.fileError = false;
+      Array.from(files).forEach(file => {
+        this.selectedFiles.push(file);
+
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.previewUrls.push(e.target.result); // Store preview URL
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  }
+
+  removeFile(index: number): void {
+    this.selectedFiles.splice(index, 1);
+    this.previewUrls.splice(index, 1);
+  }
 }

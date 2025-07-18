@@ -4,10 +4,11 @@
         <div class="container w-100 d-flex justify-content-between align-items-center py-2">
             <div class="flex-grow-1 me-3">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
-                    <button class="btn btn-outline-secondary" type="button">
+                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search"
+                        [(ngModel)]="searchText" (input)="currentPage = 1">
+                    <!-- <button class="btn btn-outline-secondary" type="button">
                         <i class='bx bx-search'></i>
-                    </button>
+                    </button> -->
                 </div>
             </div>
             <div *ngIf="type !== 'job-application' && type !== 'contact'">
@@ -56,7 +57,7 @@
                                 <i class='bx bx-trash fs-5 text-danger'></i>
                             </button>
 
-                        
+
 
 
 
@@ -174,7 +175,7 @@
                                 <i class='bx bx-trash fs-5 text-danger'></i>
                             </button>
 
-                           
+
 
                         </td>
                     </tr>
@@ -328,7 +329,9 @@
                         <td>{{content.email}}</td>
                         <td>{{content.phone}}</td>
                         <td>{{content.jobAppliedFor}}</td>
-                        <td>{{content.resumeFilePath}}</td>
+                        <td><button (click)="downloadResume(content.resumeFilePath, content.fullName)"
+                                class="download-btn"><img src="../../../assets/img/Downloading.svg" width="20px"
+                                    height="20px"></button></td>
                         <td class="d-flex justify-content-center gap-2">
 
                             <!-- <button class="btn p-1" (click)="edit(content)">
@@ -361,7 +364,7 @@
                     </li>
                 </ul>
             </nav>
-            
+
         </div>
 
         <div *ngIf="type === 'contact'" class="container">
@@ -394,7 +397,7 @@
                                 <i class='bx bx-trash fs-5 text-danger'></i>
                             </button>
 
-                           
+
                         </td>
                     </tr>
                 </tbody>
@@ -421,8 +424,8 @@
             </nav>
         </div>
     </div>
-<app-delete-popup *ngIf="showDeleteModal" [type]="deleteType" [id]="deleteId" (confirmed)="handleDelete($event)"
-                (cancelled)="showDeleteModal = false">
-            </app-delete-popup>
+    <app-delete-popup *ngIf="showDeleteModal" [type]="deleteType" [id]="deleteId" (confirmed)="handleDelete($event)"
+        (cancelled)="showDeleteModal = false">
+    </app-delete-popup>
 
 </section>

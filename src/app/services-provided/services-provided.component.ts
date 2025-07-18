@@ -87,7 +87,22 @@ export class ServicesProvidedComponent {
   }
 
   readMore(service: any) {
+   const rawTitle = service.title;
+  const slug = this.slugify(rawTitle);
+
   this.ourServicesService.setService(service);
-  this.router.navigate(['/detail-view']);
+
+  this.router.navigate(['/services', slug]);
 }
+
+slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/\s+/g, '-')        // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')    // Remove all non-word chars
+    .replace(/\-\-+/g, '-')      // Replace multiple - with single -
+    .replace(/^-+/, '')          // Trim - from start
+    .replace(/-+$/, '');         // Trim - from end
+}
+
 }
