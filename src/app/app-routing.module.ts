@@ -16,8 +16,7 @@ import { SustainabilityComponent } from './sustainability/sustainability.compone
 import { AiComponent } from './ai/ai.component';
 
 const routes: Routes = [
-  {path:"" , component: LandingPageComponent},
-  {path:"home" , component: LandingPageComponent},
+{ path: '', component: LandingPageComponent, pathMatch: 'full' },
   {path:"sustainability", component:SustainabilityComponent},
   {path:"ai", component:AiComponent},
   {path:"about-us", component:AboutUsComponent},
