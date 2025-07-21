@@ -2,10 +2,10 @@
     <div
         class="banner-vertical-center-work container text-light d-flex justify-content-center align-items-center py-5 p-0">
         <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
-            <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center">Our Blogs</h1>
-            <h3 class="h4 pb-2 regular-400">DeepCritic: Deliberate Critique with Large Language Models</h3>
+            <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center">{{blogData.title}}</h1>
+            <h3 class="h4 pb-2 regular-400">{{blogData.subtitle}}</h3>
             <p class="banner-body pb-2 light-300">
-                By admin / May 17, 2025
+                By {{blogData.authorName}} / {{date}}
             </p>
             <button type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300"
                 routerLink="/portfolio">Learn More</button>
@@ -16,62 +16,84 @@
 </div>
 <section class="container py-5">
 
-    <div class="row pt-5">
+    <div class="row pt-5" *ngIf="blogData.summary">
         <div class="worksingle-content col-lg-8 m-auto text-left justify-content-center">
-            <h2 class="worksingle-heading h3 pb-3 light-300 typo-space-line">What is DeepCritic?</h2>
-            <p class="worksingle-footer py-3 text-muted light-300">
-                DeepCritic was created to improve Large Language Models’ ability for critique, especially in complex
-                fields like logic and mathematics. Its main goal is to give LLM critics the ability to purposefully
-                analyze every stage of a solution’s explanation. To ensure accuracy and depth, this involves not just
-                reviewing the step but also performing multi-perspective verifications and even meta-critiquing the
-                original critique.
-
-                By encouraging this methodical approach, DeepCritic generates critics that are better at spotting
-                mistakes and offer more detailed, insightful comments to help LLM get better.
+            <h2 class="worksingle-heading h3 pb-3 light-300 typo-space-line">What is {{blogData.title}}?</h2>
+            <p class="worksingle-footer py-1 text-muted light-300"
+                *ngFor="let point of blogData?.summary?.split('\\n')">
+                {{point}}
             </p>
         </div>
     </div>
 
-    <div class="row justify-content-center pb-4">
+    <div class="row justify-content-center pb-4" *ngIf="blogData.imageUrl[0]">
         <div class="col-lg-8">
             <div id="templatemo-slide-link-target" class="card mb-3">
-                <img class="img-fluid border rounded" src="./assets/img/Ai&S.jpg" alt="Card image cap">
+                <img class="img-fluid border rounded" [src]="blogData.imageUrl[0]" alt="Card image cap">
             </div>
 
         </div>
     </div>
 
-
-    <div class="row">
-        <div class="col-md-8 m-auto text-left justify-content-center">
-
-            <p class="text-muted light-300">
-                Nam tortor quam, aliquet vel nibh sit amet, faucibus bibendum nisl.
-                Donec vehicula nulla justo, vel sodales massa vestibulum nec. Praesent
-                non orci sed massa fringilla rutrum at et odio. Quisque est orci,
-                elementum sed neque ac, suscipit consectetur leo. Cras fermentum luctus
-                cursus. Ut porta, augue vel tempus congue, augue purus vulputate ex,
-                lacinia lobortis arcu metus sed lectus.
+    <div class="row" *ngIf="blogData.content">
+        <div class="worksingle-content col-lg-8 m-auto text-left justify-content-center">
+            <h2 class="worksingle-heading h3 pb-3 light-300 typo-space-line">Content:</h2>
+            <p class="worksingle-footer py-1 text-muted light-300"
+                *ngFor="let point of blogData?.content?.split('\\n')">
+                {{point}}
             </p>
         </div>
     </div>
 
+    <div class="row justify-content-center pb-4" *ngIf="blogData.imageUrl[1]">
+        <div class="col-lg-8">
+            <div id="templatemo-slide-link-target" class="card mb-3">
+                <img class="img-fluid border rounded" [src]="blogData.imageUrl[1]" alt="Card image cap">
+            </div>
 
-    <div class="row justify-content-center">
-        <div class="col-lg-8 ml-auto mr-auto pt-3 pb-4">
-            <p class="text-muted light-300">
-                Ed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas
-                accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur
-                adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
+        </div>
+    </div>
+    <div class="row" *ngIf="blogData.advantages">
+        <div class="worksingle-content col-lg-8 m-auto text-left justify-content-center">
+            <h2 class="worksingle-heading h3 pb-3 light-300 typo-space-line">Advantages:</h2>
+            <!-- <p class="worksingle-footer py-3 text-muted light-300"> -->
+            <!-- {{blogData.advantages}} -->
+            <ul *ngFor="let point of blogData?.advantages?.split('\\n')">
+                <li class="worksingle-footer  text-muted light-300">{{ point }}</li>
+            </ul>
+            <!-- </p> -->
+        </div>
+    </div>
+    <div class="row" *ngIf="blogData.disadvantages">
+        <div class="worksingle-content col-lg-8 m-auto text-left justify-content-center">
+            <h2 class="worksingle-heading h3 pb-3 light-300 typo-space-line">Disadvantages:</h2>
+            <ul *ngFor="let point of blogData?.disadvantages?.split('\\n')">
+                <li class="worksingle-footer  text-muted light-300">{{ point }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row justify-content-center pb-4" *ngIf="blogData.imageUrl[2]">
+        <div class="col-lg-8">
+            <div id="templatemo-slide-link-target" class="card mb-3">
+                <img class="img-fluid border rounded" [src]="blogData.imageUrl[2]" alt="Card image cap">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row" *ngIf="blogData.conclusion">
+        <div class="worksingle-content col-lg-8 m-auto text-left justify-content-center">
+            <h2 class="worksingle-heading h3 pb-3 light-300 typo-space-line">Conclusion:</h2>
+
+            <p class="worksingle-footer py-1 text-muted light-300"
+                *ngFor="let point of blogData?.conclusion?.split('\\n')">
+                {{point}}
             </p>
         </div>
     </div>
-   
-    <div class="row justify-content-center">
+
+    <!-- <div class="row justify-content-center">
         <div class="worksingle-comment-heading col-8 m-auto pb-3">
             <h4 class="h5">Comments</h4>
         </div>
@@ -222,7 +244,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
 
 
 </section>
@@ -234,80 +256,47 @@
             <div class="col-md-12 text-left justify-content-center">
                 <div class="row gx-5">
 
+                    <!-- <div class="col-sm-6 col-lg-4 mb-5" *ngFor="let blog of recentBlogs | recentBlog:4">
+                        <a href="#" class="related-content card text-decoration-none overflow-hidden h-100">
+                            <img class="related-img card-img-top" src="./assets/img/blog1.png" height="350px"
+                                alt="Card image cap">
+                            <div class="related-body card-body p-4">
+                                <hr>
+                                <h5 class="card-title h6 m-0 semi-bold-600 text-dark">ML Drift: Turbocharging AI on Your
+                                    Devices</h5>
+                                <p class="card-text pt-2 mb-1 light-300 text-dark">
+                                    Lorem ipsum dolor sit amet, consectetur.
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <a class="card-read-more" routerLink="/blog-detail">
+                                        <span class="text-decoration-none text-primary light-300">
+                                            Read more <i class='bx bxs-hand-right ms-1'></i>
+                                        </span>
+                                    </a>
+                                   
+                                </div>
+                            </div>
+                        </a>
+                    </div> -->
+                    <div class="col-12 col-md-4 text-decoration-none project graphic social mb-3"
+                        *ngFor="let item of recentBlogs | recentBlog:3">
+                        <div class="service-work overflow-hidden card mx-md-1 mx-0 mb-4 h-100">
+                            <img class="card-img-top" [src]="item.imageUrl" alt="..." width="100%" height="250px">
+                            <div class="card-body h-100 d-flex flex-column justify-content-evenly">
+                                <h5 class="card-title light-400 text-dark">{{ item.title }}</h5>
+                                <p class="card-text light-300 text-dark">
+                                    {{ item.summary | slice:0:40 }}...
+                                </p>
+                                <a class="card-read-more " (click)="viewBlog(item)">
+                                    <span class="text-decoration-none text-primary light-300">
+                                        Read more <i class='bx bxs-hand-right ms-1'></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="col-sm-6 col-lg-4 mb-5">
-                        <a href="#" class="related-content card text-decoration-none overflow-hidden h-100">
-                            <img class="related-img card-img-top" src="./assets/img/blog1.png" height="350px"
-                                alt="Card image cap">
-                            <div class="related-body card-body p-4">
-                                <hr>
-                                <h5 class="card-title h6 m-0 semi-bold-600 text-dark">ML Drift: Turbocharging AI on Your Devices</h5>
-                                <p class="card-text pt-2 mb-1 light-300 text-dark">
-                                    Lorem ipsum dolor sit amet, consectetur.
-                                </p>
-                                <div class="d-flex justify-content-between">
-                                    <a class="card-read-more" routerLink="/blog-detail">
-                                <span class="text-decoration-none text-primary light-300">
-                                    Read more <i class='bx bxs-hand-right ms-1'></i>
-                                </span>
-                            </a>
-                                    <!-- <div class="light-300">
-                                        <i class='bx-fw bx bx-heart me-1'></i>5
-                                        <i class='bx-fw bx bx-chat    ms-1 me-1'></i>3
-                                    </div> -->
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 mb-5">
-                        <a href="#" class="related-content card text-decoration-none overflow-hidden h-100">
-                            <img class="related-img card-img-top" src="./assets/img/blog1.png" height="350px"
-                                alt="Card image cap">
-                            <div class="related-body card-body p-4">
-                                <hr>
-                                <h5 class="card-title h6 m-0 semi-bold-600 text-dark">ML Drift: Turbocharging AI on Your Devices</h5>
-                                <p class="card-text pt-2 mb-1 light-300 text-dark">
-                                    Lorem ipsum dolor sit amet, consectetur.
-                                </p>
-                                <div class="d-flex justify-content-between">
-                                    <a class="card-read-more" routerLink="/blog-detail">
-                                <span class="text-decoration-none text-primary light-300">
-                                    Read more <i class='bx bxs-hand-right ms-1'></i>
-                                </span>
-                            </a>
-                                    <!-- <div class="light-300">
-                                        <i class='bx-fw bx bx-heart me-1'></i>5
-                                        <i class='bx-fw bx bx-chat    ms-1 me-1'></i>3
-                                    </div> -->
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 mb-5">
-                        <a href="#" class="related-content card text-decoration-none overflow-hidden h-100">
-                            <img class="related-img card-img-top" src="./assets/img/blog1.png" height="350px"
-                                alt="Card image cap">
-                            <div class="related-body card-body p-4">
-                                <hr>
-                                <h5 class="card-title h6 m-0 semi-bold-600 text-dark">ML Drift: Turbocharging AI on Your Devices</h5>
-                                <p class="card-text pt-2 mb-1 light-300 text-dark">
-                                    Lorem ipsum dolor sit amet, consectetur.
-                                </p>
-                                <div class="d-flex justify-content-between">
-                                    <a class="card-read-more" routerLink="/blog-detail">
-                                <span class="text-decoration-none text-primary light-300">
-                                    Read more <i class='bx bxs-hand-right ms-1'></i>
-                                </span>
-                            </a>
-                                    <!-- <div class="light-300">
-                                        <i class='bx-fw bx bx-heart me-1'></i>5
-                                        <i class='bx-fw bx bx-chat    ms-1 me-1'></i>3
-                                    </div> -->
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    
+
                 </div>
             </div>
         </div>

@@ -91,7 +91,8 @@
     <div class="container">
         <div class="row d-flex align-items-center py-3">
             <div class="col-lg-12 text-center">
-                <h1 class="h2 py-5 text-primary typo-space-line-center">A global IT firm empowering businesses to flourish and lead the way in
+                <h1 class="h2 py-5 text-primary typo-space-line-center">A global IT firm empowering businesses to
+                    flourish and lead the way in
                     innovation</h1>
                 <p class="light-300">
                     Clavrit offers a global powerhouse of IT solutions and services, acting as your one-stop shop for
@@ -201,7 +202,8 @@
 </section>
 <section class="bg-secondary py-3">
     <div class="container py-3">
-        <h2 class="h2 text-white col-12 col-xl-12 h2 text-center">Leading Global Enterprises Trust Us To Take Care of Their IT Ecosystems</h2>
+        <h2 class="h2 text-white col-12 col-xl-12 h2 text-center">Leading Global Enterprises Trust Us To Take Care of
+            Their IT Ecosystems</h2>
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
@@ -404,7 +406,7 @@
                 <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                     <div class="service-work-content text-left text-dark">
                         <span class="mb-lg-3 light-300 card-text h4">Retail,Commerce and Master Data</span>
-                       <p class="card-text mt-3">Smarter retail with clean, connected data.</p>
+                        <p class="card-text mt-3">Smarter retail with clean, connected data.</p>
                     </div>
                 </div>
             </div>
@@ -522,19 +524,19 @@
         <div class="row gy-5 g-lg-5 mb-2">
 
 
-            <div class="col-md-4 mb-3">
+            <div class="col-md-4 mb-3" *ngFor="let item of projectList | recentBlog:3">
                 <a class="recent-work card border-0 shadow-lg overflow-hidden">
-                    <img class="recent-work-img card-img" src="./assets/img/motolens.png" height="300px"
+                    <img class="recent-work-img card-img" [src]="item.imageUrl" height="300px"
                         alt="Card image">
                     <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
                         <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                            <h3 class="card-title light-300">Motolens AI</h3>
-                            <p class="card-text">Detect and report vehicle-related violence using AI.</p>
+                            <h3 class="card-title light-300">{{item.title}}</h3>
+                            <p class="card-text">{{item.summary| slice:0:20 }}...</p>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col-md-4 mb-3">
+            <!-- <div class="col-md-4 mb-3">
                 <a class="recent-work card border-0 shadow-lg overflow-hidden">
                     <img class="recent-work-img card-img" src="./assets/img/baseliner.jpeg" height="300px"
                         alt="Card image">
@@ -594,7 +596,7 @@
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
 
         </div>
     </div>

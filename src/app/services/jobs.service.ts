@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 @Injectable({
@@ -49,4 +49,16 @@ export class JobsService {
     const url = `${this.apiUrl}/api/job-application/${id}`;
     return this.http.delete<any>(url);
   }
+
+
+    private subject = new BehaviorSubject<any>(null);  // You can type this (e.g., BehaviorSubject<MyDataType>)
+    sharedData$ = this.subject.asObservable();         // Observable for other components
+  
+    setData(data: any) {
+      this.subject.next(data);
+    }
+  
+    clearData() {
+      this.subject.next(null);
+    }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
@@ -31,6 +31,29 @@ export class BlogService {
   deleteBlogs(id: any): Observable<any> {
     const url = `${this.apiUrl}/clavrit/blogs/${id}`;
     return this.http.delete<any>(url);
+  }
+
+
+    private subject = new BehaviorSubject<any>(null);  // You can type this (e.g., BehaviorSubject<MyDataType>)
+  sharedData$ = this.subject.asObservable();         // Observable for other components
+
+  setData(data: any) {
+    this.subject.next(data);
+  }
+
+  clearData() {
+    this.subject.next(null);
+  }
+
+   private recentBlogsubject = new BehaviorSubject<any>(null);  // You can type this (e.g., BehaviorSubject<MyDataType>)
+  recentBlogSharedData$ = this.recentBlogsubject.asObservable();         // Observable for other components
+
+  setRecentBlogData(data: any) {
+    this.recentBlogsubject.next(data);
+  }
+
+  clearRecentBlogData() {
+    this.recentBlogsubject.next(null);
   }
 
 }

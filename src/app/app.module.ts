@@ -21,6 +21,7 @@ import { OurPartnersComponent } from './our-partners/our-partners.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SustainabilityComponent } from './sustainability/sustainability.component';
 import { AiComponent } from './ai/ai.component';
+import { RecentBlogPipe } from './pipes/recent-blog.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { AiComponent } from './ai/ai.component';
     BlogDetailComponent,
     OurPartnersComponent,
     SustainabilityComponent,
-    AiComponent
+    AiComponent,
+    RecentBlogPipe
   ],
   imports: [
     BrowserModule,

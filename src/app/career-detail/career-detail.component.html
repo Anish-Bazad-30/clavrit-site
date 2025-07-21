@@ -2,8 +2,8 @@
     <div
         class="banner-vertical-center-work container text-light d-flex justify-content-center align-items-center py-5 p-0">
         <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
-            <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center">Sr. Java Developer</h1>
-            <h4 class="h4 pb-2 regular-800">By admin / October 6, 2024</h4>
+            <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center">{{jobsList.jobDesignation}}</h1>
+            <h4 class="h4 pb-2 regular-800">By admin / {{date}}</h4>
 
             <a type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300" href="#applyform" >Apply Now</a>
             <button type="submit" class="btn rounded-pill btn-secondary text-light px-4 light-300">Contact Us</button>
@@ -19,10 +19,10 @@
                     industry-leading products, as well as build the tools that other teams use every day to provide our
                     amazing customer service.</h6>
                 <h5 class="h5 py-2 text-dark">Job Responsibilities:</h5>
-                <p class="light-400">
-                    · Develop new products as a member of one of our Scrum teams
+                <p class="light-400" *ngFor="let data of jobsList.jobResponsibility">
+                    · {{data}}
                 </p>
-                <p class="light-400">
+                <!-- <p class="light-400">
                     · Maintain existing products and support internal users
                 </p>
                 <p class="light-400">
@@ -48,51 +48,34 @@
                 </p>
                 <p class="light-400">
                     · Actively seek ways to improve the team’s designs, tools, and processes
-                </p>
+                </p> -->
 
 
 
 
                 <h5 class="h5 py-2 text-dark">Job Qualifications:</h5>
 
-                <p class="light-400">
-                    · Proficient in Java or similar programming language
+                <p class="light-400" *ngFor="let data of jobsList.jobQualification">
+                    · {{data}}
                 </p>
-                <p class="light-400">
-                    · BS in computer science (or related field) OR equivalent experience
-                </p>
-                <p class="light-400">
-                    · 2 years of relevant work experience
-                </p>
-                <p class="light-400">
-                    · Experience with JavaScript, Hibernate, and AWS is a plus
-                </p>
+               
 
 
 
 
                 <h5 class="h5 py-2 text-dark">Job Competencies:</h5>
 
-                <p class="light-400">
-                    · Able to thrive in a team environment
-                </p>
-                <p class="light-400">
-                    · Excellent written and verbal communications skills
-                </p>
-                <p class="light-400">
-                    · Ability to quickly learn and adapt to new technologies, tools, and software
-                </p>
-                <p class="light-400">
-                    · Ability to prioritize and manage multiple tasks simultaneously
+                <p class="light-400" *ngFor="let data of jobsList.competencies">
+                    · {{data}}
                 </p>
 
 
 
-                <h6 class="h6 py-2 text-dark">Job Category: Java developer</h6>
+                <h6 class="h6 py-2 text-dark">Job Category: {{jobsList.jobCategory}}</h6>
 
-                <h6 class="h6 py-2 text-dark">Job Type: Full Time</h6>
-                <h6 class="h6 py-2 text-dark">Job Location: Remote</h6>
-                <h6 class="h6 py-2 text-dark">Industry: Information and Technology</h6>
+                <h6 class="h6 py-2 text-dark">Job Type: {{jobsList.jobType}}</h6>
+                <h6 class="h6 py-2 text-dark">Job Location: {{jobsList.jobLocation}}</h6>
+                <h6 class="h6 py-2 text-dark">Industry: {{jobsList.industry}}</h6>
 
             </div>
         </div>
@@ -151,7 +134,7 @@
             </div>
 
             <!-- Job Applied -->
-            <div class="col-lg-6 mb-4">
+            <!-- <div class="col-lg-6 mb-4">
                 <div class="form-floating">
                     <select class="form-select" formControlName="jobApplied">
                         <option value="">Select</option>
@@ -165,7 +148,7 @@
                     class="text-danger small mt-1">
                     Job role is required.
                 </div>
-            </div>
+            </div> -->
 
             <!-- Qualification -->
             <div class="col-lg-6 mb-4">
@@ -265,7 +248,7 @@
             </div>
 
             <!-- Cover Letter -->
-            <div class="col-lg-6 mb-4">
+            <div class="col-lg-12 mb-4">
                 <div class="form-floating">
                     <textarea class="form-control" rows="8" id="floatingtextarea" formControlName="coverletter"
                         placeholder="Write your cover letter here"></textarea>

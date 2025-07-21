@@ -9,10 +9,11 @@ import { ToastService } from '../services/toast.service';
 })
 export class CareerDetailComponent implements OnInit {
 
-  jobsList: any[] = [];
+  jobsList: any;
   careerForm!: FormGroup;
   dragedFile: any;
   selectedCVFile: any;
+  date!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -22,7 +23,7 @@ export class CareerDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    
     this.fetchJobs();
     console.log(this.jobsList);
 
@@ -31,7 +32,7 @@ export class CareerDetailComponent implements OnInit {
       fullName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]], // 10-digit phone
-      jobApplied: ['', Validators.required],
+      jobApplied: [this.jobsList.jobDesignation],
       qualification: ['', Validators.required],
       totalYOE: ['', Validators.required],
       relevantExp: ['', [Validators.required, Validators.pattern(/^\d{1,2}$/)]],
@@ -64,6 +65,8 @@ export class CareerDetailComponent implements OnInit {
 
   onSubmit() {
     if (this.careerForm.valid) {
+      console.log(this.careerForm.value);
+      
       const formData = new FormData();
 
       formData.append('fullName', this.careerForm.get('fullName')?.value);
@@ -103,10 +106,27 @@ export class CareerDetailComponent implements OnInit {
   }
 
   fetchJobs() {
-    this.jobsService.getJobs().subscribe((res) => {
-      this.jobsList = res.data;
-    })
+    this.jobsService.sharedData$.subscribe(data => {
+      if (data) {
+        this.jobsList = data;
+        console.log(this.jobsList);
+        
+      } else {
+        // fallback: optionally load via route param or redirect
+      }
+    });
+    this.date = this.formatDateArray(this.jobsList.createdAt);
   }
+
+   formatDateArray(dateArray: number[]): string {
+  if (!dateArray || dateArray.length < 3) return '';
+  const date = new Date(dateArray[0], dateArray[1] - 1, dateArray[2]); // Month is 0-based
+  return date.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+}
   handleBrowseFile(event: any) {
     this.dragedFile = event.target.files[0];
     // this.infomsg = this.dragedFile.name;
