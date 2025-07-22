@@ -1,0 +1,10 @@
+#scrollTopBtn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 9999;
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  display: none; /* Hidden by default */
+}
