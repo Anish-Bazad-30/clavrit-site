@@ -209,8 +209,9 @@
                     <tr class="text-center custom-font">
                         <th>Sl No</th>
                         <th>Name</th>
+                        
+                        <th>Sub Heading</th>
                         <th>Description</th>
-                        <th>Type</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -218,8 +219,9 @@
                     <tr class="table-data" *ngFor="let content of contentListview; let i = index">
                         <td>{{i+1}}</td>
                         <td>{{content.name}}</td>
-                        <td>{{content.description}}</td>
                         <td>{{content.type}}</td>
+                        <td>{{content.description}}</td>
+                        
                         <td class="d-flex justify-content-center gap-2">
 
                             <button class="btn p-1" (click)="edit(content)">
