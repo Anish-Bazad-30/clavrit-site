@@ -25,7 +25,7 @@
                 <div class="col-12 col-md-6 text-decoration-none project graphic social mb-2"
                     *ngFor="let item of paginatedList">
                     <div class="service-work overflow-hidden card mx-md-1 mx-0 mb-4 h-100">
-                        <img class="card-img-top" [src]="item.imageUrl" alt="..." width="100%" height="250px">
+                        <img class="card-img-top" [src]="item.imageUrl[0]" alt="..." width="100%" height="250px">
                         <div class="card-body h-100 d-flex flex-column justify-content-evenly">
                             <h5 class="card-title light-400 text-dark">{{ item.title }}</h5>
                             <p class="card-text light-300 text-dark">
@@ -93,7 +93,7 @@
                     <div class="col-12 col-md-4 text-decoration-none project graphic social mb-3"
                         *ngFor="let item of blogList | recentBlog:3">
                         <div class="service-work overflow-hidden card mx-md-1 mx-0 mb-4 h-100">
-                            <img class="card-img-top" [src]="item.imageUrl" alt="..." width="100%" height="250px">
+                            <img class="card-img-top" [src]="item.imageUrl[0]" alt="..." width="100%" height="250px">
                             <div class="card-body h-100 d-flex flex-column justify-content-evenly">
                                 <h5 class="card-title light-400 text-dark">{{ item.title }}</h5>
                                 <p class="card-text light-300 text-dark">
