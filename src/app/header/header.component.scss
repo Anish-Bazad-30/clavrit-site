@@ -8,7 +8,10 @@
   border-bottom: 2px solid transparent;
 }
 
-.custom-nav-link:hover,
+.custom-nav-link:hover{
+  color: #31B0FD !important; 
+  text-decoration: none; 
+}
 .custom-nav-link:focus {
   color: #31B0FD !important; 
   border-bottom: 2px solid #31B0FD;
