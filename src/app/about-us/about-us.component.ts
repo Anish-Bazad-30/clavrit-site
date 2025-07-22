@@ -11,7 +11,7 @@ export class AboutUsComponent implements OnInit {
 
   clientList: any[] = [];
   subscriberEmail: string = '';
-  clientSlides: any[]=[];
+  clientSlides: any[] = [];
   constructor(
     private clientService: ClientService,
     private toastService: ToastService
@@ -29,15 +29,15 @@ export class AboutUsComponent implements OnInit {
       console.log(this.clientList);
       this.groupClientsInSlides();
     })
-    
+
   }
 
   groupClientsInSlides() {
-  const chunkSize = 4;
-  for (let i = 0; i < this.clientList.length; i += chunkSize) {
-    this.clientSlides.push(this.clientList.slice(i, i + chunkSize));
+    const chunkSize = 4;
+    for (let i = 0; i < this.clientList.length; i += chunkSize) {
+      this.clientSlides.push(this.clientList.slice(i, i + chunkSize));
+    }
   }
-}
 
   onSubscribe() {
     if (!this.subscriberEmail) return;

@@ -213,145 +213,29 @@
             feedback and suggestions. Customer relations & satisfaction are the key factors we focus on.</p>
         <div id="carouselExampleIndicators" class="carousel slide bg-secondary" data-bs-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                <li *ngFor="let slide of clientSlides; let i = index" [class.active]="i === 0"
+                    [attr.data-bs-target]="'#carouselExampleIndicators'" [attr.data-bs-slide-to]="i"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-
+                <div class="carousel-item" *ngFor="let slide of clientSlides; let i = index" [class.active]="i === 0">
                     <div class="py-5 row d-flex align-items-center">
-                        <section class="bg-secondary">
+                        <section class="bg-secondary w-100">
                             <div class="container">
-
-                                <div class="row text-center">
-                                    <div class="col-md-2 mb-3">
+                                <div class="row text-center d-flex justify-content-center align-items-center">
+                                    <div class="col-md-2 mb-3" *ngFor="let client of slide">
                                         <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
+                                            <img [src]="client.logoImage" class="p-2" alt="Client Logo" />
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </section>
                     </div>
-
-                </div>
-                <div class="carousel-item">
-
-                    <div class="py-5 row d-flex align-items-center">
-                        <section class="bg-secondary">
-                            <div class="container">
-
-                                <div class="row text-center">
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </section>
-                    </div>
-
-                </div>
-                <div class="carousel-item">
-
-                    <div class="py-5 row d-flex align-items-center">
-                        <section class="bg-secondary">
-                            <div class="container">
-
-                                <div class="row text-center">
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mb-3">
-                                        <div class="card partner-wap py-3 bg-light">
-                                            <img src="../../assets/img/SAP.png" class="p-2">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </section>
-                    </div>
-
                 </div>
             </div>
-            <a class="carousel-control-prev text-decoration-none" href="#carouselExampleIndicators" role="button"
+
+
+            <!-- <a class="carousel-control-prev text-decoration-none" href="#carouselExampleIndicators" role="button"
                 data-bs-slide="prev">
 
                 <span class="visually-hidden">Previous</span>
@@ -360,6 +244,12 @@
                 data-bs-slide="next">
 
                 <span class="visually-hidden">Next</span>
+            </a> -->
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
             </a>
         </div>
     </div>
@@ -497,7 +387,7 @@
                     alt="Artificial Intelligence">
                 <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                     <div class="service-work-content text-left text-dark">
-                        <span class="mb-lg-3 light-300 card-text h4">MIddleWare Development</span>
+                        <span class="mb-lg-3 light-300 card-text h4">MiddleWare Development</span>
                         <p class="card-text mt-3">Connect systems seamlessly with robust middleware.</p>
                     </div>
                 </div>
@@ -810,49 +700,21 @@
     </div>
 </section> -->
 <section class="bg-white">
-    <div class="container align-items-center col-lg-12 text-center pb-5">
-        <h1 class="h2 py-5 text-primary typo-space-line-center">Clavrit's Business Stats</h1>
-        <p class="light-300">We believe in Numbers</p>
-        <div class="stats-container container py-3">
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class='bx bx-time-five'></i>
-                </div>
-                <div class="stat-number">7+</div>
-                <div class="stat-label">Years Of Experience</div>
-            </div>
+  <div class="container align-items-center col-lg-12 text-center pb-5">
+    <h1 class="h2 py-5 text-primary typo-space-line-center">Clavrit's Business Stats</h1>
+    <p class="light-300">We believe in Numbers</p>
 
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class='bx bx-code-alt'></i>
-                </div>
-                <div class="stat-number">110</div>
-                <div class="stat-label">Projects</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class='bx bx-group'></i>
-                </div>
-                <div class="stat-number">60+</div>
-                <div class="stat-label">Team Members</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class='bx bx-smile'></i>
-                </div>
-                <div class="stat-number">110</div>
-                <div class="stat-label">Clientele</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class='bx bx-world'></i>
-                </div>
-                <div class="stat-number">28</div>
-                <div class="stat-label">Served Countries</div>
-            </div>
+    <div class="stats-container container py-3">
+      <div class="stat-card" *ngFor="let stat of stats; let i = index" #statBox>
+        <div class="stat-icon">
+          <i [class]="stat.icon"></i>
         </div>
+        <div class="stat-number">
+          {{ animatedValues[i] | number:'1.0-0' }}{{ stat.suffix }}
+        </div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
     </div>
+  </div>
 </section>
+

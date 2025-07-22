@@ -55,9 +55,9 @@ export class BlogComponent implements OnInit {
   currentPage: number = 1;
   totalPages: number = 1;
   totalPagesArray: number[] = [];
-selectedTag: string | null = null;
-tagList: string[] = [];
-filteredBlogList: any[] = [];
+  selectedTag: string | null = null;
+  tagList: string[] = [];
+  filteredBlogList: any[] = [];
 
   constructor(
     private blogService: BlogService,
@@ -72,39 +72,39 @@ filteredBlogList: any[] = [];
   }
 
   fetchBlogs() {
-     this.blogService.getBlogs().subscribe((res) => {
-    const rawData = res.data;
-    this.blogList = Array.isArray(rawData[0]) ? rawData[0] : rawData;
+    this.blogService.getBlogs().subscribe((res) => {
+      const rawData = res.data;
+      this.blogList = Array.isArray(rawData[0]) ? rawData[0] : rawData;
 
-    // Collect unique tags
-    const tagSet = new Set<string>();
-    this.blogList.forEach((blog) => {
-      blog.tags?.forEach((tag: string) => tagSet.add(tag));
+      // Collect unique tags
+      const tagSet = new Set<string>();
+      this.blogList.forEach((blog) => {
+        blog.tags?.forEach((tag: string) => tagSet.add(tag));
+      });
+      this.tagList = Array.from(tagSet);
+
+      // Set default filtered list (all blogs)
+      this.filteredBlogList = [...this.blogList];
+
+      // Pagination
+      this.totalPages = Math.ceil(this.blogList.length / this.itemsPerPage);
+      this.totalPagesArray = Array(this.totalPages).fill(0).map((_, i) => i + 1);
+      this.blogService.setRecentBlogData(this.blogList);
+      this.updatePaginatedList();
     });
-    this.tagList = Array.from(tagSet);
-
-    // Set default filtered list (all blogs)
-    this.filteredBlogList = [...this.blogList];
-
-    // Pagination
-    this.totalPages = Math.ceil(this.blogList.length / this.itemsPerPage);
-    this.totalPagesArray = Array(this.totalPages).fill(0).map((_, i) => i + 1);
-    this.blogService.setRecentBlogData(this.blogList);
-    this.updatePaginatedList();
-  });
 
 
   }
 
   filterByTag(tag: string) {
-  this.selectedTag = tag;
-  this.filteredBlogList = this.blogList.filter((blog) =>
-    blog.tags?.includes(tag)
-  );
-  console.log(this.filteredBlogList);
-  
-  this.paginatedList = this.filteredBlogList;
-}
+    this.selectedTag = tag;
+    this.filteredBlogList = this.blogList.filter((blog) =>
+      blog.tags?.includes(tag)
+    );
+    console.log(this.filteredBlogList);
+
+    this.paginatedList = this.filteredBlogList;
+  }
 
   updatePaginatedList() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;

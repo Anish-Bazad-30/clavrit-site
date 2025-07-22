@@ -11,27 +11,25 @@ export class BlogDetailComponent implements OnInit {
 
   blogData: any;
   date!: string;
-  recentBlogs : any;
+  recentBlogs: any;
   constructor(
     private blogService: BlogService,
     private router: Router,
-    
+
   ) { }
 
   ngOnInit(): void {
     this.blogService.sharedData$.subscribe(data => {
       if (data) {
         this.blogData = data;
-        console.log(this.blogData);
 
       } else {
         // fallback: optionally load via route param or redirect
       }
     });
-     this.blogService.recentBlogSharedData$.subscribe(data => {
+    this.blogService.recentBlogSharedData$.subscribe(data => {
       if (data) {
         this.recentBlogs = data;
-        console.log(this.blogData);
 
       } else {
         // fallback: optionally load via route param or redirect
