@@ -663,12 +663,13 @@
     <div class="stats-container container py-3">
       <div class="stat-card" *ngFor="let stat of stats; let i = index" #statBox>
         <div class="stat-icon">
-          <i [class]="stat.icon"></i>
+          <img [src]="stat.iconUrl" alt="stat-icon" />
         </div>
         <div class="stat-number">
-          {{ animatedValues[i] | number:'1.0-0' }}{{ stat.suffix }}
+          {{ animatedValues[i] | number:'1.0-0' }}
+            <!-- {{stat.value}} -->
         </div>
-        <div class="stat-label">{{ stat.label }}</div>
+        <div class="stat-label">{{ stat.title }}</div>
       </div>
     </div>
   </div>

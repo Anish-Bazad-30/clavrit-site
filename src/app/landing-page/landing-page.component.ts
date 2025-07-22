@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { ProjectsService } from '../services/projects.service';
 import { ClientService } from '../services/client.service';
+import { BusinessStatsService } from '../services/business-stats.service';
 declare var $: any;
 @Component({
   selector: 'app-landing-page',
@@ -15,13 +16,36 @@ export class LandingPageComponent implements OnInit {
   constructor(
     private projectService: ProjectsService,
     private clientService: ClientService,
+    private bs: BusinessStatsService
   ) { }
 
   ngOnInit(): void {
     this.fetchProjects();
     console.log(this.projectList);
     this.fetchClient();
+    this.bs.getAllStats().subscribe((res) => {
+    this.stats = res.data;
+    this.animatedValues = new Array(this.stats.length).fill(0);
+
+    // Delay observer setup until ViewChildren is ready
+    setTimeout(() => this.setupObserver(), 0);
+  });
   }
+
+  setupObserver() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && !this.hasAnimated) {
+        this.animateAll();
+        this.hasAnimated = true;
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  this.statBoxes.forEach((el) => observer.observe(el.nativeElement));
+}
+
 
   fetchProjects() {
     this.projectService.getProjects().subscribe((res) => {
@@ -88,13 +112,7 @@ export class LandingPageComponent implements OnInit {
       this.clientSlides.push(this.clientList.slice(i, i + chunkSize));
     }
   }
- stats = [
-    { label: 'Years Of Experience', icon: 'bx bx-time-five', value: 7, suffix: '+' },
-    { label: 'Projects', icon: 'bx bx-code-alt', value: 110, suffix: '' },
-    { label: 'Team Members', icon: 'bx bx-group', value: 60, suffix: '+' },
-    { label: 'Clientele', icon: 'bx bx-smile', value: 110, suffix: '' },
-    { label: 'Served Countries', icon: 'bx bx-world', value: 28, suffix: '' }
-  ];
+ stats :any[] = [];
 
   animatedValues: number[] = new Array(this.stats.length).fill(0);
   hasAnimated = false;
@@ -104,21 +122,24 @@ export class LandingPageComponent implements OnInit {
   
 
   animateAll() {
-    this.stats.forEach((stat, index) => {
-      const target = stat.value;
-      const duration = 1000;
-      const steps = 50;
-      const increment = target / steps;
-      let step = 0;
+  this.stats.forEach((stat, index) => {
+    const target = stat.value;
+    const duration = 1000;
+    const steps = 50;
+    const increment = target / steps;
+    let current = 0;
+    let step = 0;
 
-      const interval = setInterval(() => {
-        this.animatedValues[index] += increment;
-        step++;
-        if (step >= steps) {
-          this.animatedValues[index] = target;
-          clearInterval(interval);
-        }
-      }, duration / steps);
-    });
-  }
+    const interval = setInterval(() => {
+      current += increment;
+      this.animatedValues[index] = Math.floor(current);
+      step++;
+      if (step >= steps) {
+        this.animatedValues[index] = target;
+        clearInterval(interval);
+      }
+    }, duration / steps);
+  });
+}
+
 }
