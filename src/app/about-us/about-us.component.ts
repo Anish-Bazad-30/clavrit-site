@@ -60,12 +60,12 @@ export class AboutUsComponent implements OnInit {
   @ViewChildren('progressSection', { read: ElementRef }) progressBars!: QueryList<ElementRef>;
 
   expertiseList = [
-    { title: 'SAP CX', value: 90, animatedValue: 0 },
-    { title: 'ARTIFICIAL INTELLIGENCE', value: 60, animatedValue: 0 },
-    { title: 'SAP CDC', value: 74, animatedValue: 0 },
-    { title: 'SAP COMMERCE', value: 74, animatedValue: 0 },
-    { title: 'SALESFORCE', value: 74, animatedValue: 0 },
-    { title: 'ENTERPRISE APPLICATION', value: 74, animatedValue: 0 },
+    { title: 'SAP CX', value: 95, animatedValue: 0 },
+    { title: 'ARTIFICIAL INTELLIGENCE', value: 90, animatedValue: 0 },
+    { title: 'SAP CDC', value: 95, animatedValue: 0 },
+    { title: 'SAP COMMERCE', value: 95, animatedValue: 0 },
+    { title: 'SALESFORCE', value: 80, animatedValue: 0 },
+    { title: 'ENTERPRISE APPLICATION', value: 90, animatedValue: 0 },
   ];
 
   ngAfterViewInit() {
