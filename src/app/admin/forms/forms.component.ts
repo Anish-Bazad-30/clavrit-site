@@ -85,6 +85,9 @@ export class FormsComponent {
       case 'job-application':
         this.pageTitle = "Job Application Form";
         break;
+      case 'business-stats':
+        this.pageTitle = "Business Stats Form";
+        break;
       case 'contact':
         this.pageTitle = "Contact Form";
         break;
@@ -166,6 +169,13 @@ export class FormsComponent {
           coverletter: [''],
           uploadResume: [null]
         };
+        break;
+
+      case 'business-stats':
+       this.selectedFields = this.fb.group({
+          title: [''],
+          value: [''],
+        });
         break;
 
       case 'contact':
@@ -525,7 +535,7 @@ export class FormsComponent {
         this.selectedFields.reset();
         this.selectedFiles = [];
         this.previewUrls = [];
-this.location.back();
+        this.location.back();
         // Optional: Clear tags or dynamic FormArrays
 
       })
@@ -600,6 +610,16 @@ this.location.back();
   // }
 
   onSubmit(): void {
+    console.log(this.selectedFields);
+
+    if (this.selectedFields.valid) {
+      console.log('Form submitted:', this.form.value);
+    } else {
+      console.log('Form is invalid:', this.form);
+    }
+  }
+
+    onStatsSubmit(): void {
     console.log(this.selectedFields);
 
     if (this.selectedFields.valid) {
