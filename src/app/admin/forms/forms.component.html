@@ -61,16 +61,15 @@
 
                 <!-- Company Logo -->
                 <div class="col-lg-6">
-  <div class="form-floating">
-    <input type="file" #fileInput1 id="companyLogo" class="form-control"
-           placeholder="Company Logo"
-           (change)="handleSingleFileInput($event)">
-    <label for="companyLogo">Company Logo</label>
-  </div>
-  <div *ngIf="fileTouched && !selectedFiles" class="text-danger small mt-1">
-    Company logo is required.
-  </div>
-</div>
+                    <div class="form-floating">
+                        <input type="file" #fileInput1 id="companyLogo" class="form-control" placeholder="Company Logo"
+                            (change)="handleSingleFileInput($event)">
+                        <label for="companyLogo">Company Logo</label>
+                    </div>
+                    <div *ngIf="fileTouched && !selectedFiles" class="text-danger small mt-1">
+                        Company logo is required.
+                    </div>
+                </div>
 
                 <!-- Submit -->
                 <div class="col-12 text-end">
@@ -389,7 +388,7 @@
                 </div>
 
                 <!-- Type -->
-                
+
 
                 <!-- Image Upload -->
                 <!-- <div class="col-lg-6">
@@ -596,11 +595,8 @@
 
             </form>
         </div>
-    </div>
-
-      <div *ngIf="type === 'business-stats'" class="container">
-            <form [formGroup]="selectedFields" (ngSubmit)="onStatsSubmit()" class="row g-3"
-                >
+        <div *ngIf="type === 'business-stats'" class="container">
+            <form [formGroup]="selectedFields" (ngSubmit)="onStatsSubmit()" class="row g-3">
 
                 <!-- Name -->
                 <div class="col-lg-6">
@@ -615,7 +611,8 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="form-floating">
-                        <input type="text" id="value" class="form-control" placeholder="Value" formControlName="value">
+                        <input type="text" id="value" class="form-control" placeholder="Value" formControlName="value"
+                            minlength="1" maxlength="10" (input)="onPhoneInput($event)">
                         <label for="value">Value</label>
                     </div>
                     <div *ngIf="selectedFields.get('value')?.touched && selectedFields.get('value')?.invalid"
@@ -623,13 +620,25 @@
                         Value is required.
                     </div>
                 </div>
-
+                <div class="col-lg-6">
+                    <div class="form-floating">
+                        <input type="file" #fileInput1 id="companyLogo" class="form-control" placeholder="Company Logo"
+                            (change)="handleSingleFileInput($event)">
+                        <label for="companyLogo">Company Logo</label>
+                    </div>
+                    <div *ngIf="fileTouched && !selectedFiles" class="text-danger small mt-1">
+                        Company logo is required.
+                    </div>
+                </div>
                 <!-- Submit Button -->
                 <div class="col-12 text-end">
                     <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill">Submit</button>
                 </div>
             </form>
         </div>
+    </div>
+
+
 
 
 </section>

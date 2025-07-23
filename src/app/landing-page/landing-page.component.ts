@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren }
 import { ProjectsService } from '../services/projects.service';
 import { ClientService } from '../services/client.service';
 import { BusinessStatsService } from '../services/business-stats.service';
+import { TechnologyService } from '../services/technology.service';
 declare var $: any;
 @Component({
   selector: 'app-landing-page',
@@ -13,38 +14,43 @@ export class LandingPageComponent implements OnInit {
   projectList: any[] = [];
   clientList: any[] = [];
   clientSlides: any[] = [];
+  techList: any[] = [];
+  techSlides: any[] = [];
   constructor(
     private projectService: ProjectsService,
     private clientService: ClientService,
-    private bs: BusinessStatsService
+    private bs: BusinessStatsService,
+    private techService: TechnologyService,
+    
   ) { }
 
   ngOnInit(): void {
     this.fetchProjects();
     console.log(this.projectList);
     this.fetchClient();
+    this.fetchTech();
     this.bs.getAllStats().subscribe((res) => {
-    this.stats = res.data;
-    this.animatedValues = new Array(this.stats.length).fill(0);
+      this.stats = res.data;
+      this.animatedValues = new Array(this.stats.length).fill(0);
 
-    // Delay observer setup until ViewChildren is ready
-    setTimeout(() => this.setupObserver(), 0);
-  });
+      // Delay observer setup until ViewChildren is ready
+      setTimeout(() => this.setupObserver(), 0);
+    });
   }
 
   setupObserver() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && !this.hasAnimated) {
-        this.animateAll();
-        this.hasAnimated = true;
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.3 });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !this.hasAnimated) {
+          this.animateAll();
+          this.hasAnimated = true;
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
 
-  this.statBoxes.forEach((el) => observer.observe(el.nativeElement));
-}
+    this.statBoxes.forEach((el) => observer.observe(el.nativeElement));
+  }
 
 
   fetchProjects() {
@@ -106,40 +112,55 @@ export class LandingPageComponent implements OnInit {
 
   }
 
-   groupClientsInSlides() {
+  groupClientsInSlides() {
     const chunkSize = 5;
     for (let i = 0; i < this.clientList.length; i += chunkSize) {
       this.clientSlides.push(this.clientList.slice(i, i + chunkSize));
     }
   }
- stats :any[] = [];
+  stats: any[] = [];
 
   animatedValues: number[] = new Array(this.stats.length).fill(0);
   hasAnimated = false;
 
   @ViewChildren('statBox') statBoxes!: QueryList<ElementRef>;
 
-  
+
 
   animateAll() {
-  this.stats.forEach((stat, index) => {
-    const target = stat.value;
-    const duration = 1000;
-    const steps = 50;
-    const increment = target / steps;
-    let current = 0;
-    let step = 0;
+    this.stats.forEach((stat, index) => {
+      const target = stat.value;
+      const duration = 1000;
+      const steps = 50;
+      const increment = target / steps;
+      let current = 0;
+      let step = 0;
 
-    const interval = setInterval(() => {
-      current += increment;
-      this.animatedValues[index] = Math.floor(current);
-      step++;
-      if (step >= steps) {
-        this.animatedValues[index] = target;
-        clearInterval(interval);
-      }
-    }, duration / steps);
-  });
-}
+      const interval = setInterval(() => {
+        current += increment;
+        this.animatedValues[index] = Math.floor(current);
+        step++;
+        if (step >= steps) {
+          this.animatedValues[index] = target;
+          clearInterval(interval);
+        }
+      }, duration / steps);
+    });
+  }
 
+
+  techData : any[]=[];
+  fetchTech() {
+    this.techService.getTech().subscribe((res) => {
+      this.techData = res.data;
+      this.groupTechInSlides();
+    })
+  }
+
+   groupTechInSlides() {
+    const chunkSize = 5;
+    for (let i = 0; i < this.techData.length; i += chunkSize) {
+      this.techSlides.push(this.techData.slice(i, i + chunkSize));
+    }
+  }
 }

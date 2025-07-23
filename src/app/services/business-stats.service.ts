@@ -30,8 +30,8 @@ constructor(private http: HttpClient) {}
     if (imageFile) {
       formData.append('images', imageFile);
     }
-
-    return this.http.post(this.baseUrl, formData);
+const url = this.baseUrl+"/api/stats";
+    return this.http.post(url, formData);
   }
 
   /** UPDATE stat by ID with optional image */
@@ -42,12 +42,13 @@ constructor(private http: HttpClient) {}
     if (imageFile) {
       formData.append('images', imageFile);
     }
-
-    return this.http.put(`${this.baseUrl}/${id}`, formData);
+    const url = this.baseUrl+`/api/stats/${id}`;
+    return this.http.put(url, formData);
   }
 
   /** DELETE stat */
   deleteStat(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`);
+    const url = this.baseUrl+`/api/stats/${id}`;
+    return this.http.delete(url);
   }
 }

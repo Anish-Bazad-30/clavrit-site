@@ -3,6 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from 'src/app/services/blog.service';
+import { BusinessStatsService } from 'src/app/services/business-stats.service';
 import { ClientService } from 'src/app/services/client.service';
 import { CommonService } from 'src/app/services/common.service';
 import { JobsService } from 'src/app/services/jobs.service';
@@ -35,7 +36,9 @@ export class EditFormComponent implements OnInit {
     private jobService: JobsService,
     private ourServicesService: OurServicesService,
     private commonService: CommonService,
-    private location: Location
+    private location: Location,
+    private businessStatsService: BusinessStatsService,
+
   ) { }
 
   ngOnInit() {
@@ -94,6 +97,9 @@ export class EditFormComponent implements OnInit {
         break;
       case 'job-application':
         this.pageTitle = "Job Application Form";
+        break;
+        case 'business-stats':
+        this.pageTitle = "Business Stats Form";
         break;
       case 'contact':
         this.pageTitle = "Contact Form";
@@ -305,7 +311,17 @@ export class EditFormComponent implements OnInit {
           message: ['']
         };
         break;
+        case 'business-stats':
+        this.selectedFields = this.fb.group({
+          title: [''],
+          value: [''],
+        });
+         this.selectedFields.patchValue({
+            title: this.data.title,
+            value: this.data.value,
 
+          });
+        break;
       default:
         this.selectedFields = {
           name: [''],
@@ -709,5 +725,30 @@ export class EditFormComponent implements OnInit {
   removeFile(index: number): void {
     this.selectedFiles.splice(index, 1);
     this.previewUrls.splice(index, 1);
+  }
+
+  onStatsSubmit(): void {
+    console.log(this.selectedFields);
+
+    if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
+      
+        let title = this.selectedFields.value.title;
+      let value = this.selectedFields.value.value;
+      this.businessStatsService.updateStat(this.data.id, title, value, this.selectedFiles[0]).subscribe((res) => {
+        this.selectedFields.reset();
+        this.selectedFiles = [];
+        this.fileTouched = false;
+
+        // ✅ Reset the file input
+        if (this.fileInput1) {
+          this.fileInput1.nativeElement.value = '';
+        }
+        this.location.back();
+      })
+
+    } else {
+      this.fileTouched = true;
+      this.selectedFields.markAllAsTouched();
+    }
   }
 }

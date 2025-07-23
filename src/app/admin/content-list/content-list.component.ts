@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from 'src/app/services/blog.service';
+import { BusinessStatsService } from 'src/app/services/business-stats.service';
 import { ClientService } from 'src/app/services/client.service';
 import { CommonDeleteService } from 'src/app/services/common-delete.service';
 import { CommonService } from 'src/app/services/common.service';
@@ -33,6 +34,7 @@ export class ContentListComponent {
     private jobService: JobsService,
     private deleteService: CommonDeleteService,
     private commonService: CommonService,
+    private businessStatsService: BusinessStatsService,
 
 
   ) { }
@@ -88,6 +90,12 @@ export class ContentListComponent {
       case 'contact':
         this.pageTitle = "Contact Management";
         this.contactService.getContact().subscribe((res) => {
+          this.contentList = res.data;
+        })
+        break;
+      case 'business-stats':
+        this.pageTitle = "Business Stats Management";
+        this.businessStatsService.getAllStats().subscribe((res)=>{
           this.contentList = res.data;
         })
         break;
@@ -166,6 +174,11 @@ export class ContentListComponent {
               item.name?.toLowerCase().includes(search) ||
               item.email?.toLowerCase().includes(search) ||
               item.company?.toLowerCase().includes(search)
+            );
+            case 'business-stats':
+            return (
+              item.title?.toLowerCase().includes(search) ||
+              item.value?.toLowerCase().includes(search) 
             );
           default:
             return true;
@@ -294,6 +307,11 @@ export class ContentListComponent {
         break;
       case 'contact':
         this.contactService.deleteContact(event.id).subscribe((res) => {
+          this.loadContent(this.type);
+        })
+        break;
+        case 'business-stats':
+        this.businessStatsService.deleteStat(event.id).subscribe((res) => {
           this.loadContent(this.type);
         })
         break;

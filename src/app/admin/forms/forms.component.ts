@@ -3,6 +3,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from 'src/app/services/blog.service';
+import { BusinessStatsService } from 'src/app/services/business-stats.service';
 import { ClientService } from 'src/app/services/client.service';
 import { JobsService } from 'src/app/services/jobs.service';
 import { OurServicesService } from 'src/app/services/our-services.service';
@@ -33,7 +34,9 @@ export class FormsComponent {
     private projectService: ProjectsService,
     private jobService: JobsService,
     private ourServicesService: OurServicesService,
-    private location: Location
+    private location: Location,
+    private businessStatsService: BusinessStatsService,
+
   ) { }
 
   ngOnInit() {
@@ -172,7 +175,7 @@ export class FormsComponent {
         break;
 
       case 'business-stats':
-       this.selectedFields = this.fb.group({
+        this.selectedFields = this.fb.group({
           title: [''],
           value: [''],
         });
@@ -619,13 +622,27 @@ export class FormsComponent {
     }
   }
 
-    onStatsSubmit(): void {
+  onStatsSubmit(): void {
     console.log(this.selectedFields);
 
-    if (this.selectedFields.valid) {
-      console.log('Form submitted:', this.form.value);
+    if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
+      let title = this.selectedFields.value.title;
+      let value = this.selectedFields.value.value;
+      this.businessStatsService.createStat(title, value, this.selectedFiles[0]).subscribe((res) => {
+        this.selectedFields.reset();
+        this.selectedFiles = [];
+        this.fileTouched = false;
+
+        // ✅ Reset the file input
+        if (this.fileInput1) {
+          this.fileInput1.nativeElement.value = '';
+        }
+        this.location.back();
+      })
+
     } else {
-      console.log('Form is invalid:', this.form);
+      this.fileTouched = true;
+      this.selectedFields.markAllAsTouched();
     }
   }
 }

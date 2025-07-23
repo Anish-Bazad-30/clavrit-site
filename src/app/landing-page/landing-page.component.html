@@ -224,7 +224,8 @@
                                 <div class="row text-center d-flex justify-content-center align-items-center">
                                     <div class="col-md-2 mb-3" *ngFor="let client of slide">
                                         <div class="card partner-wap py-3 bg-light">
-                                            <img [src]="client.logoImage" class="p-2" alt="Client Logo" width="100%" height="60px"/>
+                                            <img [src]="client.logoImage" class="p-2" alt="Client Logo" width="100%"
+                                                height="60px" />
                                         </div>
                                     </div>
                                 </div>
@@ -569,20 +570,20 @@
 <section class="bg-white py-3">
     <div class="container py-3">
         <h2 class="text-primary col-12 col-xl-12 h2 text-center typo-space-line-center py-5">Tools & Technology</h2>
-        <div id="carouselExampleIndicators" class="carousel slide bg-secondary" data-bs-ride="carousel">
+        <div id="carouselExampleIndicators1" class="carousel slide bg-secondary" data-bs-ride="carousel">
             <ol class="carousel-indicators">
-                <li *ngFor="let slide of clientSlides; let i = index" [class.active]="i === 0"
-                    [attr.data-bs-target]="'#carouselExampleIndicators'" [attr.data-bs-slide-to]="i"></li>
+                <li *ngFor="let slide of techSlides; let i = index" [class.active]="i === 0"
+                    [attr.data-bs-target]="'#carouselExampleIndicators1'" [attr.data-bs-slide-to]="i"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item" *ngFor="let slide of clientSlides; let i = index" [class.active]="i === 0">
+                <div class="carousel-item" *ngFor="let slide of techSlides; let i = index" [class.active]="i === 0">
                     <div class="py-5 row d-flex align-items-center">
                         <section class="bg-secondary w-100">
                             <div class="container">
                                 <div class="row text-center d-flex justify-content-center align-items-center">
-                                    <div class="col-md-2 mb-3" *ngFor="let client of slide">
+                                    <div class="col-md-2 mb-3" *ngFor="let tech of slide">
                                         <div class="card partner-wap py-3 bg-light">
-                                            <img [src]="client.logoImage" class="p-2" alt="Client Logo" />
+                                            <img [src]="tech.imageUrl" class="p-2" alt="Client Logo" />
                                         </div>
                                     </div>
                                 </div>
@@ -591,10 +592,10 @@
                     </div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+            <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+            <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -604,22 +605,22 @@
 
 
 <section class="bg-white">
-  <div class="container align-items-center col-lg-12 text-center pb-5">
-    <h1 class="h2 py-5 text-primary typo-space-line-center">Clavrit's Business Stats</h1>
-    <p class="light-300">We believe in Numbers</p>
+    <div class="container align-items-center col-lg-12 text-center pb-5">
+        <h1 class="h2 py-5 text-primary typo-space-line-center">Clavrit's Business Stats</h1>
+        <p class="light-300">We believe in Numbers</p>
 
-    <div class="stats-container container py-3">
-      <div class="stat-card" *ngFor="let stat of stats; let i = index" #statBox>
-        <div class="stat-icon">
-          <img [src]="stat.iconUrl" alt="stat-icon" />
+        <div class="stats-container container py-3">
+            <div class="stat-card" *ngFor="let stat of stats; let i = index" #statBox>
+                <div class="stat-icon">
+                    <img [src]="stat.iconUrl" alt="stat-icon" />
+                </div>
+                <div class="stat-number ">
+                    {{ animatedValues[i] | number:'1.0-0' }}
+                    <!-- {{stat.value}} -->
+                    <span *ngIf="stat.title === 'Years Of Experience' || stat.title === 'Team Members'">+</span>
+                </div>
+                <div class="stat-label">{{ stat.title }}</div>
+            </div>
         </div>
-        <div class="stat-number">
-          {{ animatedValues[i] | number:'1.0-0' }}
-            <!-- {{stat.value}} -->
-        </div>
-        <div class="stat-label">{{ stat.title }}</div>
-      </div>
     </div>
-  </div>
 </section>
-
