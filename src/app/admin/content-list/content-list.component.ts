@@ -9,6 +9,7 @@ import { ContactService } from 'src/app/services/contact.service';
 import { JobsService } from 'src/app/services/jobs.service';
 import { OurServicesService } from 'src/app/services/our-services.service';
 import { ProjectsService } from 'src/app/services/projects.service';
+import { TechnologyService } from 'src/app/services/technology.service';
 
 @Component({
   selector: 'app-content-list',
@@ -35,6 +36,7 @@ export class ContentListComponent {
     private deleteService: CommonDeleteService,
     private commonService: CommonService,
     private businessStatsService: BusinessStatsService,
+    private techservice: TechnologyService
 
 
   ) { }
@@ -96,6 +98,12 @@ export class ContentListComponent {
       case 'business-stats':
         this.pageTitle = "Business Stats Management";
         this.businessStatsService.getAllStats().subscribe((res)=>{
+          this.contentList = res.data;
+        })
+        break;
+        case 'tools':
+        this.pageTitle = "Tools & Technology";
+        this.techservice.getTech().subscribe((res)=>{
           this.contentList = res.data;
         })
         break;
@@ -312,6 +320,11 @@ export class ContentListComponent {
         break;
         case 'business-stats':
         this.businessStatsService.deleteStat(event.id).subscribe((res) => {
+          this.loadContent(this.type);
+        })
+        break;
+        case 'tools':
+        this.techservice.deleteTech(event.id).subscribe((res) => {
           this.loadContent(this.type);
         })
         break;

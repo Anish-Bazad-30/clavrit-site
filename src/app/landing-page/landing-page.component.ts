@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ProjectsService } from '../services/projects.service';
 import { ClientService } from '../services/client.service';
 import { BusinessStatsService } from '../services/business-stats.service';
@@ -63,6 +63,11 @@ export class LandingPageComponent implements OnInit {
   private isotope: any;
 
   ngAfterViewInit(): void {
+    const video: HTMLVideoElement = this.myVideo.nativeElement;
+  video.muted = true;
+  video.play().catch(err => {
+    console.warn('Autoplay prevented:', err);
+  });
     setTimeout(() => {
       this.initializeIsotope();
     }, 0);
@@ -163,4 +168,7 @@ export class LandingPageComponent implements OnInit {
       this.techSlides.push(this.techData.slice(i, i + chunkSize));
     }
   }
+  @ViewChild('myVideo', { static: true }) myVideo!: ElementRef;
+ 
+
 }
