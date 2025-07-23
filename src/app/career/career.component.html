@@ -10,7 +10,8 @@
                 Join a team that’s transforming businesses and communities worldwide.
 
             </p>
-            <button type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300" routerLink="/portfolio">Learn More</button>
+            <button type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300"
+                routerLink="/portfolio">Learn More</button>
             <button type="submit" class="btn rounded-pill btn-secondary text-light px-4 light-300"
                 routerLink="/contact">Contact Us</button>
         </div>
@@ -69,22 +70,22 @@
         </div> -->
         <div class="row projects gx-lg-5">
             <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social" *ngFor="let job of careers">
-  <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-    <div class="card-body">
-      <h5 class="card-title light-600 text-dark mb-4">{{ job.jobDesignation }}</h5>
-      <p class="card-text light-400 text-dark">
-        {{ job.industry }} <br>
-        {{ job.jobType }}
-      </p>
+                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
+                    <div class="card-body">
+                        <h5 class="card-title light-600 text-dark mb-4">{{ job.jobDesignation }}</h5>
+                        <p class="card-text light-400 text-dark">
+                            {{ job.industry }} <br>
+                            {{ job.jobType }}
+                        </p>
 
-      <a (click)="viewJob(job)" [routerLink]="['/career', job.id]" class="card-read-more">
-        <span class="text-decoration-none text-primary light-300">
-          Read more <i class="bx bxs-hand-right ms-1"></i>
-        </span>
-      </a>
-    </div>
-  </div>
-</div>
+                        <a (click)="viewJob(job)" [routerLink]="['/career', job.id]" class="card-read-more">
+                            <span class="text-decoration-none text-primary light-300">
+                                Read more <i class="bx bxs-hand-right ms-1"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
             <!-- <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
