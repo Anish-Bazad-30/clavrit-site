@@ -8,6 +8,7 @@ import { ClientService } from 'src/app/services/client.service';
 import { JobsService } from 'src/app/services/jobs.service';
 import { OurServicesService } from 'src/app/services/our-services.service';
 import { ProjectsService } from 'src/app/services/projects.service';
+import { TechnologyService } from 'src/app/services/technology.service';
 
 @Component({
   selector: 'app-forms',
@@ -36,6 +37,8 @@ export class FormsComponent {
     private ourServicesService: OurServicesService,
     private location: Location,
     private businessStatsService: BusinessStatsService,
+    private techservice: TechnologyService
+    
 
   ) { }
 
@@ -91,6 +94,9 @@ export class FormsComponent {
       case 'business-stats':
         this.pageTitle = "Business Stats Form";
         break;
+        case 'tools':
+        this.pageTitle = "Tools & Technology";
+        break;
       case 'contact':
         this.pageTitle = "Contact Form";
         break;
@@ -116,7 +122,11 @@ export class FormsComponent {
           logo: [null, Validators.required]
         });
         break;
-
+        case 'tools':
+        this.selectedFields = this.fb.group({
+          tools: [null, Validators.required]
+        });
+        break;
       case 'blog':
         this.selectedFields = this.fb.group({
           title: ['', Validators.required],
@@ -351,6 +361,34 @@ export class FormsComponent {
   }
 
 
+  onToolSubmit(): void {
+    console.log(this.selectedFields);
+
+    if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
+
+      const formData = new FormData();
+
+      if (this.selectedFiles) {
+        formData.append('image', this.selectedFiles[0]);
+      }
+
+      this.techservice.createTech(formData).subscribe((res) => {
+        this.selectedFields.reset();
+        this.selectedFiles = [];
+        this.fileTouched = false;
+
+        // ✅ Reset the file input
+        if (this.fileInput1) {
+          this.fileInput1.nativeElement.value = '';
+        }
+        this.location.back();
+      })
+
+    } else {
+      this.fileTouched = true;
+      this.selectedFields.markAllAsTouched();
+    }
+  }
   onBlogSubmit(): void {
     this.fileError = this.selectedFiles.length === 0;
 
