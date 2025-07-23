@@ -1,5 +1,5 @@
 #partners_banner {
-  background-image: url('../../assets/img/Ai.jpg');
+  background-image: url('../../assets/img/services-06.jpg');
   background-position: center center; background-size: cover;
   height: 100%;
   width: 100%;
@@ -20,4 +20,7 @@
 #partners_banner > * {
   position: relative;
   z-index: 2; 
+}
+.card-img{
+  height: 80px;
 }
