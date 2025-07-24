@@ -135,3 +135,79 @@
 
 
 
+marquee-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+ 
+.marquee-track {
+  display: flex;
+  animation: scroll-left 25s linear infinite;
+}
+ 
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+ 
+.why-clavrit-card {
+  min-width: 280px;
+  max-width: 300px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+ 
+.why-clavrit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+ 
+.custom-col {
+  width: 20%; /* 100 / 5 cards = 20% */
+  padding: 15px;
+}
+ 
+@media (max-width: 992px) {
+  .custom-col {
+    width: 33.3333%; /* 3 in a row on tablets */
+  }
+}
+ 
+@media (max-width: 768px) {
+  .custom-col {
+    width: 50%; /* 2 in a row on small screens */
+  }
+}
+ 
+@media (max-width: 576px) {
+  .custom-col {
+    width: 100%; /* 1 in a row on phones */
+  }
+}
+
+.btn-custom {
+  background-color: #31B0FD !important;
+  color: white !important;
+  border: 1px solid #31B0FD !important;
+  transition: all 0.2s ease-in-out;
+}
+ 
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active,
+.btn-custom:focus-visible,
+.btn-custom:visited {
+  background-color: #31B0FD !important;
+  border-color: #31B0FD !important;
+  color: white !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+ 
+ 
+  
