@@ -9,6 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AiComponent {
 @ViewChild('caseStudySection') caseStudySection!: ElementRef;
+@ViewChild('Integrated-AI-experts-into-a-leading-IT-firm') caseStudySection2!: ElementRef;
+
   constructor(private route: ActivatedRoute,
   private viewportScroller: ViewportScroller){
 

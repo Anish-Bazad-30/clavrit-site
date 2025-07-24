@@ -4,6 +4,7 @@ import { ClientService } from '../services/client.service';
 import { BusinessStatsService } from '../services/business-stats.service';
 import { TechnologyService } from '../services/technology.service';
 import { Router } from '@angular/router';
+import { OurServicesService } from '../services/our-services.service';
 declare var $: any;
 @Component({
   selector: 'app-landing-page',
@@ -22,10 +23,41 @@ export class LandingPageComponent implements OnInit {
     private clientService: ClientService,
     private bs: BusinessStatsService,
     private techService: TechnologyService,
-    private readonly router: Router
-    
-  ) { }
+    private readonly router: Router,
+    private ourServicesService: OurServicesService,
 
+
+  ) { }
+  ourServices: any[] = [
+    {
+      title: "SAP CX",
+      titlehome: "SAP Solutions",
+      subhome: "End-to-end implementation & optimization",
+      img: "./assets/img/sap_cx_1.jpg",
+      description: "Our SAP CX Services provide tailored strategies and seamless implementation using SAP’s advanced technologies.",
+      subheading: "Unleashing the Power of Customer Experience with Clavrit SAP CX",
+      content: "Forget cookie-cutter solutions. At Clavrit, we craft bespoke SAP CX strategies that cater to your unique business DNA. We become an extension of your team, partnering with you from the initial consultation all the way through implementation and beyond. Our goal? Seamless integration and maximizing the value you extract from SAP’s cutting-edge CX technologies. Our team dives deep into your current customer experience landscape, uncovering opportunities and aligning them with your objectives. Through close collaboration with your stakeholders, we develop a customized plan. Then, we leverage the power of SAP CX to design and tailor solutions that perfectly fit your specific needs. We empower you to stay ahead of the curve, delivering exceptional experiences that cultivate customer satisfaction and unwavering loyalty. Partner with Clavrit and transform your customer interactions into a competitive advantage."
+    },
+    {
+      title: "Salesforce",
+      titlehome: "Salesforce Services",
+      subhome: "CRM transformation & automation",
+      img: "./assets/img/sf.jpg",
+      description: "Maximize Salesforce’s power with Clavrit’s expert consulting and support to drive growth and elevate customer experiences.",
+      subheading: "Supercharge Your CRM with Next-Level Salesforce Solutions",
+      content: "Customer relationships are the lifeblood of your business. But are you getting the most out of your current CRM? At Clavrit, we don’t just implement Salesforce; we unlock its full potential to transform your customer interactions. Welcome to the future of CRM. Salesforce is the engine driving growth, exceptional customer experiences, and streamlined operations for modern businesses. Our team of certified Salesforce rockstars boasts extensive experience in implementing, customizing, and optimizing solutions specifically tailored to your needs. We’re not afraid of a challenge. Our finger remains firmly on the pulse of the latest Salesforce updates and innovations, ensuring you stay ahead of the curve and leverage the platform’s full power."
+    },
+    {
+      title: "Artificial Intelligence",
+      titlehome: "AI Integration",
+      subhome: "Intelligent business analytics",
+      img: "./assets/img/AI_image.jpg",
+      description: "We deliver tailored AI, Deep Learning, and NLP solutions for smarter insights and automation.",
+      subheading: "Ready to unlock the transformative power of Artificial Intelligence?",
+      content: "At Clavrit, we offer a comprehensive suite of AI solutions designed to propel your business forward. We leverage the cutting edge of machine learning and deep learning to develop groundbreaking tools that tackle your toughest challenges. Generative AI, natural language processing, and more – these are just a few of the powerful technologies in our arsenal."
+    },
+
+  ];
   ngOnInit(): void {
     this.fetchProjects();
     console.log(this.projectList);
@@ -66,10 +98,10 @@ export class LandingPageComponent implements OnInit {
 
   ngAfterViewInit(): void {
     const video: HTMLVideoElement = this.myVideo.nativeElement;
-  video.muted = true;
-  video.play().catch(err => {
-    console.warn('Autoplay prevented:', err);
-  });
+    video.muted = true;
+    video.play().catch(err => {
+      console.warn('Autoplay prevented:', err);
+    });
     setTimeout(() => {
       this.initializeIsotope();
     }, 0);
@@ -156,7 +188,7 @@ export class LandingPageComponent implements OnInit {
   }
 
 
-  techData : any[]=[];
+  techData: any[] = [];
   fetchTech() {
     this.techService.getTech().subscribe((res) => {
       this.techData = res.data;
@@ -164,15 +196,41 @@ export class LandingPageComponent implements OnInit {
     })
   }
 
-   groupTechInSlides() {
+  groupTechInSlides() {
     const chunkSize = 5;
     for (let i = 0; i < this.techData.length; i += chunkSize) {
       this.techSlides.push(this.techData.slice(i, i + chunkSize));
     }
   }
   @ViewChild('myVideo', { static: true }) myVideo!: ElementRef;
- 
-caseStudy(){
-  this.router.navigate(['/sustainability'])
-}
+
+  caseStudy() {
+    this.router.navigate(['/sustainability'])
+  }
+  activeTab: string = 'enterprise';
+
+  enterprisePlatforms: string[] = ['SAP', 'Salesforce', 'Microsoft', 'Oracle', 'ServiceNow'];
+  developmentTools: string[] = ['Angular', 'Spring Boot', 'Node.js', 'Docker', 'Kubernetes'];
+  aiTools: string[] = ['Power BI', 'Tableau', 'Python ML', 'ChatGPT', 'Azure AI'];
+
+  setTab(tab: string): void {
+    this.activeTab = tab;
+  }
+  readMore(service: any) {
+    const rawTitle = service.title;
+    const slug = this.slugify(rawTitle);
+
+    this.ourServicesService.setService(service);
+
+    this.router.navigate(['/services', slug]);
+  }
+  slugify(text: string): string {
+    return text
+      .toLowerCase()
+      .replace(/\s+/g, '-')        // Replace spaces with -
+      .replace(/[^\w\-]+/g, '')    // Remove all non-word chars
+      .replace(/\-\-+/g, '-')      // Replace multiple - with single -
+      .replace(/^-+/, '')          // Trim - from start
+      .replace(/-+$/, '');         // Trim - from end
+  }
 }
