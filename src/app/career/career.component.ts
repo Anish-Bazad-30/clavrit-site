@@ -10,108 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./career.component.scss']
 })
 export class CareerComponent implements OnInit {
-  careers = [
-    {
-      id: 1,
-      jobDesignation: "Senior Java Developer",
-      jobResponsibility: [
-        "Write clean and scalable code",
-        "Design and implement Java applications",
-        "Lead the backend team"
-      ],
-      jobQualification: [
-        "B.Tech in Computer Science or equivalent",
-        "5+ years of experience in Java"
-      ],
-      competencies: [
-        "Microservices",
-        "REST APIs",
-        "Spring Boot",
-        "Problem Solving"
-      ],
-      jobCategory: "Software Development",
-      jobType: "Part-Time",
-      jobLocation: "Noida, India",
-      industry: "IT Services",
-      createdAt: [2025, 7, 16, 8, 53, 59],
-      updatedAt: [2025, 7, 17, 8, 31, 15]
-    },
-    {
-      id: 1,
-      jobDesignation: "Senior C# Developer",
-      jobResponsibility: [
-        "Write clean and scalable code",
-        "Design and implement Java applications",
-        "Lead the backend team"
-      ],
-      jobQualification: [
-        "B.Tech in Computer Science or equivalent",
-        "5+ years of experience in Java"
-      ],
-      competencies: [
-        "Microservices",
-        "REST APIs",
-        "Spring Boot",
-        "Problem Solving"
-      ],
-      jobCategory: "Software Development",
-      jobType: "Part-Time",
-      jobLocation: "Noida, India",
-      industry: "IT Services",
-      createdAt: [2025, 7, 16, 8, 53, 59],
-      updatedAt: [2025, 7, 17, 8, 31, 15]
-    },
-    {
-      id: 1,
-      jobDesignation: "Senior Angular Developer",
-      jobResponsibility: [
-        "Write clean and scalable code",
-        "Design and implement Java applications",
-        "Lead the backend team"
-      ],
-      jobQualification: [
-        "B.Tech in Computer Science or equivalent",
-        "5+ years of experience in Java"
-      ],
-      competencies: [
-        "Microservices",
-        "REST APIs",
-        "Spring Boot",
-        "Problem Solving"
-      ],
-      jobCategory: "Software Development",
-      jobType: "Part-Time",
-      jobLocation: "Noida, India",
-      industry: "IT Services",
-      createdAt: [2025, 7, 16, 8, 53, 59],
-      updatedAt: [2025, 7, 17, 8, 31, 15]
-    },
-    {
-      id: 1,
-      jobDesignation: "Senior Python Developer",
-      jobResponsibility: [
-        "Write clean and scalable code",
-        "Design and implement Java applications",
-        "Lead the backend team"
-      ],
-      jobQualification: [
-        "B.Tech in Computer Science or equivalent",
-        "5+ years of experience in Java"
-      ],
-      competencies: [
-        "Microservices",
-        "REST APIs",
-        "Spring Boot",
-        "Problem Solving"
-      ],
-      jobCategory: "Software Development",
-      jobType: "Part-Time",
-      jobLocation: "Noida, India",
-      industry: "IT Services",
-      createdAt: [2025, 7, 16, 8, 53, 59],
-      updatedAt: [2025, 7, 17, 8, 31, 15]
-    },
-  ];
+  careers : any[] = [];
 
   jobsList: any[] = [];
   careerForm!: FormGroup;
@@ -211,7 +110,7 @@ export class CareerComponent implements OnInit {
 
   fetchJobs() {
     this.jobsService.getJobs().subscribe((res) => {
-      this.jobsList = res.data;
+      this.careers = res.data;
     })
   }
 
