@@ -3,6 +3,7 @@ import { ProjectsService } from '../services/projects.service';
 import { ClientService } from '../services/client.service';
 import { BusinessStatsService } from '../services/business-stats.service';
 import { TechnologyService } from '../services/technology.service';
+import { Router } from '@angular/router';
 declare var $: any;
 @Component({
   selector: 'app-landing-page',
@@ -21,6 +22,7 @@ export class LandingPageComponent implements OnInit {
     private clientService: ClientService,
     private bs: BusinessStatsService,
     private techService: TechnologyService,
+    private readonly router: Router
     
   ) { }
 
@@ -170,5 +172,7 @@ export class LandingPageComponent implements OnInit {
   }
   @ViewChild('myVideo', { static: true }) myVideo!: ElementRef;
  
-
+caseStudy(){
+  this.router.navigate(['/sustainability'])
+}
 }
