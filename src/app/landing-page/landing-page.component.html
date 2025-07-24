@@ -1,4 +1,4 @@
-<section id="video_banner" class="w-100 py-5">
+<!-- <section id="video_banner" class="w-100 py-5">
     <div class="container">
         <div class="d-flex align-items-center py-3">
             <div class="col-lg-12 text-center">
@@ -8,8 +8,24 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
+<div id="home_banner" class="banner-wrapper bg-light w-100 py-5">
+    <video autoplay muted loop playsinline preload="auto" #myVideo>
+        <source src="../../assets/img/vhomenew.mp4" type="video/mp4" />
+    </video>
 
+    <div
+        class="banner-vertical-center-work container text-light d-flex justify-content-center align-items-center py-5 p-0">
+        <div class="banner-content col-lg-10 col-12 m-lg-auto text-center">
+            <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center">Transform Your Business
+                with Enterprise-Grade SAP, Salesforce & AI Solutions</h1>
+            <h3 class="h4 pb-2 regular-400">Trusted by global leaders to deliver innovative IT solutions that drive
+                measurable business outcomes across 26 countries.</h3>
+            <button type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300"
+                routerLink="/contact-us">Schedule a Consultation</button>
+        </div>
+    </div>
+</div>
 
 <!-- <div id="index_banner" class="banner-vertical-center-index container-fluid pt-5">
         
@@ -122,6 +138,24 @@
         </div>
     </div>
 </section>
+<section class="bg-light w-100">
+    <div class="container">
+        <div class="row d-flex align-items-center py-5">
+            <div class="col-lg-6 text-start">
+                <h1 class="h2 py-5 text-primary typo-space-line">Enterprise Solutions Tailored to Your Business
+                    Challenges</h1>
+                <p class="light-300">
+                    At Clavrit, we understand that technology should solve real business problems, not create new ones.
+                    Our integrated approach combines deep expertise in SAP, Salesforce, and AI with a relentless focus
+                    on your specific business objectives. The result? Customized solutions that deliver measurable ROI
+                    and position your organization for sustainable growth. </p>
+            </div>
+            <div class="col-lg-6 mt-4">
+                <img src="./assets/img/Ai.jpg" width="100%" height="400px">
+            </div>
+        </div>
+    </div>
+</section>
 <section class="why-us banner-bg bg-light">
     <div class="container">
         <div class="row">
@@ -210,15 +244,8 @@
 </section>
 <section class="bg-white py-3">
     <div class="container py-3">
-        <h2 class="text-primary col-12 col-xl-12 h2 text-center typo-space-line-center py-5">Leading Global Enterprises
-            Trust Us To Take Care of
-            Their IT Ecosystems</h2>
-        <p class="col-12 col-xl-12 text-center light-300">We are glad to assist some of the most credible organizations
-            in the world. We take pride in offering solutions that provide genuine value to clients spread all over the
-            globe. With our IT consultancy, expertise and exceptional service, we aim to exceed our client’s
-            expectations and deliver the best results while keeping the costs under control! We have always believed in
-            Client first Philosophy! We at Clavrit constantly strive to excel client experiences, based on their
-            feedback and suggestions. Customer relations & satisfaction are the key factors we focus on.</p>
+        <h2 class="text-primary col-12 col-xl-12 h2 text-center typo-space-line-center py-5">Trusted by Leading
+            enterprises</h2>
         <div id="carouselExampleIndicators" class="carousel slide bg-secondary" data-bs-ride="carousel">
             <ol class="carousel-indicators">
                 <li *ngFor="let slide of clientSlides; let i = index" [class.active]="i === 0"
