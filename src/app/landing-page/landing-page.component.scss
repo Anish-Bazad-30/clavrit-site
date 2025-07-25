@@ -141,11 +141,30 @@ marquee-wrapper {
   width: 100%;
 }
  
+// .marquee-track {
+//   display: flex;
+//   animation: scroll-left 15s linear infinite;
+// }
+// .marquee-track:hover{
+//   animation: none;
+// }
+// @keyframes scroll-left {
+//   0% {
+//     transform: translateX(0);
+//   }
+//   100% {
+//     transform: translateX(-50%);
+//   }
+// }
 .marquee-track {
   display: flex;
-  animation: scroll-left 25s linear infinite;
+  animation: scroll-left 15s linear infinite;
 }
- 
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 @keyframes scroll-left {
   0% {
     transform: translateX(0);
@@ -154,6 +173,7 @@ marquee-wrapper {
     transform: translateX(-50%);
   }
 }
+
  
 .why-clavrit-card {
   min-width: 280px;
@@ -190,24 +210,30 @@ marquee-wrapper {
   }
 }
 
-.btn-custom {
-  background-color: #31B0FD !important;
-  color: white !important;
-  border: 1px solid #31B0FD !important;
-  transition: all 0.2s ease-in-out;
+// .btn-custom {
+//   background-color: #31B0FD !important;
+//   color: white !important;
+//   border: 1px solid #31B0FD !important;
+//   transition: all 0.2s ease-in-out;
+// }
+ 
+// .btn-custom:hover,
+// .btn-custom:focus,
+// .btn-custom:active,
+// .btn-custom:focus-visible,
+// .btn-custom:visited {
+//   background-color: #31B0FD !important;
+//   border-color: #31B0FD !important;
+//   color: white !important;
+//   box-shadow: none !important;
+//   outline: none !important;
+// }
+ 
+.btn-group .btn:focus,
+.btn-group .btn:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
- 
-.btn-custom:hover,
-.btn-custom:focus,
-.btn-custom:active,
-.btn-custom:focus-visible,
-.btn-custom:visited {
-  background-color: #31B0FD !important;
-  border-color: #31B0FD !important;
-  color: white !important;
-  box-shadow: none !important;
-  outline: none !important;
-}
- 
- 
+
+
   

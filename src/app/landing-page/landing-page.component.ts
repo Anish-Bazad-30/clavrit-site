@@ -30,15 +30,6 @@ export class LandingPageComponent implements OnInit {
   ) { }
   ourServices: any[] = [
     {
-      title: "SAP CX",
-      titlehome: "SAP Solutions",
-      subhome: "End-to-end implementation & optimization",
-      img: "./assets/img/sap_cx_1.jpg",
-      description: "Our SAP CX Services provide tailored strategies and seamless implementation using SAP’s advanced technologies.",
-      subheading: "Unleashing the Power of Customer Experience with Clavrit SAP CX",
-      content: "Forget cookie-cutter solutions. At Clavrit, we craft bespoke SAP CX strategies that cater to your unique business DNA. We become an extension of your team, partnering with you from the initial consultation all the way through implementation and beyond. Our goal? Seamless integration and maximizing the value you extract from SAP’s cutting-edge CX technologies. Our team dives deep into your current customer experience landscape, uncovering opportunities and aligning them with your objectives. Through close collaboration with your stakeholders, we develop a customized plan. Then, we leverage the power of SAP CX to design and tailor solutions that perfectly fit your specific needs. We empower you to stay ahead of the curve, delivering exceptional experiences that cultivate customer satisfaction and unwavering loyalty. Partner with Clavrit and transform your customer interactions into a competitive advantage."
-    },
-    {
       title: "Salesforce",
       titlehome: "Salesforce Services",
       subhome: "CRM transformation & automation",
@@ -209,10 +200,43 @@ export class LandingPageComponent implements OnInit {
   }
   activeTab: string = 'enterprise';
 
-  enterprisePlatforms: string[] = ['SAP', 'Salesforce', 'Microsoft', 'Oracle', 'ServiceNow'];
-  developmentTools: string[] = ['Angular', 'Spring Boot', 'Node.js', 'Docker', 'Kubernetes'];
-  aiTools: string[] = ['Power BI', 'Tableau', 'Python ML', 'ChatGPT', 'Azure AI'];
-
+  enterprisePlatforms: any[] = 
+  [{name: 'SAP',
+    image: '../../assets/img/SAP.png',},
+    {name: 'Salesforce',
+    image: '../../assets/img/salesforce.png',},
+    {name: 'Microsoft',
+    image: '../../assets/img/microsoft.png',},
+    {name: 'Oracle',
+    image: '../../assets/img/oracle.png',},
+    {name: 'ServiceNow',
+    image: '../../assets/img/servicenow.png',},
+]
+developmentTools: any[] = 
+  [{name: 'Angular',
+    image: '../../assets/img/angular.png',},
+    {name: 'Spring Boot',
+    image: '../../assets/img/springboot.png',},
+    {name: 'Node.js',
+    image: '../../assets/img/nodejs.png',},
+    {name: 'Docker',
+    image: '../../assets/img/docker.png',},
+    {name: 'Kubernetes',
+    image: '../../assets/img/kubernetes.png',},
+]
+aiTools: any[] = 
+  [{name: 'Power BI',
+    image: '../../assets/img/powerbi.png',},
+    {name: 'Tableau',
+    image: '../../assets/img/tableau.png',},
+    {name: 'Python ML',
+    image: '../../assets/img/python.png',},
+    {name: 'ChatGPT',
+    image: '../../assets/img/chatgpt.png',},
+    {name: 'Azure AI',
+    image: '../../assets/img/azure.png',},
+]
+ 
   setTab(tab: string): void {
     this.activeTab = tab;
   }
