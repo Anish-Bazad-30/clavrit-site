@@ -238,7 +238,7 @@
         </div>
     </div>
 </section> -->
-<section class="overflow-hidden pb-5">
+<section class="overflow-hidden bg-white">
     <div class="container">
         <div class="col-lg-12 text-center">
             <h2 class="h2 py-5 text-primary typo-space-line-center">Why Leading Enterprises Trust Clavrit</h2>
@@ -399,6 +399,42 @@
         </div>
     </div>
 </section> -->
+<section class="bg-white py-3">
+    <div class="container">
+        <h2 class="text-primary col-12 col-xl-12 h2 text-center typo-space-line-center py-5">Trusted by Leading
+            enterprises</h2>
+        <div id="carouselExampleIndicators" class="carousel slide bg-secondary" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+                <li *ngFor="let slide of clientSlides; let i = index" [class.active]="i === 0"
+                    [attr.data-bs-target]="'#carouselExampleIndicators'" [attr.data-bs-slide-to]="i"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item" *ngFor="let slide of clientSlides; let i = index" [class.active]="i === 0">
+                    <div class="py-5 row d-flex align-items-center">
+                        <section class="bg-secondary w-100">
+                            <div class="container h-100">
+                                <div class="row text-center d-flex justify-content-center align-items-center">
+                                    <div class="col-md-2 mb-3" *ngFor="let client of slide">
+                                        <div class="card partner-wap py-3 bg-light">
+                                            <img [src]="client.logoImage" class="p-3" alt="Client Logo" width="100%"
+                                                height="60px" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>
+</section>
 
 <section class="bg-light overflow-hidden py-3">
     <div class="container">
