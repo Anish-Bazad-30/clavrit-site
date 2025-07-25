@@ -1,5 +1,5 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,13 +7,27 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './ai.component.html',
   styleUrls: ['./ai.component.scss']
 })
-export class AiComponent {
+export class AiComponent implements OnInit {
 @ViewChild('caseStudySection') caseStudySection!: ElementRef;
 @ViewChild('Integrated-AI-experts-into-a-leading-IT-firm') caseStudySection2!: ElementRef;
 
   constructor(private route: ActivatedRoute,
   private viewportScroller: ViewportScroller){
 
+  }
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      const sectionId = params['section'];
+      if (sectionId) {
+        // Wait for view to render
+        setTimeout(() => {
+          const el = document.getElementById(sectionId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 0);
+      }
+    });
   }
 ngAfterViewInit(): void {
   // Wait for DOM to fully render
