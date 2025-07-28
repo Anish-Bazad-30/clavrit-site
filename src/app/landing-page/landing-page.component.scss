@@ -21,11 +21,10 @@
 }
 
 
-
-
-
-
-
+.card-read-more{
+  cursor: pointer;
+  text-decoration: none;
+}
 
 .stats-container {
   display: flex;
@@ -141,24 +140,10 @@ marquee-wrapper {
   width: 100%;
 }
  
-// .marquee-track {
-//   display: flex;
-//   animation: scroll-left 15s linear infinite;
-// }
-// .marquee-track:hover{
-//   animation: none;
-// }
-// @keyframes scroll-left {
-//   0% {
-//     transform: translateX(0);
-//   }
-//   100% {
-//     transform: translateX(-50%);
-//   }
-// }
+
 .marquee-track {
   display: flex;
-  animation: scroll-left 15s linear infinite;
+  animation: scroll-left 3s linear infinite;
 }
 
 .marquee-track:hover {
@@ -235,5 +220,70 @@ marquee-wrapper {
   box-shadow: none;
 }
 
+.sap-solutions{
+  background-image: url('../../assets/img/sap_cx_1.jpg');
+}
+.all-services{
+  background-image: url('../../assets/img/Services_Banner.jpg');
+}
+.service-work {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  overflow: hidden; 
+}
 
-  
+.service-work::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 1;
+}
+
+.service-work .card-body {
+  position: relative;
+  z-index: 2; 
+}
+
+
+.case-1{
+  background-image: url('../../assets/img/case1.png');
+}
+.case-2{
+   background-image: url('../../assets/img/baseliner.png');
+}
+.case-3{
+  background-image: url('../../assets/img/ai-case2.jpg');
+}
+.hover-card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white; 
+  overflow: hidden;
+}
+
+/* Overlay */
+.hover-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.541); 
+  z-index: 1;
+}
+
+
+.hover-card > * {
+  position: relative;
+  z-index: 2;
+}

@@ -41,60 +41,53 @@
             </div>
             <div class="col-lg-6 mt-4">
                 <div class="row">
-                    <div class="col-sm-6 col-lg-6 text-decoration-none project graphic social">
-                        <div class="service-work overflow-hidden card mx-sm-0 mb-3">
+                    <div class="col-sm-6 col-lg-6 text-decoration-none">
 
-                            <div class="card-body">
-                                <h5 class="card-title light-600 text-dark mb-4">SAP Solutions</h5>
-                                <p class="card-text light-400 text-dark">
-                                    End-to-end implementation & optimization
-                                </p>
+                        <div class="service-work sap-solutions overflow-hidden card mx-sm-0 mb-3">
+                            <a routerLink="/services" class="card-read-more">
 
-                                <a routerLink="/services" class="card-read-more">
-                                    <span class="text-decoration-none text-primary light-300">
-                                        Read more <i class='bx bxs-hand-right ms-1'></i>
-                                    </span>
-                                </a>
-                            </div>
+                                <div class="card-body">
+                                    <h5 class="card-title light-600 text-light mb-4">SAP Solutions</h5>
+                                    <p class="card-text light-400 text-light">
+                                        End-to-end implementation & optimization
+                                    </p>
 
+                                </div>
+                            </a>
                         </div>
+
                     </div>
                     <div *ngFor="let item of ourServices"
-                        class="col-sm-6 col-lg-6 text-decoration-none project graphic social">
-                        <div class="service-work overflow-hidden card mx-sm-0 mb-3">
+                        class="col-sm-6 col-lg-6 text-decoration-none">
+                        <div class="service-work overflow-hidden card mx-sm-0 mb-3" [ngStyle]="{ 'background-image': 'url(' + item.img + ')' }">
+                            <a (click)="readMore(item)" class="card-read-more">
+                                <div class="card-body">
+                                    <h5 class="card-title light-600 text-light mb-4">{{item.titlehome}}</h5>
+                                    <p class="card-text light-400 text-light">
+                                        {{item.subhome}}
+                                    </p>
 
-                            <div class="card-body">
-                                <h5 class="card-title light-600 text-dark mb-4">{{item.titlehome}}</h5>
-                                <p class="card-text light-400 text-dark">
-                                    {{item.subhome}}
-                                </p>
-
-                                <a (click)="readMore(item)" class="card-read-more" style="cursor: pointer;">
-                                    <span class="text-decoration-none text-primary light-300">
-                                        Read more <i class='bx bxs-hand-right ms-1'></i>
-                                    </span>
-                                </a>
-                            </div>
-
+                                </div>
+                            </a>
                         </div>
                     </div>
 
-                    <div class="col-sm-6 col-lg-6 text-decoration-none project graphic social">
-                        <div class="service-work overflow-hidden card mx-sm-0 mb-3">
+                    <div class="col-sm-6 col-lg-6 text-decoration-none">
+                        <div class="service-work all-services overflow-hidden card mx-sm-0 mb-3">
+                            <a routerLink="/services" class="card-read-more">
+                                <div class="card-body">
+                                    <h5 class="card-title light-600 text-light mb-4">Custom Development</h5>
+                                    <p class="card-text light-400 text-light">
+                                        Tailored enterprise applications
+                                    </p>
 
-                            <div class="card-body">
-                                <h5 class="card-title light-600 text-dark mb-4">Custom Development</h5>
-                                <p class="card-text light-400 text-dark">
-                                    Tailored enterprise applications
-                                </p>
-
-                                <a routerLink="/services" class="card-read-more">
+                                    <!-- <a routerLink="/services" class="card-read-more">
                                     <span class="text-decoration-none text-primary light-300">
                                         Read more <i class='bx bxs-hand-right ms-1'></i>
                                     </span>
-                                </a>
-                            </div>
-
+                                </a> -->
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -223,9 +216,8 @@
             for Global Enterprises</h2>
         <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3">
 
-
             <div class="col-md-4">
-                <div class="hover-card position-relative border rounded-4 p-4 shadow-sm h-100 bg-white">
+                <div class="hover-card case-1 position-relative border rounded-4 p-4 shadow-sm h-100 bg-white">
                     <span class="badge bg-light text-dark mb-3 px-3 py-2 rounded-pill">sustainability</span>
                     <h5 class="mt-2 light-300 mb-2">Enables eCommerce retailers to accurately calculate and reduce
                         carbon
@@ -238,22 +230,24 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="hover-card position-relative border rounded-4 p-4 shadow-sm h-100 bg-white">
+                <div class="hover-card case-2 position-relative border rounded-4 p-4 shadow-sm h-100 bg-white">
                     <span class="badge bg-light text-dark mb-3 px-3 py-2 rounded-pill">Artificial Intelligence</span>
                     <h5 class="mt-2 light-300 mb-2">Simplify agile team performance tracking with using the power of
                         Generative AI.</h5>
-                    <a [routerLink]="['/ai']"  [queryParams]="{ section: 'Estimate-your-next-Agile-Project-with-Generative-AI' }"
+                    <a [routerLink]="['/ai']"
+                        [queryParams]="{ section: 'Estimate-your-next-Agile-Project-with-Generative-AI' }"
                         class="text-primary fw-semibold d-inline-block mt-3 text-decoration-none ">Read Full Case Study
                         →</a>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="hover-card position-relative border rounded-4 p-4 shadow-sm h-100 bg-white">
+                <div class="hover-card case-3 position-relative border rounded-4 p-4 shadow-sm h-100 bg-white">
                     <span class="badge bg-light text-dark mb-3 px-3 py-2 rounded-pill">Artificial Intelligence</span>
                     <h5 class=" mt-2 mb-2 light-300 pb-4">Partnership with a leading IT
                         firm to extend their AI team for quality
                         project delivery.</h5>
-                    <a [routerLink]="['/ai']" [queryParams]="{ section: 'Integrated-AI-experts-into-a-leading-IT-firm' }"
+                    <a [routerLink]="['/ai']"
+                        [queryParams]="{ section: 'Integrated-AI-experts-into-a-leading-IT-firm' }"
                         class="text-primary fw-semibold d-inline-block mt-3 text-decoration-none ">Read Full
                         Case Study →</a>
                 </div>
