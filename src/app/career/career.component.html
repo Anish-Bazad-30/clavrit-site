@@ -72,11 +72,11 @@
             <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social" *ngFor="let job of careers">
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
                     <div class="card-body">
-                        <h5 class="card-title light-600 text-dark mb-4">{{ job.jobDesignation }}</h5>
+                        <h5 class="card-title light-600 text-dark mb-2">{{ job.jobDesignation }}</h5>
                         <p class="card-text light-400 text-dark">
-                            {{ job.industry }} <br>
-                            {{ job.jobType }}
-                        </p>
+                            {{ job.industry }} </p>
+                           <p class="card-text light-400 text-dark"> 
+                            {{ job.jobType }}  </p>
 
                         <a (click)="viewJob(job)" [routerLink]="['/career', job.id]" class="card-read-more">
                             <span class="text-decoration-none text-primary light-300">
@@ -87,172 +87,6 @@
                 </div>
             </div>
 
-            <!-- <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-
-                    <div class="card-body">
-                        <h5 class="card-title light-600 text-dark mb-4">Sr.Java Developer</h5>
-                        <p class="card-text light-400 text-dark">
-                            Java Developer <br>
-                            Remote
-                        </p>
-
-                        <a routerLink="/career-detail" class="card-read-more">
-                            <span class="text-decoration-none text-primary light-300">
-                                Read more <i class='bx bxs-hand-right ms-1'></i>
-                            </span>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-
-                    <div class="card-body">
-                        <h5 class="card-title light-600 text-dark mb-4">Web Developer – .NET</h5>
-                        <p class="card-text light-400 text-dark">
-                            .Net Developer <br>
-                            Remote
-                        </p>
-
-                        <a routerLink="/career-detail" class="card-read-more">
-                            <span class="text-decoration-none text-primary light-300">
-                                Read more <i class='bx bxs-hand-right ms-1'></i>
-                            </span>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-
-                    <div class="card-body">
-                        <h5 class="card-title light-600 text-dark mb-4">Automation QA Engineer</h5>
-                        <p class="card-text light-400 text-dark">
-                            QA Engineer <br>
-                            Remote
-                        </p>
-
-                        <a routerLink="/career-detail" class="card-read-more">
-                            <span class="text-decoration-none text-primary light-300">
-                                Read more <i class='bx bxs-hand-right ms-1'></i>
-                            </span>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-
-                    <div class="card-body">
-                        <h5 class="card-title light-600 text-dark mb-4">Business Development Manager</h5>
-                        <p class="card-text light-400 text-dark">
-                            Gurgaon
-                        </p>
-
-                        <a routerLink="/career-detail" class="card-read-more">
-                            <span class="text-decoration-none text-primary light-300">
-                                Read more <i class='bx bxs-hand-right ms-1'></i>
-                            </span>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-
-                    <div class="card-body">
-                        <h5 class="card-title light-600 text-dark mb-4">Senior QA</h5>
-                        <p class="card-text light-400 text-dark">
-                            Gurgaon
-                        </p>
-
-                        <a routerLink="/career-detail" class="card-read-more">
-                            <span class="text-decoration-none text-primary light-300">
-                                Read more <i class='bx bxs-hand-right ms-1'></i>
-                            </span>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-
-                    <div class="card-body">
-                        <h5 class="card-title light-600 text-dark mb-4">ML Engineer</h5>
-                        <p class="card-text light-400 text-dark">
-                            Gurgaon
-                        </p>
-
-                        <a routerLink="/career-detail" class="card-read-more">
-                            <span class="text-decoration-none text-primary light-300">
-                                Read more <i class='bx bxs-hand-right ms-1'></i>
-                            </span>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-
-                    <div class="card-body">
-                        <h5 class="card-title light-600 text-dark mb-4">Hybris Developer</h5>
-                        <p class="card-text light-400 text-dark">
-                            Gurgaon
-                        </p>
-
-                        <a routerLink="/career-detail" class="card-read-more">
-                            <span class="text-decoration-none text-primary light-300">
-                                Read more <i class='bx bxs-hand-right ms-1'></i>
-                            </span>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-
-                    <div class="card-body">
-                        <h5 class="card-title light-600 text-dark mb-4">Full Stack Developer</h5>
-                        <p class="card-text light-400 text-dark">
-                            Gurgaon
-                        </p>
-
-                        <a routerLink="/career-detail" class="card-read-more">
-                            <span class="text-decoration-none text-primary light-300">
-                                Read more <i class='bx bxs-hand-right ms-1'></i>
-                            </span>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-
-                    <div class="card-body">
-                        <h5 class="card-title light-600 text-dark mb-4">Angular Developer</h5>
-                        <p class="card-text light-400 text-dark">
-                            Gurgaon
-                        </p>
-
-                        <a routerLink="/career-detail" class="card-read-more">
-                            <span class="text-decoration-none text-primary light-300">
-                                Read more <i class='bx bxs-hand-right ms-1'></i>
-                            </span>
-                        </a>
-                    </div>
-
-                </div>
-            </div> -->
         </div>
     </div>
 </section>
