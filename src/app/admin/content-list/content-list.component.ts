@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from 'src/app/services/blog.service';
@@ -24,6 +25,7 @@ export class ContentListComponent {
   searchText = '';
   currentPage = 1;
   itemsPerPage = 10;
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -36,7 +38,8 @@ export class ContentListComponent {
     private deleteService: CommonDeleteService,
     private commonService: CommonService,
     private businessStatsService: BusinessStatsService,
-    private techservice: TechnologyService
+    private techservice: TechnologyService,
+    private http: HttpClient
 
 
   ) { }
@@ -335,4 +338,14 @@ export class ContentListComponent {
 
     this.showDeleteModal = false;
   }
+
+
+
+
+
+
+
+
+
+  
 }

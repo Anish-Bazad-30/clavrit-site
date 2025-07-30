@@ -3,61 +3,78 @@
         <div class="recent-work-header text-start py-2">
             <h2 class="col-md-6 m-auto h3 semi-bold-600 text-primary">Welcome!</h2>
         </div>
+        <div class="import-exort">
+        <label for="import-export">Import Data</label>
+        <input type="file" (change)="onFileSelected($event)" class="form-control" accept=".xlsx" />
+
+        <button class="btn btn-primary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300" (click)="uploadFile()">Upload</button>
+        <button class="btn btn-primary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300" (click)="downloadFile()">Export Data</button>
+        </div>
+
         <div class="w-100 d-flex flex-column px-3">
-            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor"  [routerLink]="['/admin/content-list', 'client']">
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor"
+                [routerLink]="['/admin/content-list', 'client']">
                 <span class="text-primary h4">Client info Management</span>
                 <!-- <a routerLink="/admin/content-list"><i class='display-6 bx bx-chevron-right text-primary'></i></a> -->
                 <a>
-                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                    <i class='display-6 bx bx-chevron-right text-primary'></i>
                 </a>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor" [routerLink]="['/admin/content-list', 'blog']">
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor"
+                [routerLink]="['/admin/content-list', 'blog']">
                 <span class="text-primary h4">Blog Management</span>
-                <a >
-                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                <a>
+                    <i class='display-6 bx bx-chevron-right text-primary'></i>
                 </a>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor" [routerLink]="['/admin/content-list', 'project']">
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor"
+                [routerLink]="['/admin/content-list', 'project']">
                 <span class="text-primary h4">Project Management</span>
                 <a>
-                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                    <i class='display-6 bx bx-chevron-right text-primary'></i>
                 </a>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor" [routerLink]="['/admin/content-list', 'service']">
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor"
+                [routerLink]="['/admin/content-list', 'service']">
                 <span class="text-primary h4">Service Management</span>
                 <a>
-                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                    <i class='display-6 bx bx-chevron-right text-primary'></i>
                 </a>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor" [routerLink]="['/admin/content-list', 'job-detail']">
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor"
+                [routerLink]="['/admin/content-list', 'job-detail']">
                 <span class="text-primary h4">Job details Management</span>
                 <a>
-                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                    <i class='display-6 bx bx-chevron-right text-primary'></i>
                 </a>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor" [routerLink]="['/admin/content-list', 'job-application']">
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor"
+                [routerLink]="['/admin/content-list', 'job-application']">
                 <span class="text-primary h4">Job Application Management</span>
                 <a>
-                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                    <i class='display-6 bx bx-chevron-right text-primary'></i>
                 </a>
             </div>
 
-             <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor" [routerLink]="['/admin/content-list', 'business-stats']">
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor"
+                [routerLink]="['/admin/content-list', 'business-stats']">
                 <span class="text-primary h4">Business Stats Management</span>
                 <a>
-                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                    <i class='display-6 bx bx-chevron-right text-primary'></i>
                 </a>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor" [routerLink]="['/admin/content-list', 'contact']">
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor"
+                [routerLink]="['/admin/content-list', 'contact']">
                 <span class="text-primary h4">Contact Management</span>
                 <a>
-                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                    <i class='display-6 bx bx-chevron-right text-primary'></i>
                 </a>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor" [routerLink]="['/admin/content-list', 'tools']">
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-3 fw-semibold bg-white p-3 cursor"
+                [routerLink]="['/admin/content-list', 'tools']">
                 <span class="text-primary h4">Tools & Technology</span>
                 <a>
-                    <i class='display-6 bx bx-chevron-right text-primary'></i> 
+                    <i class='display-6 bx bx-chevron-right text-primary'></i>
                 </a>
             </div>
         </div>
