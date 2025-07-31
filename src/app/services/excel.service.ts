@@ -10,14 +10,19 @@ export class ExcelService {
  private apiUrl: string = environment.apiUrl;
   constructor(private http: HttpClient) { }
   
-    downloadExcel(): Observable<any> {
-      const url = `${this.apiUrl}/api/export`;
-      return this.http.get<any>(url);
-    }
+downloadExcel(): Observable<Blob> {
+  const url = `${this.apiUrl}/api/export`;
+  return this.http.get(url, {
+    responseType: 'blob' // Important to get file
+  });
+}
+
   
   
-    importExcel(data: any): Observable<any> {
-      const url = `${this.apiUrl}/clavrit/job-details`;
-      return this.http.post<any>(url, data);
+    importExcel(file: File): Observable<any> {
+      const url = `${this.apiUrl}/api/import/upload`;
+      const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post<any>(url, formData);
     }
 }

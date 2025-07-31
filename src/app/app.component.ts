@@ -1,5 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
+declare let gtag: Function;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,11 +9,27 @@ import { Component, OnInit, HostListener } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'clavrit';
-  ngOnInit() {
-    // if (window.location.href.includes('#/')) {
-    //   const cleanPath = window.location.href.split('#/')[1];
-    //   window.location.href = `/${cleanPath || ''}`;
-    // }
+
+  constructor( private router: Router){
+    
+  }
+  // ngOnInit() {
+  //   // if (window.location.href.includes('#/')) {
+  //   //   const cleanPath = window.location.href.split('#/')[1];
+  //   //   window.location.href = `/${cleanPath || ''}`;
+  //   // }
+  // }
+
+  ngOnInit(): void {
+    this.router.events.pipe(
+      filter((event: any) => event instanceof NavigationEnd)
+    ).subscribe((event: any) => {
+      console.log(event);
+      
+      gtag('config', 'G-6C5R5RFLXP', {
+        'page_path': event.urlAfterRedirects
+      });
+    });
   }
   @HostListener('window:scroll', [])
   onWindowScroll() {
