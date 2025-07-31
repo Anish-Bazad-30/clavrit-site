@@ -65,7 +65,7 @@ export class AboutUsComponent implements OnInit {
     { title: 'SAP CDC', value: 95, animatedValue: 0 },
     { title: 'SAP COMMERCE', value: 95, animatedValue: 0 },
     { title: 'SALESFORCE', value: 80, animatedValue: 0 },
-    { title: 'ENTERPRISE APPLICATION', value: 90, animatedValue: 0 },
+    { title: 'ENTERPRISE APPLICATION', value: 80, animatedValue: 0 },
   ];
 
   ngAfterViewInit() {

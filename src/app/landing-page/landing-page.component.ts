@@ -29,10 +29,18 @@ export class LandingPageComponent implements OnInit {
 
   ) { }
   ourServices: any[] = [
+
+    {
+      title: "SAP Solutions",
+      titlehome: "SAP Solutions",
+      subhome: "End-to-End Implementation & Optimization",
+      img: "./assets/img/sap_cx_1.jpg",
+      description: "End-to-End Implementation & Optimization",
+    },
     {
       title: "Salesforce",
       titlehome: "Salesforce Services",
-      subhome: "CRM transformation & automation",
+      subhome: "CRM Transformation & Automation",
       img: "./assets/img/sf.jpg",
       description: "Maximize Salesforce’s power with Clavrit’s expert consulting and support to drive growth and elevate customer experiences.",
       subheading: "Supercharge Your CRM with Next-Level Salesforce Solutions",
@@ -41,7 +49,7 @@ export class LandingPageComponent implements OnInit {
     {
       title: "Artificial Intelligence",
       titlehome: "AI Integration",
-      subhome: "Intelligent business analytics",
+      subhome: "Intelligent Business Analytics",
       img: "./assets/img/AI_image.jpg",
       description: "We deliver tailored AI, Deep Learning, and NLP solutions for smarter insights and automation.",
       subheading: "Ready to unlock the transformative power of Artificial Intelligence?",
@@ -200,43 +208,73 @@ export class LandingPageComponent implements OnInit {
   }
   activeTab: string = 'enterprise';
 
-  enterprisePlatforms: any[] = 
-  [{name: 'SAP',
-    image: '../../assets/img/SAP.png',},
-    {name: 'Salesforce',
-    image: '../../assets/img/salesforce.png',},
-    {name: 'Microsoft',
-    image: '../../assets/img/microsoft.png',},
-    {name: 'Oracle',
-    image: '../../assets/img/oracle.png',},
-    {name: 'ServiceNow',
-    image: '../../assets/img/servicenow.png',},
-]
-developmentTools: any[] = 
-  [{name: 'Angular',
-    image: '../../assets/img/angular.png',},
-    {name: 'Spring Boot',
-    image: '../../assets/img/springboot.png',},
-    {name: 'Node.js',
-    image: '../../assets/img/nodejs.png',},
-    {name: 'Docker',
-    image: '../../assets/img/docker.png',},
-    {name: 'Kubernetes',
-    image: '../../assets/img/kubernetes.png',},
-]
-aiTools: any[] = 
-  [{name: 'Power BI',
-    image: '../../assets/img/powerbi.png',},
-    {name: 'Tableau',
-    image: '../../assets/img/tableau.png',},
-    {name: 'Python ML',
-    image: '../../assets/img/python.png',},
-    {name: 'ChatGPT',
-    image: '../../assets/img/chatgpt.png',},
-    {name: 'Azure AI',
-    image: '../../assets/img/azure.png',},
-]
- 
+  enterprisePlatforms: any[] =
+    [{
+      name: 'SAP',
+      image: '../../assets/img/SAP.png',
+    },
+    {
+      name: 'Salesforce',
+      image: '../../assets/img/salesforce.png',
+    },
+    {
+      name: 'Microsoft',
+      image: '../../assets/img/microsoft.png',
+    },
+    {
+      name: 'Oracle',
+      image: '../../assets/img/oracle.png',
+    },
+    {
+      name: 'ServiceNow',
+      image: '../../assets/img/servicenow.png',
+    },
+    ]
+  developmentTools: any[] =
+    [{
+      name: 'Angular',
+      image: '../../assets/img/angular.png',
+    },
+    {
+      name: 'Spring Boot',
+      image: '../../assets/img/springboot.png',
+    },
+    {
+      name: 'Node.js',
+      image: '../../assets/img/nodejs.png',
+    },
+    {
+      name: 'Docker',
+      image: '../../assets/img/docker.png',
+    },
+    {
+      name: 'Kubernetes',
+      image: '../../assets/img/kubernetes.png',
+    },
+    ]
+  aiTools: any[] =
+    [{
+      name: 'Power BI',
+      image: '../../assets/img/powerbi.png',
+    },
+    {
+      name: 'Tableau',
+      image: '../../assets/img/tableau.png',
+    },
+    {
+      name: 'Python ML',
+      image: '../../assets/img/python.png',
+    },
+    {
+      name: 'ChatGPT',
+      image: '../../assets/img/chatgpt.png',
+    },
+    {
+      name: 'Azure AI',
+      image: '../../assets/img/azure.png',
+    },
+    ]
+
   setTab(tab: string): void {
     this.activeTab = tab;
   }

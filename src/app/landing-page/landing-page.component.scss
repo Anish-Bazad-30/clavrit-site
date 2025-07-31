@@ -140,16 +140,16 @@ marquee-wrapper {
   width: 100%;
 }
  
-
 .marquee-track {
   display: flex;
-  animation: scroll-left 3s linear infinite;
+  width: max-content;
+  animation: scroll-left 20s linear infinite;
 }
-
+ 
 .marquee-track:hover {
   animation-play-state: paused;
 }
-
+ 
 @keyframes scroll-left {
   0% {
     transform: translateX(0);
@@ -158,7 +158,6 @@ marquee-wrapper {
     transform: translateX(-50%);
   }
 }
-
  
 .why-clavrit-card {
   min-width: 280px;
@@ -172,10 +171,24 @@ marquee-wrapper {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
  
+.why-clavrit-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+ 
 .custom-col {
   width: 20%; /* 100 / 5 cards = 20% */
   padding: 15px;
 }
+
+
+
+
+
+
+
  
 @media (max-width: 992px) {
   .custom-col {
@@ -287,3 +300,5 @@ marquee-wrapper {
   position: relative;
   z-index: 2;
 }
+
+

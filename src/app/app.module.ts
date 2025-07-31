@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SustainabilityComponent } from './sustainability/sustainability.component';
 import { AiComponent } from './ai/ai.component';
 import { RecentBlogPipe } from './pipes/recent-blog.pipe';
+import { SapSolutionsComponent } from './sap-solutions/sap-solutions.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { RecentBlogPipe } from './pipes/recent-blog.pipe';
     OurPartnersComponent,
     SustainabilityComponent,
     AiComponent,
-    RecentBlogPipe
+    RecentBlogPipe,
+    SapSolutionsComponent
   ],
   imports: [
     BrowserModule,

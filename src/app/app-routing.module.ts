@@ -14,6 +14,7 @@ import { OurPartnersComponent } from './our-partners/our-partners.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SustainabilityComponent } from './sustainability/sustainability.component';
 import { AiComponent } from './ai/ai.component';
+import { SapSolutionsComponent } from './sap-solutions/sap-solutions.component';
 
 const routes: Routes = [
 { path: '', component: LandingPageComponent, pathMatch: 'full' },
@@ -21,7 +22,10 @@ const routes: Routes = [
   {path:"ai", component:AiComponent},
   {path:"about-us", component:AboutUsComponent},
   {path:"services", component:ServicesProvidedComponent},
+  {path:"services/sap-solutions", component:SapSolutionsComponent},
+   {path:"services/sap-solutions/:slug", component:DetailViewComponent},
   {path:"services/:slug", component:DetailViewComponent},
+  
   {path:"career", component:CareerComponent},
   {path:"career/:slug", component:CareerDetailComponent},
   {path:"portfolio", component:PortfolioComponent},

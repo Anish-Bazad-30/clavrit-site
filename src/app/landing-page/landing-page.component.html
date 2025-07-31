@@ -41,25 +41,10 @@
             </div>
             <div class="col-lg-6 mt-4">
                 <div class="row">
-                    <div class="col-sm-6 col-lg-6 text-decoration-none">
-
-                        <div class="service-work sap-solutions overflow-hidden card mx-sm-0 mb-3">
-                            <a routerLink="/services" class="card-read-more">
-
-                                <div class="card-body">
-                                    <h5 class="card-title light-600 text-light mb-4">SAP Solutions</h5>
-                                    <p class="card-text light-400 text-light">
-                                        End-to-end implementation & optimization
-                                    </p>
-
-                                </div>
-                            </a>
-                        </div>
-
-                    </div>
+                
                     <div *ngFor="let item of ourServices"
-                        class="col-sm-6 col-lg-6 text-decoration-none">
-                        <div class="service-work overflow-hidden card mx-sm-0 mb-3" [ngStyle]="{ 'background-image': 'url(' + item.img + ')' }">
+                        class="col-sm-6 col-lg-6 d-flex align-items-stretch text-decoration-none">
+                        <div class="service-work overflow-hidden card mx-sm-0 mb-3 w-100" [ngStyle]="{ 'background-image': 'url(' + item.img + ')' }">
                             <a (click)="readMore(item)" class="card-read-more">
                                 <div class="card-body">
                                     <h5 class="card-title light-600 text-light mb-4">{{item.titlehome}}</h5>
@@ -72,13 +57,13 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-6 col-lg-6 text-decoration-none">
-                        <div class="service-work all-services overflow-hidden card mx-5 mx-sm-0 mb-2 h-100">
+                    <div class="col-sm-6 col-lg-6 d-flex align-items-stretch text-decoration-none">
+                        <div class="service-work all-services overflow-hidden card mx-sm-0 mb-3 w-100">
                             <a routerLink="/services" class="card-read-more">
-                                <div class="card-body h-100 d-flex flex-column justify-content-evenly">
+                                <div class="card-body">
                                     <h5 class="card-title light-600 text-light mb-4">Custom Development</h5>
                                     <p class="card-text light-400 text-light">
-                                        Tailored enterprise applications
+                                        Tailored Enterprise Applications
                                     </p>
 
                                 </div>
@@ -104,8 +89,66 @@
         </div>
     </div>
 </section>
-
-<section class="overflow-hidden bg-white">
+<section class="overflow-hidden bg-white ">
+  <div class="container-fluid">
+    <div class="col-lg-12 text-center">
+      <h2 class="h2 py-5 text-primary typo-space-line-center">
+        Why Leading Enterprises Trust Clavrit
+      </h2>
+ 
+      <div class="marquee-wrapper">
+        <div class="marquee-track d-flex">
+          <!-- Duplicated set for infinite loop effect -->
+          <ng-container *ngFor="let i of [1, 2]" >
+            <div class="card mx-2 shadow-sm p-3 why-clavrit-card">
+              <div class="card-body">
+                <h5 class="card-title">📈 Personalized Tech Support</h5>
+                <p class="card-text">Expert help for SAP, AI & ML — upgrades, fixes, and custom needs</p>
+              </div>
+            </div>
+            <div class="card mx-2 shadow-sm p-3 why-clavrit-card">
+              <div class="card-body">
+                <h5 class="card-title">⚡ IT & Business Consulting</h5>
+                <p class="card-text">Smart solutions in SAP, AI, Salesforce & more</p>
+              </div>
+            </div>
+            <div class="card mx-2 shadow-sm p-3 why-clavrit-card">
+              <div class="card-body">
+                <h5 class="card-title">✔️ Managed IT Services</h5>
+                <p class="card-text">End-to-end support to cut costs & boost focus</p>
+              </div>
+            </div>
+            <div class="card mx-2 shadow-sm p-3 why-clavrit-card">
+              <div class="card-body">
+                <h5 class="card-title">🌐 Global Tech Expertise</h5>
+                <p class="card-text">Trained pros for hardware, software, and security.</p>
+              </div>
+            </div>
+            <div class="card mx-2 shadow-sm p-3 why-clavrit-card">
+              <div class="card-body">
+                <h5 class="card-title">✔️ End-to-End Implementation & Support</h5>
+                <p class="card-text">From strategy to deployment and beyond</p>
+              </div>
+            </div>
+            <div class="card mx-2 shadow-sm p-3 why-clavrit-card">
+              <div class="card-body">
+                <h5 class="card-title">📈 Proven Track Record of Success</h5>
+                <p class="card-text">100+ successful projects, 95% client retention</p>
+              </div>
+            </div>
+            <div class="card mx-2 shadow-sm p-3 why-clavrit-card">
+              <div class="card-body">
+                <h5 class="card-title">✔️ Budget-Friendly Enterprise Solutions</h5>
+                <p class="card-text">Maximum ROI with cost-effective implementations</p>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <section class="overflow-hidden bg-white">
     <div class="container">
         <div class="col-lg-12 text-center">
             <h2 class="h2 py-5 text-primary typo-space-line-center">Why Leading Enterprises Trust Clavrit</h2>
@@ -161,7 +204,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <section class="bg-white py-3">
     <div class="container">
@@ -341,10 +384,13 @@
                 <div class="stat-icon">
                     <img [src]="stat.iconUrl" alt="stat-icon" width="30px" height="30px" />
                 </div>
-                <div class="stat-number ">
+                <div class="d-flex justify-content-center align-items-center">
+                <div class="stat-number">
                     {{ animatedValues[i] | number:'1.0-0' }}
                     <!-- {{stat.value}} -->
-                    <span *ngIf="stat.title === 'Years Of Experience' || stat.title === 'Team Members'">+</span>
+                    
+                </div>
+                <div><span class="fs-1">+</span></div>
                 </div>
                 <div class="stat-label">{{ stat.title }}</div>
             </div>
