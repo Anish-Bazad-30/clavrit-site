@@ -19,7 +19,15 @@ import { SapSolutionsComponent } from './sap-solutions/sap-solutions.component';
 const routes: Routes = [
 { path: '', component: LandingPageComponent, pathMatch: 'full' },
   {path:"sustainability", component:SustainabilityComponent},
+  {
+    path: 'sustainability/:section',
+    component: SustainabilityComponent,
+  },
   {path:"ai", component:AiComponent},
+   {
+    path: 'ai/:section',
+    component: AiComponent,
+  },
   {path:"about-us", component:AboutUsComponent},
   {path:"services", component:ServicesProvidedComponent},
   {path:"services/sap-solutions", component:SapSolutionsComponent},

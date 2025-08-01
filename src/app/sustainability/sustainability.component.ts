@@ -29,12 +29,17 @@ export class SustainabilityComponent implements OnInit {
   }
 ngAfterViewInit(): void {
   // Wait for DOM to fully render
-  this.route.fragment.subscribe(fragment => {
-    if (fragment) {
-      setTimeout(() => {
-        this.viewportScroller.scrollToAnchor(fragment);
-      }, 0);
-    }
-  });
+
+   this.route.paramMap.subscribe(params => {
+      const section = params.get('section');
+      if (section) {
+        setTimeout(() => {
+          const el = document.getElementById(section);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100); // delay to wait for view render
+      }
+    });
 }
 }

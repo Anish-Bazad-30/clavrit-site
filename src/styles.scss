@@ -30,6 +30,7 @@
 // }
 .btn-secondary {
   background-color: #31B0FD !important;
+  border:none;
 }
 
 // .bg-secondary {
@@ -349,3 +350,7 @@ footer a.text-light:hover {
   z-index: 0;
 }
 
+.no-focus-outline:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
