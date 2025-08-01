@@ -55,6 +55,19 @@ export class LandingPageComponent implements OnInit {
       subheading: "Ready to unlock the transformative power of Artificial Intelligence?",
       content: "At Clavrit, we offer a comprehensive suite of AI solutions designed to propel your business forward. We leverage the cutting edge of machine learning and deep learning to develop groundbreaking tools that tackle your toughest challenges. Generative AI, natural language processing, and more – these are just a few of the powerful technologies in our arsenal."
     },
+    {
+      title: "Custom Development",
+      titlehome: "Custom Development",
+      subhome: "Tailored Enterprise Applications",
+      img: "./assets/img/Development.png",
+      //description: "We deliver tailored AI, Deep Learning, and NLP solutions for smarter insights and automation.",
+      //subheading: "Ready to unlock the transformative power of Artificial Intelligence?",
+      //content: "At Clavrit, we offer a comprehensive suite of AI solutions designed to propel your business forward. We leverage the cutting edge of machine learning and deep learning to develop groundbreaking tools that tackle your toughest challenges. Generative AI, natural language processing, and more – these are just a few of the powerful technologies in our arsenal.",
+      //img: "./assets/img/other-service.jpg",
+      description: "We build fast, reliable web and mobile apps with full support.",
+      subheading: "Custom Web & Mobile Application Development",
+      content: "At Clavrit, we specialize in crafting custom applications that are intuitive, scalable, and future-ready. Whether it's a mobile-first solution, enterprise web platform, or cross-platform hybrid app, our team delivers solutions that align with your business goals and user expectations. From concept to deployment, we ensure quality, performance, and security at every stage.",
+    },
 
   ];
   ngOnInit(): void {
