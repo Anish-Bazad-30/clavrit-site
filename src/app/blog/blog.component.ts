@@ -147,5 +147,14 @@ export class BlogComponent implements OnInit {
       .replace(/^-+/, '')          // Trim - from start
       .replace(/-+$/, '');         // Trim - from end
   }
-
+  scrollToTop() {
+  const section = document.getElementById('blog-list-section');
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+handleNextPage() {
+  this.goToNextPage();
+  this.scrollToTop();
+}
 }

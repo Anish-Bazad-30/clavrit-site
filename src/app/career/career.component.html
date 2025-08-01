@@ -12,15 +12,15 @@
             </p>
             <button type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300"
                 routerLink="/portfolio">Learn More</button>
-            <button type="submit" class="btn rounded-pill btn-secondary text-light px-4 light-300"
+            <button type="submit" class="btn rounded-pill btn-secondary text-light px-4 light-300 no-focus-outline"
                 routerLink="/contact">Contact Us</button>
         </div>
     </div>
 </div>
 
-<section class="pt-5">
+<section class="pt-5 bg-light">
     <div class="container">
-        <div class="recent-work-header row text-center mb-4">
+        <div class="recent-work-header row text-center mb-2">
             <h2 class="col-md-6 m-auto h2 semi-bold-600 text-primary">Find Your Perfect Fit</h2>
         </div>
         <!-- <div class="row justify-content-center">
@@ -68,9 +68,10 @@
             </div>
 
         </div> -->
-        <div class="row projects gx-lg-5">
+
+        <!-- <div class="row projects gx-lg-5">
             <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social" *ngFor="let job of careers">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
+                <div class=" overflow-hidden card mx-5 mx-sm-0 mb-5">
                     <div class="card-body">
                         <h5 class="card-title light-600 text-dark mb-2">{{ job.jobDesignation }}</h5>
                         <p class="card-text light-400 text-dark">
@@ -87,7 +88,28 @@
                 </div>
             </div>
 
+        </div> -->
+        <div class="row projects gx-lg-5 gy-4 py-5">
+            <div class="col-sm-6 col-lg-4 project graphic social" *ngFor="let job of careers">
+                <a [routerLink]="['/career', job.id]" (click)="viewJob(job)" class="text-decoration-none"
+                    style="color: inherit;">
+                    <div class="card h-100 shadow-sm border-0 rounded-3">
+                        <div class="card-body p-3">
+                            <h5 class="card-title fw-semibold text-dark mb-2">
+                                {{ job.jobDesignation }}
+                            </h5>
+                            <p class="card-text text-muted mb-1">{{ job.industry }}</p>
+                            <p class="card-text text-muted mb-2">{{ job.jobType }}</p>
+                            <span class="text-primary fw-medium d-inline-flex align-items-center">
+                                Read more <i class="bx bxs-hand-right ms-1"></i>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
+
+
     </div>
 </section>
 <section class="container py-3">
@@ -101,8 +123,8 @@
             <!-- Full Name -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg" id="floatingname" formControlName="fullName"
-                        placeholder="Name">
+                    <input type="text" class="form-control form-control-lg no-focus-outline" id="floatingname"
+                        formControlName="fullName" placeholder="Name">
                     <label for="floatingname">Full Name</label>
                 </div>
                 <div *ngIf="careerForm.get('fullName')?.touched && careerForm.get('fullName')?.invalid"
@@ -115,8 +137,8 @@
             <!-- Email -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <input type="email" class="form-control form-control-lg" id="floatingemail" formControlName="email"
-                        placeholder="Email">
+                    <input type="email" class="form-control form-control-lg no-focus-outline" id="floatingemail"
+                        formControlName="email" placeholder="Email">
                     <label for="floatingemail">Email</label>
                 </div>
                 <div *ngIf="careerForm.get('email')?.touched && careerForm.get('email')?.invalid"
@@ -129,8 +151,9 @@
             <!-- Phone -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <input type="tel" class="form-control form-control-lg" id="floatingphone" formControlName="phone"
-                        placeholder="Phone" maxlength="10" (keypress)="allowOnlyNumbers($event)">
+                    <input type="tel" class="form-control form-control-lg no-focus-outline" id="floatingphone"
+                        formControlName="phone" placeholder="Phone" maxlength="10"
+                        (keypress)="allowOnlyNumbers($event)">
                     <label for="floatingphone">Phone</label>
                 </div>
                 <div *ngIf="careerForm.get('phone')?.touched && careerForm.get('phone')?.invalid"
@@ -143,7 +166,7 @@
             <!-- Job Applied -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <select class="form-select" formControlName="jobApplied">
+                    <select class="form-select no-focus-outline" formControlName="jobApplied">
                         <option value="">Select</option>
                         <option value="Java Developer">Java Developer</option>
                         <option value="Angular Developer">Angular Developer</option>
@@ -160,7 +183,7 @@
             <!-- Qualification -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <select class="form-select" formControlName="qualification">
+                    <select class="form-select no-focus-outline" formControlName="qualification">
                         <option value="">Select</option>
                         <option value="Graduation">Graduation</option>
                         <option value="Post Graduation">Post Graduation</option>
@@ -177,8 +200,8 @@
             <!-- Total YOE -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg" id="totalYOE" formControlName="totalYOE"
-                        placeholder="Total Experience">
+                    <input type="text" class="form-control form-control-lg no-focus-outline" id="totalYOE"
+                        formControlName="totalYOE" placeholder="Total Experience">
                     <label for="totalYOE">Total YOE</label>
                 </div>
                 <div *ngIf="careerForm.get('totalYOE')?.touched && careerForm.get('totalYOE')?.invalid"
@@ -190,7 +213,7 @@
             <!-- Relevant Exp -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg" id="relevantExp"
+                    <input type="text" class="form-control form-control-lg no-focus-outline" id="relevantExp"
                         formControlName="relevantExp" placeholder="Relevant Experience" maxlength="2"
                         (keypress)="allowOnlyNumbers($event)">
                     <label for="relevantExp">Relevant Experience</label>
@@ -204,7 +227,7 @@
             <!-- Current Company -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg" id="currentCompany"
+                    <input type="text" class="form-control form-control-lg no-focus-outline" id="currentCompany"
                         formControlName="currentCompany" placeholder="Current Company">
                     <label for="currentCompany">Current Company</label>
                 </div>
@@ -217,8 +240,9 @@
             <!-- Current CTC -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <input type="text" class="form-control form-control-lg" id="currentCTC" formControlName="currentCTC"
-                        placeholder="Current CTC" maxlength="10" (keypress)="allowOnlyNumbers($event)">
+                    <input type="text" class="form-control form-control-lg no-focus-outline" id="currentCTC"
+                        formControlName="currentCTC" placeholder="Current CTC" maxlength="10"
+                        (keypress)="allowOnlyNumbers($event)">
                     <label for="currentCTC">Current CTC</label>
                 </div>
                 <div *ngIf="careerForm.get('currentCTC')?.touched && careerForm.get('currentCTC')?.invalid"
@@ -230,7 +254,7 @@
             <!-- Notice Period -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <select class="form-select" formControlName="noticePeriod">
+                    <select class="form-select no-focus-outline" formControlName="noticePeriod">
                         <option value="">Select</option>
                         <option value="Immediate">Immediate</option>
                         <option value="Less than 30 days">Less than 30 days</option>
@@ -247,8 +271,8 @@
             <!-- Resume Upload -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <input type="file" class="form-control form-control-lg" accept=".pdf,.doc,.docx" id="floatingcv"
-                        (change)="handleBrowseFile($event)" #fileInput>
+                    <input type="file" class="form-control form-control-lg no-focus-outline" accept=".pdf,.doc,.docx"
+                        id="floatingcv" (change)="handleBrowseFile($event)" #fileInput>
                     <label for="floatingcv" class="form-label">Upload CV/Resume</label>
                 </div>
                 <p class="mt-2">Allowed Type(s): .pdf, .doc, .docx</p>
@@ -257,8 +281,8 @@
             <!-- Cover Letter -->
             <div class="col-lg-6 mb-4">
                 <div class="form-floating">
-                    <textarea class="form-control" rows="8" id="floatingtextarea" formControlName="coverletter"
-                        placeholder="Write your cover letter here"></textarea>
+                    <textarea class="form-control no-focus-outline" rows="8" id="floatingtextarea"
+                        formControlName="coverletter" placeholder="Write your cover letter here"></textarea>
                     <label for="floatingtextarea">Cover Letter</label>
                 </div>
                 <div *ngIf="careerForm.get('coverletter')?.touched && careerForm.get('coverletter')?.invalid"
@@ -272,7 +296,8 @@
             <!-- Agree Checkbox -->
             <div class="col-lg-12 mb-4">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="agreeCheck" formControlName="agree" required>
+                    <input class="form-check-input no-focus-outline" type="checkbox" id="agreeCheck"
+                        formControlName="agree" required>
                     <label class="form-check-label" for="agreeCheck">
                         By using this form you agree with the storage and handling of your data by this website. *
                     </label>
@@ -285,7 +310,8 @@
 
             <!-- Submit Button -->
             <div class="col-md-12 col-12 m-auto text-end">
-                <button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 text-light"
+                <button type="submit"
+                    class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 text-light no-focus-outline"
                     [disabled]="!careerForm.valid">
                     Submit
                 </button>
@@ -308,158 +334,20 @@
         </div>
 
 
-        <div class="row projects gx-lg-5">
-            <div class="col-sm-6 col-lg-4 project graphic social mb-3">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
-                    <img src="./assets/img/flexible.png" class="card-img-top" alt="..." height="160px">
-                    <div class="card-body h-100 d-flex flex-column justify-content-evenly">
-                        <h5 class="card-title light-600 text-dark">Flexible Work Hours</h5>
-                        <p class="card-text light-300 h-100 text-dark d-flex align-items-center">
-                            At Clavrit, we value productivity and believe it thrives with a balanced personal life.
-                            We offer flexibility in work hours to help employees meet family commitments.
-                            This ensures an enriched balance between work and life for everyone.
+        <div class="row projects gx-lg-5 gy-4 py-4">
+            <div class="col-sm-6 col-lg-4 mb-3" *ngFor="let benefit of benefits">
+                <div class="card mx-3 mx-sm-0 h-100 shadow-sm border-0 rounded-3 benefits-card">
+                    <img [src]="benefit.image" class="card-img-top" alt="..." height="160px" />
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title light-600 text-dark mb-2">{{ benefit.title }}</h5>
+                        <p class="card-text light-300 text-dark mb-0">
+                            {{ benefit.description }}
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-3">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
+        </div> 
 
-
-                    <img class="card-img-top" src="./assets/img/Workculture.png" alt="..." width="100%" height="160px">
-                    <div class="card-body h-100 d-flex flex-column justify-content-evenly">
-                        <h5 class="card-title light-600 text-dark">Work Culture</h5>
-                        <p class="card-text light-300 h-100 text-dark d-flex align-items-center">
-                            At Clavrit, we ensure everyone can embrace their unique identity and cultural experiences.
-                            We foster an environment where people can truly be themselves.
-                            This helps them thrive both professionally and personally.
-
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-3">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
-
-
-                    <img class="card-img-top" src="./assets/img/work-life.jpg" alt="..." width="100%" height="160px">
-                    <div class="card-body h-100 d-flex flex-column justify-content-evenly">
-                        <h5 class="card-title light-600 text-dark">Work Life Balance</h5>
-                        <p class="card-text light-300 h-100 text-dark d-flex align-items-center">
-                            Our employees enjoy a perfect work-life balance at Clavrit, we offer perks like birthday
-                            leaves, time off from work etc encouraging employees to relax & rejuvinate.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-3">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
-
-
-                    <img class="card-img-top" src="./assets/img/Equal-Employment.png" alt="..." width="100%"
-                        height="160px">
-                    <div class="card-body h-100 d-flex flex-column justify-content-evenly">
-                        <h5 class="card-title light-600 text-dark">Equal Opportunities</h5>
-                        <p class="card-text light-300 h-100 text-dark d-flex align-items-center">
-                            Clavrit is an equal opportunity employer that welcomes talent from all backgrounds without
-                            discrimination.
-                            We value freedom of thought, transparent communication, and diversity.
-                            Our people enjoy ample opportunities to grow and advance their careers.
-
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-3">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
-
-
-                    <img class="card-img-top" src="./assets/img/work-env.jpg" alt="..." width="100%" height="160px">
-                    <div class="card-body h-100 d-flex flex-column justify-content-evenly">
-                        <h5 class="card-title light-600 text-dark">Stimulating Work Environment</h5>
-                        <p class="card-text light-300 h-100 text-dark d-flex align-items-center">
-                            At Clavrit, you’ll have opportunities to sharpen your skills across diverse specializations.
-                            Our variety of work and experiences provide a strong platform for career growth.
-                            We foster a welcoming environment where new ideas and exploration are encouraged.
-
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-3">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
-
-
-                    <img class="card-img-top" src="./assets/img/career-path.jpg" alt="..." width="100%" height="160px">
-                    <div class="card-body h-100 d-flex flex-column justify-content-evenly">
-                        <h5 class="card-title light-600 text-dark">Career Progression</h5>
-                        <p class="card-text light-300 text-dark">
-                            At Clavrit, we aim for uncompromised perfection through creativity and constant improvement.
-                            We prioritize keeping our teams updated with the latest technology and trends.
-                            Regular training and seminars help our people learn and grow in their domains.
-
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-3">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
-
-
-                    <img class="card-img-top" src="./assets/img/we-care.jpg" alt="..." width="100%" height="160px">
-                    <div class="card-body h-100 d-flex flex-column justify-content-evenly">
-                        <h5 class="card-title light-600 text-dark">We Care</h5>
-                        <p class="card-text light-300 text-dark ">
-                            At Clavrit, our employees enjoy comprehensive health benefits and group insurance for peace
-                            of mind.
-                            We offer financial support when needed and regularly give back to local NGOs.
-                            We also empower employees’ families through vocational training and skill development.
-
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-3">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
-
-
-                    <img class="card-img-top" src="./assets/img/remote-work.png" alt="..." width="100%" height="160px">
-                    <div class="card-body h-100 d-flex flex-column justify-content-evenly">
-                        <h5 class="card-title light-600 text-dark">Remote Work</h5>
-                        <p class="card-text light-300 text-dark">
-                            At Clavrit, we offer diverse work options — onsite, hybrid, and remote.
-                            We stand out for providing Work From Anywhere (WFA) all year round, even post-COVID.
-                            This flexibility lets you choose how and where you work best.
-
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-3">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100 benefits-card">
-
-                    <img class="card-img-top" src="./assets/img/awards.jpg" alt="..." width="100%" height="160px">
-                    <div class="card-body h-100 d-flex flex-column justify-content-evenly">
-                        <h5 class="card-title light-600 text-dark">Acclaim & Accolades</h5>
-                        <p class="card-text light-300 text-dark">
-                            At Clavrit, we know appreciation boosts self-confidence and drives top performance.
-                            We make it a priority to recognize and reward employees who go above and beyond.
-                            From incentives to awards, we ensure our people feel valued for their contributions.
-
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
 
 
 
