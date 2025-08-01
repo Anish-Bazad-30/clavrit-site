@@ -33,9 +33,19 @@ export class LandingPageComponent implements OnInit {
     {
       title: "SAP Solutions",
       titlehome: "SAP Solutions",
-      subhome: "End-to-End Implementation",
+      subhome: "End-to-End Implementation & Optimization",
       img: "./assets/img/sap_cx_1.jpg",
       description: "End-to-End Implementation & Optimization",
+    },
+    
+    {
+      title: "Artificial Intelligence",
+      titlehome: "AI Integration",
+      subhome: "Intelligent Business Analytics",
+      img: "./assets/img/AI_image.jpg",
+      description: "We deliver tailored AI, Deep Learning, and NLP solutions for smarter insights and automation.",
+      subheading: "Ready to unlock the transformative power of Artificial Intelligence?",
+      content: "At Clavrit, we offer a comprehensive suite of AI solutions designed to propel your business forward. We leverage the cutting edge of machine learning and deep learning to develop groundbreaking tools that tackle your toughest challenges. Generative AI, natural language processing, and more – these are just a few of the powerful technologies in our arsenal."
     },
     {
       title: "Salesforce",
@@ -45,15 +55,6 @@ export class LandingPageComponent implements OnInit {
       description: "Maximize Salesforce’s power with Clavrit’s expert consulting and support to drive growth and elevate customer experiences.",
       subheading: "Supercharge Your CRM with Next-Level Salesforce Solutions",
       content: "Customer relationships are the lifeblood of your business. But are you getting the most out of your current CRM? At Clavrit, we don’t just implement Salesforce; we unlock its full potential to transform your customer interactions. Welcome to the future of CRM. Salesforce is the engine driving growth, exceptional customer experiences, and streamlined operations for modern businesses. Our team of certified Salesforce rockstars boasts extensive experience in implementing, customizing, and optimizing solutions specifically tailored to your needs. We’re not afraid of a challenge. Our finger remains firmly on the pulse of the latest Salesforce updates and innovations, ensuring you stay ahead of the curve and leverage the platform’s full power."
-    },
-    {
-      title: "Artificial Intelligence",
-      titlehome: "AI Integration",
-      subhome: "Intelligent Business Analytics",
-      img: "./assets/img/AI_image.jpg",
-      description: "We deliver tailored AI, Deep Learning, and NLP solutions for smarter insights and automation.",
-      subheading: "Ready to unlock the transformative power of Artificial Intelligence?",
-      content: "At Clavrit, we offer a comprehensive suite of AI solutions designed to propel your business forward. We leverage the cutting edge of machine learning and deep learning to develop groundbreaking tools that tackle your toughest challenges. Generative AI, natural language processing, and more – these are just a few of the powerful technologies in our arsenal."
     },
     {
       title: "Custom Development",
