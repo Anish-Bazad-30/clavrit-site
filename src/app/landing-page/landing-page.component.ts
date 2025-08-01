@@ -33,7 +33,7 @@ export class LandingPageComponent implements OnInit {
     {
       title: "SAP Solutions",
       titlehome: "SAP Solutions",
-      subhome: "End-to-End Implementation & Optimization",
+      subhome: "End-to-End Implementation",
       img: "./assets/img/sap_cx_1.jpg",
       description: "End-to-End Implementation & Optimization",
     },

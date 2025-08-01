@@ -48,7 +48,7 @@
                             [ngStyle]="{ 'background-image': 'url(' + item.img + ')' }">
                             <a (click)="readMore(item)" class="card-read-more">
                                 <div class="card-body">
-                                    <h4 class="card-title light-600 text-light mb-4">{{item.titlehome}}</h4>
+                                    <h5 class="card-title light-600 text-light mb-4">{{item.titlehome}}</h5>
                                     <p class="card-text light-400 text-light">
                                         {{item.subhome}}
                                     </p>
@@ -287,7 +287,7 @@
             <div class="col-md-4">
                 <div class="hover-card case-3 position-relative border rounded-4 p-4 shadow-sm h-100 bg-white">
                     <span class="badge bg-light text-dark mb-3 px-3 py-2 rounded-pill">Artificial Intelligence</span>
-                    <h5 class=" mt-2 mb-2 light-300 pb-4">Create AI Dashboards for optimization, preventive maintenance and sustainability.</h5>
+                    <h5 class=" mt-2 light-300 mb-2">Create AI Dashboards for optimization, preventive maintenance and sustainability.</h5>
                     <a [routerLink]="['/ai', 'optimizing-processes-through-ai']"
                         class="text-primary fw-semibold d-inline-block mt-3 text-decoration-none ">Read Full
                         Case Study →</a>
