@@ -139,7 +139,7 @@
                 </div>
 
                 <!-- Advantages -->
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                     <div class="form-floating">
                         <textarea id="advantages" class="form-control" formControlName="advantages"
                             [ngClass]="{'is-invalid': selectedFields.get('advantages')?.touched && selectedFields.get('advantages')?.invalid}"
@@ -147,16 +147,33 @@
                         <label for="advantages">Advantages</label>
                         <div class="invalid-feedback">Advantages are required.</div>
                     </div>
+                </div> -->
+                <div class="col-lg-6">
+                    <div class="form-floating">
+                        <textarea id="advantages" class="form-control" formControlName="advantages"
+                            style="height: 100px" placeholder="Advantages"></textarea>
+                        <label for="advantages">Advantages</label>
+
+                    </div>
                 </div>
 
+
                 <!-- Disadvantages -->
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                     <div class="form-floating">
                         <textarea id="disadvantages" class="form-control" formControlName="disadvantages"
                             [ngClass]="{'is-invalid': selectedFields.get('disadvantages')?.touched && selectedFields.get('disadvantages')?.invalid}"
                             style="height: 100px" placeholder="Disadvantages"></textarea>
                         <label for="disadvantages">Disadvantages</label>
                         <div class="invalid-feedback">Disadvantages are required.</div>
+                    </div>
+                </div> -->
+                <div class="col-lg-6">
+                    <div class="form-floating">
+                        <textarea id="disadvantages" class="form-control" formControlName="disadvantages"
+                            style="height: 100px" placeholder="Disadvantages"></textarea>
+                        <label for="disadvantages">Disadvantages</label>
+
                     </div>
                 </div>
 

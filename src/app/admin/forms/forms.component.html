@@ -82,7 +82,7 @@
             <form [formGroup]="selectedFields" (ngSubmit)="onToolSubmit()" class="row g-3"
                 enctype="multipart/form-data">
 
-               
+
                 <div class="col-lg-12">
                     <div class="form-floating">
                         <input type="file" #fileInput1 id="tools" class="form-control" placeholder="Image"
@@ -160,13 +160,21 @@
                 </div>
 
                 <!-- Advantages -->
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                     <div class="form-floating">
                         <textarea id="advantages" class="form-control" formControlName="advantages"
                             [ngClass]="{'is-invalid': selectedFields.get('advantages')?.touched && selectedFields.get('advantages')?.invalid}"
                             style="height: 100px" placeholder="Advantages"></textarea>
                         <label for="advantages">Advantages</label>
                         <div class="invalid-feedback">Advantages are required.</div>
+                    </div>
+                </div> -->
+
+                <div class="col-lg-6">
+                    <div class="form-floating">
+                        <textarea id="advantages" class="form-control" formControlName="advantages"
+                            style="height: 100px" placeholder="Advantages"></textarea>
+                        <label for="advantages">Advantages</label>
                     </div>
                 </div>
 
