@@ -12,12 +12,27 @@ export class MainComponent {
 
   showLayout = true;
 
-   constructor(private router: Router) {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event) => {
+  //  constructor(private router: Router) {
+  //   this.router.events.pipe(
+  //     filter(event => event instanceof NavigationEnd)
+  //   ).subscribe((event) => {
+  //     const navEnd = event as NavigationEnd;
+  //     this.showLayout = !navEnd.urlAfterRedirects.startsWith('/admin');
+  //   });
+  // }
+  constructor(private router: Router) {
+  this.router.events
+    .pipe(filter(event => event instanceof NavigationEnd))
+    .subscribe((event) => {
       const navEnd = event as NavigationEnd;
-      this.showLayout = !navEnd.urlAfterRedirects.startsWith('/admin');
+      const url = navEnd.urlAfterRedirects;
+
+      // Hide layout for admin and 404 page
+      this.showLayout = !(
+        url.startsWith('/admin') ||
+        url === '/404' ||
+        url === '/not-found'
+      );
     });
-  }
+}
 }

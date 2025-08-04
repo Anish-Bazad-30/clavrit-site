@@ -15,43 +15,44 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SustainabilityComponent } from './sustainability/sustainability.component';
 import { AiComponent } from './ai/ai.component';
 import { SapSolutionsComponent } from './sap-solutions/sap-solutions.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
-{ path: '', component: LandingPageComponent, pathMatch: 'full' },
-  {path:"sustainability", component:SustainabilityComponent},
+  { path: '', component: LandingPageComponent, pathMatch: 'full' },
+  { path: "sustainability", component: SustainabilityComponent },
   {
     path: 'sustainability/:section',
     component: SustainabilityComponent,
   },
-  {path:"ai", component:AiComponent},
-   {
+  { path: "ai", component: AiComponent },
+  {
     path: 'ai/:section',
     component: AiComponent,
   },
-  {path:"about-us", component:AboutUsComponent},
-  {path:"services", component:ServicesProvidedComponent},
-  {path:"services/sap-solutions", component:SapSolutionsComponent},
-   {path:"services/sap-solutions/:slug", component:DetailViewComponent},
-  {path:"services/:slug", component:DetailViewComponent},
-  
-  {path:"career", component:CareerComponent},
-  {path:"career/:slug", component:CareerDetailComponent},
-  {path:"portfolio", component:PortfolioComponent},
-  {path:"blog", component:BlogComponent},
-  {path:"blog/:slug", component:BlogDetailComponent},
-  {path:"our-partners", component:OurPartnersComponent},
-  {path:"contact", component:ContactComponent},
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+  { path: "about-us", component: AboutUsComponent },
+  { path: "services", component: ServicesProvidedComponent },
+  { path: "services/sap-solutions", component: SapSolutionsComponent },
+  { path: "services/:slug", component: DetailViewComponent },
 
+  { path: "career", component: CareerComponent },
+  { path: "career/:slug", component: CareerDetailComponent },
+  { path: "portfolio", component: PortfolioComponent },
+  { path: "blog", component: BlogComponent },
+  { path: "blog/:slug", component: BlogDetailComponent },
+  { path: "our-partners", component: OurPartnersComponent },
+  { path: "contact", component: ContactComponent },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+  { path: '404', component: NotFoundComponent },
+{ path: '**', redirectTo: '404' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     //scrollPositionRestoration: 'enabled',
-     anchorScrolling: 'enabled',
-      scrollPositionRestoration: 'enabled'  
+    anchorScrolling: 'enabled',
+    scrollPositionRestoration: 'enabled'
   })],
- // providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  // providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

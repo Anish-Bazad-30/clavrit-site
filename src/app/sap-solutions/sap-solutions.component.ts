@@ -68,7 +68,7 @@ export class SapSolutionsComponent implements OnInit {
 
     this.ourServicesService.setService(service);
    
-      this.router.navigate(['/services/sap-solutions', slug]);
+      this.router.navigate(['/services/', slug]);
     
     
   }
