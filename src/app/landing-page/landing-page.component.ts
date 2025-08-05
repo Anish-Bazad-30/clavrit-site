@@ -34,7 +34,7 @@ export class LandingPageComponent implements OnInit {
       title: "SAP Solutions",
       titlehome: "SAP Solutions",
       subhome: "End-to-End Implementation & Optimization",
-      img: "./assets/img/sap_cx_1.jpg",
+      img: "./assets/img/sap_cx_1.webp",
       description: "End-to-End Implementation & Optimization",
     },
     
@@ -42,7 +42,7 @@ export class LandingPageComponent implements OnInit {
       title: "Artificial Intelligence",
       titlehome: "AI Integration",
       subhome: "Intelligent Business Analytics",
-      img: "./assets/img/AI_image.jpg",
+      img: "./assets/img/AI_image.webp",
       description: "We deliver tailored AI, Deep Learning, and NLP solutions for smarter insights and automation.",
       subheading: "Ready to unlock the transformative power of Artificial Intelligence?",
       content: "At Clavrit, we offer a comprehensive suite of AI solutions designed to propel your business forward. We leverage the cutting edge of machine learning and deep learning to develop groundbreaking tools that tackle your toughest challenges. Generative AI, natural language processing, and more – these are just a few of the powerful technologies in our arsenal."
@@ -51,7 +51,7 @@ export class LandingPageComponent implements OnInit {
       title: "Salesforce",
       titlehome: "Salesforce Services",
       subhome: "CRM Transformation & Automation",
-      img: "./assets/img/sf.jpg",
+      img: "./assets/img/sf.webp",
       description: "Maximize Salesforce’s power with Clavrit’s expert consulting and support to drive growth and elevate customer experiences.",
       subheading: "Supercharge Your CRM with Next-Level Salesforce Solutions",
       content: "Customer relationships are the lifeblood of your business. But are you getting the most out of your current CRM? At Clavrit, we don’t just implement Salesforce; we unlock its full potential to transform your customer interactions. Welcome to the future of CRM. Salesforce is the engine driving growth, exceptional customer experiences, and streamlined operations for modern businesses. Our team of certified Salesforce rockstars boasts extensive experience in implementing, customizing, and optimizing solutions specifically tailored to your needs. We’re not afraid of a challenge. Our finger remains firmly on the pulse of the latest Salesforce updates and innovations, ensuring you stay ahead of the curve and leverage the platform’s full power."
@@ -60,11 +60,11 @@ export class LandingPageComponent implements OnInit {
       title: "Custom Development",
       titlehome: "Custom Development",
       subhome: "Tailored Enterprise Applications",
-      img: "./assets/img/Development.png",
+      img: "./assets/img/Development.webp",
       //description: "We deliver tailored AI, Deep Learning, and NLP solutions for smarter insights and automation.",
       //subheading: "Ready to unlock the transformative power of Artificial Intelligence?",
       //content: "At Clavrit, we offer a comprehensive suite of AI solutions designed to propel your business forward. We leverage the cutting edge of machine learning and deep learning to develop groundbreaking tools that tackle your toughest challenges. Generative AI, natural language processing, and more – these are just a few of the powerful technologies in our arsenal.",
-      //img: "./assets/img/other-service.jpg",
+      //img: "./assets/img/other-service.webp",
       description: "We build fast, reliable web and mobile apps with full support.",
       subheading: "Custom Web & Mobile Application Development",
       content: "At Clavrit, we specialize in crafting custom applications that are intuitive, scalable, and future-ready. Whether it's a mobile-first solution, enterprise web platform, or cross-platform hybrid app, our team delivers solutions that align with your business goals and user expectations. From concept to deployment, we ensure quality, performance, and security at every stage.",
@@ -225,67 +225,67 @@ export class LandingPageComponent implements OnInit {
   enterprisePlatforms: any[] =
     [{
       name: 'SAP',
-      image: '../../assets/img/SAP.png',
+      image: '../../assets/img/SAP.webp',
     },
     {
       name: 'Salesforce',
-      image: '../../assets/img/salesforce.png',
+      image: '../../assets/img/salesforce.webp',
     },
     {
       name: 'Microsoft',
-      image: '../../assets/img/microsoft.png',
+      image: '../../assets/img/microsoft.webp',
     },
     {
       name: 'Oracle',
-      image: '../../assets/img/oracle.png',
+      image: '../../assets/img/oracle.webp',
     },
     {
       name: 'ServiceNow',
-      image: '../../assets/img/servicenow.png',
+      image: '../../assets/img/servicenow.webp',
     },
     ]
   developmentTools: any[] =
     [{
       name: 'Angular',
-      image: '../../assets/img/angular.png',
+      image: '../../assets/img/angular.webp',
     },
     {
       name: 'Spring Boot',
-      image: '../../assets/img/springboot.png',
+      image: '../../assets/img/springboot.webp',
     },
     {
       name: 'Node.js',
-      image: '../../assets/img/nodejs.png',
+      image: '../../assets/img/nodejs.webp',
     },
     {
       name: 'Docker',
-      image: '../../assets/img/docker.png',
+      image: '../../assets/img/docker.webp',
     },
     {
       name: 'Kubernetes',
-      image: '../../assets/img/kubernetes.png',
+      image: '../../assets/img/kubernetes.webp',
     },
     ]
   aiTools: any[] =
     [{
       name: 'Power BI',
-      image: '../../assets/img/powerbi.png',
+      image: '../../assets/img/powerbi.webp',
     },
     {
       name: 'Tableau',
-      image: '../../assets/img/tableau.png',
+      image: '../../assets/img/tableau.webp',
     },
     {
       name: 'Python ML',
-      image: '../../assets/img/python.png',
+      image: '../../assets/img/python.webp',
     },
     {
       name: 'ChatGPT',
-      image: '../../assets/img/chatgpt.png',
+      image: '../../assets/img/chatgpt.webp',
     },
     {
       name: 'Azure AI',
-      image: '../../assets/img/azure.png',
+      image: '../../assets/img/azure.webp',
     },
     ]
 

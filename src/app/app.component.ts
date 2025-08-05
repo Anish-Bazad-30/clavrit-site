@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { CanonicalService } from './services/canonical.service';
 declare let gtag: Function;
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ declare let gtag: Function;
 export class AppComponent implements OnInit {
   title = 'clavrit';
 
-  constructor( private router: Router){
+  constructor( private router: Router, private canonical: CanonicalService){
     
   }
   // ngOnInit() {
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+   
     this.router.events.pipe(
       filter((event: any) => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
@@ -29,6 +31,7 @@ export class AppComponent implements OnInit {
       gtag('config', 'G-6C5R5RFLXP', {
         'page_path': event.urlAfterRedirects
       });
+       this.canonical.setCanonicalURL(event.urlAfterRedirects)
     });
   }
   @HostListener('window:scroll', [])

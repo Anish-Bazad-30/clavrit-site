@@ -22,7 +22,7 @@ export class BlogComponent implements OnInit {
   //       disadvantages: "Disadvantages of the baseliner project",
   //       conclusion: "This is a good app",
   //       imageUrl: [
-  //         "https://clavrit.com/upload/backlog/images/07ac444f-7be3-4794-aa29-d0c3a3882f92_web.png"
+  //         "https://clavrit.com/upload/backlog/images/07ac444f-7be3-4794-aa29-d0c3a3882f92_web.webp"
   //       ],
   //       tags: ["AI"],
   //       createdAt: [2025, 7, 21, 6, 58, 8],
@@ -39,7 +39,7 @@ export class BlogComponent implements OnInit {
   //       disadvantages: "Disadvantages of the Motolens project",
   //       conclusion: "This is a good app",
   //       imageUrl: [
-  //         "https://clavrit.com/upload/backlog/images/07ac444f-7be3-4794-aa29-d0c3a3882f92_web.png"
+  //         "https://clavrit.com/upload/backlog/images/07ac444f-7be3-4794-aa29-d0c3a3882f92_web.webp"
   //       ],
   //       tags: ["AI"],
   //       createdAt: [2025, 7, 21, 6, 58, 8],

@@ -19,57 +19,57 @@ export class CareerComponent implements OnInit {
   benefits = [
   {
     title: 'Flexible Work Hours',
-    image: './assets/img/flexible.png',
+    image: './assets/img/flexible.webp',
     description: `At Clavrit, we value productivity and believe it thrives with a balanced personal life.
     We offer flexibility in work hours to help employees meet family commitments.
     This ensures an enriched balance between work and life for everyone.`
   },
   {
     title: 'Work Culture',
-    image: './assets/img/Workculture.png',
+    image: './assets/img/Workculture.webp',
     description: `At Clavrit, we ensure everyone can embrace their unique identity and cultural experiences.
     We foster an environment where people can truly be themselves.
     This helps them thrive both professionally and personally.`
   },
   {
     title: 'Work Life Balance',
-    image: './assets/img/work-life.jpg',
+    image: './assets/img/work-life.webp',
     description: `Our employees enjoy a perfect work-life balance at Clavrit, we offer perks like birthday
     leaves, time off from work etc encouraging employees to relax & rejuvinate.`
   },
   {
     title: 'Equal Opportunities',
-    image: './assets/img/Equal-Employment.png',
+    image: './assets/img/Equal-Employment.webp',
     description: `Clavrit is an equal opportunity employer that welcomes talent from all backgrounds without
     discrimination. We value freedom of thought, transparent communication, and diversity.`
   },
   {
     title: 'Stimulating Work Environment',
-    image: './assets/img/work-env.jpg',
+    image: './assets/img/work-env.webp',
     description: `At Clavrit, you’ll have opportunities to sharpen your skills across diverse specializations.
     We foster a welcoming environment where new ideas and exploration are encouraged.`
   },
   {
     title: 'Career Progression',
-    image: './assets/img/career-path.jpg',
+    image: './assets/img/career-path.webp',
     description: `We prioritize keeping our teams updated with the latest technology and trends.
     Regular training and seminars help our people learn and grow in their domains.`
   },
   {
     title: 'We Care',
-    image: './assets/img/we-care.jpg',
+    image: './assets/img/we-care.webp',
     description: `Our employees enjoy comprehensive health benefits and group insurance.
     We also empower employees’ families through vocational training and skill development.`
   },
   {
     title: 'Remote Work',
-    image: './assets/img/remote-work.png',
+    image: './assets/img/remote-work.webp',
     description: `We offer onsite, hybrid, and remote — with Work From Anywhere (WFA) even post-COVID.
     This flexibility lets you choose how and where you work best.`
   },
   {
     title: 'Acclaim & Accolades',
-    image: './assets/img/awards.jpg',
+    image: './assets/img/awards.webp',
     description: `We make it a priority to recognize and reward employees who go above and beyond.
     From incentives to awards, we ensure our people feel valued.`
   }
