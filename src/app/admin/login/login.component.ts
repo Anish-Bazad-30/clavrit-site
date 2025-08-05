@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
        if(res.code === 200)
        {
         sessionStorage.setItem("isLoggedIn","YES");
-
+        sessionStorage.setItem("role", res.data.role);
         this.router.navigate(['/admin/dashboard']);
        }
        

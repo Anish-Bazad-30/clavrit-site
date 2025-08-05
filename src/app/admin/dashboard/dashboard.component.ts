@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ExcelService } from 'src/app/services/excel.service';
 import { ToastService } from 'src/app/services/toast.service';
 
@@ -8,13 +8,19 @@ import { ToastService } from 'src/app/services/toast.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
+export class DashboardComponent implements  OnInit{
   selectedExcelFile: any;
+  role:any;
   constructor(
     private http: HttpClient,
     private excelService: ExcelService,
     private toastService: ToastService
   ){}
+  ngOnInit() {
+     this.role = sessionStorage.getItem('role');
+    console.log(this.role);
+    
+  }
   onFileSelected(event: any) {
     this.selectedExcelFile = event.target.files[0];
     console.log(this.selectedExcelFile);
