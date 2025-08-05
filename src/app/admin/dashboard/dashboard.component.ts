@@ -18,7 +18,6 @@ export class DashboardComponent implements  OnInit{
   ){}
   ngOnInit() {
      this.role = sessionStorage.getItem('role');
-    console.log(this.role);
     
   }
   onFileSelected(event: any) {
