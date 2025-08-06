@@ -61,12 +61,11 @@ isSubscribed: boolean = false ;
   @ViewChildren('progressSection', { read: ElementRef }) progressBars!: QueryList<ElementRef>;
 
   expertiseList = [
-    { title: 'SAP CX', value: 95, animatedValue: 0 },
+    { title: 'SAP CX Suite', value: 95, animatedValue: 0 },
     { title: 'ARTIFICIAL INTELLIGENCE', value: 90, animatedValue: 0 },
-    { title: 'SAP CDC', value: 95, animatedValue: 0 },
-    { title: 'SAP COMMERCE', value: 95, animatedValue: 0 },
-    { title: 'SALESFORCE', value: 80, animatedValue: 0 },
+    { title: 'SALESFORCE', value: 85, animatedValue: 0 },
     { title: 'ENTERPRISE APPLICATION', value: 80, animatedValue: 0 },
+    { title: 'DATA & ANALYTICS', value: 85, animatedValue: 0 },
   ];
 
   ngAfterViewInit() {
