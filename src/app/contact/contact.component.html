@@ -18,9 +18,9 @@
                     <!-- Full Name -->
                     <div class="col-lg-6 mb-4">
                         <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300 no-focus-outline" id="name"
+                            <input type="text" class="form-control no-focus-outline" id="name"
                                 formControlName="fullName" placeholder="Full Name">
-                            <label for="name" class="light-300">Full Name</label>
+                            <label for="name">Full Name</label>
                         </div>
                         <div *ngIf="joinAsPatnercontactForm.get('fullName')?.touched && joinAsPatnercontactForm.get('fullName')?.invalid"
                             class="text-danger small mt-1">
@@ -34,9 +34,9 @@
                     <!-- Company Name -->
                     <div class="col-lg-6 mb-4">
                         <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300 no-focus-outline" id="company"
+                            <input type="text" class="form-control no-focus-outline" id="company"
                                 formControlName="companyName" placeholder="Company Name">
-                            <label for="company" class="light-300">Company Name</label>
+                            <label for="company">Company Name</label>
                         </div>
                         <div *ngIf="joinAsPatnercontactForm.get('companyName')?.touched && joinAsPatnercontactForm.get('companyName')?.invalid"
                             class="text-danger small mt-1">
@@ -48,9 +48,9 @@
                     <!-- Email -->
                     <div class="col-lg-6 mb-4">
                         <div class="form-floating">
-                            <input type="email" class="form-control form-control-lg light-300 no-focus-outline" id="email"
+                            <input type="email" class="form-control no-focus-outline" id="email"
                                 formControlName="email" placeholder="Email">
-                            <label for="email" class="light-300">Email</label>
+                            <label for="email">Email</label>
                         </div>
                         <div *ngIf="joinAsPatnercontactForm.get('email')?.touched && joinAsPatnercontactForm.get('email')?.invalid"
                             class="text-danger small mt-1">
@@ -64,10 +64,10 @@
                     <!-- Phone -->
                     <div class="col-lg-6 mb-4">
                         <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300 no-focus-outline" id="phone"
+                            <input type="text" class="form-control no-focus-outline" id="phone"
                                 formControlName="phone" placeholder="Phone" maxlength="10"
                                 (keypress)="allowOnlyNumbers($event)">
-                            <label for="phone" class="light-300">Phone</label>
+                            <label for="phone">Phone</label>
                         </div>
                         <div *ngIf="joinAsPatnercontactForm.get('phone')?.touched && joinAsPatnercontactForm.get('phone')?.invalid"
                             class="text-danger small mt-1">
@@ -81,9 +81,9 @@
                     <!-- Message -->
                     <div class="col-12">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control light-300 no-focus-outline" id="message" rows="8"
+                            <textarea class="form-control no-focus-outline" id="message" rows="8"
                                 placeholder="Message / Proposal" formControlName="message"></textarea>
-                            <label for="message" class="light-300">Message / Proposal</label>
+                            <label for="message">Message / Proposal</label>
                         </div>
                         <div *ngIf="joinAsPatnercontactForm.get('message')?.touched && joinAsPatnercontactForm.get('message')?.invalid"
                             class="text-danger small mt-1">

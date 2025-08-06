@@ -145,12 +145,11 @@ editor!: Editor;
           title: ['', Validators.required],
           subtitle: ['', Validators.required],
           authorName: ['', Validators.required],
-          advantages: [''],
-          disadvantages: [''],
+          status: [''],
           tags: this.fb.array([this.fb.control('', Validators.required)]),
-          // imageUrl: [null, Validators.required],
-          conclusion: ['', Validators.required],
-          summary: ['', [Validators.required, Validators.minLength(20)]],
+          imageUrl: [null, Validators.required],
+          serpTitle: ['', Validators.required],
+          serpDescription: ['', [Validators.required, Validators.minLength(20)]],
           content: ['', [Validators.required, Validators.minLength(20)]]
         });
         break;
@@ -407,7 +406,8 @@ editor!: Editor;
 
     // Mark form fields as touched for validation feedback
     this.selectedFields.markAllAsTouched();
-
+    console.log(this.selectedFields);
+    
     // If form is invalid or no file selected, stop here
     if (this.selectedFields.invalid || this.fileError) {
       return;

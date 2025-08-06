@@ -1,5 +1,5 @@
 .body-container{
-    height: 100vh;
+    height: 100%;
 }
 
   .delete-icon {
@@ -62,3 +62,18 @@
     }
   }
 }
+
+
+
+
+
+ .image-container img.blog-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+  }
+  .blog-img{
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+  }

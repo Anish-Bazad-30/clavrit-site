@@ -1,5 +1,5 @@
-<section class="py-3 bg-light body-container">
-    <div class="container h-100 flex-grow-1 d-flex flex-column justify-content-evenly align-items-center">
+<section class="py-3 bg-light d-flex body-container">
+    <div class="container flex-grow-1 d-flex flex-column justify-content-center align-items-center">
         <h2 class="text-primary">{{pageTitle}}</h2>
 
         <div *ngIf="type === 'client'" class="container">
@@ -101,10 +101,10 @@
             </form>
         </div>
         <div *ngIf="type === 'blog'" class="container">
-            <form [formGroup]="selectedFields" (ngSubmit)="onBlogSubmit()" class="row g-3"
+            <!-- <form [formGroup]="selectedFields" (ngSubmit)="onBlogSubmit()" class="row g-3"
                 enctype="multipart/form-data">
 
-                <!-- Title -->
+            
                 <div class="col-lg-6">
                     <div class="form-floating">
                         <input type="text" id="title" class="form-control" formControlName="title"
@@ -115,7 +115,7 @@
                     </div>
                 </div>
 
-                <!-- Subtitle -->
+           
                 <div class="col-lg-6">
                     <div class="form-floating">
                         <input type="text" id="subtitle" class="form-control" formControlName="subtitle"
@@ -126,7 +126,6 @@
                     </div>
                 </div>
 
-                <!-- Author Name -->
                 <div class="col-lg-6">
                     <div class="form-floating">
                         <input type="text" id="authorName" class="form-control" formControlName="authorName"
@@ -137,7 +136,7 @@
                     </div>
                 </div>
 
-                <!-- Summary -->
+               
                 <div class="col-lg-6">
                     <div class="form-floating">
                         <textarea id="summary" class="form-control" formControlName="summary"
@@ -158,27 +157,7 @@
                     
                 </div>
 
-                <!-- Content -->
-                <!-- <div class="col-lg-6">
-                    <div class="form-floating">
-                        <textarea id="content" class="form-control" formControlName="content"
-                            [ngClass]="{'is-invalid': selectedFields.get('content')?.touched && selectedFields.get('content')?.invalid}"
-                            style="height: 150px" placeholder="Content"></textarea>
-                        <label for="content">Content</label>
-                        <div class="invalid-feedback">Content is required (min 20 characters).</div>
-                    </div>
-                </div> -->
-
-                <!-- Advantages -->
-                <!-- <div class="col-lg-6">
-                    <div class="form-floating">
-                        <textarea id="advantages" class="form-control" formControlName="advantages"
-                            [ngClass]="{'is-invalid': selectedFields.get('advantages')?.touched && selectedFields.get('advantages')?.invalid}"
-                            style="height: 100px" placeholder="Advantages"></textarea>
-                        <label for="advantages">Advantages</label>
-                        <div class="invalid-feedback">Advantages are required.</div>
-                    </div>
-                </div> -->
+                
 
                 <div class="col-lg-6">
                     <div class="form-floating">
@@ -188,7 +167,6 @@
                     </div>
                 </div>
 
-                <!-- Disadvantages -->
                 <div class="col-lg-6">
                     <div class="form-floating">
                         <textarea id="disadvantages" class="form-control" formControlName="disadvantages"
@@ -199,7 +177,7 @@
                     </div>
                 </div>
 
-                <!-- Conclusion -->
+               
                 <div class="col-lg-6">
                     <div class="form-floating">
                         <textarea id="conclusion" class="form-control" formControlName="conclusion"
@@ -210,7 +188,7 @@
                     </div>
                 </div>
 
-                <!-- Tags -->
+              
                 <div class="col-12">
                     <label class="form-label">Tags</label>
                     <div *ngFor="let tag of tags.controls; let i = index" class="d-flex mb-2">
@@ -222,17 +200,8 @@
                     </div>
                     <button type="button" class="btn btn-outline-primary btn-sm" (click)="addTag()">+ Add Tag</button>
                 </div>
-
-                <!-- Image Upload -->
-                <!-- <input type="file" class="form-control" id="imageUrl" (change)="onFileSelected($event)"
-                    formControlName="image"
-                    [ngClass]="{'is-invalid': selectedFields.get('image')?.touched && selectedFields.get('image')?.invalid}"
-                    multiple />
-                <div class="invalid-feedback">
-                    At least one image is required.
-                </div> -->
                 <div class="mb-3">
-                    <!-- Image Upload Section -->
+                   
                     <div class="image-upload-section d-flex justify-content-between align-items-center">
                         <label for="Add-image" class="form-label secondary-font">Add Images</label>
                         <button type="button" class="upload-button mb-3" (click)="triggerFileInput()">
@@ -240,11 +209,11 @@
                         </button>
                     </div>
 
-                    <!-- Hidden File Input -->
+                
                     <input type="file" id="images" #fileInput accept="image/*,video/*" class="hidden-input" multiple
                         (change)="onImageUpload($event)" style="display: none;" />
 
-                    <!-- Image/Video Preview Section -->
+                
 
                     <div class="preview-container w-100 d-flex"
                         style="background:none; border: 2px solid #7fdbff; padding: 5px; border-radius: 10px;">
@@ -263,13 +232,129 @@
                     </div>
                 </div>
 
-                <!-- Submit Button -->
                 <div class="col-12 text-end">
                     <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill">Submit</button>
                 </div>
 
-            </form>
+            </form> -->
+            <div class="container mt-4">
+                <div class="card p-4 shadow-sm">
+
+                    <form [formGroup]="selectedFields" (ngSubmit)="onBlogSubmit()" enctype="multipart/form-data"
+                        class="row g-3">
+
+                        <!-- Blog Title -->
+                        <div class="col-md-12">
+                            <label for="title" class="form-label">Enter Blog Title</label>
+                            <input type="text" class="form-control" id="title" placeholder="Title"
+                                formControlName="title">
+                        </div>
+
+                        <!-- Slug -->
+                        <div class="col-md-12">
+                            <label for="slug" class="form-label">Enter Slug here</label>
+                            <input type="text" class="form-control" id="slug" placeholder="Slug"
+                                formControlName="subtitle">
+                        </div>
+
+                        <!-- Publish? -->
+                        <div class="col-md-4">
+                            <label class="form-label">Publish?</label>
+                            <select class="form-select" formControlName="status">
+                                <option value="draft">Draft</option>
+                                <option value="published">Published</option>
+                            </select>
+                        </div>
+
+                        <!-- Author Name -->
+                        <div class="col-md-8">
+                            <label for="authorName" class="form-label">Enter author name</label>
+                            <input type="text" class="form-control" id="authorName" placeholder="Author Name"
+                                formControlName="authorName">
+                        </div>
+
+                        <!-- Banner Upload -->
+                        <div class="col-md-12">
+                            <label class="form-label">Banner</label>
+                            <div class="border rounded p-3 text-center" style="cursor: pointer;"
+                                (click)="triggerFileInput()">
+                                <span>Upload Banner</span>
+                                <div class="preview-container w-100 d-flex"
+                                    [ngStyle]="previewUrls.length>0 ? {'border': '2px solid #d3d3d3'} : {'border': 'none'}"
+                                    style="background: none; padding: 5px; border-radius: 10px;">
+
+                                    <div class="image-container d-flex" *ngFor="let file of previewUrls; let i = index">
+
+                                        <img [src]="file" class="blog-img m-2" />
+
+
+                                        <img src="../../../assets/img/Minus.svg" class="delete-icon"
+                                            (click)="removeFile(i)" />
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- <input type="file" #fileInput id="banner" style="display: none;"
+                                (change)="onImageUpload($event)" /> -->
+                            <input type="file" id="images" #fileInput accept="image/*,video/*" class="hidden-input"
+                                multiple (change)="onImageUpload($event)" style="display: none;" />
+
+
+
+
+                        </div>
+
+                        <!-- Rich Text Editor -->
+                        <div class="col-md-12">
+                            <div class="editor">
+                                <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+                                </ngx-editor-menu>
+                                <ngx-editor [editor]="editor" formControlName="content">
+                                </ngx-editor>
+                            </div>
+                        </div>
+
+                        <!-- SERP Title -->
+                        <div class="col-md-6">
+                            <label class="form-label">Enter Serp Title</label>
+                            <input type="text" class="form-control" placeholder="Serp Title"
+                                formControlName="serpTitle">
+                        </div>
+
+                        <!-- SERP Meta Description -->
+                        <div class="col-md-6">
+                            <label class="form-label">Enter Serp Meta Description</label>
+                            <input type="text" class="form-control" placeholder="Serp Description"
+                                formControlName="serpDescription">
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="col-12">
+                            <label class="form-label">Tag List</label>
+                            <div class="d-flex flex-wrap gap-2">
+                                <ng-container *ngFor="let tag of tags.controls; let i = index">
+                                    <input type="text" class="form-control w-auto" [formControl]="getTagControl(i)"
+                                        placeholder="Tag">
+                                    <button type="button" class="btn btn-danger btn-sm"
+                                        (click)="removeTag(i)">×</button>
+                                </ng-container>
+                                <button type="button" class="btn btn-outline-secondary btn-sm" (click)="addTag()">+ Add
+                                    Tag</button>
+                            </div>
+                        </div>
+
+                        <div class="col-12 text-end">
+                            <button type="submit" class="btn btn-primary px-4">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+
         </div>
+
 
 
         <div *ngIf="type === 'project'" class="container">

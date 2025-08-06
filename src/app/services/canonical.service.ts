@@ -1,55 +1,24 @@
 // src/app/services/canonical.service.ts
-
-import { Injectable, Renderer2, RendererFactory2, Inject } from '@angular/core';
-
+import { Injectable, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
- 
+
 @Injectable({
-
-  providedIn: 'root',
-
+  providedIn: 'root'
 })
-
 export class CanonicalService {
+  constructor(@Inject(DOCUMENT) private dom: Document) {}
 
-  private renderer: Renderer2;
- 
-  constructor(
-
-    private rendererFactory: RendererFactory2,
-
-    @Inject(DOCUMENT) private document: Document
-
-  ) {
-
-    this.renderer = rendererFactory.createRenderer(null, null);
-
-  }
- 
   setCanonicalURL(url?: string) {
+    const head = this.dom.getElementsByTagName('head')[0];
 
-    const existing = this.document.querySelector("link[rel='canonical']");
-
-    const href = url || this.document.URL;
- 
-    if (existing) {
-
-      this.renderer.setAttribute(existing, 'href', href);
-
+    let link: HTMLLinkElement | null = this.dom.querySelector(`link[rel='canonical']`);
+    if (link) {
+      link.setAttribute('href', url || this.dom.URL);
     } else {
-
-      const link = this.renderer.createElement('link');
-
-      this.renderer.setAttribute(link, 'rel', 'canonical');
-
-      this.renderer.setAttribute(link, 'href', href);
-
-      this.renderer.appendChild(this.document.head, link);
-
+      link = this.dom.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      link.setAttribute('href', url || this.dom.URL);
+      head.appendChild(link);
     }
-
   }
-
 }
-
- 
