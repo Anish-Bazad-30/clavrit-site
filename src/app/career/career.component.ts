@@ -35,7 +35,7 @@ export class CareerComponent implements OnInit {
     title: 'Work Life Balance',
     image: './assets/img/work-life.webp',
     description: `Our employees enjoy a perfect work-life balance at Clavrit, we offer perks like birthday
-    leaves, time off from work etc encouraging employees to relax & rejuvinate.`
+    leaves, time off from work, etc., encouraging employees to relax & rejuvenate.`
   },
   {
     title: 'Equal Opportunities',

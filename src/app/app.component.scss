@@ -6,5 +6,19 @@
   width: 45px;
   height: 45px;
   font-size: 22px;
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
+}
+
+
+#backBtn {
+  position: fixed;
+  bottom: 40px;
+  /* Adjust depending on where your scroll button is */
+  left: 40px;
+  z-index: 1000;
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
 }

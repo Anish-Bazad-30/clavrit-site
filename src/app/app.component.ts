@@ -4,6 +4,8 @@ import { filter } from 'rxjs';
 import { CanonicalService } from './services/canonical.service';
 import { Editor, Toolbar } from 'ngx-editor';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Location } from '@angular/common';
+
 declare let gtag: Function;
 @Component({
   selector: 'app-root',
@@ -13,7 +15,7 @@ declare let gtag: Function;
 export class AppComponent implements OnInit {
   title = 'clavrit';
 
-  constructor( private router: Router, private canonical: CanonicalService,private fb: FormBuilder){
+  constructor( private router: Router, private canonical: CanonicalService,private fb: FormBuilder,private location: Location){
     this.form = this.fb.group({
       editorContent: ['']
     });
@@ -73,7 +75,9 @@ export class AppComponent implements OnInit {
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
+  goBack(): void {
+    this.location.back();  // Navigates to the previous page in history
+  }
   toggleScrollButton() {
     const scrollTopBtn = document.getElementById("scrollTopBtn");
     if (!scrollTopBtn) return;
