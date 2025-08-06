@@ -50,8 +50,9 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {
     //scrollPositionRestoration: 'enabled',
     anchorScrolling: 'enabled',
-    scrollPositionRestoration: 'enabled'
-  })],
+    scrollPositionRestoration: 'enabled',
+    initialNavigation: 'enabledBlocking'
+})],
   // providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   exports: [RouterModule]
 })

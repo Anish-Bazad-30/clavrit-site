@@ -8,6 +8,7 @@ import { ContentListComponent } from './content-list/content-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeletePopupComponent } from './delete-popup/delete-popup.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
+import { NgxEditorModule } from 'ngx-editor';
 
 
 
@@ -26,6 +27,7 @@ import { EditFormComponent } from './edit-form/edit-form.component';
     AdminRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxEditorModule
   ]
 })
 export class AdminModule { }

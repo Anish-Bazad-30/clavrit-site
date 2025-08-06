@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Editor, Toolbar } from 'ngx-editor';
 import { BlogService } from 'src/app/services/blog.service';
 import { BusinessStatsService } from 'src/app/services/business-stats.service';
 import { ClientService } from 'src/app/services/client.service';
@@ -18,9 +19,19 @@ import { TechnologyService } from 'src/app/services/technology.service';
 export class FormsComponent {
   pageTitle!: string;
 
-
+editor!: Editor;
+  toolbar: Toolbar = [
+    ['bold', 'italic'],
+    ['underline', 'strike'],
+    ['code', 'blockquote'],
+    ['ordered_list', 'bullet_list'],
+    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
+    ['link', 'image'],
+    ['text_color', 'background_color'],
+    ['align_left', 'align_center', 'align_right', 'align_justify'],
+  ];
   type: string | null = null;
-  // form!: FormGroup;
+   textArea!: FormGroup;
   uploadedResume: File | null = null;
   uploadedImage: File | null = null;
   dragedFile: any;
@@ -40,12 +51,14 @@ export class FormsComponent {
     private techservice: TechnologyService
     
 
-  ) { }
+  ) { 
+    this.textArea = this.fb.group({
+      editorContent: ['', [Validators.required, Validators.minLength(20)]]
+    });
+  }
 
   ngOnInit() {
-
-
-
+    this.editor = new Editor();
     this.type = this.route.snapshot.paramMap.get('type') ?? '';
     console.log('Content type:', this.type);
     this.loadContent(this.type);

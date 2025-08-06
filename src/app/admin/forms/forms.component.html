@@ -148,8 +148,18 @@
                     </div>
                 </div>
 
-                <!-- Content -->
                 <div class="col-lg-6">
+                        <div class="editor">
+                            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+                            </ngx-editor-menu>
+                            <ngx-editor [editor]="editor" formControlName="content">
+                            </ngx-editor>
+                        </div>
+                    
+                </div>
+
+                <!-- Content -->
+                <!-- <div class="col-lg-6">
                     <div class="form-floating">
                         <textarea id="content" class="form-control" formControlName="content"
                             [ngClass]="{'is-invalid': selectedFields.get('content')?.touched && selectedFields.get('content')?.invalid}"
@@ -157,7 +167,7 @@
                         <label for="content">Content</label>
                         <div class="invalid-feedback">Content is required (min 20 characters).</div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Advantages -->
                 <!-- <div class="col-lg-6">

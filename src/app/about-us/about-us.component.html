@@ -213,7 +213,7 @@
                         </button>
                     </div>
                     <div *ngIf="emailRef.touched && emailRef.invalid" class="text-danger small mt-1 ps-2 ">
-                        <div *ngIf="emailRef.errors?.['required']">Email is required.</div>
+                        <div *ngIf="emailRef.errors?.['required'] && isSubscribed">Email is required.</div>
                         <div *ngIf="emailRef.errors?.['email']">Enter a valid email address.</div>
                     </div>
 

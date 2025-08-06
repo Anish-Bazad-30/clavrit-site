@@ -24,6 +24,7 @@ import { AiComponent } from './ai/ai.component';
 import { RecentBlogPipe } from './pipes/recent-blog.pipe';
 import { SapSolutionsComponent } from './sap-solutions/sap-solutions.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

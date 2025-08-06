@@ -8,7 +8,7 @@ import { ToastService } from '../services/toast.service';
   styleUrls: ['./about-us.component.scss']
 })
 export class AboutUsComponent implements OnInit {
-
+isSubscribed: boolean = false ;
   clientList: any[] = [];
   subscriberEmail: string = '';
   clientSlides: any[] = [];
@@ -49,6 +49,7 @@ export class AboutUsComponent implements OnInit {
 
         this.toastService.showToast('Subscribed successfully', 'success', 3000);
         this.subscriberEmail = '';
+        this.isSubscribed = false;
       },
       error: (err) => {
 
