@@ -39,4 +39,7 @@ export class FooterComponent implements OnInit{
       .replace(/^-+/, '')          // Trim - from start
       .replace(/-+$/, '');         // Trim - from end
   }
+  onClick(){
+    sessionStorage.setItem("footerClick", "TRUE")
+  }
 }

@@ -8,7 +8,7 @@ import { ToastService } from '../services/toast.service';
   styleUrls: ['./about-us.component.scss']
 })
 export class AboutUsComponent implements OnInit {
-isSubscribed: boolean = false ;
+  isSubscribed: boolean = false;
   clientList: any[] = [];
   subscriberEmail: string = '';
   clientSlides: any[] = [];
@@ -40,8 +40,10 @@ isSubscribed: boolean = false ;
   }
 
   onSubscribe() {
-    if (!this.subscriberEmail) return;
-
+    if (!this.subscriberEmail || !this.subscriberEmail.trim()) {
+      this.toastService.showToast('Please enter your email address', 'error', 3000);
+      return;
+    }
     const payload = this.subscriberEmail;
 
     this.clientService.subscribeToCompany(payload).subscribe({

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
@@ -11,15 +11,6 @@ export class MainComponent {
 
 
   showLayout = true;
-
-  //  constructor(private router: Router) {
-  //   this.router.events.pipe(
-  //     filter(event => event instanceof NavigationEnd)
-  //   ).subscribe((event) => {
-  //     const navEnd = event as NavigationEnd;
-  //     this.showLayout = !navEnd.urlAfterRedirects.startsWith('/admin');
-  //   });
-  // }
   constructor(private router: Router) {
   this.router.events
     .pipe(filter(event => event instanceof NavigationEnd))
@@ -35,4 +26,5 @@ export class MainComponent {
       );
     });
 }
+  
 }

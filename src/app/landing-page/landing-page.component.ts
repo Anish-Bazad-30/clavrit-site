@@ -37,7 +37,7 @@ export class LandingPageComponent implements OnInit {
       img: "./assets/img/sap_cx_1.webp",
       description: "End-to-End Implementation & Optimization",
     },
-    
+
     {
       title: "Artificial Intelligence",
       titlehome: "AI Integration",
@@ -83,8 +83,16 @@ export class LandingPageComponent implements OnInit {
       // Delay observer setup until ViewChildren is ready
       setTimeout(() => this.setupObserver(), 0);
     });
+
+
   }
 
+  scrollToFooter(): void {
+    const footer = document.getElementById('footer');
+    if (footer) {
+      footer.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
   setupObserver() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -110,6 +118,12 @@ export class LandingPageComponent implements OnInit {
   private isotope: any;
 
   ngAfterViewInit(): void {
+    const footerClick = sessionStorage.getItem("footerClick");
+    if (footerClick == "TRUE") {
+      console.log("back to footer")
+      this.scrollToBottom();
+      sessionStorage.clear();
+    }
     const video: HTMLVideoElement = this.myVideo.nativeElement;
     video.muted = true;
     video.play().catch(err => {
@@ -130,6 +144,13 @@ export class LandingPageComponent implements OnInit {
 
     this.statBoxes.forEach((el) => observer.observe(el.nativeElement));
   }
+  scrollToBottom(): void {
+    window.scrollTo({
+      top: document.body.scrollHeight + 400,
+      behavior: 'smooth'
+    });
+  }
+
 
   initializeIsotope() {
     const $projects = $('.projects').isotope({
