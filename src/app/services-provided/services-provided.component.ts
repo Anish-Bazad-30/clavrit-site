@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 export class ServicesProvidedComponent implements OnInit{
 
   ourServices: any[] = [
-    {
-      title: "SAP Solutions",
-      img: "./assets/img/sap_cx_1.webp",
-      description: "End-to-End Implementation & Optimization",
-    },
+    // {
+    //   title: "SAP Solutions",
+    //   img: "./assets/img/sap_cx_1.webp",
+    //   description: "End-to-End Implementation & Optimization",
+    // },
     //  {
     //   title: "SAP Commerce Tools",
     //   img: "./assets/img/managedServices.webp",
@@ -51,34 +51,34 @@ export class ServicesProvidedComponent implements OnInit{
     //   subheading: "Your Trusted Partner for Effortless SAP Management",
     //   content: "Feeling bogged down by the complexities of your SAP system? Let Clavrit take the weight off your shoulders. Our comprehensive suite of SAP Managed Services empowers you to focus on what matters most – growing your business. Our team of seasoned SAP veterans acts as an extension of your staff, providing expert management and solutions for your entire SAP ecosystem. We handle the day-to-day headaches, freeing you to pursue your core business goals."
     // },
-    {
-      title: "Salesforce",
-      img: "./assets/img/sf.webp",
-      description: "Maximize Salesforce’s power with Clavrit’s expert consulting and support to drive growth and elevate customer experiences.",
-      subheading: "Supercharge Your CRM with Next-Level Salesforce Solutions",
-      content: "Customer relationships are the lifeblood of your business. But are you getting the most out of your current CRM? At Clavrit, we don’t just implement Salesforce; we unlock its full potential to transform your customer interactions. Welcome to the future of CRM. Salesforce is the engine driving growth, exceptional customer experiences, and streamlined operations for modern businesses. Our team of certified Salesforce rockstars boasts extensive experience in implementing, customizing, and optimizing solutions specifically tailored to your needs. We’re not afraid of a challenge. Our finger remains firmly on the pulse of the latest Salesforce updates and innovations, ensuring you stay ahead of the curve and leverage the platform’s full power."
-    },
-    {
-      title: "Artificial Intelligence",
-      img: "./assets/img/AI_image.webp",
-      description: "We deliver tailored AI, Deep Learning, and NLP solutions for smarter insights and automation.",
-      subheading: "Ready to unlock the transformative power of Artificial Intelligence?",
-      content: "At Clavrit, we offer a comprehensive suite of AI solutions designed to propel your business forward. We leverage the cutting edge of machine learning and deep learning to develop groundbreaking tools that tackle your toughest challenges. Generative AI, natural language processing, and more – these are just a few of the powerful technologies in our arsenal."
-    },
-    {
-      title: "Enterprise Application",
-      img: "./assets/img/enterprise.webp",
-      description: "We build secure, scalable enterprise solutions with Java, Python, SQL, Scala, and Kotlin.",
-      subheading: "Building the Backbone of Your Digital Future with Enterprise Applications",
-      content: "In today’s digital age, enterprise applications are no longer an option, they’re the lifeblood of your organization. At Clavrit, we don’t just implement these technologies; we craft them into a streamlined, secure engine that drives efficiency, productivity, and innovation. We understand the critical role of enterprise applications. They empower your teams to operate flawlessly, achieve peak performance, and fuel a culture of constant improvement. But security is paramount. Our team of seasoned professionals prioritizes robust measures and unwavering compliance standards to safeguard your sensitive data and ensure resilience against cyber threats and ever-evolving regulations. Staying ahead of the curve is crucial. As the digital landscape continues to shift, embracing cutting-edge enterprise technologies is vital for maintaining a competitive edge. Our experts understand the power of agility and staying adaptable to meet the ever-changing needs of your customers."
-    },
-    {
-      title: "Other Services",
-      img: "./assets/img/other-service.webp",
-      description: "We build apps, custom software, provide maintenance, testing, IT resources, marketplaces, and consulting.",
-      subheading: "Other services",
-      content: "Web & Mobile Application Development"
-    },
+    // {
+    //   title: "Salesforce",
+    //   img: "./assets/img/sf.webp",
+    //   description: "Maximize Salesforce’s power with Clavrit’s expert consulting and support to drive growth and elevate customer experiences.",
+    //   subheading: "Supercharge Your CRM with Next-Level Salesforce Solutions",
+    //   content: "Customer relationships are the lifeblood of your business. But are you getting the most out of your current CRM? At Clavrit, we don’t just implement Salesforce; we unlock its full potential to transform your customer interactions. Welcome to the future of CRM. Salesforce is the engine driving growth, exceptional customer experiences, and streamlined operations for modern businesses. Our team of certified Salesforce rockstars boasts extensive experience in implementing, customizing, and optimizing solutions specifically tailored to your needs. We’re not afraid of a challenge. Our finger remains firmly on the pulse of the latest Salesforce updates and innovations, ensuring you stay ahead of the curve and leverage the platform’s full power."
+    // },
+    // {
+    //   title: "Artificial Intelligence",
+    //   img: "./assets/img/AI_image.webp",
+    //   description: "We deliver tailored AI, Deep Learning, and NLP solutions for smarter insights and automation.",
+    //   subheading: "Ready to unlock the transformative power of Artificial Intelligence?",
+    //   content: "At Clavrit, we offer a comprehensive suite of AI solutions designed to propel your business forward. We leverage the cutting edge of machine learning and deep learning to develop groundbreaking tools that tackle your toughest challenges. Generative AI, natural language processing, and more – these are just a few of the powerful technologies in our arsenal."
+    // },
+    // {
+    //   title: "Enterprise Application",
+    //   img: "./assets/img/enterprise.webp",
+    //   description: "We build secure, scalable enterprise solutions with Java, Python, SQL, Scala, and Kotlin.",
+    //   subheading: "Building the Backbone of Your Digital Future with Enterprise Applications",
+    //   content: "In today’s digital age, enterprise applications are no longer an option, they’re the lifeblood of your organization. At Clavrit, we don’t just implement these technologies; we craft them into a streamlined, secure engine that drives efficiency, productivity, and innovation. We understand the critical role of enterprise applications. They empower your teams to operate flawlessly, achieve peak performance, and fuel a culture of constant improvement. But security is paramount. Our team of seasoned professionals prioritizes robust measures and unwavering compliance standards to safeguard your sensitive data and ensure resilience against cyber threats and ever-evolving regulations. Staying ahead of the curve is crucial. As the digital landscape continues to shift, embracing cutting-edge enterprise technologies is vital for maintaining a competitive edge. Our experts understand the power of agility and staying adaptable to meet the ever-changing needs of your customers."
+    // },
+    // {
+    //   title: "Other Services",
+    //   img: "./assets/img/other-service.webp",
+    //   description: "We build apps, custom software, provide maintenance, testing, IT resources, marketplaces, and consulting.",
+    //   subheading: "Other services",
+    //   content: "Web & Mobile Application Development"
+    // },
   ];
 
 
@@ -94,6 +94,8 @@ export class ServicesProvidedComponent implements OnInit{
 
   fetchServices(){
     this.ourServicesService.getAllServices().subscribe((res)=>{
+      this.ourServices = res.data.filter((item: any) => item.category !== "SAP");
+
 
     })
   }

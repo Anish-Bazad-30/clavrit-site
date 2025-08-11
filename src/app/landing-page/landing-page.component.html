@@ -34,7 +34,7 @@
                     <div *ngFor="let item of ourServices"
                         class="col-sm-6 col-lg-6 d-flex align-items-stretch text-decoration-none">
                         <div class="service-work overflow-hidden card mx-sm-0 mb-3 w-100"
-                            [ngStyle]="{ 'background-image': 'url(' + item.img + ')' }"
+                            [ngStyle]="{ 'background-image': 'url(' + item.imageUrls + ')' }"
                             style="min-height: 120px !important;">
                             <a (click)="readMore(item)" class="card-read-more">
                                 <div class="card-body">

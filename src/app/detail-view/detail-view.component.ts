@@ -20,6 +20,7 @@ export class DetailViewComponent implements OnInit{
 
   ngOnInit(): void {
     this.service = this.ourServicesService.getService();
+  console.log(this.service);
   
   }
  onBack() {
