@@ -24,6 +24,7 @@ export class FooterComponent implements OnInit{
   }
 
     viewBlog(blog: any) {
+      sessionStorage.setItem("URL", "FOOTER");
     const rawTitle = blog.title;
     const slug = this.slugify(rawTitle);
     this.blogService.setData(blog);
@@ -39,7 +40,10 @@ export class FooterComponent implements OnInit{
       .replace(/^-+/, '')          // Trim - from start
       .replace(/-+$/, '');         // Trim - from end
   }
-  onClick(){
-    sessionStorage.setItem("footerClick", "TRUE")
+
+   onClick(){
+  //  this.toast.triggerFromFooter();
+  sessionStorage.setItem("URL", "FOOTER")
   }
+ 
 }

@@ -39,26 +39,51 @@ export class AboutUsComponent implements OnInit {
     }
   }
 
+  // onSubscribe() {
+
+  //   const payload = this.subscriberEmail;
+
+  //   this.clientService.subscribeToCompany(payload).subscribe({
+  //     next: (res) => {
+
+  //       this.toastService.showToast('Subscribed successfully', 'success', 3000);
+  //       this.subscriberEmail = '';
+  //       this.isSubscribed = false;
+  //     },
+  //     error: (err) => {
+
+
+  //     },
+  //   });
+  // }
+  
   onSubscribe() {
-    if (!this.subscriberEmail || !this.subscriberEmail.trim()) {
+    const payload = this.subscriberEmail?.trim();
+
+    if (!payload) {
       this.toastService.showToast('Please enter your email address', 'error', 3000);
       return;
     }
-    const payload = this.subscriberEmail;
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(payload)) {
+      this.toastService.showToast('Please enter a valid email address', 'error', 3000);
+      return;
+    }
 
     this.clientService.subscribeToCompany(payload).subscribe({
       next: (res) => {
-
         this.toastService.showToast('Subscribed successfully', 'success', 3000);
         this.subscriberEmail = '';
         this.isSubscribed = false;
       },
       error: (err) => {
-
-
+        this.toastService.showToast('Subscription failed. Please try again later.', 'error', 3000);
       },
     });
   }
+
+
 
   @ViewChildren('progressSection', { read: ElementRef }) progressBars!: QueryList<ElementRef>;
 

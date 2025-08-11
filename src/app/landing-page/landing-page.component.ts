@@ -118,12 +118,16 @@ export class LandingPageComponent implements OnInit {
   private isotope: any;
 
   ngAfterViewInit(): void {
-    const footerClick = sessionStorage.getItem("footerClick");
-    if (footerClick == "TRUE") {
-      console.log("back to footer")
-      this.scrollToBottom();
-      sessionStorage.clear();
-    }
+    if(sessionStorage.getItem("URL") == "FOOTER"){
+       setTimeout(() => {
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+          });
+        }, 200);
+        
+     }
+     sessionStorage.clear();
     const video: HTMLVideoElement = this.myVideo.nativeElement;
     video.muted = true;
     video.play().catch(err => {
