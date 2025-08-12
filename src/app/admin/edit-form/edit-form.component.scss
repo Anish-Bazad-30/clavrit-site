@@ -1,4 +1,6 @@
-
+.body-container{
+    height: 100%;
+}
   .delete-icon {
     position: absolute;
     top: 0px;
@@ -31,4 +33,47 @@
       padding: 6px 16px;
       cursor: pointer;
       border-radius: 10px;
+  }
+
+
+    .editor {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  .NgxEditor__MenuBar {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .NgxEditor {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border: none;
+  }
+
+  .CodeMirror {
+    border: 1px solid #eee;
+    height: auto;
+    margin-bottom: 0.7rem;
+
+    pre {
+      white-space: pre !important;
+    }
+  }
+}
+
+
+
+
+
+ .image-container img.blog-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+  }
+  .blog-img{
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
   }

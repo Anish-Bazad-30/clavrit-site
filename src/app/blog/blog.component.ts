@@ -74,17 +74,23 @@ export class BlogComponent implements OnInit {
   fetchBlogs() {
     this.blogService.getBlogs().subscribe((res) => {
       const rawData = res.data;
+      
+      
       this.blogList = Array.isArray(rawData[0]) ? rawData[0] : rawData;
-
+console.log("", this.blogList);
       // Collect unique tags
       const tagSet = new Set<string>();
       this.blogList.forEach((blog) => {
         blog.tags?.forEach((tag: string) => tagSet.add(tag));
       });
+
+
       this.tagList = Array.from(tagSet);
 
       // Set default filtered list (all blogs)
       this.filteredBlogList = [...this.blogList];
+
+      
 
       // Pagination
       this.totalPages = Math.ceil(this.blogList.length / this.itemsPerPage);

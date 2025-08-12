@@ -9,6 +9,7 @@ import { CommonService } from 'src/app/services/common.service';
 import { JobsService } from 'src/app/services/jobs.service';
 import { OurServicesService } from 'src/app/services/our-services.service';
 import { ProjectsService } from 'src/app/services/projects.service';
+import { Editor, Toolbar } from 'ngx-editor';
 
 @Component({
   selector: 'app-edit-form',
@@ -20,12 +21,24 @@ export class EditFormComponent implements OnInit {
   data: any;
 
   type: string | null = null;
-  // form!: FormGroup;
+  editor!: Editor;
+  toolbar: Toolbar = [
+    ['bold', 'italic'],
+    ['underline', 'strike'],
+    ['code', 'blockquote'],
+    ['ordered_list', 'bullet_list'],
+    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
+    ['link', 'image'],
+    ['text_color', 'background_color'],
+    ['align_left', 'align_center', 'align_right', 'align_justify'],
+  ];
+
   uploadedResume: File | null = null;
   uploadedImage: File | null = null;
   dragedFile: any;
   selectedFiles: any[] = [];
   formSubmitted: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -143,12 +156,11 @@ export class EditFormComponent implements OnInit {
           title: ['', Validators.required],
           subtitle: ['', Validators.required],
           authorName: ['', Validators.required],
-          advantages: [''],
-          disadvantages: [''],
+          status: [''],
           tags: this.fb.array([this.fb.control('', Validators.required)]),
-          // image: [null, Validators.required],
-          conclusion: ['', Validators.required],
-          summary: ['', [Validators.required, Validators.minLength(20)]],
+          // imageUrl: [null, Validators.required],
+          serpTitle: ['', Validators.required],
+          serpDescription: ['', [Validators.required, Validators.minLength(20)]],
           content: ['', [Validators.required, Validators.minLength(20)]]
         });
         if (this.data) {
@@ -486,14 +498,13 @@ export class EditFormComponent implements OnInit {
     const formData = new FormData();
 
     const blogPayload = {
-      title: this.selectedFields.value.title,
-      subtitle: this.selectedFields.value.subtitle,
+     title: this.selectedFields.value.title,
+      slug: this.selectedFields.value.subtitle,
       authorName: this.selectedFields.value.authorName,
-      summary: this.selectedFields.value.summary,
+      publish: this.selectedFields.value.status,
       content: this.selectedFields.value.content,
-      advantages: this.selectedFields.value.advantages,
-      disadvantages: this.selectedFields.value.disadvantages,
-      conclusion: this.selectedFields.value.conclusion,
+      serpTitle: this.selectedFields.value.serpTitle,
+      serpMetaDescription: this.selectedFields.value.serpDescription,
       tags: this.selectedFields.value.tags,
     };
 
@@ -501,7 +512,7 @@ export class EditFormComponent implements OnInit {
 
     if (this.selectedFiles) {
       this.selectedFiles.forEach(element => {
-        formData.append('images', element);
+        formData.append('bannerImage', element);
         console.log(element);
 
       });

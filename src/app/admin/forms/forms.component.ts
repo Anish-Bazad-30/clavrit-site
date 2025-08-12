@@ -147,7 +147,7 @@ editor!: Editor;
           authorName: ['', Validators.required],
           status: [''],
           tags: this.fb.array([this.fb.control('', Validators.required)]),
-          imageUrl: [null, Validators.required],
+          // imageUrl: [null, Validators.required],
           serpTitle: ['', Validators.required],
           serpDescription: ['', [Validators.required, Validators.minLength(20)]],
           content: ['', [Validators.required, Validators.minLength(20)]]
@@ -416,13 +416,12 @@ editor!: Editor;
 
     const blogPayload = {
       title: this.selectedFields.value.title,
-      subtitle: this.selectedFields.value.subtitle,
+      slug: this.selectedFields.value.subtitle,
       authorName: this.selectedFields.value.authorName,
-      summary: this.selectedFields.value.summary,
+      publish: this.selectedFields.value.status,
       content: this.selectedFields.value.content,
-      advantages: this.selectedFields.value.advantages,
-      disadvantages: this.selectedFields.value.disadvantages,
-      conclusion: this.selectedFields.value.conclusion,
+      serpTitle: this.selectedFields.value.serpTitle,
+      serpMetaDescription: this.selectedFields.value.serpDescription,
       tags: this.selectedFields.value.tags,
     };
 
@@ -430,7 +429,7 @@ editor!: Editor;
     // for()
     if (this.selectedFiles) {
       this.selectedFiles.forEach(element => {
-        formData.append('images', element);
+        formData.append('bannerImage', element);
         console.log(element);
 
       });
