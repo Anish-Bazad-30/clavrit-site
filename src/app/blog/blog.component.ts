@@ -138,7 +138,7 @@ console.log("", this.blogList);
   }
 
   viewBlog(blog: any) {
-    const rawTitle = blog.title;
+    const rawTitle = blog.slug;
     const slug = this.slugify(rawTitle);
     this.blogService.setData(blog);
     this.router.navigate(['/blog', slug]);

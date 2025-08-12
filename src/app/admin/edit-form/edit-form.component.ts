@@ -55,11 +55,12 @@ export class EditFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.editor = new Editor();
     this.commonService.editData$.subscribe(data => {
       if (data) {
         this.data = data;
         console.log(this.data);
+
 
 
       }
@@ -111,7 +112,7 @@ export class EditFormComponent implements OnInit {
       case 'job-application':
         this.pageTitle = "Job Application Form";
         break;
-        case 'business-stats':
+      case 'business-stats':
         this.pageTitle = "Business Stats Form";
         break;
       case 'contact':
@@ -154,46 +155,40 @@ export class EditFormComponent implements OnInit {
       case 'blog':
         this.selectedFields = this.fb.group({
           title: ['', Validators.required],
-          subtitle: ['', Validators.required],
+          slug: ['', Validators.required], // Added slug instead of subtitle
           authorName: ['', Validators.required],
           status: [''],
           tags: this.fb.array([this.fb.control('', Validators.required)]),
-          // imageUrl: [null, Validators.required],
           serpTitle: ['', Validators.required],
           serpDescription: ['', [Validators.required, Validators.minLength(20)]],
           content: ['', [Validators.required, Validators.minLength(20)]]
         });
+
         if (this.data) {
           this.selectedFields.patchValue({
             title: this.data.title,
-            subtitle: this.data.subtitle,
+            slug: this.data.slug, 
             authorName: this.data.authorName,
-            advantages: this.data.advantages,
-            disadvantages: this.data.disadvantages,
-            imageUrl: this.data.imageUrl,
-            conclusion: this.data.conclusion,
-            summary: this.data.summary,
-            content: this.data.content,
-
+            status: this.data.publish,
+            serpTitle: this.data.serpTitle,
+            serpDescription: this.data.serpMetaDescription,
+            content: this.data.content
           });
+
           if (this.data.tags && Array.isArray(this.data.tags)) {
             this.tags.clear();
             this.data.tags.forEach((tag: string) => {
               this.tags.push(this.fb.control(tag, Validators.required));
             });
           }
-          if (this.data.imageUrl && Array.isArray(this.data.imageUrl)) {
-            this.previewUrls = [...this.data.imageUrl]; // populate preview URLs
 
-            // this.data.imageUrl.forEach((url: string) => {
-            // Simulate a File object from URL
-
-            this.selectedFiles = [...this.data.imageUrl];
-
-            // });
+          if (this.data.bannerUrl ) {
+            this.previewUrls.push(this.data.bannerUrl);
+            this.selectedFiles.push(this.data.bannerUrl);
           }
         }
         break;
+
 
       case 'project':
         this.selectedFields = this.fb.group({
@@ -323,16 +318,16 @@ export class EditFormComponent implements OnInit {
           message: ['']
         };
         break;
-        case 'business-stats':
+      case 'business-stats':
         this.selectedFields = this.fb.group({
           title: [''],
           value: [''],
         });
-         this.selectedFields.patchValue({
-            title: this.data.title,
-            value: this.data.value,
+        this.selectedFields.patchValue({
+          title: this.data.title,
+          value: this.data.value,
 
-          });
+        });
         break;
       default:
         this.selectedFields = {
@@ -498,7 +493,7 @@ export class EditFormComponent implements OnInit {
     const formData = new FormData();
 
     const blogPayload = {
-     title: this.selectedFields.value.title,
+      title: this.selectedFields.value.title,
       slug: this.selectedFields.value.subtitle,
       authorName: this.selectedFields.value.authorName,
       publish: this.selectedFields.value.status,
@@ -742,8 +737,8 @@ export class EditFormComponent implements OnInit {
     console.log(this.selectedFields);
 
     if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
-      
-        let title = this.selectedFields.value.title;
+
+      let title = this.selectedFields.value.title;
       let value = this.selectedFields.value.value;
       this.businessStatsService.updateStat(this.data.id, title, value, this.selectedFiles[0]).subscribe((res) => {
         this.selectedFields.reset();
