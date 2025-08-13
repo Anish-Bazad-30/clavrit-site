@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../services/blog.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
  
 @Component({
   selector: 'app-blog-detail',
@@ -15,24 +15,26 @@ export class BlogDetailComponent implements OnInit {
   constructor(
     private blogService: BlogService,
     private router: Router,
+    private route: ActivatedRoute,
  
   ) { }
  
   ngOnInit(): void {
-  this.blogService.sharedData$.subscribe(data => {
+
+     this.route.data.subscribe(data => {
+    this.blogData = data['blog'].data;
+   
+    
+  });
+
+ 
+  this.blogService.getBlogs().subscribe(data => {
     if (data) {
-      this.blogData = data;
+      const rowData = data.data;
+      this.recentBlogs = Array.isArray(rowData[0]) ? rowData[0] : rowData;
       this.date = this.formatDateArray(this.blogData?.createdAt);
     } else {
-      // fallback logic
-    }
-  });
- 
-  this.blogService.recentBlogSharedData$.subscribe(data => {
-    if (data) {
-      this.recentBlogs = data;
-    } else {
-      // fallback logic
+      // fallback logic.
     }
   });
 }

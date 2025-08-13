@@ -3,7 +3,7 @@
         class="banner-vertical-center-work container text-light d-flex justify-content-center align-items-center py-5 p-0">
         <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
             <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center">{{blogData.title}}</h1>
-            <h3 class="h4 pb-2 regular-400">{{blogData.serpMetaDescription}}</h3>
+            <!-- <h3 class="h4 pb-2 regular-400">{{blogData.serpMetaDescription}}</h3> -->
             <!-- <p class="banner-body pb-2 light-300">
                 By {{blogData.authorName}} / {{date}}
             </p> -->
@@ -16,7 +16,7 @@
 </div>
 <section class="container py-5">
     <div class="row pt-5" *ngIf="blogData.title">
-        <div class="worksingle-content col-lg-8 m-auto text-left justify-content-center">
+        <div class="worksingle-content col-lg-10 m-auto text-left justify-content-center">
             <h2 class="worksingle-heading h3 pb-3 light-300 typo-space-line">What is {{blogData.title}}?</h2>
             <p class="worksingle-footer py-1 text-muted light-300"
                 *ngFor="let point of blogData?.serpMetaDescription.split('\\n')">
@@ -24,26 +24,28 @@
             </p>
         </div>
     </div>
-
+ 
     <div class="row justify-content-center pb-4">
-        <div class="col-lg-8">
+        <div class="col-12 col-lg-10">
             <div id="templatemo-slide-link-target" class="card mb-3">
                 <img class="img-fluid border rounded" [src]="blogData.bannerUrl" alt="Card image cap">
             </div>
-            <div class="container-fluid" [innerHTML]="blogData.content"></div>
+            <div [innerHTML]="blogData.content"></div>
         </div>
     </div>
 
+ 
+ 
 </section>
-
+ 
 <article class="container-fluid bg-light">
     <div class="container">
         <div class="worksingle-related-header row">
             <h2 class="h2 py-5">Recent Post</h2>
             <div class="col-md-12 text-left justify-content-center">
                 <div class="row gx-5">
-
-
+ 
+ 
                     <div class="col-12 col-md-4 text-decoration-none project graphic social mb-3"
                         *ngFor="let item of recentBlogs | recentBlog:3">
                         <div class="service-work overflow-hidden card mx-md-1 mx-0 mb-4 h-100">
@@ -61,8 +63,8 @@
                             </div>
                         </div>
                     </div>
-
-
+ 
+ 
                 </div>
             </div>
         </div>

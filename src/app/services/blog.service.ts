@@ -7,15 +7,16 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BlogService {
-  getBlogBySlug(slug: string): any {
-    console.log("parveen",  slug);
-  }
+
 
   private apiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
-
+  getBlogBySlug(slug: string): Observable<any> {
+    const url = `${this.apiUrl}/clavrit/blogs/slug`;
+    return this.http.get<any>(url, { params: { slug: slug } });
+  }
   getBlogs(): Observable<any> {
     const url = `${this.apiUrl}/clavrit/blogs`;
     return this.http.get<any>(url);

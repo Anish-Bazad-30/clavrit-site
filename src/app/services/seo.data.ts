@@ -47,6 +47,33 @@ export const SEO_DATA: SEOMap = {
     title: 'Contact Us - Clavrit',
     description: 'Contact Clavrit at #906-P SEC-51, Gurugram, Haryana, India - 122001 | info@clavrit.com',
     
-  }
+  },
+
+   '/services/sap-cx': {
+    title: 'SAP CX Solutions: Migration & Upgrade Services | Clavrit',
+    description: 'Enhance customer engagement with Clavrit’s SAP Customer Experience (SAP CX) solutions. Drive loyalty, sales, and growth with tailored CX services.',
+   
+  },
+   '/services/sap-cdc': {
+    title: 'SAP CDC | Customer Data Cloud Services – Clavrit',
+    description: 'Unlock secure, consent-based customer data with Clavrit’s SAP CDC services. Improve personalization, compliance, and trust across all digital touchpoints.',
+   
+  },
+    '/services/sap-commerce': {
+    title: 'SAP Commerce Cloud | SAP Spartacus | migration & upgrade Services | CCV2',
+    description: 'Drive digital commerce growth with Clavrit’s SAP Commerce Cloud expertise. From storefront setup and search to AI‑enabled personalization and B2B/B2C integrations.',
+   
+  },
+  '/services/sap-managed-services': {
+    title: 'SAP Managed Services | Expert SAP Support by Clavrit',
+    description: 'Get reliable SAP Managed Services from Clavrit. Optimize, support, and maintain your SAP environment with our expert end-to-end managed solutions.',
+   
+  },
+  '/services/sap-commerce-tools': {
+    title: 'SAP Commerce Tools | Clavrit',
+    description: 'Explore Clavrit’s SAP Commerce Tools to streamline your eCommerce operations. Boost customer experience with scalable CX solutions.',
+ 
+  },
+ 
   
 };
