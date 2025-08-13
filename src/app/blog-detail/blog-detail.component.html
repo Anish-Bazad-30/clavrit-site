@@ -24,30 +24,26 @@
             </p>
         </div>
     </div>
- 
+
     <div class="row justify-content-center pb-4">
         <div class="col-lg-8">
             <div id="templatemo-slide-link-target" class="card mb-3">
                 <img class="img-fluid border rounded" [src]="blogData.bannerUrl" alt="Card image cap">
             </div>
- 
+            <div class="container-fluid" [innerHTML]="blogData.content"></div>
         </div>
     </div>
- 
-    <div class="container-fluid" [innerHTML]="blogData.content">
- 
-    </div>
- 
+
 </section>
- 
+
 <article class="container-fluid bg-light">
     <div class="container">
         <div class="worksingle-related-header row">
             <h2 class="h2 py-5">Recent Post</h2>
             <div class="col-md-12 text-left justify-content-center">
                 <div class="row gx-5">
- 
- 
+
+
                     <div class="col-12 col-md-4 text-decoration-none project graphic social mb-3"
                         *ngFor="let item of recentBlogs | recentBlog:3">
                         <div class="service-work overflow-hidden card mx-md-1 mx-0 mb-4 h-100">
@@ -65,8 +61,8 @@
                             </div>
                         </div>
                     </div>
- 
- 
+
+
                 </div>
             </div>
         </div>

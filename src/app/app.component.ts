@@ -4,6 +4,8 @@ import { filter } from 'rxjs';
 import { CanonicalService } from './services/canonical.service';
 import { Editor, Toolbar } from 'ngx-editor';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { SeoService } from './services/seo.service';
+import { environment } from 'src/environments/environment';
 
 declare let gtag: Function;
 @Component({
@@ -14,7 +16,7 @@ declare let gtag: Function;
 export class AppComponent implements OnInit {
   title = 'clavrit';
 
-  constructor( private router: Router, private canonical: CanonicalService,private fb: FormBuilder){
+  constructor( private router: Router, private canonical: CanonicalService,private fb: FormBuilder, private seo: SeoService){
     this.form = this.fb.group({
       editorContent: ['']
     });
@@ -55,6 +57,15 @@ export class AppComponent implements OnInit {
  
   ngOnInit(): void {
    
+    const base = environment.siteOrigin;
+    this.router.events
+    .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+    .subscribe((ev: NavigationEnd) => {
+      const path = ev.urlAfterRedirects || ev.url;
+      this.seo.applyTagsForPath(path);
+      this.canonical.setCanonicalURL(base+ev.urlAfterRedirects)
+    });
+    
     this.router.events.pipe(
       filter((event: any) => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
@@ -63,7 +74,7 @@ export class AppComponent implements OnInit {
       gtag('config', 'G-6C5R5RFLXP', {
         'page_path': event.urlAfterRedirects
       });
-       this.canonical.setCanonicalURL(event.urlAfterRedirects)
+       
     });
   }
   @HostListener('window:scroll', [])

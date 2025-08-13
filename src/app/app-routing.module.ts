@@ -16,6 +16,7 @@ import { SustainabilityComponent } from './sustainability/sustainability.compone
 import { AiComponent } from './ai/ai.component';
 import { SapSolutionsComponent } from './sap-solutions/sap-solutions.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { blogResolver } from './resolvers/blog.resolver';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
@@ -38,7 +39,7 @@ const routes: Routes = [
   { path: "career/:slug", component: CareerDetailComponent },
   { path: "portfolio", component: PortfolioComponent },
   { path: "blog", component: BlogComponent },
-  { path: "blog/:slug", component: BlogDetailComponent },
+  { path: "blog/:slug", component: BlogDetailComponent ,resolve: { blog: blogResolver } },
   { path: "our-partners", component: OurPartnersComponent },
   { path: "contact", component: ContactComponent },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },

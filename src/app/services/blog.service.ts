@@ -7,6 +7,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BlogService {
+  getBlogBySlug(slug: string): any {
+    console.log("parveen",  slug);
+  }
 
   private apiUrl: string = environment.apiUrl;
 
