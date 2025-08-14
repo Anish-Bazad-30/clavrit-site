@@ -148,7 +148,8 @@ export class EditFormComponent implements OnInit {
             company: this.data.company,
             logo: this.data.logoImage
           });
-          this.selectedFiles = this.data.logoImage
+          this.previewUrls.push(this.data.logoImage);
+          this.selectedFiles.push(this.data.logoImage);
         }
         break;
 
@@ -167,7 +168,7 @@ export class EditFormComponent implements OnInit {
         if (this.data) {
           this.selectedFields.patchValue({
             title: this.data.title,
-            slug: this.data.slug, 
+            slug: this.data.slug,
             authorName: this.data.authorName,
             status: this.data.publish,
             serpTitle: this.data.serpTitle,
@@ -182,7 +183,7 @@ export class EditFormComponent implements OnInit {
             });
           }
 
-          if (this.data.bannerUrl ) {
+          if (this.data.bannerUrl) {
             this.previewUrls.push(this.data.bannerUrl);
             this.selectedFiles.push(this.data.bannerUrl);
           }
@@ -231,25 +232,35 @@ export class EditFormComponent implements OnInit {
 
       case 'service':
         this.selectedFields = this.fb.group({
-          name: ['', Validators.required],
-          description: ['', Validators.required],
-          type: ['', Validators.required],
-          // images: ['']
+          name: [null, Validators.required],
+          subheading: [null, Validators.required],
+          description: [null, Validators.required],
+          metaTitle: [null, Validators.required],
+          slug: [null, Validators.required],
+          metaDescription: [null, Validators.required],
+          content: [null, Validators.required],
+          category: [null, Validators.required]
         });
         if (this.data) {
           this.selectedFields.patchValue({
-            name: this.data.name,
+            name: this.data.title,
             description: this.data.description,
-            type: this.data.type,
+            subheading: this.data.subheading,
+            metaTitle: this.data.metaTitle,
+            slug: this.data.slug,
+            metaDescription: this.data.metaDescription,
+            content: this.data.content,
+            category: this.data.category,
+
 
           });
-          if (this.data.imageUrl && Array.isArray(this.data.imageUrl)) {
-            this.previewUrls = [...this.data.imageUrl]; // populate preview URLs
+          if (this.data.imageUrls && Array.isArray(this.data.imageUrls)) {
+            this.previewUrls = [...this.data.imageUrls]; // populate preview URLs
 
             // this.data.imageUrl.forEach((url: string) => {
             // Simulate a File object from URL
 
-            this.selectedFiles = [...this.data.imageUrl];
+            this.selectedFiles = [...this.data.imageUrls];
 
             // });
           }
@@ -326,8 +337,9 @@ export class EditFormComponent implements OnInit {
         this.selectedFields.patchValue({
           title: this.data.title,
           value: this.data.value,
-
         });
+        this.previewUrls.push(this.data.logoImage);
+        this.selectedFiles.push(this.data.logoImage);
         break;
       default:
         this.selectedFields = {
@@ -575,10 +587,15 @@ export class EditFormComponent implements OnInit {
       const formData = new FormData();
 
       // Convert JSON part
-      formData.append('name', this.selectedFields.value.name);
-      formData.append('type', this.selectedFields.value.type);
-      formData.append('description', this.selectedFields.value.description);
-      console.log(this.selectedFiles);
+      formData.append('title', this.selectedFields.value.name || '');
+      formData.append('subheading', this.selectedFields.value.subheading || '');
+      formData.append('description', this.selectedFields.value.description || '');
+      formData.append('metaTitle', this.selectedFields.value.metaTitle || '');
+      formData.append('slug', this.selectedFields.value.slug || '');
+      formData.append('metaDescription', this.selectedFields.value.metaDescription || '');
+      formData.append('content', this.selectedFields.value.content || '');
+      formData.append('category', this.selectedFields.value.category || '');
+
 
 
       // Append files

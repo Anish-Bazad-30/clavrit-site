@@ -19,7 +19,7 @@ import { TechnologyService } from 'src/app/services/technology.service';
 export class FormsComponent {
   pageTitle!: string;
 
-editor!: Editor;
+  editor!: Editor;
   toolbar: Toolbar = [
     ['bold', 'italic'],
     ['underline', 'strike'],
@@ -31,7 +31,7 @@ editor!: Editor;
     ['align_left', 'align_center', 'align_right', 'align_justify'],
   ];
   type: string | null = null;
-   textArea!: FormGroup;
+  textArea!: FormGroup;
   uploadedResume: File | null = null;
   uploadedImage: File | null = null;
   dragedFile: any;
@@ -49,9 +49,9 @@ editor!: Editor;
     private location: Location,
     private businessStatsService: BusinessStatsService,
     private techservice: TechnologyService
-    
 
-  ) { 
+
+  ) {
     this.textArea = this.fb.group({
       editorContent: ['', [Validators.required, Validators.minLength(20)]]
     });
@@ -107,7 +107,7 @@ editor!: Editor;
       case 'business-stats':
         this.pageTitle = "Business Stats Form";
         break;
-        case 'tools':
+      case 'tools':
         this.pageTitle = "Tools & Technology";
         break;
       case 'contact':
@@ -135,7 +135,7 @@ editor!: Editor;
           logo: [null, Validators.required]
         });
         break;
-        case 'tools':
+      case 'tools':
         this.selectedFields = this.fb.group({
           tools: [null, Validators.required]
         });
@@ -166,10 +166,14 @@ editor!: Editor;
 
       case 'service':
         this.selectedFields = this.fb.group({
-          name: ['', Validators.required],
-          description: ['', Validators.required],
-          type: ['', Validators.required],
-          // images: ['']
+          name: [null, Validators.required],
+          subheading: [null, Validators.required],
+          description: [null, Validators.required],
+          metaTitle: [null, Validators.required],
+          slug: [null, Validators.required],
+          metaDescription: [null, Validators.required],
+          content: [null, Validators.required],
+          category: [null, Validators.required]
         });
         break;
 
@@ -297,25 +301,7 @@ editor!: Editor;
   }
 
 
-  // onFileSelected(event: any): void {
-  //   const files = event.target.files;
-
-  //   this.fileTouched = true;
-  //   this.selectedFiles.push(files);
-  //   console.log(this.selectedFiles);
-
-  //   // Only handle validation if the form has an 'image' control
-  //   const imageControl = this.selectedFields.get('image');
-  //   if (imageControl) {
-  //     if (this.selectedFiles && this.selectedFiles.length > 0) {
-  //       imageControl.setValue(this.selectedFiles);
-  //       imageControl.setErrors(null);
-  //     } else {
-  //       imageControl.setValue(null);
-  //       imageControl.setErrors({ required: true });
-  //     }
-  //   }
-  // }
+  
   fileTouched: boolean = false;
 
   @ViewChild('fileInput1') fileInput1!: ElementRef;
@@ -407,7 +393,7 @@ editor!: Editor;
     // Mark form fields as touched for validation feedback
     this.selectedFields.markAllAsTouched();
     console.log(this.selectedFields);
-    
+
     // If form is invalid or no file selected, stop here
     if (this.selectedFields.invalid || this.fileError) {
       return;
@@ -529,7 +515,7 @@ editor!: Editor;
   onServiceSubmit(): void {
     this.fileError = this.selectedFiles.length === 0;
 
-    // Mark form fields as touched for validation feedback
+    
     this.selectedFields.markAllAsTouched();
 
     // If form is invalid or no file selected, stop here
@@ -540,9 +526,16 @@ editor!: Editor;
     const formData = new FormData();
 
     // Convert JSON part
-    formData.append('name', this.selectedFields.value.name);
-    formData.append('type', this.selectedFields.value.type);
-    formData.append('description', this.selectedFields.value.description);
+    formData.append('title', this.selectedFields.value.name || '');
+  formData.append('subheading', this.selectedFields.value.subheading || '');
+  formData.append('description', this.selectedFields.value.description || '');
+  formData.append('metaTitle', this.selectedFields.value.metaTitle || '');
+  formData.append('slug', this.selectedFields.value.slug || '');
+  formData.append('metaDescription', this.selectedFields.value.metaDescription || '');
+  formData.append('content', this.selectedFields.value.content || '');
+  formData.append('category', this.selectedFields.value.category || '');
+
+    
 
 
     // Append files
@@ -633,34 +626,6 @@ editor!: Editor;
   removeCompetency(index: number) {
     this.competencies.removeAt(index);
   }
-
-
-
-  // onServiceSubmit(): void {
-  //   console.log(this.selectedFields);
-
-  //   if (this.selectedFields.valid) {
-
-  //     const formValue = this.selectedFields.value;
-
-  //     const payload = {
-  //       jobDesignation: formValue.jobDesignation,
-  //       jobResponsibility: formValue.jobResponsibility,
-  //       jobQualification: formValue.jobQualification,
-  //       competencies: formValue.competencies,
-  //       jobCategory: formValue.jobCategory,
-  //       jobType: formValue.jobType,
-  //       jobLocation: formValue.jobLocation,
-  //       industry: formValue.industry
-  //     };
-  //     this.jobService.createJobs(payload).subscribe((res) => {
-
-  //     })
-
-  //   } else {
-  //     console.log('Form is invalid:', this.form);
-  //   }
-  // }
 
   onSubmit(): void {
     console.log(this.selectedFields);

@@ -59,18 +59,29 @@
                     </div>
                 </div>
 
-                <!-- Company Logo -->
-                <div class="col-lg-6">
-                    <div class="form-floating">
-                        <input type="file" #fileInput1 id="companyLogo" class="form-control" placeholder="Company Logo"
-                            (change)="handleSingleFileInput($event)">
-                        <label for="companyLogo">Company Logo</label>
+
+                 <!-- Image Upload -->
+                <div class="mb-3">
+                    <div class="image-upload-section d-flex justify-content-between align-items-center">
+                        <label class="form-label secondary-font">Add Images/Videos</label>
+                        <button type="button" class="upload-button mb-3" (click)="triggerFileInput()">
+                            Add <img src="assets/img/Add.svg" />
+                        </button>
                     </div>
-                    <div *ngIf="fileTouched && !selectedFiles" class="text-danger small mt-1">
-                        Company logo is required.
+                    <input type="file" id="images" #fileInput accept="image/*,video/*" class="hidden-input" multiple
+                        (change)="onImageUpload($event)" style="display: none;" />
+
+                    <div class="preview-container w-100 d-flex"
+                        style="background:none; border: 2px solid #7fdbff; padding: 5px; border-radius: 10px;">
+                        <div class="image-container d-flex" *ngFor="let file of previewUrls; let i = index">
+                            <img [src]="file" class="main-img m-2" />
+                            <img src="assets/img/Minus.svg" class="delete-icon" (click)="removeFile(i)" />
+                        </div>
+                    </div>
+                    <div *ngIf="fileError" class="text-danger mt-2">
+                        client logo is required.
                     </div>
                 </div>
-
                 <!-- Submit -->
                 <div class="col-12 text-end">
                     <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill">Submit</button>
@@ -315,7 +326,7 @@
 
 
         <div *ngIf="type === 'service'" class="container">
-            <form [formGroup]="selectedFields" (ngSubmit)="onServiceSubmit()" class="row g-3"
+           <form [formGroup]="selectedFields" (ngSubmit)="onServiceSubmit()" class="row g-3"
                 enctype="multipart/form-data">
 
                 <!-- Name -->
@@ -330,8 +341,18 @@
                     </div>
                 </div>
 
-                <!-- Description -->
+                <!-- Subheading -->
                 <div class="col-lg-6">
+                    <div class="form-floating">
+                        <input type="text" id="subheading" class="form-control" placeholder="Type"
+                            formControlName="subheading">
+                        <label for="subheading">Sub Heading</label>
+                    </div>
+                  
+                </div>
+
+                <!-- Description -->
+                <div class="col-lg-12">
                     <div class="form-floating">
                         <textarea id="description" class="form-control" placeholder="Description"
                             formControlName="description" style="height: 120px"></textarea>
@@ -343,57 +364,84 @@
                     </div>
                 </div>
 
-                <!-- Type -->
+                <!-- Meta Title -->
                 <div class="col-lg-6">
                     <div class="form-floating">
-                        <input type="text" id="type" class="form-control" placeholder="Type" formControlName="type">
-                        <label for="type">Type</label>
+                        <input type="text" id="metaTitle" class="form-control" placeholder="Meta Title"
+                            formControlName="metaTitle">
+                        <label for="metaTitle">Meta Title</label>
                     </div>
-                    <div *ngIf="selectedFields.get('type')?.touched && selectedFields.get('type')?.invalid"
+                    <div *ngIf="selectedFields.get('metaTitle')?.touched && selectedFields.get('metaTitle')?.invalid"
                         class="text-danger small mt-1">
-                        Type is required.
+                        metaTitle is required.
+                    </div>
+                </div>
+
+                <!-- Slug -->
+                <div class="col-lg-6">
+                    <div class="form-floating">
+                        <input type="text" id="slug" class="form-control" placeholder="Slug" formControlName="slug">
+                        <label for="slug">Slug</label>
+                    </div>
+                    <div *ngIf="selectedFields.get('slug')?.touched && selectedFields.get('slug')?.invalid"
+                        class="text-danger small mt-1">
+                        slug is required.
+                    </div>
+                </div>
+
+                <!-- Meta Description -->
+                <div class="col-lg-12">
+                    <div class="form-floating">
+                        <textarea id="metaDescription" class="form-control" placeholder="Meta Description"
+                            formControlName="metaDescription" style="height: 80px"></textarea>
+                        <label for="metaDescription">Meta Description</label>
+                    </div>
+                    <div *ngIf="selectedFields.get('metaDescription')?.touched && selectedFields.get('metaDescription')?.invalid"
+                        class="text-danger small mt-1">
+                        metaDescription is required.
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="col-lg-12">
+                    <div class="form-floating">
+                        <textarea id="content" class="form-control" placeholder="Content" formControlName="content"
+                            style="height: 150px"></textarea>
+                        <label for="content">Content</label>
+                    </div>
+                   
+                </div>
+
+                <!-- Category -->
+                <div class="col-lg-6">
+                    <div class="form-floating">
+                        <input type="text" id="category" class="form-control" placeholder="Category"
+                            formControlName="category">
+                        <label for="category">Category</label>
+                    </div>
+                    <div *ngIf="selectedFields.get('category')?.touched && selectedFields.get('category')?.invalid"
+                        class="text-danger small mt-1">
+                        category is required.
                     </div>
                 </div>
 
                 <!-- Image Upload -->
-                <!-- <div class="col-lg-6">
-                    <div class="form-floating">
-                        <input type="file" id="imageUrl" class="form-control" (change)="handleSingleFileInput($event)"
-                            multiple>
-                        <label for="imageUrl">Upload Images</label>
-                    </div>
-                    <div *ngIf="!selectedFiles && formSubmitted" class="text-danger small mt-1">
-                        At least one image is required.
-                    </div>
-                </div> -->
-
-
                 <div class="mb-3">
-                    <!-- Image Upload Section -->
                     <div class="image-upload-section d-flex justify-content-between align-items-center">
-                        <label for="Add-image" class="form-label secondary-font">Add Images/Videos</label>
+                        <label class="form-label secondary-font">Add Images/Videos</label>
                         <button type="button" class="upload-button mb-3" (click)="triggerFileInput()">
                             Add <img src="assets/img/Add.svg" />
                         </button>
                     </div>
-
-                    <!-- Hidden File Input -->
                     <input type="file" id="images" #fileInput accept="image/*,video/*" class="hidden-input" multiple
                         (change)="onImageUpload($event)" style="display: none;" />
 
-                    <!-- Image/Video Preview Section -->
-
                     <div class="preview-container w-100 d-flex"
                         style="background:none; border: 2px solid #7fdbff; padding: 5px; border-radius: 10px;">
-
                         <div class="image-container d-flex" *ngFor="let file of previewUrls; let i = index">
-
                             <img [src]="file" class="main-img m-2" />
-
-
-                            <img src="../../../assets/img/Minus.svg" class="delete-icon" (click)="removeFile(i)" />
+                            <img src="assets/img/Minus.svg" class="delete-icon" (click)="removeFile(i)" />
                         </div>
-
                     </div>
                     <div *ngIf="fileError" class="text-danger mt-2">
                         Please upload at least one image.
@@ -586,14 +634,26 @@
                         Value is required.
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="form-floating">
-                        <input type="file" #fileInput1 id="companyLogo" class="form-control" placeholder="Company Logo"
-                            (change)="handleSingleFileInput($event)">
-                        <label for="companyLogo">Company Logo</label>
+               <!-- Image Upload -->
+                <div class="mb-3">
+                    <div class="image-upload-section d-flex justify-content-between align-items-center">
+                        <label class="form-label secondary-font">Add Images/Videos</label>
+                        <button type="button" class="upload-button mb-3" (click)="triggerFileInput()">
+                            Add <img src="assets/img/Add.svg" />
+                        </button>
                     </div>
-                    <div *ngIf="fileTouched && !selectedFiles" class="text-danger small mt-1">
-                        Company logo is required.
+                    <input type="file" id="images" #fileInput accept="image/*,video/*" class="hidden-input" multiple
+                        (change)="onImageUpload($event)" style="display: none;" />
+
+                    <div class="preview-container w-100 d-flex"
+                        style="background:none; border: 2px solid #7fdbff; padding: 5px; border-radius: 10px;">
+                        <div class="image-container d-flex" *ngFor="let file of previewUrls; let i = index">
+                            <img [src]="file" class="main-img m-2" />
+                            <img src="assets/img/Minus.svg" class="delete-icon" (click)="removeFile(i)" />
+                        </div>
+                    </div>
+                    <div *ngIf="fileError" class="text-danger mt-2">
+                        state icon is required.
                     </div>
                 </div>
                 <!-- Submit Button -->
