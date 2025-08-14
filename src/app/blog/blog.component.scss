@@ -22,18 +22,11 @@
   z-index: 2; 
 }
 
-
-.fixed-img {
-  width: 100%;
-  height: 250px;         /* fixed height for desktop */
-  object-fit: cover;     /* crops without stretching */
-  object-position: center;
+.service-work {
+  transition: transform 0.3s ease;
 }
 
-/* On small screens, make height relative to width */
-@media (max-width: 768px) {
-  .fixed-img {
-    height: auto;        /* let height adjust naturally */
-    aspect-ratio: 16 / 9; /* optional: keeps same ratio */
-  }
+.service-work:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
 }

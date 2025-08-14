@@ -18,82 +18,12 @@
 </div>
 <section class="container py-5">
 
-<div class="container">
-    <div class="row" id="blog-list-section">
-        <div class="col-12 col-md-8 mb-5">
-            <div class="row projects gx-lg-5">
-                <div class="col-12 col-md-6 text-decoration-none mb-3"
-                    *ngFor="let item of paginatedList">
-                    <div class="service-work overflow-hidden card mx-md-1 mx-0 mb-4 h-100">
-                        <img class="card-img-top fixed-img" [src]="item.bannerUrl" alt="...">
-                        <div class="card-body h-100 d-flex flex-column justify-content-evenly">
-                            <h5 class="card-title light-400 text-dark">{{ item.title }}</h5>
-                            <p class="card-text light-300 text-dark">
-                                {{ item.serpMetaDescription | slice:0:40 }}...
-                            </p>
-                            <a class="card-read-more " (click)="viewBlog(item)">
-                                <span class="text-decoration-none text-primary light-300">
-                                    Read more <i class='bx bxs-hand-right ms-1'></i>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-           
-
-            <div class="btn-toolbar justify-content-center pb-4" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="btn-group me-2" role="group">
-                    <button type="button" class="btn btn-secondary text-white" [disabled]="currentPage === 1"
-                        (click)="goToPreviousPage()">Previous</button>
-                </div>
-
-                <div class="btn-group me-2" role="group" *ngFor="let page of totalPagesArray; let i = index">
-                    <button type="button" class="btn"
-                        [ngClass]="{ 'btn-secondary text-white': currentPage === i + 1, 'btn-light': currentPage !== i + 1 }"
-                        (click)="goToPage(i + 1)">{{ i + 1 }}</button>
-                </div>
-
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary text-white" [disabled]="currentPage === totalPages"
-                        (click)="handleNextPage()">Next</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4 ">
-
-            <div class="service-work card w-100">
-
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title light-300 text-dark">Tags</h5>
-                  
-                     <span *ngFor="let tag of tagList" (click)="filterByTag(tag)" class="text-decoration-none text-primary light-300"
-                        style="cursor: pointer;">
-                        {{ tag }}
-                    </span>
-
-                    <span *ngIf="selectedTag" (click)="selectedTag = null; paginatedList = blogList"
-                        class="badge bg-secondary text-white m-1" style="cursor: pointer;">Clear Filter</span>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
- </div>
-</section>
-
-<article class="container-fluid bg-light">
     <div class="container">
-        <div class="worksingle-related-header row">
-            <h2 class="h2 py-5">Recent Post</h2>
-            <div class="col-md-12 text-left justify-content-center">
-                <div class="row gx-5">
-
-
-                    <div class="col-12 col-md-4 text-decoration-none mb-3"
-                        *ngFor="let item of blogList | recentBlog:3">
-                        <div class="service-work overflow-hidden card mx-md-1 mx-0 mb-4 h-100">
+        <div class="row" id="blog-list-section">
+            <div class="col-12 col-md-8 mb-5">
+                <div class="row projects gx-lg-5">
+                    <div class="col-12 col-md-6 text-decoration-none mb-3" *ngFor="let item of paginatedList">
+                        <!-- <div class="service-work overflow-hidden card mx-md-1 mx-0 mb-4 h-100">
                             <img class="card-img-top" [src]="item.bannerUrl" alt="..." width="100%" height="250px">
                             <div class="card-body h-100 d-flex flex-column justify-content-evenly">
                                 <h5 class="card-title light-400 text-dark">{{ item.title }}</h5>
@@ -106,7 +36,95 @@
                                     </span>
                                 </a>
                             </div>
+                        </div> -->
+                        <a (click)="viewBlog(item)" class="text-decoration-none">
+                            <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100">
+                                <img class="card-img-top" [src]="item.bannerUrl" alt="..." width="100%" height="250px">
+
+                                <div class="card-body h-100 d-flex flex-column justify-content-evenly">
+                                    <h5 class="card-title light-300 text-dark">{{ item.title }}</h5>
+                                    <p class="card-text light-300 text-dark">
+                                        {{ item.serpMetaDescription | slice:0:40 }}...
+                                    </p>
+
+                                    <span class="text-decoration-none text-primary light-300">
+                                        Read more <i class='bx bxs-hand-right ms-1'></i>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="btn-toolbar justify-content-center pb-4" role="toolbar"
+                    aria-label="Toolbar with button groups">
+                    <div class="btn-group me-2" role="group">
+                        <button type="button" class="btn btn-secondary text-white" [disabled]="currentPage === 1"
+                            (click)="goToPreviousPage()">Previous</button>
+                    </div>
+
+                    <div class="btn-group me-2" role="group" *ngFor="let page of totalPagesArray; let i = index">
+                        <button type="button" class="btn"
+                            [ngClass]="{ 'btn-secondary text-white': currentPage === i + 1, 'btn-light': currentPage !== i + 1 }"
+                            (click)="goToPage(i + 1)">{{ i + 1 }}</button>
+                    </div>
+
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-secondary text-white"
+                            [disabled]="currentPage === totalPages" (click)="handleNextPage()">Next</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 ">
+
+                <div class="service-work card w-100">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title light-300 text-dark">Tags</h5>
+
+                        <span *ngFor="let tag of tagList" (click)="filterByTag(tag)"
+                            class="text-decoration-none text-primary light-300" style="cursor: pointer;">
+                            {{ tag }}
+                        </span>
+
+                        <span *ngIf="selectedTag" (click)="selectedTag = null; paginatedList = blogList"
+                            class="badge bg-secondary text-white m-1" style="cursor: pointer;">Clear Filter</span>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<article class="container-fluid bg-light">
+    <div class="container">
+        <div class="worksingle-related-header row">
+            <h2 class="h2 py-5">Recent Post</h2>
+            <div class="col-md-12 text-left justify-content-center">
+                <div class="row gx-5">
+
+
+                    <div class="col-12 col-md-4 text-decoration-none mb-3" *ngFor="let item of blogList | recentBlog:3">
+                        <a (click)="viewBlog(item)" class="text-decoration-none">
+                        <div class="service-work overflow-hidden card mx-md-1 mx-0 mb-4 h-100">
+                            <img class="card-img-top" [src]="item.bannerUrl" alt="..." width="100%" height="250px">
+                            <div class="card-body h-100 d-flex flex-column justify-content-evenly">
+                                <h5 class="card-title light-400 text-dark">{{ item.title }}</h5>
+                                <p class="card-text light-300 text-dark">
+                                    {{ item.serpMetaDescription | slice:0:40 }}...
+                                </p>
+                                
+                                    <span class="text-decoration-none text-primary light-300">
+                                        Read more <i class='bx bxs-hand-right ms-1'></i>
+                                    </span>
+                                
+                            </div>
                         </div>
+                        </a>
                     </div>
                 </div>
             </div>
