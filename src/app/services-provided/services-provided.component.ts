@@ -95,6 +95,8 @@ export class ServicesProvidedComponent implements OnInit{
   fetchServices(){
     this.ourServicesService.getAllServices().subscribe((res)=>{
       this.ourServices = res.data.filter((item: any) => item.category !== "SAP");
+      // console.log(this.ourServices);
+      
     })
   }
 
@@ -113,6 +115,8 @@ export class ServicesProvidedComponent implements OnInit{
     const slug = this.slugify(rawTitle);
 
     this.ourServicesService.setService(service);
+    
+    
     if (service.title == "SAP Solutions"){
     this.router.navigate(['/services/sap-solutions']); 
     }

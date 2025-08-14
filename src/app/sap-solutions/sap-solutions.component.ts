@@ -59,14 +59,19 @@ export class SapSolutionsComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    this.service = this.ourServicesService.getService();
+    // this.service = this.ourServicesService.getService();
+    // console.log(this.service);
     this.fetchServices();
   }
 
   fetchServices(){
     this.ourServicesService.getAllServices().subscribe((res)=>{
-      this.ourServices = res.data.filter((item: any) => item.category == "SAP");
+     this.service = res.data.find((item: any) => item.title === "SAP Solutions");
 
+      // console.log(this.service);
+      this.ourServices = res.data.filter((item: any) => item.category == "SAP");
+      // console.log(this.ourServices);
+      
 
     })
   }
