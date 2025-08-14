@@ -20,23 +20,12 @@ export const SEO_DATA: SEOMap = {
   '/services': {
     title: 'Services - Clavrit',
     description: 'Clavrit delivers innovative IT solutions worldwide — SAP CX, Salesforce, AI, ML, Robotics, and custom development.',
-    
   },
-  '/services/sap-solutions': {
-    title: 'SAP Solutions & Services | Clavrit',
-    description: 'Optimize your business with Clavrit’s SAP solutions — from implementation to support for seamless enterprise management.',
-    
-  },
+  
   // ... add every row from your Excel sheet here, using the URL path as the key
   '/blog': {
     title: 'Blogs - Clavrit',
     description: 'SAP, Salesforce, AI, Enterprise Applications And More on Blog by Clavrit',
-    
-  },
-  '/blog/:slug': {
-    title: 'Blog - Clavrit',
-    description: 'Read our insights on SAP, Salesforce, AI and enterprise apps.',
-    
   },
   '/about-us': {
     title: 'About Us - Clavrit',
@@ -46,34 +35,14 @@ export const SEO_DATA: SEOMap = {
   '/contact': {
     title: 'Contact Us - Clavrit',
     description: 'Contact Clavrit at #906-P SEC-51, Gurugram, Haryana, India - 122001 | info@clavrit.com',
-    
   },
-
-   '/services/sap-cx': {
-    title: 'SAP CX Solutions: Migration & Upgrade Services | Clavrit',
-    description: 'Enhance customer engagement with Clavrit’s SAP Customer Experience (SAP CX) solutions. Drive loyalty, sales, and growth with tailored CX services.',
-   
+  '/portfolio': {
+    title: 'Clavrit Portfolio | SAP & Digital Transformation Success',
+    description: 'Discover Clavrit’s portfolio showcasing successful SAP implementations and digital transformation projects that drive business growth and innovation.',
   },
-   '/services/sap-cdc': {
-    title: 'SAP CDC | Customer Data Cloud Services – Clavrit',
-    description: 'Unlock secure, consent-based customer data with Clavrit’s SAP CDC services. Improve personalization, compliance, and trust across all digital touchpoints.',
-   
-  },
-    '/services/sap-commerce': {
-    title: 'SAP Commerce Cloud | SAP Spartacus | migration & upgrade Services | CCV2',
-    description: 'Drive digital commerce growth with Clavrit’s SAP Commerce Cloud expertise. From storefront setup and search to AI‑enabled personalization and B2B/B2C integrations.',
-   
-  },
-  '/services/sap-managed-services': {
-    title: 'SAP Managed Services | Expert SAP Support by Clavrit',
-    description: 'Get reliable SAP Managed Services from Clavrit. Optimize, support, and maintain your SAP environment with our expert end-to-end managed solutions.',
-   
-  },
-  '/services/sap-commerce-tools': {
-    title: 'SAP Commerce Tools | Clavrit',
-    description: 'Explore Clavrit’s SAP Commerce Tools to streamline your eCommerce operations. Boost customer experience with scalable CX solutions.',
- 
-  },
- 
+  '/career': {
+    title: 'Careers at Clavrit | Join Our Digital Innovation Team',
+    description: 'Explore exciting career opportunities at Clavrit. Grow your tech career with us',
+  }
   
 };

@@ -17,6 +17,7 @@ import { AiComponent } from './ai/ai.component';
 import { SapSolutionsComponent } from './sap-solutions/sap-solutions.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { blogResolver } from './resolvers/blog.resolver';
+import { clavritServiceResolver } from './resolvers/clavrit-service.resolver';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
@@ -33,7 +34,7 @@ const routes: Routes = [
   { path: "about-us", component: AboutUsComponent },
   { path: "services", component: ServicesProvidedComponent },
   { path: "services/sap-solutions", component: SapSolutionsComponent },
-  { path: "services/:slug", component: DetailViewComponent },
+  { path: "services/:slug", component: DetailViewComponent, resolve: { services: clavritServiceResolver } },
 
   { path: "career", component: CareerComponent },
   { path: "career/:slug", component: CareerDetailComponent },

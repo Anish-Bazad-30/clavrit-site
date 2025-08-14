@@ -95,8 +95,6 @@ export class ServicesProvidedComponent implements OnInit{
   fetchServices(){
     this.ourServicesService.getAllServices().subscribe((res)=>{
       this.ourServices = res.data.filter((item: any) => item.category !== "SAP");
-
-
     })
   }
 
@@ -111,7 +109,7 @@ export class ServicesProvidedComponent implements OnInit{
   }
 
   readMore(service: any) {
-    const rawTitle = service.title;
+    const rawTitle = service.slug;
     const slug = this.slugify(rawTitle);
 
     this.ourServicesService.setService(service);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../services/blog.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
  
 @Component({
   selector: 'app-blog-detail',
@@ -16,6 +17,8 @@ export class BlogDetailComponent implements OnInit {
     private blogService: BlogService,
     private router: Router,
     private route: ActivatedRoute,
+    private titleService: Title,
+        private metaService: Meta
  
   ) { }
  
@@ -23,10 +26,19 @@ export class BlogDetailComponent implements OnInit {
 
      this.route.data.subscribe(data => {
     this.blogData = data['blog'].data;
-   
-    
   });
+if (this.blogData) {
+        // Set page title
+        this.titleService.setTitle(this.blogData.serpTitle || this.blogData.title);
 
+        // Set meta description
+        this.metaService.updateTag({
+          name: 'description',
+          content: this.blogData.serpMetaDescription || ''
+        });
+      }
+  
+  
  
   this.blogService.getBlogs().subscribe(data => {
     if (data) {

@@ -7,6 +7,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class OurServicesService {
+   getOurServicesBySlug(slug: string): Observable<any> {
+    const url = `${this.apiUrl}/api/services/slug`;
+    return this.http.get<any>(url, { params: { slug: slug } });
+  }
    private apiUrl: string = environment.apiUrl;
     constructor(private http: HttpClient) { }
   
