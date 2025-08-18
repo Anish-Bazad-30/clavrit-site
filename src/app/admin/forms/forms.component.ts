@@ -11,6 +11,8 @@ import { OurServicesService } from 'src/app/services/our-services.service';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { TechnologyService } from 'src/app/services/technology.service';
 
+declare var bootstrap: any; 
+
 @Component({
   selector: 'app-forms',
   templateUrl: './forms.component.html',
@@ -37,6 +39,9 @@ export class FormsComponent {
   dragedFile: any;
   selectedFiles: any[] = [];
   formSubmitted: boolean = false;
+
+ 
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -660,4 +665,17 @@ export class FormsComponent {
       this.selectedFields.markAllAsTouched();
     }
   }
+onPreview() {
+  console.log(this.selectedFields.value);
+  this.blogService.setPreviewBlogData(this.selectedFields.value);
+  const modal = new bootstrap.Modal(document.getElementById('previewModal'));
+  modal.show();
+}
+// onPreview() {
+//   console.log(this.selectedFields?.value);
+//   this.blogService.setPreviewBlogData(this.selectedFields.value);
+
+// }
+
+
 }

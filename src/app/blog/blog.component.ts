@@ -144,15 +144,18 @@ console.log("", this.blogList);
     this.router.navigate(['/blog', slug]);
   }
 
+  // slugify(text: string): string {
+  //   return text
+  //     .toLowerCase()
+  //     .replace(/\s+/g, '-')        // Replace spaces with -
+  //     .replace(/[^\w\-]+/g, '')    // Remove all non-word chars
+  //     .replace(/\-\-+/g, '-')      // Replace multiple - with single -
+  //     .replace(/^-+/, '')          // Trim - from start
+  //     .replace(/-+$/, '');         // Trim - from end
+  // }
   slugify(text: string): string {
-    return text
-      .toLowerCase()
-      .replace(/\s+/g, '-')        // Replace spaces with -
-      .replace(/[^\w\-]+/g, '')    // Remove all non-word chars
-      .replace(/\-\-+/g, '-')      // Replace multiple - with single -
-      .replace(/^-+/, '')          // Trim - from start
-      .replace(/-+$/, '');         // Trim - from end
-  }
+  return text.replace(/\s+/g, '-');
+}
   scrollToTop() {
   const section = document.getElementById('blog-list-section');
   if (section) {

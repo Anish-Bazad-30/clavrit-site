@@ -60,4 +60,14 @@ export class BlogService {
     this.recentBlogsubject.next(null);
   }
 
+  private previewBlogSubject = new BehaviorSubject<any>(null);  // You can type this (e.g., BehaviorSubject<MyDataType>)
+  previewBlogSharedData$ = this.previewBlogSubject.asObservable();         // Observable for other components
+  
+  setPreviewBlogData(data: any) {
+    this.previewBlogSubject.next(data);
+  }
+
+  clearPreviewBlogData() {
+    this.previewBlogSubject.next(null);
+  }
 }

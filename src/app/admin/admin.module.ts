@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeletePopupComponent } from './delete-popup/delete-popup.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { NgxEditorModule } from 'ngx-editor';
+import { PreviewComponent } from './preview/preview.component';
 
 
 
@@ -20,6 +21,7 @@ import { NgxEditorModule } from 'ngx-editor';
     ContentListComponent,
     DeletePopupComponent,
     EditFormComponent,
+    PreviewComponent,
     
   ],
   imports: [

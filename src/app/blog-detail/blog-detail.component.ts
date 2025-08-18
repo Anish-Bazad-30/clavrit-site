@@ -26,6 +26,8 @@ export class BlogDetailComponent implements OnInit {
 
      this.route.data.subscribe(data => {
     this.blogData = data['blog'].data;
+    console.log(this.blogData);
+    
   });
 if (this.blogData) {
         // Set page title
@@ -64,7 +66,10 @@ formatDateArray(dateArray: number[]): string {
  
   viewBlog(blog: any) {
     const rawTitle = blog.title;
+    
+    
     const slug = this.slugify(rawTitle);
+    console.log(rawTitle, slug , blog);
     this.blogService.setData(blog);
     this.router.navigate(['/blog', slug]);
   }

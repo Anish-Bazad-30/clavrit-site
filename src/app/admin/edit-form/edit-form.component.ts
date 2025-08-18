@@ -10,6 +10,7 @@ import { JobsService } from 'src/app/services/jobs.service';
 import { OurServicesService } from 'src/app/services/our-services.service';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { Editor, Toolbar } from 'ngx-editor';
+declare var bootstrap: any; 
 
 @Component({
   selector: 'app-edit-form',
@@ -506,7 +507,7 @@ export class EditFormComponent implements OnInit {
 
     const blogPayload = {
       title: this.selectedFields.value.title,
-      slug: this.selectedFields.value.subtitle,
+      slug: this.selectedFields.value.slug,
       authorName: this.selectedFields.value.authorName,
       publish: this.selectedFields.value.status,
       content: this.selectedFields.value.content,
@@ -774,4 +775,17 @@ export class EditFormComponent implements OnInit {
       this.selectedFields.markAllAsTouched();
     }
   }
+onPreview() {
+  let data;
+  if (this.data) {
+   data = this.data;
+  }
+  else{
+    data = this.selectedFields.value;
+  }
+
+  this.blogService.setPreviewBlogData(data);
+  const modal = new bootstrap.Modal(document.getElementById('previewModal'));
+  modal.show();
+}
 }
