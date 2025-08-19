@@ -9,17 +9,17 @@ export const SEO_DATA: SEOMap = {
   },
   '/sustainability': {
     title: 'Sustainability | Eco-Friendly Technology Solutions | Clavrit',
-    description: 'Discover how Clavrit integrates sustainable practices and green technology into enterprise solutions — our commitment to green innovation and eco-friendly solutions.',
+    description: 'Discover how Clavrit integrates sustainable practices in technology to reduce environmental impact. Learn about our commitment to green innovation and eco-friendly solutions.',
     
   },
   '/ai': {
     title: 'Artificial Intelligence Solutions - Clavrit',
-    description: 'Explore Clavrit’s advanced AI services designed to automate, optimise and scale your business — machine learning, automation, and intelligent data solutions.',
+    description: 'Explore Clavrit’s advanced AI services designed to transform businesses with cutting-edge machine learning, automation, and intelligent data solutions.',
    
   },
   '/services': {
     title: 'Services - Clavrit',
-    description: 'Clavrit delivers innovative IT solutions worldwide — SAP CX, Salesforce, AI, ML, Robotics, and custom development.',
+    description: 'Clavrit delivers innovative IT solutions worldwide, specializing in SAP CX, Salesforce, AI, ML, Robotics, and custom development.',
   },
   
   // ... add every row from your Excel sheet here, using the URL path as the key
@@ -29,7 +29,7 @@ export const SEO_DATA: SEOMap = {
   },
   '/about-us': {
     title: 'About Us - Clavrit',
-    description: 'Clavrit Digital Solutions leads digital transformation with SAP, Salesforce, AI, ML & Robotics enterprise solutions worldwide.',
+    description: 'Clavrit Digital Solutions leads digital transformation with award-winning SAP, Salesforce, AI, ML & Robotics enterprise solutions worldwide.',
     
   },
   '/contact': {

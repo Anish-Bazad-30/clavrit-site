@@ -24,7 +24,7 @@
 
 .img{
     width: 100%;
-    height: 250px;
+    height: 175px;
     object-fit: cover;
     object-position: center;
     display: block;
@@ -38,3 +38,55 @@
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
 }
+
+
+/* CMS content responsiveness */
+
+// .blog-content img,
+// .blog-content video,
+// .blog-content iframe {
+//   max-width: 100% !important;   
+//   width: 100% !important;        
+//   height: auto !important;       
+//   display: block;
+//   margin: 1rem auto;             
+// }
+// :host ::ng-deep .blog-content img,
+// :host ::ng-deep .blog-content video,
+// :host ::ng-deep .blog-content iframe {
+//   max-width: 100% !important;
+//   width: 100% !important;
+//   height: auto !important;
+//   display: block;
+// }
+
+
+
+/* Apply box-sizing to all blog content */
+.blog-content,
+.blog-content * {
+  box-sizing: border-box;
+}
+
+/* Responsive images, videos, iframes inside blog content */
+.blog-content img,
+.blog-content video,
+.blog-content iframe {
+  max-width: 100% !important;   
+  height: auto !important;      
+  display: block;               
+  margin: 1rem auto;           
+  object-fit: contain;          
+}
+
+/* If you want to force styling from component scope */
+:host ::ng-deep .blog-content img,
+:host ::ng-deep .blog-content video,
+:host ::ng-deep .blog-content iframe {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+  margin: 1rem auto;
+  object-fit: contain;
+}
+
