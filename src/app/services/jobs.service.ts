@@ -10,6 +10,10 @@ export class JobsService {
   private apiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
+  getjobBySlug(slug: string): Observable<any> {
+    const url = `${this.apiUrl}/clavrit/job-details/slug`;
+    return this.http.get<any>(url, { params: { slug: slug } });
+  }
 
 
   getJobs(): Observable<any> {
@@ -25,7 +29,7 @@ export class JobsService {
 
 
 
-  updateJobs(id: any,data:any): Observable<any> {
+  updateJobs(id: any, data: any): Observable<any> {
     const url = `${this.apiUrl}/clavrit/job-details/${id}`;
     return this.http.put<any>(url, data);
   }
@@ -51,14 +55,14 @@ export class JobsService {
   }
 
 
-    private subject = new BehaviorSubject<any>(null);  // You can type this (e.g., BehaviorSubject<MyDataType>)
-    sharedData$ = this.subject.asObservable();         // Observable for other components
-  
-    setData(data: any) {
-      this.subject.next(data);
-    }
-  
-    clearData() {
-      this.subject.next(null);
-    }
+  private subject = new BehaviorSubject<any>(null);  // You can type this (e.g., BehaviorSubject<MyDataType>)
+  sharedData$ = this.subject.asObservable();         // Observable for other components
+
+  setData(data: any) {
+    this.subject.next(data);
+  }
+
+  clearData() {
+    this.subject.next(null);
+  }
 }

@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { JobsService } from '../services/jobs.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from '../services/toast.service';
 @Component({
   selector: 'app-career-detail',
@@ -18,13 +20,20 @@ export class CareerDetailComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private jobsService: JobsService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private route: ActivatedRoute,
+    private router: Router,
+  
   ) { }
 
 
   ngOnInit(): void {
+    this.route.data.subscribe(data => {
+    this.jobsList = data['job'].data;
+    console.log(this.jobsList);
     
-    this.fetchJobs();
+  });
+    // this.fetchJobs();
     console.log(this.jobsList);
 
 
@@ -145,5 +154,30 @@ export class CareerDetailComponent implements OnInit {
   resetFileInput() {
     this.dragedFile = null;
     this.fileInput.nativeElement.value = '';
+  }
+  // viewBlog(blog: any) {
+  //   const rawTitle = blog.title;
+    
+    
+  //   const slug = this.slugify(rawTitle);
+  //   console.log(rawTitle, slug , blog);
+  //   this.blogService.setData(blog);
+  //   this.router.navigate(['/blog', slug]);
+  // }
+ viewJob(job: any) {
+    const rawTitle = job.jobDesignation;
+    const slug = this.slugify(rawTitle);
+    this.jobsService.setData(job);
+    
+    this.router.navigate(['/career', slug]);
+  }
+  slugify(text: string): string {
+    return text
+      .toLowerCase()
+      .replace(/\s+/g, '-')        // Replace spaces with -
+      .replace(/[^\w\-]+/g, '')    // Remove all non-word chars
+      .replace(/\-\-+/g, '-')      // Replace multiple - with single -
+      .replace(/^-+/, '')          // Trim - from start
+      .replace(/-+$/, '');         // Trim - from end
   }
 }
