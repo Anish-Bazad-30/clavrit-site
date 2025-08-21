@@ -27,8 +27,11 @@
 
     <div class="row justify-content-center pb-4">
         <div class="col-12 col-lg-10">
-            <img class="img-fluid rounded mx-auto d-block" [src]="blogData.bannerUrl" alt="Card image cap"
-                style="width: 85%; height: 500px; object-fit: contain;">
+            <!-- <img class="img-fluid rounded mx-auto d-block" [src]="blogData.bannerUrl" alt="Card image cap"
+                style="width: 850px; height: 500px; object-fit: contain;"> -->
+            <img class="rounded mx-auto d-block" [src]="blogData.bannerUrl" alt="Card image cap"
+                style="width: 100%; max-width: 850px; aspect-ratio: 17 / 10; height: auto; object-fit: contain;">
+
             <div [innerHTML]="blogData.content" class="w-100 blog-content"></div>
 
             <!-- <div [innerHTML]="fixEncoding(blogData.content)"></div> -->
