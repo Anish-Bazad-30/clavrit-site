@@ -48,8 +48,8 @@
                     <!-- Email -->
                     <div class="col-lg-6 mb-4">
                         <div class="form-floating">
-                            <input type="email" class="form-control no-focus-outline" id="email"
-                                formControlName="email" placeholder="Email">
+                            <input type="email" class="form-control no-focus-outline" id="email" formControlName="email"
+                                placeholder="Email">
                             <label for="email">Email</label>
                         </div>
                         <div *ngIf="joinAsPatnercontactForm.get('email')?.touched && joinAsPatnercontactForm.get('email')?.invalid"
@@ -64,9 +64,8 @@
                     <!-- Phone -->
                     <div class="col-lg-6 mb-4">
                         <div class="form-floating">
-                            <input type="text" class="form-control no-focus-outline" id="phone"
-                                formControlName="phone" placeholder="Phone" maxlength="10"
-                                (keypress)="allowOnlyNumbers($event)">
+                            <input type="text" class="form-control no-focus-outline" id="phone" formControlName="phone"
+                                placeholder="Phone" maxlength="10" (keypress)="allowOnlyNumbers($event)">
                             <label for="phone">Phone</label>
                         </div>
                         <div *ngIf="joinAsPatnercontactForm.get('phone')?.touched && joinAsPatnercontactForm.get('phone')?.invalid"
@@ -136,7 +135,8 @@
                     <li class="text-muted"> <i class='bx bx-map bx-fw bx-xs text-primary'></i>#906-P SEC-51 , Gurugram,
                         Haryana, India - 122001</li>
                     <li class="text-muted"><i class='bx-fw bx bx-mail-send bx-xs text-primary'></i><a
-                            class="text-decoration-none text-muted" href="mailto:info@clavrit.com">info&#64;clavrit.com</a>
+                            class="text-decoration-none text-muted"
+                            href="mailto:info@clavrit.com">info&#64;clavrit.com</a>
                     </li>
 
                 </ul>
@@ -153,7 +153,8 @@
                     <li class="text-muted"> <i class='bx bx-map bx-fw bx-xs text-primary'></i>11 Lowburn Place, Clover
                         Park, Auckland, 2019, New Zealand</li>
                     <li class="text-muted"><i class='bx-fw bx bx-mail-send bx-xs text-primary'></i><a
-                            class="text-decoration-none text-muted" href="mailto:info@clavrit.com">info&#64;clavrit.com</a>
+                            class="text-decoration-none text-muted"
+                            href="mailto:info@clavrit.com">info&#64;clavrit.com</a>
                     </li>
                 </ul>
             </div>
@@ -166,9 +167,11 @@
                 </div>
                 <ul class="contact-info list-unstyled col-lg-9 col-9 light-300">
                     <li class="h5 mb-0">Clavrit Digital Solutions</li>
-                    <li class="text-muted"> <i class='bx bx-map bx-fw bx-xs text-primary'></i>Avinguda del Turó, 21C, 08390 Montgat, Barcelona, Spain</li>
+                    <li class="text-muted"> <i class='bx bx-map bx-fw bx-xs text-primary'></i>Avinguda del Turó, 21C,
+                        08390 Montgat, Barcelona, Spain</li>
                     <li class="text-muted"><i class='bx-fw bx bx-mail-send bx-xs text-primary'></i><a
-                            class="text-decoration-none text-muted" href="mailto:info@clavrit.com">info&#64;clavrit.com</a>
+                            class="text-decoration-none text-muted"
+                            href="mailto:info@clavrit.com">info&#64;clavrit.com</a>
                     </li>
                 </ul>
             </div>
@@ -195,7 +198,8 @@
                 <!-- Email -->
                 <div class="col-lg-6">
                     <div class="form-floating">
-                        <input type="email" class="form-control no-focus-outline" id="email" placeholder="Email" formControlName="email">
+                        <input type="email" class="form-control no-focus-outline" id="email" placeholder="Email"
+                            formControlName="email">
                         <label for="email">Email</label>
                     </div>
                     <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.invalid"
@@ -208,8 +212,8 @@
                 <!-- Destination -->
                 <div class="col-lg-6">
                     <div class="form-floating">
-                        <input type="text" class="form-control no-focus-outline" id="destination" placeholder="Destination"
-                            formControlName="destination">
+                        <input type="text" class="form-control no-focus-outline" id="destination"
+                            placeholder="Destination" formControlName="destination">
                         <label for="destination">Destination</label>
                     </div>
                     <div *ngIf="contactForm.get('destination')?.touched && contactForm.get('destination')?.invalid"
@@ -234,8 +238,8 @@
                 <!-- Phone -->
                 <div class="col-lg-6">
                     <div class="form-floating">
-                        <input type="text" class="form-control no-focus-outline" id="phone" placeholder="Phone" formControlName="phone"
-                            maxlength="10" (keypress)="allowOnlyNumbers($event)">
+                        <input type="text" class="form-control no-focus-outline" id="phone" placeholder="Phone"
+                            formControlName="phone" maxlength="10" (keypress)="allowOnlyNumbers($event)">
                         <label for="phone">Phone</label>
                     </div>
                     <div *ngIf="contactForm.get('phone')?.touched && contactForm.get('phone')?.invalid"
@@ -284,8 +288,8 @@
                 <!-- Message -->
                 <div class="col-12">
                     <div class="form-floating">
-                        <textarea class="form-control no-focus-outline" placeholder="Message" id="message" formControlName="message"
-                            style="height: 150px;"></textarea>
+                        <textarea class="form-control no-focus-outline" placeholder="Message" id="message"
+                            formControlName="message" style="height: 150px;"></textarea>
                         <label for="message">Message</label>
                     </div>
                     <div *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.invalid"
@@ -307,8 +311,6 @@
         </div>
     </div>
 </section>
-
-
 
 <section class="container py-2">
     <div class="row pb-4">

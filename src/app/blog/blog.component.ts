@@ -9,45 +9,7 @@ import { Router } from '@angular/router';
 })
 export class BlogComponent implements OnInit {
 
-  //  blogList = [
 
-  //     {
-  //       id: 31,
-  //       title: "Baseliner",
-  //       subtitle: "This is the baseliner project blog.",
-  //       authorName: "Anish ",
-  //       summary: "This is the baseliner project.",
-  //       content: "This is the dummy content for the baseliner project.",
-  //       advantages: "Advantages of the baseliner projects",
-  //       disadvantages: "Disadvantages of the baseliner project",
-  //       conclusion: "This is a good app",
-  //       imageUrl: [
-  //         "https://clavrit.com/upload/backlog/images/07ac444f-7be3-4794-aa29-d0c3a3882f92_web.webp"
-  //       ],
-  //       tags: ["AI"],
-  //       createdAt: [2025, 7, 21, 6, 58, 8],
-  //       updatedAt: [2025, 7, 21, 6, 58, 8]
-  //     },
-  //     {
-  //       id: 31,
-  //       title: "Motolens",
-  //       subtitle: "This is the Motolens project blog.",
-  //       authorName: "Anish ",
-  //       summary: "This is the Motolens project.",
-  //       content: "This is the dummy content for the Motolens project.",
-  //       advantages: "Advantages of the Motolens projects",
-  //       disadvantages: "Disadvantages of the Motolens project",
-  //       conclusion: "This is a good app",
-  //       imageUrl: [
-  //         "https://clavrit.com/upload/backlog/images/07ac444f-7be3-4794-aa29-d0c3a3882f92_web.webp"
-  //       ],
-  //       tags: ["AI"],
-  //       createdAt: [2025, 7, 21, 6, 58, 8],
-  //       updatedAt: [2025, 7, 21, 6, 58, 8]
-  //     },
-
-  //     // add more blogs here
-  //   ];
   blogList: any[] = [];
   tags: any[] = [];
   paginatedList: any[] = [];

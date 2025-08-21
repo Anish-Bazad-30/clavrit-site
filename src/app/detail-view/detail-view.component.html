@@ -4,9 +4,11 @@
         <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
             <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center">{{service.title}}</h1>
             <h3 class="h4 pb-2 regular-400 mb-5">{{service.description}}</h3>
-            
-            <button type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300" routerLink="/portfolio">Learn More</button>
-            <button type="submit" class="btn rounded-pill btn-secondary text-light px-4 light-300 no-focus-outline" routerLink="/contact">Contact Us</button>
+
+            <button type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300"
+                routerLink="/portfolio">Learn More</button>
+            <button type="submit" class="btn rounded-pill btn-secondary text-light px-4 light-300 no-focus-outline"
+                routerLink="/contact">Contact Us</button>
         </div>
     </div>
 </div>
@@ -18,30 +20,20 @@
                 <p class="feature-work-body text-muted light-300">
                     {{service.content}}
                 </p>
-                
+
             </div>
             <div class="col-lg-6 offset-lg-1 align-left">
                 <div class="row">
                     <a class="col" data-type="image" data-fslightbox="gallery">
                         <img class="img-fluid" [src]="service.imageUrls">
                     </a>
-                    <!-- <a class="col" data-type="image" data-fslightbox="gallery">
-                        <img class="img-fluid" src="./assets/img/service2.webp">
-                    </a> -->
                 </div>
-                <!-- <div class="row pt-4">
-                    <a class="col" data-type="image" data-fslightbox="gallery">
-                        <img class="img-fluid" src="./assets/img/service3.webp">
-                    </a>
-                    <a class="col" data-type="image" data-fslightbox="gallery">
-                        <img class="img-fluid" src="./assets/img/service1.webp">
-                    </a>
-                </div> -->
             </div>
         </div>
         <div class="col-md-2">
-        <button (click)="onBack()" class="btn rounded-pill btn-secondary text-light px-4 light-300 no-focus-outline">Go Back</button>
+            <button (click)="onBack()"
+                class="btn rounded-pill btn-secondary text-light px-4 light-300 no-focus-outline">Go Back</button>
         </div>
     </div>
-    
+
 </section>

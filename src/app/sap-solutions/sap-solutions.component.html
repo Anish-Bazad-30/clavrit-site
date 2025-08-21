@@ -4,19 +4,22 @@
         <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
             <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center">{{service.title}}</h1>
             <h3 class="h4 pb-2 regular-400 mb-5">{{service.description}}</h3>
-            
-            <button type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300" routerLink="/portfolio">Learn More</button>
-            <button type="submit" class="btn rounded-pill btn-secondary text-light px-4 light-300" routerLink="/contact">Contact Us</button>
+
+            <button type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300"
+                routerLink="/portfolio">Learn More</button>
+            <button type="submit" class="btn rounded-pill btn-secondary text-light px-4 light-300"
+                routerLink="/contact">Contact Us</button>
         </div>
     </div>
 </div>
 <section class="container py-5">
-    
+
     <div class="row projects gx-lg-5 d-flex">
 
-        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-5" *ngFor="let service of ourServices">
+        <div class="col-sm-6 col-lg-4 text-decoration-none project graphic social mb-5"
+            *ngFor="let service of ourServices">
             <a (click)="readMore(service)" class="text-decoration-none">
-                <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 h-100">
+                <div class="service-work overflow-hidden card mx-md-1 mx-0 mb-5 h-100">
                     <img class="card-img-top" [src]="service.imageUrls" alt="..." width="100%" height="250px">
 
                     <div class="card-body h-100 d-flex flex-column justify-content-evenly">
@@ -31,9 +34,10 @@
                 </div>
             </a>
         </div>
-       
+
     </div>
-     <div class="col-md-2">
-        <button (click)="onBack()" class="btn rounded-pill btn-secondary text-light px-4 light-300 no-focus-outline">Go Back</button>
+    <div class="col-md-2">
+        <button (click)="onBack()" class="btn rounded-pill btn-secondary text-light px-4 light-300 no-focus-outline">Go
+            Back</button>
     </div>
 </section>
