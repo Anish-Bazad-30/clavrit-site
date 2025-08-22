@@ -65,23 +65,26 @@ formatDateArray(dateArray: number[]): string {
  
  
   viewBlog(blog: any) {
-    const rawTitle = blog.title;
+    const rawTitle = blog.slug;
     
     
     const slug = this.slugify(rawTitle);
     console.log(rawTitle, slug , blog);
     this.blogService.setData(blog);
-    this.router.navigate(['/blog', slug]);
+    this.router.navigate(['/blogs', slug]);
   }
  
-  slugify(text: string): string {
-    return text
-      .toLowerCase()
-      .replace(/\s+/g, '-')        // Replace spaces with -
-      .replace(/[^\w\-]+/g, '')    // Remove all non-word chars
-      .replace(/\-\-+/g, '-')      // Replace multiple - with single -
-      .replace(/^-+/, '')          // Trim - from start
-      .replace(/-+$/, '');         // Trim - from end
-  }
+  // slugify(text: string): string {
+  //   return text
+  //     .toLowerCase()
+  //     .replace(/\s+/g, '-')        // Replace spaces with -
+  //     .replace(/[^\w\-]+/g, '')    // Remove all non-word chars
+  //     .replace(/\-\-+/g, '-')      // Replace multiple - with single -
+  //     .replace(/^-+/, '')          // Trim - from start
+  //     .replace(/-+$/, '');         // Trim - from end
+  // }
+   slugify(text: string): string {
+  return text.replace(/\s+/g, '-');
+}
 }
  

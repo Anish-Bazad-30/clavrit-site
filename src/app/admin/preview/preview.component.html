@@ -8,23 +8,9 @@
             </div>
 
             <div class="modal-body">
-                <!-- <h2 *ngIf="formData?.title"><strong>Blog Title:</strong> {{ formData.title }}</h2>
-                <p *ngIf="formData?.subtitle"><strong>Slug:</strong> {{ formData.subtitle }}</p>
-                <p *ngIf="formData?.authorName"><strong>Author:</strong> {{ formData.authorName }}</p>
-                <p *ngIf="formData?.serpTitle"><strong>Serp Title:</strong> {{ formData.serpTitle}}</p> -->
-
-                <!-- Media Preview -->
+             
                 <section class="container py-5">
-                    <div class="row">
-                        <div class="worksingle-content col-lg-10 m-auto text-left justify-content-center">
-                            <h2 class="worksingle-heading h3 pb-3 light-300 typo-space-line" *ngIf="formData?.title">What is {{ formData.title }}?
-                            </h2>
-                            <p class="worksingle-footer py-1 text-muted light-300"
-                                *ngIf="formData?.title">{{ formData.serpMetaDescription}}
-                              
-                            </p>
-                        </div>
-                    </div>
+                   
                     <div *ngIf="previewUrls.length > 0" class="mb-3">
                         <img *ngFor="let url of previewUrls" [src]="url" class="img-fluid rounded mb-2" />
                     </div>

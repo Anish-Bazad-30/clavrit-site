@@ -103,7 +103,7 @@ console.log("", this.blogList);
     const rawTitle = blog.slug;
     const slug = this.slugify(rawTitle);
     this.blogService.setData(blog);
-    this.router.navigate(['/blog', slug]);
+    this.router.navigate(['/blogs', slug]);
   }
 
   // slugify(text: string): string {
