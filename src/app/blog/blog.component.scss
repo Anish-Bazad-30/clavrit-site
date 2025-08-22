@@ -21,7 +21,9 @@
   position: relative;
   z-index: 2; 
 }
-
+.tags{
+  cursor: default;
+}
 .service-work {
   transition: transform 0.3s ease;
 }
@@ -37,4 +39,14 @@
     object-fit: cover;
     object-position: center;
     display: block;
+}
+
+span.tag-hover {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+span.tag-hover:hover {
+  text-decoration: underline;
+  color: #2469e7 !important; /* Bootstrap primary blue */
 }

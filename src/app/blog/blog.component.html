@@ -86,13 +86,17 @@
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title light-300 text-dark">Tags</h5>
 
-                        <span *ngFor="let tag of tagList" (click)="filterByTag(tag)"
+                        <!-- <span *ngFor="let tag of tagList" (click)="filterByTag(tag)"
                             class="text-decoration-none text-primary light-300" style="cursor: pointer;">
+                            {{ tag }}
+                        </span> -->
+                        <span *ngFor="let tag of tagList" (click)="filterByTag(tag)"
+                            class="tag-hover text-primary light-300">
                             {{ tag }}
                         </span>
 
                         <span *ngIf="selectedTag" (click)="selectedTag = null; paginatedList = blogList"
-                            class="badge bg-secondary text-white m-1" style="cursor: pointer;">Clear Filter</span>
+                            class="badge bg-secondary text-white m-1" style="cursor: pointer;">Go Back</span>
                     </div>
                 </div>
 
@@ -114,7 +118,8 @@
                         <a (click)="viewBlog(item)" class="text-decoration-none">
                             <div class="service-work overflow-hidden card mx-md-1 mx-0 mb-4 h-100">
                                 <div class="img">
-                                <img class="card-img-top" [src]="item.bannerUrl" alt="recent-post" width="100%" height="175px">
+                                    <img class="card-img-top" [src]="item.bannerUrl" alt="recent-post" width="100%"
+                                        height="175px">
                                 </div>
                                 <div class="card-body h-100 d-flex flex-column justify-content-evenly">
                                     <h5 class="card-title light-400 text-dark">{{ item.title }}</h5>

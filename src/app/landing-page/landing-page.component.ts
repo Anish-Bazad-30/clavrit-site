@@ -33,6 +33,7 @@ export class LandingPageComponent implements OnInit {
     {
       title: "SAP Solutions",
       titlehome: "SAP Solutions",
+      slug: "SAP Solutions",
       subhome: "End-to-End Implementation & Optimization",
       imageUrls: "./assets/img/sap_cx_1.webp",
       description: "End-to-End Implementation & Optimization",
@@ -41,6 +42,7 @@ export class LandingPageComponent implements OnInit {
     {
       title: "Artificial Intelligence",
       titlehome: "AI Integration",
+      slug: "Artificial Intelligence",
       subhome: "Intelligent Business Analytics",
       imageUrls: "./assets/img/AI_image.webp",
       description: "We deliver tailored AI, Deep Learning, and NLP solutions for smarter insights and automation.",
@@ -50,6 +52,7 @@ export class LandingPageComponent implements OnInit {
     {
       title: "Salesforce",
       titlehome: "Salesforce Services",
+      slug: "Salesforce",
       subhome: "CRM Transformation & Automation",
       imageUrls: "./assets/img/sf.webp",
       description: "Maximize Salesforce’s power with Clavrit’s expert consulting and support to drive growth and elevate customer experiences.",
@@ -59,6 +62,7 @@ export class LandingPageComponent implements OnInit {
     {
       title: "Custom Development",
       titlehome: "Custom Development",
+      slug: "Custom Development",
       subhome: "Tailored Enterprise Applications",
       imageUrls: "./assets/img/Development.webp",
       //description: "We deliver tailored AI, Deep Learning, and NLP solutions for smarter insights and automation.",
@@ -318,10 +322,10 @@ export class LandingPageComponent implements OnInit {
     this.activeTab = tab;
   }
   readMore(service: any) {
-    const rawTitle = service.title;
+    const rawTitle = service.slug;
     const slug = this.slugify(rawTitle);
 
-    this.ourServicesService.setService(service);
+    // this.ourServicesService.setService(service);
 
     this.router.navigate(['/services', slug]);
   }

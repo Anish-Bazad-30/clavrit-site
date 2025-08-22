@@ -24,13 +24,21 @@ export class ServicesProvidedComponent implements OnInit{
 
 
 
-  fetchServices(){
-    this.ourServicesService.getAllServices().subscribe((res)=>{
-      this.ourServices = res.data.filter((item: any) => item.category !== "SAP");
-      // console.log(this.ourServices);
+  // fetchServices(){
+  //   this.ourServicesService.getAllServices().subscribe((res)=>{
+  //     this.ourServices = res.data.filter((item: any) => item.category !== "SAP");
+  //     // console.log(this.ourServices);
       
-    })
-  }
+  //   })
+  // }
+  fetchServices() {
+  this.ourServicesService.getAllServices().subscribe((res) => {
+    this.ourServices = res.data.filter(
+      (item: any) => item.category !== "SAP" && item.category !== "Custom"
+    );
+    // console.log(this.ourServices);
+  });
+}
 
   @ViewChild('scrollContainer', { static: false }) scrollContainer!: ElementRef;
 
