@@ -10,6 +10,7 @@ import { DeletePopupComponent } from './delete-popup/delete-popup.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { NgxEditorModule } from 'ngx-editor';
 import { PreviewComponent } from './preview/preview.component';
+import { NgxSummernoteModule } from 'ngx-summernote';
 
 
 
@@ -29,7 +30,8 @@ import { PreviewComponent } from './preview/preview.component';
     AdminRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxEditorModule
+    NgxEditorModule,
+    NgxSummernoteModule
   ]
 })
 export class AdminModule { }

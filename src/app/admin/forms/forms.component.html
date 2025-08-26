@@ -170,11 +170,15 @@
 
                         <!-- Rich Text Editor -->
                         <div class="col-md-12">
-                            <div class="editor">
+                            <!-- <div class="editor">
                                 <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
                                 </ngx-editor-menu>
                                 <ngx-editor [editor]="editor" formControlName="content">
                                 </ngx-editor>
+                            </div> -->
+                            <div  formControlName="content" [ngxSummernote]="config"
+                                [ngxSummernoteDisabled]="editorDisabled" (blur)="onBlur()"
+                                (mediaDelete)="onDelete($event)" (summernoteInit)="summernoteInit($event)">
                             </div>
                         </div>
 

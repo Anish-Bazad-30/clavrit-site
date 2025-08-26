@@ -26,7 +26,10 @@ export class BlogService {
     const url = `${this.apiUrl}/clavrit/blogs`;
     return this.http.post<any>(url,data);
   }
-
+ createMedia(data: any): Observable<any> {
+    const url = `${this.apiUrl}/clavrit/blogs/media/upload`;
+    return this.http.post<any>(url,data);
+  }
   updateBlogs(id: any, data:any): Observable<any> {
     const url = `${this.apiUrl}/clavrit/blogs/${id}`;
     return this.http.put<any>(url,data);

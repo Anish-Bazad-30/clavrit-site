@@ -10,7 +10,10 @@ import { JobsService } from 'src/app/services/jobs.service';
 import { OurServicesService } from 'src/app/services/our-services.service';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { Editor, Toolbar } from 'ngx-editor';
+import { NgxSummernoteDirective } from 'ngx-summernote';
+import { DomSanitizer } from '@angular/platform-browser';
 declare var bootstrap: any; 
+declare var $: any;
 
 @Component({
   selector: 'app-edit-form',
@@ -20,19 +23,11 @@ declare var bootstrap: any;
 export class EditFormComponent implements OnInit {
   pageTitle!: string;
   data: any;
+  fileError: boolean = false;
+  @ViewChild('fileInput') fileInput!: ElementRef;
 
+  previewUrls: string[] = [];
   type: string | null = null;
-  editor!: Editor;
-  toolbar: Toolbar = [
-    ['bold', 'italic'],
-    ['underline', 'strike'],
-    ['code', 'blockquote'],
-    ['ordered_list', 'bullet_list'],
-    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
-    ['link', 'image'],
-    ['text_color', 'background_color'],
-    ['align_left', 'align_center', 'align_right', 'align_justify'],
-  ];
 
   uploadedResume: File | null = null;
   uploadedImage: File | null = null;
@@ -52,24 +47,18 @@ export class EditFormComponent implements OnInit {
     private commonService: CommonService,
     private location: Location,
     private businessStatsService: BusinessStatsService,
+      private sanitizer: DomSanitizer
 
   ) { }
 
   ngOnInit() {
-    this.editor = new Editor();
     this.commonService.editData$.subscribe(data => {
       if (data) {
         this.data = data;
-        console.log(this.data);
-
-
-
       }
     });
 
     this.type = this.route.snapshot.paramMap.get('type') ?? '';
-    console.log('Content type:', this.type);
-    console.log('Content type:', this.type);
     this.loadContent(this.type);
     this.buildFormByType(this.type);
   }
@@ -454,8 +443,6 @@ export class EditFormComponent implements OnInit {
   }
 
   onClientSubmit(): void {
-    console.log(this.selectedFields);
-
 
     if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
 
@@ -521,7 +508,7 @@ export class EditFormComponent implements OnInit {
     if (this.selectedFiles) {
       this.selectedFiles.forEach(element => {
         formData.append('bannerImage', element);
-        console.log(element);
+       
 
       });
 
@@ -684,47 +671,6 @@ export class EditFormComponent implements OnInit {
 
 
 
-  // onServiceSubmit(): void {
-  //   console.log(this.selectedFields);
-
-  //   if (this.selectedFields.valid) {
-
-  //     const formValue = this.selectedFields.value;
-
-  //     const payload = {
-  //       jobDesignation: formValue.jobDesignation,
-  //       jobResponsibility: formValue.jobResponsibility,
-  //       jobQualification: formValue.jobQualification,
-  //       competencies: formValue.competencies,
-  //       jobCategory: formValue.jobCategory,
-  //       jobType: formValue.jobType,
-  //       jobLocation: formValue.jobLocation,
-  //       industry: formValue.industry
-  //     };
-  //     this.jobService.createJobs(payload).subscribe((res) => {
-
-  //     })
-
-  //   } else {
-  //     console.log('Form is invalid:', this.form);
-  //   }
-  // }
-
-  // onSubmit(): void {
-  //   console.log(this.selectedFields);
-
-  //   if (this.selectedFields.valid) {
-  //     console.log('Form submitted:', this.form.value);
-  //   } else {
-  //     console.log('Form is invalid:', this.form);
-  //   }
-  // }
-
-  fileError: boolean = false;
-  @ViewChild('fileInput') fileInput!: ElementRef;
-
-  previewUrls: string[] = [];
-
   triggerFileInput() {
     this.fileInput.nativeElement.click();
   }
@@ -788,4 +734,109 @@ onPreview() {
   const modal = new bootstrap.Modal(document.getElementById('previewModal'));
   modal.show();
 }
+
+
+  @ViewChild(NgxSummernoteDirective) ngxSummernote?: NgxSummernoteDirective;
+  editorDisabled = false;
+
+  get sanitizedHtml() {
+    return this.sanitizer.bypassSecurityTrustHtml(this.selectedFields.get('content').value);
+  }
+
+  addText() {
+    const text = 'This is the text to be inserted';
+    //const editor = this.ngxSummernote['_editor'];
+    //editor.insertText(text);
+  }
+  onBlur() {
+   
+  }
+
+  onDelete(file: any) {
+    console.log('Delete file', file.url);
+  }
+
+  summernoteInit(event: any) {
+    
+  }
+
+
+  config: any = {
+    airMode: false,
+    popover: {
+      table: [
+        ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+        ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+      ],
+      image: [
+        ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+        ['float', ['floatLeft', 'floatRight', 'floatNone']],
+        ['remove', ['removeMedia']],
+      ],
+      link: [['link', ['linkDialogShow', 'unlink']]],
+      air: [
+        [
+          'font',
+          [
+            'bold',
+            'italic',
+            'underline',
+            'strikethrough',
+            'superscript',
+            'subscript',
+            'clear',
+          ],
+        ],
+      ],
+    },
+    height: 200,
+    uploadImagePath: 'https://clavrit.com:8085/clavrit/blogs/media/upload',
+    uploadImageRequestOptions: { withCredentials: false },
+    toolbar: [
+      ['misc', ['codeview', 'undo', 'redo', 'codeBlock']],
+      [
+        'font',
+        [
+          'bold',
+          'italic',
+          'underline',
+          'strikethrough',
+          'superscript',
+          'subscript',
+          'clear',
+        ],
+      ],
+      ['fontsize', ['fontname', 'fontsize', 'color']],
+      ['para', ['style0', 'ul', 'ol', 'paragraph', 'height']],
+      ['insert', ['table', 'picture', 'link', 'video', 'hr']],
+      ['customButtons', ['testBtn']],
+    ],
+    buttons: {
+      testBtn: customButton,
+    },
+    codeviewFilter: true,
+    codeviewFilterRegex:
+      /<\/*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|ilayer|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|t(?:itle|extarea)|xml|.*onmouseover)[^>]*?>/gi,
+    codeviewIframeFilter: true,
+  };
+
+  ngOnDestroy() {
+  ($('#summernote') as any).summernote('destroy');
+}
+
+}
+
+function customButton(context: any) {
+  const ui = $.summernote.ui;
+  const button = ui.button({
+    contents: '<i class="note-icon-magic"></i> Hello',
+    tooltip: 'Custom button',
+    container: '.note-editor',
+    className: 'note-btn',
+    click: function () {
+      context.invoke('editor.insertText', 'Hello from test btn!!!');
+    },
+  });
+  return button.render();
+
 }

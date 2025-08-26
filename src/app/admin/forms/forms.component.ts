@@ -1,8 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Editor, Toolbar } from 'ngx-editor';
+import { NgxSummernoteDirective } from 'ngx-summernote';
+import { SummernoteOptions } from 'ngx-summernote/lib/summernote-options';
 import { BlogService } from 'src/app/services/blog.service';
 import { BusinessStatsService } from 'src/app/services/business-stats.service';
 import { ClientService } from 'src/app/services/client.service';
@@ -10,8 +13,8 @@ import { JobsService } from 'src/app/services/jobs.service';
 import { OurServicesService } from 'src/app/services/our-services.service';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { TechnologyService } from 'src/app/services/technology.service';
-
-declare var bootstrap: any; 
+declare var $: any;
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-forms',
@@ -21,17 +24,7 @@ declare var bootstrap: any;
 export class FormsComponent {
   pageTitle!: string;
 
-  editor!: Editor;
-  toolbar: Toolbar = [
-    ['bold', 'italic'],
-    ['underline', 'strike'],
-    ['code', 'blockquote'],
-    ['ordered_list', 'bullet_list'],
-    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
-    ['link', 'image'],
-    ['text_color', 'background_color'],
-    ['align_left', 'align_center', 'align_right', 'align_justify'],
-  ];
+
   type: string | null = null;
   textArea!: FormGroup;
   uploadedResume: File | null = null;
@@ -40,7 +33,7 @@ export class FormsComponent {
   selectedFiles: any[] = [];
   formSubmitted: boolean = false;
 
- 
+
 
   constructor(
     private route: ActivatedRoute,
@@ -53,7 +46,8 @@ export class FormsComponent {
     private ourServicesService: OurServicesService,
     private location: Location,
     private businessStatsService: BusinessStatsService,
-    private techservice: TechnologyService
+    private techservice: TechnologyService,
+    private sanitizer: DomSanitizer
 
 
   ) {
@@ -63,9 +57,7 @@ export class FormsComponent {
   }
 
   ngOnInit() {
-    this.editor = new Editor();
     this.type = this.route.snapshot.paramMap.get('type') ?? '';
-    console.log('Content type:', this.type);
     this.loadContent(this.type);
     this.buildFormByType(this.type);
   }
@@ -306,7 +298,7 @@ export class FormsComponent {
   }
 
 
-  
+
   fileTouched: boolean = false;
 
   @ViewChild('fileInput1') fileInput1!: ElementRef;
@@ -326,7 +318,6 @@ export class FormsComponent {
 
 
   onClientSubmit(): void {
-    console.log(this.selectedFields);
 
     if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
 
@@ -365,8 +356,7 @@ export class FormsComponent {
 
 
   onToolSubmit(): void {
-    console.log(this.selectedFields);
-
+ 
     if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
 
       const formData = new FormData();
@@ -395,10 +385,9 @@ export class FormsComponent {
   onBlogSubmit(): void {
     this.fileError = this.selectedFiles.length === 0;
 
+
     // Mark form fields as touched for validation feedback
     this.selectedFields.markAllAsTouched();
-    console.log(this.selectedFields);
-
     // If form is invalid or no file selected, stop here
     if (this.selectedFields.invalid || this.fileError) {
       return;
@@ -421,7 +410,7 @@ export class FormsComponent {
     if (this.selectedFiles) {
       this.selectedFiles.forEach(element => {
         formData.append('bannerImage', element);
-        console.log(element);
+       
 
       });
 
@@ -463,7 +452,6 @@ export class FormsComponent {
     };
 
     formData.append('project', JSON.stringify(projectPayload));
-    console.log(this.selectedFiles);
 
     if (this.selectedFiles) {
       this.selectedFiles.forEach(element => {
@@ -520,7 +508,7 @@ export class FormsComponent {
   onServiceSubmit(): void {
     this.fileError = this.selectedFiles.length === 0;
 
-    
+
     this.selectedFields.markAllAsTouched();
 
     // If form is invalid or no file selected, stop here
@@ -532,21 +520,20 @@ export class FormsComponent {
 
     // Convert JSON part
     formData.append('title', this.selectedFields.value.name || '');
-  formData.append('subheading', this.selectedFields.value.subheading || '');
-  formData.append('description', this.selectedFields.value.description || '');
-  formData.append('metaTitle', this.selectedFields.value.metaTitle || '');
-  formData.append('slug', this.selectedFields.value.slug || '');
-  formData.append('metaDescription', this.selectedFields.value.metaDescription || '');
-  formData.append('content', this.selectedFields.value.content || '');
-  formData.append('category', this.selectedFields.value.category || '');
+    formData.append('subheading', this.selectedFields.value.subheading || '');
+    formData.append('description', this.selectedFields.value.description || '');
+    formData.append('metaTitle', this.selectedFields.value.metaTitle || '');
+    formData.append('slug', this.selectedFields.value.slug || '');
+    formData.append('metaDescription', this.selectedFields.value.metaDescription || '');
+    formData.append('content', this.selectedFields.value.content || '');
+    formData.append('category', this.selectedFields.value.category || '');
 
-    
+
 
 
     // Append files
     if (this.selectedFiles) {
-      // this.selectedFiles.forEach((file, index) => {
-      // console.log("saddsadsasaddsadsa");
+     
 
       this.selectedFiles.forEach(element => {
         formData.append('images', element);
@@ -636,15 +623,14 @@ export class FormsComponent {
     console.log(this.selectedFields);
 
     if (this.selectedFields.valid) {
-      console.log('Form submitted:', this.form.value);
+     
     } else {
-      console.log('Form is invalid:', this.form);
+    
     }
   }
 
   onStatsSubmit(): void {
-    console.log(this.selectedFields);
-
+  
     if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
       let title = this.selectedFields.value.title;
       let value = this.selectedFields.value.value;
@@ -665,17 +651,117 @@ export class FormsComponent {
       this.selectedFields.markAllAsTouched();
     }
   }
-onPreview() {
-  console.log(this.selectedFields.value);
-  this.blogService.setPreviewBlogData(this.selectedFields.value);
-  const modal = new bootstrap.Modal(document.getElementById('previewModal'));
-  modal.show();
-}
-// onPreview() {
-//   console.log(this.selectedFields?.value);
-//   this.blogService.setPreviewBlogData(this.selectedFields.value);
+  onPreview() {
+    this.blogService.setPreviewBlogData(this.selectedFields.value);
+    const modal = new bootstrap.Modal(document.getElementById('previewModal'));
+    modal.show();
+  }
 
-// }
+
+  //summernot
+
+  @ViewChild(NgxSummernoteDirective) ngxSummernote?: NgxSummernoteDirective;
+  editorDisabled = false;
+
+  get sanitizedHtml() {
+    return this.sanitizer.bypassSecurityTrustHtml(this.selectedFields.get('content').value);
+  }
+
+  addText() {
+    const text = 'This is the text to be inserted';
+    //const editor = this.ngxSummernote['_editor'];
+    //editor.insertText(text);
+  }
+  onBlur() {
+   
+  }
+
+  onDelete(file: any) {
+    
+  }
+
+  summernoteInit(event: any) {
+
+  }
+
+
+  config: any = {
+    airMode: false,
+    popover: {
+      table: [
+        ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+        ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+      ],
+      image: [
+        ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+        ['float', ['floatLeft', 'floatRight', 'floatNone']],
+        ['remove', ['removeMedia']],
+      ],
+      link: [['link', ['linkDialogShow', 'unlink']]],
+      air: [
+        [
+          'font',
+          [
+            'bold',
+            'italic',
+            'underline',
+            'strikethrough',
+            'superscript',
+            'subscript',
+            'clear',
+          ],
+        ],
+      ],
+    },
+    height: 200,
+    uploadImagePath: 'https://clavrit.com:8085/clavrit/blogs/media/upload',
+    uploadImageRequestOptions: { withCredentials: false },
+    toolbar: [
+      ['misc', ['codeview', 'undo', 'redo', 'codeBlock']],
+      [
+        'font',
+        [
+          'bold',
+          'italic',
+          'underline',
+          'strikethrough',
+          'superscript',
+          'subscript',
+          'clear',
+        ],
+      ],
+      ['fontsize', ['fontname', 'fontsize', 'color']],
+      ['para', ['style0', 'ul', 'ol', 'paragraph', 'height']],
+      ['insert', ['table', 'picture', 'link', 'video', 'hr']],
+      ['customButtons', ['testBtn']],
+    ],
+    buttons: {
+      testBtn: customButton,
+    },
+    codeviewFilter: true,
+    codeviewFilterRegex:
+      /<\/*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|ilayer|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|t(?:itle|extarea)|xml|.*onmouseover)[^>]*?>/gi,
+    codeviewIframeFilter: true,
+  };
+
+  ngOnDestroy() {
+  ($('#summernote') as any).summernote('destroy');
+}
+
+}
+
+function customButton(context: any) {
+  const ui = $.summernote.ui;
+  const button = ui.button({
+    contents: '<i class="note-icon-magic"></i> Hello',
+    tooltip: 'Custom button',
+    container: '.note-editor',
+    className: 'note-btn',
+    click: function () {
+      context.invoke('editor.insertText', 'Hello from test btn!!!');
+    },
+  });
+  return button.render();
 
 
 }
