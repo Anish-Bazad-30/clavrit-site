@@ -22,7 +22,7 @@
         <div class="row" id="blog-list-section">
             <div class="col-12 col-md-8 mb-5">
                 <div class="row projects gx-lg-5">
-                    <div class="col-sm-6 col-lg-6 text-decoration-none mb-5" *ngFor="let item of paginatedList">
+                    <div class="col-sm-6 col-lg-6 text-decoration-none mb-5" *ngFor="let item of paginatedList; trackBy: trackByBlogId">
                         <a (click)="viewBlog(item)" class="text-decoration-none">
                             <div class="service-work overflow-hidden card mx-md-1 mx-0 mb-5 h-100">
                                 <div class="img">
@@ -46,7 +46,7 @@
                 </div>
 
 
-                <div class="btn-toolbar justify-content-center pb-4" role="toolbar"
+                <div *ngIf="!loading && totalPages > 1" class="btn-toolbar justify-content-center pb-4" role="toolbar"
                     aria-label="Toolbar with button groups">
                     <div class="btn-group me-2" role="group">
                         <button type="button" class="btn btn-secondary text-white" [disabled]="currentPage === 1"
@@ -61,7 +61,7 @@
 
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-secondary text-white"
-                            [disabled]="currentPage === totalPages" (click)="handleNextPage()">Next</button>
+                            [disabled]="currentPage === totalPages" (click)="goToNextPage()">Next</button>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                             {{ tag }}
                         </span>
 
-                        <span *ngIf="selectedTag" (click)="selectedTag = null; paginatedList = blogList"
+                        <span *ngIf="selectedTag"  (click)="clearFilter()"
                             class="badge bg-secondary text-white m-1" style="cursor: pointer;">Go Back</span>
                     </div>
                 </div>

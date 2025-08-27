@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class BlogComponent implements OnInit {
 
-
   blogList: any[] = [];
   tags: any[] = [];
   paginatedList: any[] = [];
@@ -20,75 +19,97 @@ export class BlogComponent implements OnInit {
   selectedTag: string | null = null;
   tagList: string[] = [];
   filteredBlogList: any[] = [];
+  loading: boolean = true; 
 
   constructor(
     private blogService: BlogService,
     private router: Router,
-
   ) { }
 
   ngOnInit(): void {
     this.fetchBlogs();
-
-
   }
 
-  fetchBlogs() {
-    this.blogService.getBlogs().subscribe((res) => {
-      const rawData = res.data;
-      
-      
-      this.blogList = Array.isArray(rawData[0]) ? rawData[0] : rawData;
-console.log("", this.blogList);
-      // Collect unique tags
-      const tagSet = new Set<string>();
-      this.blogList.forEach((blog) => {
-        blog.tags?.forEach((tag: string) => tagSet.add(tag));
-      });
+masterBlogList: any[] = []; // permanent sorted master copy
+
+fetchBlogs() {
+  this.loading = true;
+  this.blogService.getBlogs().subscribe((res) => {
+    const rawData = res.data;
+    const allBlogs = Array.isArray(rawData[0]) ? rawData[0] : rawData;
+
+    // sort once, store in master
+    this.masterBlogList = allBlogs
+      .filter((b: any) => b.publish?.toLowerCase() === 'published')
+      .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
+    // working copy
+    this.blogList = [...this.masterBlogList];
+    this.filteredBlogList = [...this.masterBlogList];
+
+    // collect tags
+    const tagSet = new Set<string>();
+    this.masterBlogList.forEach((blog) => blog.tags?.forEach((tag: string) => tagSet.add(tag)));
+    this.tagList = Array.from(tagSet);
+
+    this.currentPage = 1;
+    this.calculatePagination();
+    this.updatePaginatedList();
+
+    this.blogService.setRecentBlogData(this.masterBlogList);
+    this.loading = false;
+  });
+}
+
+filterByTag(tag: string) {
+  this.selectedTag = tag;
+  this.filteredBlogList = this.masterBlogList.filter((blog) =>
+    blog.tags?.includes(tag)
+  );
+  this.currentPage = 1;
+  this.calculatePagination();
+  this.updatePaginatedList();
+}
+
+clearFilter() {
+  this.selectedTag = null;
+  this.filteredBlogList = [...this.masterBlogList]; // reset from master, not blogList
+  this.currentPage = 1;
+  this.calculatePagination();
+  this.updatePaginatedList();
+}
 
 
-      this.tagList = Array.from(tagSet);
-
-      // Set default filtered list (all blogs)
-      this.filteredBlogList = [...this.blogList];
-
-      
-
-      // Pagination
-      this.totalPages = Math.ceil(this.blogList.length / this.itemsPerPage);
-      this.totalPagesArray = Array(this.totalPages).fill(0).map((_, i) => i + 1);
-      this.blogService.setRecentBlogData(this.blogList);
-      this.updatePaginatedList();
-    });
-
-
+  // Generic pagination calculator
+  private calculatePagination() {
+    this.totalPages = Math.ceil(this.filteredBlogList.length / this.itemsPerPage);
+    this.totalPagesArray = Array(this.totalPages).fill(0).map((_, i) => i + 1);
+    if (this.currentPage > this.totalPages) this.currentPage = 1; // reset if overflow
   }
 
-  filterByTag(tag: string) {
-    this.selectedTag = tag;
-    this.filteredBlogList = this.blogList.filter((blog) =>
-      blog.tags?.includes(tag)
-    );
-    console.log(this.filteredBlogList);
+trackByBlogId(index: number, blog: any): string {
+  return blog.id || blog.slug || index; // prefer unique id if available
+}
 
-    this.paginatedList = this.filteredBlogList;
-  }
 
   updatePaginatedList() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    this.paginatedList = this.blogList.slice(startIndex, endIndex);
+    // Always paginate from filtered list (not raw blogList)
+    this.paginatedList = this.filteredBlogList.slice(startIndex, endIndex);
   }
 
   goToPage(page: number) {
     this.currentPage = page;
     this.updatePaginatedList();
+    this.scrollToTop();
   }
 
   goToPreviousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
       this.updatePaginatedList();
+      this.scrollToTop();
     }
   }
 
@@ -96,8 +117,11 @@ console.log("", this.blogList);
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
       this.updatePaginatedList();
+      this.scrollToTop();
     }
   }
+
+  
 
   viewBlog(blog: any) {
     const rawTitle = blog.slug;
@@ -115,17 +139,15 @@ console.log("", this.blogList);
   //     .replace(/^-+/, '')          // Trim - from start
   //     .replace(/-+$/, '');         // Trim - from end
   // }
+
   slugify(text: string): string {
   return text.replace(/\s+/g, '-');
 }
+
   scrollToTop() {
-  const section = document.getElementById('blog-list-section');
-  if (section) {
-    section.scrollIntoView({ behavior: 'smooth' });
+    const section = document.getElementById('blog-list-section');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
   }
-}
-handleNextPage() {
-  this.goToNextPage();
-  this.scrollToTop();
-}
 }
