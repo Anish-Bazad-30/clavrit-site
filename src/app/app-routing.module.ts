@@ -36,7 +36,6 @@ const routes: Routes = [
   { path: "services", component: ServicesProvidedComponent },
   { path: "services/sap-solutions", component: SapSolutionsComponent },
   { path: "services/:slug", component: DetailViewComponent, resolve: { services: clavritServiceResolver } },
-
   { path: "career", component: CareerComponent },
   { path: "career/:slug", component: CareerDetailComponent ,resolve: { job: jobDetailsResolver }  },
   { path: "portfolio", component: PortfolioComponent },

@@ -364,3 +364,41 @@ footer a.text-light:hover {
 .accordion-button:focus{
    border-color: #31B0FD;
 }
+
+/* Summernote tooltip fix - full dark bg */
+.note-tooltip {
+  white-space: nowrap !important;
+}
+
+.note-tooltip .note-tooltip-content {
+  display: inline-block !important;  /* pura text wrap ho */
+  background-color: rgba(0, 0, 0, 0.85) !important; /* dark bg */
+  color: #fff !important;            /* white text */
+  padding: 4px 8px !important;       /* thoda spacing */
+  border-radius: 4px !important;     /* rounded edges */
+  white-space: nowrap !important;    /* ek line me hi */
+  max-width: none !important;
+}
+
+.popover-content.note-children-container {
+  display: flex;
+  flex-direction: row;  /* saare group ek line me aayenge */
+  gap: 8px; /* thoda spacing groups ke beech */
+}
+
+.popover-content .note-btn-group {
+  display: flex;
+  flex-direction: row; /* group ke andar ke button bhi ek line me */
+  gap: 2px; /* buttons ke beech thoda space */
+}
+
+.popover-content .note-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.note-editable, .blog-content {
+  font-family: 'Arial', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+}

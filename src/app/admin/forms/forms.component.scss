@@ -77,3 +77,14 @@
     height: 100px;
     border-radius: 5px;
   }
+
+  /* Summernote tooltip fix */
+.tooltip {
+  white-space: nowrap !important;   /* ek hi line me rakho */
+}
+
+.tooltip-inner {
+  white-space: nowrap !important; 
+  max-width: none !important;       /* bootstrap ka max-width hatao */
+  text-align: center !important;    /* center aligned */
+}

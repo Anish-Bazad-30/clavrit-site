@@ -25,7 +25,8 @@ export class ContentListComponent {
   searchText = '';
   currentPage = 1;
   itemsPerPage = 10;
-  
+
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -63,10 +64,24 @@ export class ContentListComponent {
         })
         break;
       case 'blog':
-        this.pageTitle = "Blog Management";
-        this.blogService.getBlogs().subscribe((res) => {
-          this.contentList = res.data;
-        })
+       this.blogService.getBlogs().subscribe((res) => {
+  this.contentList = res.data.sort((a: any, b: any) => {
+    const getDate = (arr: number[] | null | undefined) => {
+      if (!arr || arr.length < 6) return null;
+      return new Date(arr[0], arr[1] - 1, arr[2], arr[3], arr[4], arr[5]);
+    };
+
+    const dateA = getDate(a.createdAt);
+    const dateB = getDate(b.createdAt);
+
+    if (dateA && dateB) return dateB.getTime() - dateA.getTime(); // newest first
+    if (dateA) return -1; // only a exists → a first
+    if (dateB) return 1;  // only b exists → b first
+    return 0;             // both null → same
+  });
+});
+
+
         break;
       case 'project':
         this.pageTitle = "Project Management";
@@ -100,13 +115,13 @@ export class ContentListComponent {
         break;
       case 'business-stats':
         this.pageTitle = "Business Stats Management";
-        this.businessStatsService.getAllStats().subscribe((res)=>{
+        this.businessStatsService.getAllStats().subscribe((res) => {
           this.contentList = res.data;
         })
         break;
-        case 'tools':
+      case 'tools':
         this.pageTitle = "Tools & Technology";
-        this.techservice.getTech().subscribe((res)=>{
+        this.techservice.getTech().subscribe((res) => {
           this.contentList = res.data;
         })
         break;
@@ -186,10 +201,10 @@ export class ContentListComponent {
               item.email?.toLowerCase().includes(search) ||
               item.company?.toLowerCase().includes(search)
             );
-            case 'business-stats':
+          case 'business-stats':
             return (
               item.title?.toLowerCase().includes(search) ||
-              item.value?.toLowerCase().includes(search) 
+              item.value?.toLowerCase().includes(search)
             );
           default:
             return true;
@@ -321,12 +336,12 @@ export class ContentListComponent {
           this.loadContent(this.type);
         })
         break;
-        case 'business-stats':
+      case 'business-stats':
         this.businessStatsService.deleteStat(event.id).subscribe((res) => {
           this.loadContent(this.type);
         })
         break;
-        case 'tools':
+      case 'tools':
         this.techservice.deleteTech(event.id).subscribe((res) => {
           this.loadContent(this.type);
         })
@@ -347,5 +362,5 @@ export class ContentListComponent {
 
 
 
-  
+
 }

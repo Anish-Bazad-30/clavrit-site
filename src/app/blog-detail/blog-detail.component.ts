@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../services/blog.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
- 
+
 @Component({
   selector: 'app-blog-detail',
   templateUrl: './blog-detail.component.html',
   styleUrls: ['./blog-detail.component.scss']
 })
 export class BlogDetailComponent implements OnInit {
- 
+
   blogData: any;
   date!: string;
   recentBlogs: any;
@@ -18,62 +18,66 @@ export class BlogDetailComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private titleService: Title,
-        private metaService: Meta
- 
+    private metaService: Meta
+
   ) { }
- 
+
   ngOnInit(): void {
 
-     this.route.data.subscribe(data => {
-    this.blogData = data['blog'].data;
-    console.log(this.blogData);
-    
-  });
-if (this.blogData) {
-        // Set page title
-        this.titleService.setTitle(this.blogData.serpTitle || this.blogData.title);
+    this.route.data.subscribe((data) => {
 
-        // Set meta description
-        this.metaService.updateTag({
-          name: 'description',
-          content: this.blogData.serpMetaDescription || ''
-        });
+      if (data['blog'].code == 404) {
+        this.router.navigate(['/404']);
+      } else {
+        this.blogData = data['blog'].data;
+        console.log(this.blogData);
       }
-  
-  
- 
-  this.blogService.getBlogs().subscribe(data => {
-    if (data) {
-      const rowData = data.data;
-      this.recentBlogs = Array.isArray(rowData[0]) ? rowData[0] : rowData;
-      this.date = this.formatDateArray(this.blogData?.createdAt);
-    } else {
-      // fallback logic.
+    });
+    if (this.blogData) {
+      // Set page title
+      this.titleService.setTitle(this.blogData.serpTitle || this.blogData.title);
+
+      // Set meta description
+      this.metaService.updateTag({
+        name: 'description',
+        content: this.blogData.serpMetaDescription || ''
+      });
     }
-  });
-}
- 
-formatDateArray(dateArray: number[]): string {
-  if (!Array.isArray(dateArray) || dateArray.length < 3) return '';
-  const date = new Date(dateArray[0], dateArray[1] - 1, dateArray[2]); // Month is 0-based
-  return date.toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-  });
-}
- 
- 
+
+
+
+    this.blogService.getBlogs().subscribe(data => {
+      if (data) {
+        const rowData = data.data;
+        this.recentBlogs = Array.isArray(rowData[0]) ? rowData[0] : rowData;
+        this.date = this.formatDateArray(this.blogData?.createdAt);
+      } else {
+        // fallback logic.
+      }
+    });
+  }
+
+  formatDateArray(dateArray: number[]): string {
+    if (!Array.isArray(dateArray) || dateArray.length < 3) return '';
+    const date = new Date(dateArray[0], dateArray[1] - 1, dateArray[2]); // Month is 0-based
+    return date.toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+  }
+
+
   viewBlog(blog: any) {
     const rawTitle = blog.slug;
-    
-    
+
+
     const slug = this.slugify(rawTitle);
-    console.log(rawTitle, slug , blog);
+    console.log(rawTitle, slug, blog);
     this.blogService.setData(blog);
     this.router.navigate(['/blogs', slug]);
   }
- 
+
   // slugify(text: string): string {
   //   return text
   //     .toLowerCase()
@@ -83,8 +87,7 @@ formatDateArray(dateArray: number[]): string {
   //     .replace(/^-+/, '')          // Trim - from start
   //     .replace(/-+$/, '');         // Trim - from end
   // }
-   slugify(text: string): string {
-  return text.replace(/\s+/g, '-');
+  slugify(text: string): string {
+    return text.replace(/\s+/g, '-');
+  }
 }
-}
- 

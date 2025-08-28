@@ -356,7 +356,7 @@ export class FormsComponent {
 
 
   onToolSubmit(): void {
- 
+
     if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
 
       const formData = new FormData();
@@ -393,7 +393,9 @@ export class FormsComponent {
       return;
     }
     const formData = new FormData();
-
+    const content = this.selectedFields.get('content').value; // <-- get content from form control
+    // Normalize Unicode for special characters and quotes
+    this.selectedFields.get('content').setValue(content.normalize('NFC'));
     const blogPayload = {
       title: this.selectedFields.value.title,
       slug: this.selectedFields.value.subtitle,
@@ -410,7 +412,7 @@ export class FormsComponent {
     if (this.selectedFiles) {
       this.selectedFiles.forEach(element => {
         formData.append('bannerImage', element);
-       
+
 
       });
 
@@ -533,7 +535,7 @@ export class FormsComponent {
 
     // Append files
     if (this.selectedFiles) {
-     
+
 
       this.selectedFiles.forEach(element => {
         formData.append('images', element);
@@ -623,14 +625,14 @@ export class FormsComponent {
     console.log(this.selectedFields);
 
     if (this.selectedFields.valid) {
-     
+
     } else {
-    
+
     }
   }
 
   onStatsSubmit(): void {
-  
+
     if (this.selectedFields && this.selectedFiles && this.selectedFiles.length > 0) {
       let title = this.selectedFields.value.title;
       let value = this.selectedFields.value.value;
@@ -673,20 +675,31 @@ export class FormsComponent {
     //editor.insertText(text);
   }
   onBlur() {
-   
+
   }
 
   onDelete(file: any) {
-    
-  }
-
-  summernoteInit(event: any) {
 
   }
+
+  summernoteInit(e: any) {
+    setTimeout(() => {
+      document.querySelectorAll('.note-toolbar button[title]').forEach((btn: any) => {
+        if (btn.title) {
+          btn.setAttribute('title', btn.title.replace(/\s+/g, ' ')); // multiple newlines → space
+        }
+      });
+
+      // re-init Bootstrap tooltips
+      ($('[data-original-title]') as any).tooltip({ placement: 'top' });
+    }, 0);
+  }
+
 
 
   config: any = {
     airMode: false,
+    tooltip: true,
     popover: {
       table: [
         ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
@@ -745,8 +758,32 @@ export class FormsComponent {
   };
 
   ngOnDestroy() {
-  ($('#summernote') as any).summernote('destroy');
-}
+    ($('#summernote') as any).summernote('destroy');
+  }
+  ngAfterViewInit() {
+    const editor = $('#summernote'); // ya ViewChild reference
+    editor.on('summernote.paste', (e: any) => this.handlePaste(e));
+  }
+
+  handlePaste(e: any) {
+    // Type assertion for clipboardData
+    const clipboardData = (e.originalEvent as ClipboardEvent).clipboardData;
+    if (!clipboardData) return;
+
+    const text = clipboardData.getData('text/plain');
+
+    // Normalize quotes / special chars
+    const normalized = text
+      .replace(/[‘’]/g, "'")
+      .replace(/[“”]/g, '"')
+      .normalize('NFC');
+
+    e.preventDefault();
+
+    // Insert normalized text into Summernote
+    document.execCommand('insertText', false, normalized);
+  }
+
 
 }
 

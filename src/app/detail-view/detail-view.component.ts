@@ -9,37 +9,43 @@ import { Meta, Title } from '@angular/platform-browser';
   templateUrl: './detail-view.component.html',
   styleUrls: ['./detail-view.component.scss']
 })
-export class DetailViewComponent implements OnInit{
+export class DetailViewComponent implements OnInit {
   service: any;
-  
+
 
   constructor(
-    private ourServicesService : OurServicesService,
+    private ourServicesService: OurServicesService,
     private router: Router,
     private location: Location,
-    private route:ActivatedRoute,
+    private route: ActivatedRoute,
     private titleService: Title,
     private metaService: Meta
-  ){}
+  ) { }
 
   ngOnInit(): void {
 
-     this.route.data.subscribe(data => {
-    this.service = data['services'].data;
-  });
-    if (this.service) {
-        // Set page title
-        this.titleService.setTitle(this.service.metaTitle || this.service.title);
+    this.route.data.subscribe(data => {
 
-        // Set meta description
-        this.metaService.updateTag({
-          name: 'description',
-          content: this.service.metaDescription || ''
-        });
+      if (data['services'].code == 500) {
+        this.router.navigate(['/404']);
+      } else {
+        this.service = data['services'].data;
       }
-  
+
+    });
+    if (this.service) {
+      // Set page title
+      this.titleService.setTitle(this.service.metaTitle || this.service.title);
+
+      // Set meta description
+      this.metaService.updateTag({
+        name: 'description',
+        content: this.service.metaDescription || ''
+      });
+    }
+
   }
- onBack() {
-  this.location.back();  //  This goes to the previous URL
-}
+  onBack() {
+    this.location.back();  //  This goes to the previous URL
+  }
 }

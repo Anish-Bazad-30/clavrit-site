@@ -1,6 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sustainability',
@@ -10,7 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 export class SustainabilityComponent implements OnInit {
 @ViewChild('Reducing-Carbon-Footprint-in-eCommerce-Logistics-with-the-Carbon-Footprint-Calculator') caseStudySection!: ElementRef;
   constructor(private route: ActivatedRoute,
-  private viewportScroller: ViewportScroller){
+  private viewportScroller: ViewportScroller,
+  private router: Router
+){
 
   }
   ngOnInit(): void {
@@ -22,6 +24,8 @@ export class SustainabilityComponent implements OnInit {
           const el = document.getElementById(sectionId);
           if (el) {
             el.scrollIntoView({ behavior: 'smooth' });
+          }else{
+             this.router.navigate(['/404']);
           }
         }, 0);
       }
@@ -37,6 +41,8 @@ ngAfterViewInit(): void {
           const el = document.getElementById(section);
           if (el) {
             el.scrollIntoView({ behavior: 'smooth' });
+          }else{
+             this.router.navigate(['/404']);
           }
         }, 100); // delay to wait for view render
       }

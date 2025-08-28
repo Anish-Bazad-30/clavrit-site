@@ -25,7 +25,6 @@
     "@angular/router": "^16.2.0",
     "@nguniversal/builders": "^16.2.0",
     "@nguniversal/express-engine": "^16.2.0",
-    "bootstrap": "^5.3.7",
     "boxicons": "^2.1.4",
     "express": "^4.15.2",
     "jquery": "^3.7.1",

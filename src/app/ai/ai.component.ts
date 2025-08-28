@@ -1,6 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-ai',
@@ -12,7 +12,9 @@ export class AiComponent implements OnInit {
 @ViewChild('Integrated-AI-experts-into-a-leading-IT-firm') caseStudySection2!: ElementRef;
 
   constructor(private route: ActivatedRoute,
-  private viewportScroller: ViewportScroller){
+  private viewportScroller: ViewportScroller,
+  private router:Router
+){
 
   }
   ngOnInit(): void {
@@ -24,6 +26,8 @@ export class AiComponent implements OnInit {
           const el = document.getElementById(sectionId);
           if (el) {
             el.scrollIntoView({ behavior: 'smooth' });
+          }else{
+             this.router.navigate(['/404']);
           }
         }, 0);
       }
@@ -38,6 +42,8 @@ ngAfterViewInit(): void {
           const el = document.getElementById(section);
           if (el) {
             el.scrollIntoView({ behavior: 'smooth' });
+          }else{
+             this.router.navigate(['/404']);
           }
         }, 100); // delay to wait for view render
       }

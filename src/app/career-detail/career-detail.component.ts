@@ -23,16 +23,20 @@ export class CareerDetailComponent implements OnInit {
     private toastService: ToastService,
     private route: ActivatedRoute,
     private router: Router,
-  
+
   ) { }
 
 
   ngOnInit(): void {
     this.route.data.subscribe(data => {
-    this.jobsList = data['job'].data;
-    console.log(this.jobsList);
-    
-  });
+      if (data['job'].code == 404) {
+        this.router.navigate(['/404']);
+      } else {
+        this.jobsList = data['job'].data;
+
+      }
+
+    });
     // this.fetchJobs();
     console.log(this.jobsList);
 
@@ -75,7 +79,7 @@ export class CareerDetailComponent implements OnInit {
   onSubmit() {
     if (this.careerForm.valid) {
       console.log(this.careerForm.value);
-      
+
       const formData = new FormData();
 
       formData.append('fullName', this.careerForm.get('fullName')?.value);
@@ -119,7 +123,7 @@ export class CareerDetailComponent implements OnInit {
       if (data) {
         this.jobsList = data;
         console.log(this.jobsList);
-        
+
       } else {
         // fallback: optionally load via route param or redirect
       }
@@ -127,15 +131,15 @@ export class CareerDetailComponent implements OnInit {
     this.date = this.formatDateArray(this.jobsList.createdAt);
   }
 
-   formatDateArray(dateArray: number[]): string {
-  if (!dateArray || dateArray.length < 3) return '';
-  const date = new Date(dateArray[0], dateArray[1] - 1, dateArray[2]); // Month is 0-based
-  return date.toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-  });
-}
+  formatDateArray(dateArray: number[]): string {
+    if (!dateArray || dateArray.length < 3) return '';
+    const date = new Date(dateArray[0], dateArray[1] - 1, dateArray[2]); // Month is 0-based
+    return date.toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+  }
   handleBrowseFile(event: any) {
     this.dragedFile = event.target.files[0];
     // this.infomsg = this.dragedFile.name;
@@ -157,18 +161,18 @@ export class CareerDetailComponent implements OnInit {
   }
   // viewBlog(blog: any) {
   //   const rawTitle = blog.title;
-    
-    
+
+
   //   const slug = this.slugify(rawTitle);
   //   console.log(rawTitle, slug , blog);
   //   this.blogService.setData(blog);
   //   this.router.navigate(['/blog', slug]);
   // }
- viewJob(job: any) {
+  viewJob(job: any) {
     const rawTitle = job.jobDesignation;
     const slug = this.slugify(rawTitle);
     this.jobsService.setData(job);
-    
+
     this.router.navigate(['/career', slug]);
   }
   // slugify(text: string): string {
@@ -180,7 +184,7 @@ export class CareerDetailComponent implements OnInit {
   //     .replace(/^-+/, '')          // Trim - from start
   //     .replace(/-+$/, '');         // Trim - from end
   // }
-    slugify(text: string): string {
-  return text.replace(/\s+/g, '-');
-}
+  slugify(text: string): string {
+    return text.replace(/\s+/g, '-');
+  }
 }
