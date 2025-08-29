@@ -128,7 +128,7 @@ export class LandingPageComponent implements OnInit {
             top: document.body.scrollHeight,
             behavior: 'smooth'
           });
-        }, 200);
+        }, 250);
         
      }
      sessionStorage.clear();
