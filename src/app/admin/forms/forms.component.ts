@@ -142,7 +142,7 @@ export class FormsComponent {
           title: ['', Validators.required],
           subtitle: ['', Validators.required],
           authorName: ['', Validators.required],
-          status: [''],
+          status: ['draft', Validators.required],
           tags: this.fb.array([this.fb.control('', Validators.required)]),
           // imageUrl: [null, Validators.required],
           serpTitle: ['', Validators.required],
@@ -199,8 +199,9 @@ export class FormsComponent {
 
       case 'business-stats':
         this.selectedFields = this.fb.group({
-          title: [''],
-          value: [''],
+          title: ['', Validators.required],
+          value: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]],
+          companyLogo: [null, Validators.required]
         });
         break;
 

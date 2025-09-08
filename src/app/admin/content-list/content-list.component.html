@@ -218,8 +218,8 @@
                 <tbody>
                     <tr class="table-data" *ngFor="let content of contentListview; let i = index">
                         <td>{{i+1}}</td>
-                        <td>{{content.name}}</td>
-                        <td>{{content.type}}</td>
+                        <td>{{content.title}}</td>
+                        <td>{{content.subheading | slice:0:30}}...</td>
                         <td>{{content.description | slice:0:80}}...</td>
                         
                         <td class="d-flex justify-content-center gap-2">

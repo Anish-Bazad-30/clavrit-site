@@ -112,6 +112,10 @@
                             <label for="title" class="form-label">Enter Blog Title</label>
                             <input type="text" class="form-control" id="title" placeholder="Title"
                                 formControlName="title">
+                            <small class="text-danger"
+                                *ngIf="selectedFields.get('title')?.touched && selectedFields.get('title')?.hasError('required')">
+                                Blog title is required.
+                            </small>
                         </div>
 
                         <!-- Slug -->
@@ -119,6 +123,10 @@
                             <label for="slug" class="form-label">Enter Slug here</label>
                             <input type="text" class="form-control" id="slug" placeholder="Slug"
                                 formControlName="subtitle">
+                            <small class="text-danger"
+                                *ngIf="selectedFields.get('subtitle')?.touched && selectedFields.get('subtitle')?.hasError('required')">
+                                Blog subtitle is required.
+                            </small>
                         </div>
 
                         <!-- Publish? -->
@@ -128,6 +136,10 @@
                                 <option value="draft">Draft</option>
                                 <option value="published">Published</option>
                             </select>
+                            <small class="text-danger"
+                                *ngIf="selectedFields.get('status')?.touched && selectedFields.get('status')?.hasError('required')">
+                                Blog Status is required.
+                            </small>
                         </div>
 
                         <!-- Author Name -->
@@ -135,6 +147,10 @@
                             <label for="authorName" class="form-label">Enter author name</label>
                             <input type="text" class="form-control" id="authorName" placeholder="Author Name"
                                 formControlName="authorName">
+                            <small class="text-danger"
+                                *ngIf="selectedFields.get('authorName')?.touched && selectedFields.get('authorName')?.hasError('required')">
+                                Blog Author Name is required.
+                            </small>
                         </div>
 
                         <!-- Banner Upload -->
@@ -163,7 +179,10 @@
                             <input type="file" id="images" #fileInput accept="image/*,video/*" class="hidden-input"
                                 multiple (change)="onImageUpload($event)" style="display: none;" />
 
-
+                            <small class="text-danger"
+                                *ngIf="selectedFields.get('authorName')?.touched && selectedFields.get('authorName')?.hasError('required')">
+                                Blog Banner is required.
+                            </small>
 
 
                         </div>
@@ -176,10 +195,14 @@
                                 <ngx-editor [editor]="editor" formControlName="content">
                                 </ngx-editor>
                             </div> -->
-                            <div  formControlName="content" [ngxSummernote]="config"
+                            <div formControlName="content" [ngxSummernote]="config"
                                 [ngxSummernoteDisabled]="editorDisabled" (blur)="onBlur()"
                                 (mediaDelete)="onDelete($event)" (summernoteInit)="summernoteInit($event)">
                             </div>
+                            <small class="text-danger"
+                                *ngIf="selectedFields.get('content')?.touched && selectedFields.get('content')?.hasError('required')">
+                                Blog Content is required.
+                            </small>
                         </div>
 
                         <!-- SERP Title -->
@@ -187,6 +210,10 @@
                             <label class="form-label">Enter Serp Title</label>
                             <input type="text" class="form-control" placeholder="Serp Title"
                                 formControlName="serpTitle">
+                            <small class="text-danger"
+                                *ngIf="selectedFields.get('serpTitle')?.touched && selectedFields.get('serpTitle')?.hasError('required')">
+                                Blog Serp Title is required.
+                            </small>
                         </div>
 
                         <!-- SERP Meta Description -->
@@ -194,6 +221,10 @@
                             <label class="form-label">Enter Serp Meta Description</label>
                             <input type="text" class="form-control" placeholder="Serp Description"
                                 formControlName="serpDescription">
+                            <small class="text-danger"
+                                *ngIf="selectedFields.get('serpDescription')?.touched && selectedFields.get('serpDescription')?.hasError('required')">
+                                Blog Serp Description is required.
+                            </small>
                         </div>
 
                         <!-- Tags -->
@@ -203,8 +234,15 @@
                                 <ng-container *ngFor="let tag of tags.controls; let i = index">
                                     <input type="text" class="form-control w-auto" [formControl]="getTagControl(i)"
                                         placeholder="Tag">
+
                                     <button type="button" class="btn btn-danger btn-sm"
                                         (click)="removeTag(i)">×</button>
+
+                                    <small class="text-danger"
+                                        *ngIf="getTagControl(i).touched && getTagControl(i).hasError('required')">
+                                        Tag is required.
+                                    </small>
+
                                 </ng-container>
                                 <button type="button" class="btn btn-outline-secondary btn-sm" (click)="addTag()">+ Add
                                     Tag</button>
@@ -367,10 +405,10 @@
                             formControlName="subheading">
                         <label for="subheading">Sub Heading</label>
                     </div>
-                    <!-- <div *ngIf="selectedFields.get('subheading')?.touched && selectedFields.get('subheading')?.invalid"
+                    <div *ngIf="selectedFields.get('subheading')?.touched && selectedFields.get('subheading')?.invalid"
                         class="text-danger small mt-1">
                         Sub Heading is required.
-                    </div> -->
+                    </div>
                 </div>
 
                 <!-- Description -->
@@ -431,10 +469,10 @@
                             style="height: 150px"></textarea>
                         <label for="content">Content</label>
                     </div>
-                    <!-- <div *ngIf="selectedFields.get('content')?.touched && selectedFields.get('content')?.invalid"
+                    <div *ngIf="selectedFields.get('content')?.touched && selectedFields.get('content')?.invalid"
                         class="text-danger small mt-1">
                         content is required.
-                    </div> -->
+                    </div>
                 </div>
 
                 <!-- Category -->
@@ -661,11 +699,19 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="form-floating">
-                        <input type="file" #fileInput1 id="companyLogo" class="form-control" placeholder="Company Logo"
+                        <!-- <input type="file" #fileInput1 id="companyLogo" class="form-control" placeholder="Company Logo"
                             (change)="handleSingleFileInput($event)">
                         <label for="companyLogo">Company Logo</label>
                     </div>
                     <div *ngIf="fileTouched && !selectedFiles" class="text-danger small mt-1">
+                        Company logo is required.
+                    </div> -->
+                        <input type="file"   #fileInput1 id="companyLogo" class="form-control" placeholder="Company Logo"
+                            (change)="handleSingleFileInput($event)" />
+                             <label for="companyLogo">Company Logo</label>
+                    </div>
+                    <div *ngIf="selectedFields.get('companyLogo')?.touched && selectedFields.get('companyLogo')?.invalid"
+                        class="text-danger small mt-1">
                         Company logo is required.
                     </div>
                 </div>

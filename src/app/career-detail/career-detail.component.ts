@@ -187,4 +187,16 @@ export class CareerDetailComponent implements OnInit {
   slugify(text: string): string {
     return text.replace(/\s+/g, '-');
   }
+
+   jobapply() {
+
+        setTimeout(() => {
+          const el = document.getElementById("applyJob");
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }else{
+             this.router.navigate(['/404']);
+          }
+        }, 100); 
+      }
 }

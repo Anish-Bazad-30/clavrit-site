@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JobsService } from '../services/jobs.service';
 import { ToastService } from '../services/toast.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-career',
@@ -80,6 +80,7 @@ export class CareerComponent implements OnInit {
     private jobsService: JobsService,
     private toastService: ToastService,
     private router: Router,
+    private route: ActivatedRoute
 
   ) { }
 
@@ -200,6 +201,8 @@ export class CareerComponent implements OnInit {
     
     this.router.navigate(['/career', slug]);
   }
+
+  
 
   // slugify(text: string): string {
   //   return text
