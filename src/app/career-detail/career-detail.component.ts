@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from '../services/toast.service';
+import { Meta, Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-career-detail',
   templateUrl: './career-detail.component.html',
@@ -23,6 +24,8 @@ export class CareerDetailComponent implements OnInit {
     private toastService: ToastService,
     private route: ActivatedRoute,
     private router: Router,
+    private titleService: Title,
+    private metaService: Meta
 
   ) { }
 
@@ -33,7 +36,16 @@ export class CareerDetailComponent implements OnInit {
         this.router.navigate(['/404']);
       } else {
         this.jobsList = data['job'].data;
+        if (this.jobsList) {
+          // Set page title
+          this.titleService.setTitle(this.jobsList.jobDesignation);
 
+          // Set meta description
+          this.metaService.updateTag({
+            name: 'description',
+            content: this.jobsList.jobDesignation || ''
+          });
+        }
       }
 
     });
@@ -188,15 +200,15 @@ export class CareerDetailComponent implements OnInit {
     return text.replace(/\s+/g, '-');
   }
 
-   jobapply() {
+  jobapply() {
 
-        setTimeout(() => {
-          const el = document.getElementById("applyJob");
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-          }else{
-             this.router.navigate(['/404']);
-          }
-        }, 100); 
+    setTimeout(() => {
+      const el = document.getElementById("applyJob");
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        this.router.navigate(['/404']);
       }
+    }, 100);
+  }
 }

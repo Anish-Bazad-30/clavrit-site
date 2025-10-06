@@ -38,12 +38,12 @@ export class SapSolutionsComponent implements OnInit {
     })
   }
     readMore(service: any) {
-    const rawTitle = service.title;
+    const rawTitle = service.slug;
     const slug = this.slugify(rawTitle);
 
     this.ourServicesService.setService(service);
    
-      this.router.navigate(['/services/', slug]);
+      this.router.navigate(['/services', slug]);
     
     
   }
