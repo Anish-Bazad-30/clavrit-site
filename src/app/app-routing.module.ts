@@ -39,6 +39,7 @@ const routes: Routes = [
   { path: "career", component: CareerComponent },
   { path: "career/:slug", component: CareerDetailComponent ,resolve: { job: jobDetailsResolver }  },
   { path: "portfolio", component: PortfolioComponent },
+  { path: 'portfolio/:section', component: PortfolioComponent } ,
   { path: "blogs", component: BlogComponent },
   { path: "blogs/:slug", component: BlogDetailComponent ,resolve: { blog: blogResolver } },
   { path: "our-partners", component: OurPartnersComponent },

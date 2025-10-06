@@ -19,21 +19,21 @@
     </div>
 </div>
 <section class="bg-light py-3">
-    <div class="container">
+    <div class="container" >
         <!-- <h5 class="text-primary fw-bold mb-3">SUSTAINABILITY</h5> -->
         <h2 class="h2 py-3 text-primary typo-space-line">Sustainability</h2>
         <div class="accordion py-3" id="sustainabilityAccordioncase1">
-            <div class="accordion-item">
+            <div id="E-Commerce-Logistics-Carbon-Calculator" class="accordion-item">
                 <h2 class="accordion-header" id="headingOnecase1">
-                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOnecase1">
+                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOnecase1">
                         E-Commerce Logistics Carbon Calculator
                     </button>
                 </h2>
-                <div id="collapseOnecase1" class="accordion-collapse collapse"
+                <div id="collapseOnecase1" class="accordion-collapse collapse" [ngClass]="{'show': section === 'E-Commerce-Logistics-Carbon-Calculator'}"
                     data-bs-parent="#sustainabilityAccordioncase1">
 
-                    <div class="container py-5">
+                    <div  class="container py-5">
                         <div class="row align-items-start g-5">
                             <div class="col-lg-6">
                                 <img src="./assets/img/case1.webp" class="img-fluid rounded shadow"
@@ -50,27 +50,34 @@
 
                                         <h5 class="text-primary mb-3">Objective</h5>
                                         <p class="mb-4">
-                                            Help retailers measure and cut carbon emissions by identifying the most polluting parts of their logistics.
+                                            Help retailers measure and cut carbon emissions by identifying the most
+                                            polluting parts of their logistics.
                                         </p>
 
                                         <h5 class="text-primary mb-3">Problem</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>eCommerce retailers couldn’t clearly see how much carbon their deliveries were producing</li>
-                                            <li>There was no easy, automated way to track or measure emissions, especially for last-mile delivery</li>
+                                            <li>eCommerce retailers couldn’t clearly see how much carbon their
+                                                deliveries were producing</li>
+                                            <li>There was no easy, automated way to track or measure emissions,
+                                                especially for last-mile delivery</li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Solution</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>Developed a web-based Carbon Footprint Calculator for logistics emissions tracking</li>
-                                            <li>Integrated live data from shipping partners to enable real-time carbon scoring</li>
-                                            <li>Connected seamlessly with eCommerce platforms to help retailers monitor, report, and reduce emissions</li>
+                                            <li>Developed a web-based Carbon Footprint Calculator for logistics
+                                                emissions tracking</li>
+                                            <li>Integrated live data from shipping partners to enable real-time carbon
+                                                scoring</li>
+                                            <li>Connected seamlessly with eCommerce platforms to help retailers monitor,
+                                                report, and reduce emissions</li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Results</h5>
                                         <ul class="ps-3">
                                             <li>Improved accuracy to track logistics related carbon emissions</li>
                                             <li>Identified and reduced most carbon intensive areas in logistics</li>
-                                            <li>Increased customer trust by being transparent about carbon reduction efforts</li>
+                                            <li>Increased customer trust by being transparent about carbon reduction
+                                                efforts</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -85,14 +92,14 @@
             </div>
         </div>
         <div class="accordion py-3" id="sustainabilityAccordioncase2">
-            <div class="accordion-item">
+            <div id="Fashion-Rental-for-Circular-Economy" class="accordion-item">
                 <h2 class="accordion-header" id="headingOnecase2">
-                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOnecase2">
+                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOnecase2">
                         Fashion Rental for Circular Economy
                     </button>
                 </h2>
-                <div id="collapseOnecase2" class="accordion-collapse collapse"
+                <div id="collapseOnecase2" class="accordion-collapse collapse" [ngClass]="{'show': section === 'Fashion-Rental-for-Circular-Economy'}"
                     data-bs-parent="#sustainabilityAccordioncase2">
 
                     <div class="container py-5">
@@ -112,28 +119,37 @@
 
                                         <h5 class="text-primary mb-3">Objective</h5>
                                         <p class="mb-4">
-                                            Create a sustainable marketplace for fashion rentals, offering brands a new revenue channel while promoting long-term sustainability.
+                                            Create a sustainable marketplace for fashion rentals, offering brands a new
+                                            revenue channel while promoting long-term sustainability.
                                         </p>
 
                                         <h5 class="text-primary mb-3">Problem</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>Lack of a unified marketplace connecting brands and consumers for fashion rentals</li>
-                                            <li>Limited access for customers to rent and return fashion items flexibly across locations</li>
+                                            <li>Lack of a unified marketplace connecting brands and consumers for
+                                                fashion rentals</li>
+                                            <li>Limited access for customers to rent and return fashion items flexibly
+                                                across locations</li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Solution</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>Developed a rental platform using the “Keep Your Stock” model, allowing brands to retain inventory control</li>
-                                            <li>Enabled data-driven insights into customer rental behavior for product portfolio optimization</li>
+                                            <li>Developed a rental platform using the “Keep Your Stock” model, allowing
+                                                brands to retain inventory control</li>
+                                            <li>Enabled data-driven insights into customer rental behavior for product
+                                                portfolio optimization</li>
                                             <li>Introduced a global pick-up and drop-off service</li>
-                                            <li>Built the Resilience Engine, an AI tool for forecasting demand and identifying high-profit “hero” products</li>
+                                            <li>Built the Resilience Engine, an AI tool for forecasting demand and
+                                                identifying high-profit “hero” products</li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Results</h5>
                                         <ul class="ps-3">
-                                            <li>Opened new revenue streams for brands through rental without losing inventory control</li>
-                                            <li>Helped brands build optimized product portfolios focused on high-demand, sustainable items</li>
-                                            <li>Supported sustainability goals by reducing waste and lowering carbon footprints through localized logistics and smarter supply chains</li>
+                                            <li>Opened new revenue streams for brands through rental without losing
+                                                inventory control</li>
+                                            <li>Helped brands build optimized product portfolios focused on high-demand,
+                                                sustainable items</li>
+                                            <li>Supported sustainability goals by reducing waste and lowering carbon
+                                                footprints through localized logistics and smarter supply chains</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -148,14 +164,14 @@
             </div>
         </div>
         <div class="accordion py-3" id="sustainabilityAccordioncase3">
-            <div class="accordion-item">
+            <div class="accordion-item" id="HVAC-Optimization-Dashboard">
                 <h2 class="accordion-header" id="headingOnecase3">
-                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOnecase3">
+                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOnecase3">
                         HVAC Optimization Dashboard
                     </button>
                 </h2>
-                <div id="collapseOnecase3" class="accordion-collapse collapse"
+                <div id="collapseOnecase3" class="accordion-collapse collapse" [ngClass]="{'show': section === 'HVAC-Optimization-Dashboard'}"
                     data-bs-parent="#sustainabilityAccordioncase3">
 
                     <div class="container py-5">
@@ -175,28 +191,39 @@
 
                                         <h5 class="text-primary mb-3">Objective</h5>
                                         <p class="mb-4">
-                                            Help facility managers optimize operations, enable preventive maintenance, and improve sustainability through AI-powered dashboards.
+                                            Help facility managers optimize operations, enable preventive maintenance,
+                                            and improve sustainability through AI-powered dashboards.
                                         </p>
 
                                         <h5 class="text-primary mb-3">Problem</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>Limited visibility into remote, solar-powered oxygen plant operations</li>
-                                            <li>Manual monitoring of critical, energy-intensive systems in remote areas</li>
-                                            <li>No unified dashboard to ensure high availability or generate predictive alerts for maintenance and supply continuity</li>
+                                            <li>Limited visibility into remote, solar-powered oxygen plant operations
+                                            </li>
+                                            <li>Manual monitoring of critical, energy-intensive systems in remote areas
+                                            </li>
+                                            <li>No unified dashboard to ensure high availability or generate predictive
+                                                alerts for maintenance and supply continuity</li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Solution</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>Developed digital tools to onboard healthcare facilities, manage oxygen inventory, and schedule deliveries</li>
-                                            <li>Automated tracking, refills, and delivery workflows to streamline the oxygen supply chain</li>
-                                            <li>Built real-time dashboards for operational optimization, maintenance insights, and sustainability tracking</li>
+                                            <li>Developed digital tools to onboard healthcare facilities, manage oxygen
+                                                inventory, and schedule deliveries</li>
+                                            <li>Automated tracking, refills, and delivery workflows to streamline the
+                                                oxygen supply chain</li>
+                                            <li>Built real-time dashboards for operational optimization, maintenance
+                                                insights, and sustainability tracking</li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Results</h5>
                                         <ul class="ps-3">
-                                            <li>Enabled real-time tracking of oxygen production and patient case visualization</li>
-                                            <li>Improved maintenance planning with predictive insights to avoid equipment failures and reduce costs</li>
-                                            <li>Delivered sustainability insights by comparing solar vs. electricity-powered plant performance for cost and efficiency benefits</li>
+                                            <li>Enabled real-time tracking of oxygen production and patient case
+                                                visualization</li>
+                                            <li>Improved maintenance planning with predictive insights to avoid
+                                                equipment failures and reduce costs</li>
+                                            <li>Delivered sustainability insights by comparing solar vs.
+                                                electricity-powered plant performance for cost and efficiency benefits
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -211,18 +238,19 @@
     </div>
 </section>
 
-<section class="bg-light py-3">
+<section  class="bg-light py-3">
     <div class="container">
         <h2 class="h2 py-3 text-primary typo-space-line">Artificial Intelligence</h2>
         <div class="accordion py-3" id="aiAccordioncase1">
-            <div class="accordion-item">
+            <div id="Agile-Project-Estimation-with-Gen-AI" class="accordion-item">
                 <h2 class="accordion-header" id="headingOneaicase1">
-                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOneaicase1">
+                     <!-- <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" ></button> -->
+                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOneaicase1" aria-expanded="true" aria-controls="collapseOne">
                         Agile Project Estimation with Gen AI
                     </button>
                 </h2>
-                <div id="collapseOneaicase1" class="accordion-collapse collapse" data-bs-parent="#aiAccordioncase1">
+                <div id="collapseOneaicase1" class="accordion-collapse collapse" [ngClass]="{'show': section === ' Agile-Project-Estimation-with-Gen-AI'}" data-bs-parent="#aiAccordioncase1">
 
                     <div class="container py-5">
                         <div class="row align-items-start g-5">
@@ -276,60 +304,70 @@
 
             </div>
         </div>
-        <div class="accordion py-3" id="aiAccordioncase2">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOneaicase2">
-                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOneaicase2">
-                        AI-Powered Item Loading System
+        <div class="accordion py-3" id="aiAccordioncase1moto">
+            <div id="Traffic-Enforcement" class="accordion-item">
+                <h2 class="accordion-header" id="headingOneaicase1moto">
+                     <!-- <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" ></button> -->
+                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOneaicase1moto" aria-expanded="true" aria-controls="collapseOne">
+                        Traffic Enforcement 
                     </button>
                 </h2>
-                <div id="collapseOneaicase2" class="accordion-collapse collapse" data-bs-parent="#aiAccordioncase2">
+                <div id="collapseOneaicase1moto" class="accordion-collapse collapse" [ngClass]="{'show': section === 'Traffic-Enforcement'}" data-bs-parent="#aiAccordioncase1">
 
                     <div class="container py-5">
                         <div class="row align-items-start g-5">
                             <div class="col-lg-6">
-                                <img src="./assets/img/ai-case2.webp" class="img-fluid rounded shadow"
+                                <img src="./assets/img/moto.webp" class="img-fluid rounded shadow"
                                     alt="Baseliner Tool">
                             </div>
                             <div class="col-lg-6">
                                 <div class="card border-0 shadow-sm">
                                     <div class="card-body">
                                         <h5 class="text-primary mb-3">Industry</h5>
-                                        <p class="mb-4">IT consulting</p>
+                                        <p class="mb-4">Project Management</p>
 
-                                        <h5 class="text-primary mb-3">Service</h5>
-                                        <p class="mb-4">AI development and deployment</p>
+                                        <h5 class="text-primary mb-3">Product</h5>
+                                        <p class="mb-4">AI-Powered Traffic Violation Reporting Mobile App</p>
 
                                         <h5 class="text-primary mb-3">Objective</h5>
-                                        <p class="mb-4">
-                                            Partnership with a leading IT firm to extend their AI team for quality project delivery.
-                                        </p>
+                                        <!-- <p class="mb-4">
+                                            Simplify agile team performance tracking using the power of Generative AI.
+                                        </p> -->
+                                        <ul class="mb-4 ps-3">
+                                            <li>Automate traffic violation detection and reporting through AI-powered mobile app.</li>
+                                            <li>Provide a cost-effective solution with wider coverage beyond expensive CCTV infrastructure.</li>
+                                            <li>Enable instant digital challan generation with a simple, user-friendly interface. </li>
+                                        </ul>
 
                                         <h5 class="text-primary mb-3">Problem</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>AI Talent Gap: The IT firm lacked in-house AI expertise to meet growing project demands and timelines</li>
-                                            <li>Scaling Challenges: Needed rapid team expansion without incurring high recruitment and training costs</li>
+                                            <li>CCTV-based enforcement systems are costly and limited in coverage.</li>
+                                            <li>A large volume of traffic violations goes undetected due to monitoring blind spots.</li>
+                                            <li>Existing mobile solutions rely on manual reporting, reducing efficiency and accuracy.</li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Solution</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>AI Solutions & Integration: Clavrit delivered swift, tailored AI solutions with smooth team and workflow integration</li>
-                                            <li>Full-Cycle Services: From idea to deployment, Clavrit ensured end-to-end AI support for real business impact</li>
-                                            
+                                            <li>Deployed an AI-driven mobile app extending coverage beyond CCTV zones for scalable enforcement.</li>
+                                            <li>Integrated computer vision models for automatic license plate recognition (ANPR) and violation detection.</li>
+                                            <li>Enabled instant challan generation with seamless reporting by both police and citizens.</li>
+                                            <li>Incorporated continuous machine learning feedback loops for performance improvement over time.</li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Results</h5>
                                         <ul class="ps-3">
-                                            <li>Quality Project Delivery: Seamless integration of AI experts led to faster project delivery with high quality and innovation</li>
-                                            <li>Faster Time-to-Market: With our AI team extension, they accelerated product development and stayed ahead of the competition</li>
-                                            <li>Cost Efficiency: Saved recruitment, training, and infrastructure costs while gaining immediate access to our specialized AI experts</li>
+                                            <li>Achieved instant reporting and automated violation analysis with higher efficiency.</li>
+                                            <li>Expanded monitoring coverage, reducing undetected violations.</li>
+                                            <li>Improved road discipline, safety, and public compliance through real-time enforcement.</li>
+                                            <li>Eliminated dependency on expensive CCTV infrastructure, lowering operational costs.</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
 
                 </div>
 
@@ -338,14 +376,14 @@
             </div>
         </div>
         <div class="accordion py-3" id="aiAccordioncase3">
-            <div class="accordion-item">
+            <div class="accordion-item" id="AI-for-Sustainability-and-Supply-Chain">
                 <h2 class="accordion-header" id="headingOneaicase3">
-                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOneaicase3">
-                        AI-Based Oxygen Generation Control
+                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOneaicase3">
+                        AI for Sustainability and Supply Chain
                     </button>
                 </h2>
-                <div id="collapseOneaicase3" class="accordion-collapse collapse" data-bs-parent="#aiAccordioncase3">
+                <div id="collapseOneaicase3" class="accordion-collapse collapse" [ngClass]="{'show': section === 'AI-for-Sustainability-and-Supply-Chain'}" data-bs-parent="#aiAccordioncase3">
 
                     <div class="container py-5">
                         <div class="row align-items-start g-5">
@@ -391,7 +429,8 @@
 
                                         <h5 class="text-primary mb-3">Results</h5>
                                         <ul class="ps-3">
-                                            <li>Seamless Patient Transfers: Patients can be moved between hospitals based on oxygen availability, ensuruninterrupted care</li>
+                                            <li>Seamless Patient Transfers: Patients can be moved between hospitals
+                                                based on oxygen availability, ensuruninterrupted care</li>
                                             <li>while ensuring a reliable medical oxygen supply</li>
                                         </ul>
                                     </div>
@@ -415,21 +454,20 @@
         <!-- <h5 class="text-primary fw-bold mb-3">SUSTAINABILITY</h5> -->
         <h2 class="h2 py-3 text-primary typo-space-line">Gaming & VR </h2>
         <div class="accordion py-3" id="gamingAccordioncase1">
-            <div class="accordion-item">
+            <div class="accordion-item" id="Virtual-Reality-Gaming">
                 <h2 class="accordion-header" id="headingOnegamingcase1">
-                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOnegamingcase1">
-                        Virtual Reality & Gaming 
+                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOnegamingcase1">
+                        Virtual Reality & Gaming
                     </button>
                 </h2>
-                <div id="collapseOnegamingcase1" class="accordion-collapse collapse"
+                <div id="collapseOnegamingcase1" class="accordion-collapse collapse" [ngClass]="{'show': section === 'Virtual-Reality-Gaming'}"
                     data-bs-parent="#gamingAccordioncase1">
 
                     <div class="container py-5">
                         <div class="row align-items-start g-5">
                             <div class="col-lg-6">
-                                <img src="./assets/img/cs1.webp" class="img-fluid rounded shadow"
-                                    alt="Baseliner Tool">
+                                <img src="./assets/img/cs1.webp" class="img-fluid rounded shadow" alt="Baseliner Tool">
                             </div>
                             <div class="col-lg-6">
                                 <div class="card border-0 shadow-sm">
@@ -438,31 +476,105 @@
                                         <p class="mb-4">Virtual Reality & Gaming</p>
 
                                         <h5 class="text-primary mb-3">Product</h5>
-                                        <p class="mb-4">Exergaming platforms installed in public venues (e.g., shopping malls, fitness clubs, schools)</p>
+                                        <p class="mb-4">Exergaming Platforms for Public Venues </p>
 
                                         <h5 class="text-primary mb-3">Objective</h5>
-                                        <p class="mb-4">
-                                            Make physical activity engaging, inclusive, and habitual by blending movement with interactive, social, and fun gameplay.
-                                        </p>
+                                        <!-- <p class="mb-4">
+                                            Make physical activity engaging, inclusive, and habitual by blending
+                                            movement with interactive, social, and fun gameplay.
+                                        </p> -->
+                                        <ul class="mb-4 ps-3">
+                                            <li>Transform physical activity into engaging, tech-driven gameplay in high-traffic venues. </li>
+                                            <li>Foster repeat participation and inclusivity by blending movement, interaction, and social dynamics.  </li>
+                                            <li>Support habit-building and rehabilitation through adaptive, gamified environments. </li>
+                                        </ul>
 
                                         <h5 class="text-primary mb-3">Problem</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>Physical activity is often perceived as boring or unmotivating</li>
-                                            <li>Many entertainment or fitness solutions do not appeal to all ages or ability levels, resulting in high inactivity rates and missed rehabilitation opportunities. </li>
+                                            <li>Physical exercise often lacks appeal, resulting in low motivation and engagement. </li>
+                                            <li>One-size-fits-all fitness or gaming solutions fail to reach all ages and abilities.  </li>
+                                            <li>Inactivity and missed rehab opportunities due to unrelatable experiences. </li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Solution</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>Developed easy-to-use interactive gaming stations that encourage movement in high-traffic, accessible locations </li>
-                                            <li>Embedded fitness tracking, social play, and adaptable difficulty to support all ages, including rehabilitation contexts </li>
-                                            <li>Incorporated gamification and real-time feedback to boost user engagement and repeat participation </li>
+                                            <li>Deployed interactive exergaming stations with motion tracking, AI-enabled personalization, and multiplayer social play.  </li>
+                                            <li>Developed real-time gamification and feedback to drive motivation and repetition.  </li>
+                                            <li>Adaptable difficulty settings make platforms suitable for rehabilitation and universal use.  </li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Results</h5>
                                         <ul class="ps-3">
-                                            <li>Demonstrated increased physical activity and motivation among participants of all demographics </li>
-                                            <li>Improved accessibility of fun movement and exercise in community and health environments </li>
-                                            <li>Enhanced venue appeal and repeat visitation while providing measurable health and wellness benefits </li>
+                                            <li>Improved physical activity, motivation, and engagement across varied user groups. </li>
+                                            <li>Increased venue attractiveness and repeat participation through immersive exergaming experiences. </li>
+                                            <li>Generated measurable community health impact with scalable, inclusive, and adaptive technology solutions. </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="accordion py-3" id="gamingAccordioncase2">
+            <div class="accordion-item" id="Digital-Interactive-Solutions">
+                <h2 class="accordion-header" id="headingOnegamingcase2">
+                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOnegamingcase2">
+                        Digital Interactive Solutions
+                    </button>
+                </h2>
+                <div id="collapseOnegamingcase2" class="accordion-collapse collapse" [ngClass]="{'show': section === 'Digital-Interactive-Solutions'}"
+                    data-bs-parent="#gamingAccordioncase2">
+
+                    <div class="container py-5">
+                        <div class="row align-items-start g-5">
+                            <div class="col-lg-6">
+                                <img src="./assets/img/gcs2.webp" class="img-fluid rounded shadow" alt="Baseliner Tool">
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="text-primary mb-3">Industry</h5>
+                                        <p class="mb-4">Digital Interactive Solutions</p>
+
+                                        <h5 class="text-primary mb-3">Product</h5>
+                                        <p class="mb-4">Interactive Digital Experience Management Platform</p>
+
+                                        <!-- <h5 class="text-primary mb-3">Objective</h5>
+                                        <p class="mb-4">
+                                            Enhance visitor engagement through immersive and personalized digital experiences. 
+                                        </p> -->
+                                        <h5 class="text-primary mb-3">Objective</h5>
+                                        <ul class="mb-4 ps-3">
+                                            <li>Enhance visitor engagement through immersive and personalized digital experiences. </li>
+                                            <li>Increase dwell time using interactive and gamified content.  </li>
+                                            <li>Drive repeat visits and memberships with adaptive engagement strategies.  </li>
+                                        </ul>
+                                        <h5 class="text-primary mb-3">Problem</h5>
+                                        <ul class="mb-4 ps-3">
+                                            <li>Physical play zones lacked digital appeal for tech-forward audiences.  </li>
+                                            <li>No personalized engagement led to low satisfaction and retention.  </li>
+                                            <li>Manual experience management hindered real-time updates and scalability. </li>
+                                        </ul>
+
+                                        <h5 class="text-primary mb-3">Solution</h5>
+                                        <ul class="mb-4 ps-3">
+                                            <li>Deployed immersive AR-enabled play spaces, interactive digital zones, and venue-specific experiences. </li>
+                                            <li>Centralized platform for instant content updates and deep engagement analytics.  </li>
+                                            <li>Enabled real-time scalable personalization across venues with unified control. </li>
+                                        </ul>
+
+                                        <h5 class="text-primary mb-3">Results</h5>
+                                        <ul class="ps-3">
+                                            <li>Achieved a 22% increase in average visitor dwell time with digital play experiences.  </li>
+                                            <li>Repeat membership increased by 15% from personalized gamification.  </li>
+                                            <li>Enhanced operational efficiency with AI-driven real-time content and engagement management. </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -484,7 +596,7 @@
                         Entertainment 
                     </button>
                 </h2>
-                <div id="collapseOnecase2" class="accordion-collapse collapse"
+                <div id="collapseOnecase2" class="accordion-collapse collapse" [ngClass]="{'show': section === 'E-Commerce-Logistics-Carbon-Calculator'}"
                     data-bs-parent="#sustainabilityAccordioncase2">
 
                     <div class="container py-5">
@@ -547,7 +659,7 @@
                         HVAC Optimization Dashboard
                     </button>
                 </h2>
-                <div id="collapseOnecase3" class="accordion-collapse collapse"
+                <div id="collapseOnecase3" class="accordion-collapse collapse" [ngClass]="{'show': section === 'E-Commerce-Logistics-Carbon-Calculator'}"
                     data-bs-parent="#sustainabilityAccordioncase3">
 
                     <div class="container py-5">
@@ -608,21 +720,20 @@
     <div class="container">
         <h2 class="h2 py-3 text-primary typo-space-line">Entertainment</h2>
         <div class="accordion py-3" id="entertainmentAccordioncase1">
-            <div class="accordion-item">
+            <div class="accordion-item" id="Immersive-Museum-Platform">
                 <h2 class="accordion-header" id="headingOneentcase1">
-                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOneentcase1">
-                        Entertainment 
+                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOneentcase1">
+                       Immersive Museum Platform
                     </button>
                 </h2>
-                <div id="collapseOneentcase1" class="accordion-collapse collapse"
+                <div id="collapseOneentcase1" class="accordion-collapse collapse" [ngClass]="{'show': section === 'Immersive-Museum-Platform'}"
                     data-bs-parent="#entertainmentAccordioncase1">
 
                     <div class="container py-5">
                         <div class="row align-items-start g-5">
                             <div class="col-lg-6">
-                                <img src="./assets/img/cs2.webp" class="img-fluid rounded shadow"
-                                    alt="Baseliner Tool">
+                                <img src="./assets/img/cs2.webp" class="img-fluid rounded shadow" alt="Baseliner Tool">
                             </div>
                             <div class="col-lg-6">
                                 <div class="card border-0 shadow-sm">
@@ -631,32 +742,38 @@
                                         <p class="mb-4">Entertainment </p>
 
                                         <h5 class="text-primary mb-3">Product</h5>
-                                        <p class="mb-4">A flexible, media-based immersive museum platform, featuring interactive CGI content and integrated popular IP.</p>
+                                        <p class="mb-4">Media-Based Immersive Museum Platform (CGI, Integrated IP) </p>
 
                                         <h5 class="text-primary mb-3">Objective</h5>
-                                        <p class="mb-4">
-                                           Deliver memorable, future-proof visitor attractions by combining cutting-edge interactive experiences with recognizable intellectual properties. 
-                                        </p>
-
+                                        <!-- <p class="mb-4">
+                                            Deliver memorable, future-proof visitor attractions by combining
+                                            cutting-edge interactive experiences with recognizable intellectual
+                                            properties.
+                                        </p> -->
+                                        <ul class="mb-4 ps-3">
+                                            <li>Deliver future-ready attractions with advanced CGI, immersive media, and branded content.  </li>
+                                            <li>Continuously engage broad audiences with trending intellectual property and original experiences.  </li>
+                                            <li>Enable business with dynamic AI generated immersive gaming platforms to increase customer experience and revenue. </li>
+                                        </ul>
                                         <h5 class="text-primary mb-3">Problem</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>Many theme parks, museums, and entertainment venues struggle to create attractions </li>
-                                            <li>Attractions remain engaging over time, require turnkey solutions, and appeal to broad audiences through both original content and familiar IPs. </li>
+                                            <li>Museums and attractions struggle to keep guest experiences both engaging and trending. </li>
+                                            <li>Limited engagement from static exhibits and narrow-content solutions. </li>
+                                            <li>Broad audience appeal and efficient operations require ongoing content innovation. </li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Solution</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>Developed an adaptive media attraction platform that can be easily updated with new experiences and IP, leveraging advanced CGI and immersive technology. </li>
-                                            <li>Offered comprehensive support from design to deployment, including content production, hardware, and ongoing updates. </li>
-                                            <li>Integrated interactive features (gameplay, motion, branded content) to drive repeated visitation and multi-generational appeal. </li>
-                            
+                                            <li>Implemented a modular media-based attraction system with rapid IP integration and scalable updates. </li>
+                                            <li>Embedded interactive features (gameplay, motion, branded/recognizable content) to drive multi-generational engagement. </li>
+
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Results</h5>
                                         <ul class="ps-3">
-                                            <li>Increased guest engagement and dwell time through continually refreshed experiences and interactive storytelling. </li>
-                                            <li>Repeat visits encouraged by regular content updates, adaptive technology, and integration of trending pop culture brands. </li>
-                                            <li>Reduced operational complexity for venue operators via a full-service, end-to-end attraction solution. </li>
+                                            <li>Customer Engagement and dwell time increased.  </li>
+                                            <li>Increase in Customer Retention and loyalty.  </li>
+                                
                                         </ul>
                                     </div>
                                 </div>
@@ -670,21 +787,20 @@
 
             </div>
         </div>
-        <div class="accordion py-3" id="entAccordioncase2">
-            <div class="accordion-item">
+        <!-- <div class="accordion py-3" id="entAccordioncase2">
+            <div class="accordion-item" id="Entry-Management">
                 <h2 class="accordion-header" id="headingOneentcase2">
-                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOneentcase2">
-                        Entry Management 
+                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOneentcase2">
+                        Entry Management
                     </button>
                 </h2>
-                <div id="collapseOneentcase2" class="accordion-collapse collapse" data-bs-parent="#entAccordioncase2">
+                <div id="collapseOneentcase2" class="accordion-collapse collapse" [ngClass]="{'show': section === 'Entry-Management'}" data-bs-parent="#entAccordioncase2">
 
                     <div class="container py-5">
                         <div class="row align-items-start g-5">
                             <div class="col-lg-6">
-                                <img src="./assets/img/cs3.webp" class="img-fluid rounded shadow"
-                                    alt="Baseliner Tool">
+                                <img src="./assets/img/cs3.webp" class="img-fluid rounded shadow" alt="Baseliner Tool">
                             </div>
                             <div class="col-lg-6">
                                 <div class="card border-0 shadow-sm">
@@ -697,28 +813,45 @@
 
                                         <h5 class="text-primary mb-3">Objective</h5>
                                         <p class="mb-4">
-                                            Enable privacy-first fraud defense and real-time commercial optimization across venues while automating support and unifying operations end-to-end. 
+                                            Enable privacy-first fraud defense and real-time commercial optimization
+                                            across venues while automating support and unifying operations end-to-end.
                                         </p>
 
                                         <h5 class="text-primary mb-3">Problem</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>Rising multi-vector fraud (account takeovers, bot scalping, resale abuse) with fragmented venue data and strict privacy regulations hinder collaborative defenses.</li>
-                                            <li>Volatile demand driven by weather, social sentiment, and mobility leads to static pricing, low fill-rate, and guest dissatisfaction during spikes or dips. </li>
-                                            <li>Disconnected ticketing, POS, distribution, and support workflows inflate operational overhead and slow guest issue resolution. </li>
+                                            <li>Rising multi-vector fraud (account takeovers, bot scalping, resale
+                                                abuse) with fragmented venue data and strict privacy regulations hinder
+                                                collaborative defenses.</li>
+                                            <li>Volatile demand driven by weather, social sentiment, and mobility leads
+                                                to static pricing, low fill-rate, and guest dissatisfaction during
+                                                spikes or dips. </li>
+                                            <li>Disconnected ticketing, POS, distribution, and support workflows inflate
+                                                operational overhead and slow guest issue resolution. </li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Solution</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>Federated fraud learning across venues with differential privacy and secure aggregation to share model updates, not raw data; deploy anomaly models at entry and checkout to flag risky behaviors in real time. </li>
-                                            <li>Minute-by-minute ticket dynamicization blending weather feeds, social signals, and mobility data to auto-adjust prices, bundles, and access rules for conversion and experience. </li>
-                                            <li>AI helpdesk for omni-channel FAQs and operational status; unify ticketing, packaging, POS, dynamic pricing, distribution, and partner inventory under a single operations layer.</li>
+                                            <li>Federated fraud learning across venues with differential privacy and
+                                                secure aggregation to share model updates, not raw data; deploy anomaly
+                                                models at entry and checkout to flag risky behaviors in real time. </li>
+                                            <li>Minute-by-minute ticket dynamicization blending weather feeds, social
+                                                signals, and mobility data to auto-adjust prices, bundles, and access
+                                                rules for conversion and experience. </li>
+                                            <li>AI helpdesk for omni-channel FAQs and operational status; unify
+                                                ticketing, packaging, POS, dynamic pricing, distribution, and partner
+                                                inventory under a single operations layer.</li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Results</h5>
                                         <ul class="ps-3">
-                                            <li>30–50% fewer false positives and improved fraud catch-rate by learning from broader cross-venue patterns without violating data privacy norms. </li>
-                                            <li>5–12% lift in fill-rate and higher guest satisfaction during demand shocks via responsive pricing and access policies. </li>
-                                            <li>Faster resolution times and lower support load, alongside higher conversion from an integrated operations stack spanning checkout to entry. </li>
+                                            <li>30–50% fewer false positives and improved fraud catch-rate by learning
+                                                from broader cross-venue patterns without violating data privacy norms.
+                                            </li>
+                                            <li>5–12% lift in fill-rate and higher guest satisfaction during demand
+                                                shocks via responsive pricing and access policies. </li>
+                                            <li>Faster resolution times and lower support load, alongside higher
+                                                conversion from an integrated operations stack spanning checkout to
+                                                entry. </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -731,22 +864,21 @@
 
 
             </div>
-        </div>
+        </div> -->
         <div class="accordion py-3" id="entAccordioncase3">
-            <div class="accordion-item">
+            <div class="accordion-item" id="Payment">
                 <h2 class="accordion-header" id="headingOneentcase3">
-                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOneentcase3">
-                        Payment 
+                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOneentcase3">
+                        Payment
                     </button>
                 </h2>
-                <div id="collapseOneentcase3" class="accordion-collapse collapse" data-bs-parent="#entAccordioncase3">
+                <div id="collapseOneentcase3" class="accordion-collapse collapse" [ngClass]="{'show': section === 'Payment'}" data-bs-parent="#entAccordioncase3">
 
                     <div class="container py-5">
                         <div class="row align-items-start g-5">
                             <div class="col-lg-6">
-                                <img src="./assets/img/cs4.webp" class="img-fluid rounded shadow"
-                                    alt="Baseliner Tool">
+                                <img src="./assets/img/cs4.webp" class="img-fluid rounded shadow" alt="Baseliner Tool">
                             </div>
                             <div class="col-lg-6">
                                 <div class="card border-0 shadow-sm">
@@ -755,32 +887,239 @@
                                         <p class="mb-4">Payment</p>
 
                                         <h5 class="text-primary mb-3">Product</h5>
-                                        <p class="mb-4">AI-driven payments platform </p>
+                                        <p class="mb-4">AI-Driven Payments Platform  </p>
 
                                         <h5 class="text-primary mb-3">Objective</h5>
-                                        <p class="mb-4">
-                                            Deliver proactive, personalized guest experiences while minimizing friction at checkpoints and optimizing cashless payments and upsell across the stay lifecycle. 
-                                        </p>
+                                        <!-- <p class="mb-4">
+                                            Deliver proactive, personalized guest experiences while minimizing friction
+                                            at checkpoints and optimizing cashless payments and upsell across the stay
+                                            lifecycle.
+                                        </p> -->
+                                        <ul class="mb-4 ps-3">
+                                            <li>Deliver seamless and personalized guest experiences across every interaction point. </li>
+                                            <li>Maximize cashless adoption and unlock upsell opportunities throughout the guest journey.  </li>
+                                            <li>Automate support and communication to streamline global guest operations.  </li>
+                                        </ul>
 
                                         <h5 class="text-primary mb-3">Problem</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>Fragmented guest journeys create long queues, churn at digital checkpoints, and inconsistent communication across channels, hurting satisfaction and NPS. </li>
-                                            <li>Limited personalization prevents timely wellbeing recommendations and contextual upsell, leaving ancillary revenue untapped and experiences generic. </li>
-                                            <li>Payment frictions and lack of local methods reduce conversion, especially on mobile and in international contexts. </li>
+                                            <li>Fragmented guest journeys with long queues and inconsistent multi-channel communication.  </li>
+                                            <li>Limited personalization restricted upsell potential and timely wellness engagement. </li>
+                                            <li>Payment frictions and lack of localized options reduced conversion, especially for mobile and international guests.  </li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Solution</h5>
                                         <ul class="mb-4 ps-3">
-                                            <li>Contextaware wellbeing concierge using multimodal signals (location, activity, time, optin camera) to proactively suggest rest, wellness, or F&B ; escalates to staff when needed. </li>
-                                            <li>Predictive queue/churn models trigger staff interventions or microrewards; intelligent checkin/checkout automates onboarding with PMS/payment integrations and mobile-first flows. </li>
-                                            <li>Cashless optimization with guest segmentation, wallets/local methods, and contextual instay upsells; centralized guest communications and concierge across chat, web, and app. </li>
+                                            <li>Deployed contextual AI concierge using activity, location, and opt-in signals for proactive wellness and F&B suggestions. </li>
+                                            <li>Predictive queue/churn analysis triggers instant staff intervention and automated microrewards. </li>
+                                            <li>Optimized cashless flows with local payment methods and centralized communication across mobile, web, and app. </li>
                                         </ul>
 
                                         <h5 class="text-primary mb-3">Results</h5>
                                         <ul class="ps-3">
-                                            <li>Reduced abandonment and queue times with proactive interventions and automated mobile checkin, improving NPS and staff efficiency. </li>
-                                            <li>Higher ancillary revenue from timely, contextual recommendations and inflow upsells aligned to guest state and intent. </li>
-                                            <li>Increased payment conversion from local methods and streamlined digital flows, cutting friction across international and mobile transactions. </li>
+                                            <li>Reduced queue abandonment and wait times, boosting NPS and staff productivity through automation.  </li>
+                                            <li>Increased support services revenue via AI-driven upsell targeting and personalized real-time recommendations. </li>
+                                            <li>Improved transaction conversion rates with seamless payments and mobile-ready digital flows. 
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="accordion py-3" id="entAccordioncase4">
+            <div class="accordion-item" id="Hospitality-Tourism">
+                <h2 class="accordion-header" id="headingOneentcase4">
+                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOneentcase4">
+                        Hospitality & Tourism
+                    </button>
+                </h2>
+                <div id="collapseOneentcase4" class="accordion-collapse collapse" [ngClass]="{'show': section === 'Hospitality-Tourism'}" data-bs-parent="#entAccordioncase4">
+
+                    <div class="container py-5">
+                        <div class="row align-items-start g-5">
+                            <div class="col-lg-6">
+                                <img src="./assets/img/ecs4.webp" class="img-fluid rounded shadow" alt="Baseliner Tool">
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="text-primary mb-3">Industry</h5>
+                                        <p class="mb-4">Hospitality & Tourism</p>
+
+                                        <h5 class="text-primary mb-3">Product</h5>
+                                        <p class="mb-4">Intelligent Guest Experience Platform </p>
+
+                                        <!-- <h5 class="text-primary mb-3">Objective</h5>
+                                        <p class="mb-4">
+                                            Elevate guest satisfaction, streamline hotel operations, and improve revenue
+                                            with personalized digital services.
+                                        </p> -->
+                                        <h5 class="text-primary mb-3">Objective</h5>
+                                        <ul class="mb-4 ps-3">
+                                            <li>Transform guest journeys with frictionless digital check-in/out and mobile-first services.  </li>
+                                            <li>Improved customer experience and Automate upselling via AI-powered recommendations and personalized targeting.  </li>
+                                            <li>Increase revenue via AI-driven upselling and contextual service recommendations.  </li>
+                                        </ul>
+                                        <h5 class="text-primary mb-3">Problem</h5>
+                                        <ul class="mb-4 ps-3">
+                                            <li>Slow, manual check-in/out processes caused long waits and frustration.  </li>
+                                            <li>Disconnected communication channels limited upsell, communication, and service speed. </li>
+                                            <li>Digitally less equipped Staff and fragmented management reduced guest satisfaction. </li>
+                                        </ul>
+
+                                        <h5 class="text-primary mb-3">Solution</h5>
+                                        <ul class="mb-4 ps-3">
+                                            <li>Launched digital kiosks and mobile integration for seamless guest flows. </li>
+                                            <li>Deployed AI-powered virtual concierge with personalized recommendation engine for in-hotel and local experiences.  </li>
+                                            <li>Integrated centralized communication hub with PMS platform for real-time, centralized guest-staff communications. </li>
+                                        </ul>
+
+                                        <h5 class="text-primary mb-3">Results</h5>
+                                        <ul class="ps-3">
+                                            <li>Check-in speed improved by 40%, increasing guest satisfaction.  </li>
+                                            <li>18% revenue increase from personalized AI-recommended upselling.  </li>
+                                            <li>Unified platform enhanced operational responsiveness and staff productivity. </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="accordion py-3" id="entAccordioncase5">
+            <div class="accordion-item" id="Ticketing-Events">
+                <h2 class="accordion-header" id="headingOneentcase5">
+                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOneentcase5">
+                        Ticketing & Events 
+                    </button>
+                </h2>
+                <div id="collapseOneentcase5" class="accordion-collapse collapse" [ngClass]="{'show': section === 'Ticketing-Events'}" data-bs-parent="#entAccordioncase5">
+
+                    <div class="container py-5">
+                        <div class="row align-items-start g-5">
+                            <div class="col-lg-6">
+                                <img src="./assets/img/ecs5.webp" class="img-fluid rounded shadow" alt="Baseliner Tool">
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="text-primary mb-3">Industry</h5>
+                                        <p class="mb-4">Ticketing & Events</p>
+
+                                        <h5 class="text-primary mb-3">Product</h5>
+                                        <p class="mb-4">Smart Ticketing and Fraud Detection System</p>
+
+                                        <h5 class="text-primary mb-3">Objective</h5>
+                                        <!-- <p class="mb-4">
+                                            Ensure secure, seamless, and scalable ticketing operations while reducing
+                                            fraud and enhancing customer trust.
+                                        </p> -->
+                                        <ul class="mb-4 ps-3">
+                                            <li>Deliver seamless, scalable ticketing with AI-powered fraud protection. </li>
+                                            <li>Speed up access with contactless QR/NFC tickets and automated entry flows.  </li>
+                                            <li>Enable real-time ticket sales analytics to optimize distribution and partnerships. </li>
+                                        </ul>
+                                        <h5 class="text-primary mb-3">Problem</h5>
+                                        <ul class="mb-4 ps-3">
+                                            <li>High levels of ticket fraud (account takeovers, bot scalping, resale abuse) damaged credibility and revenue.  </li>
+                                            <li>lack of digital solutions causing delays in access. </li>
+                                            <li>Lack of real-time sales and usage analytics hampered decision-making. </li>
+                                        </ul>
+
+                                        <h5 class="text-primary mb-3">Solution</h5>
+                                        <ul class="mb-4 ps-3">
+                                            <li>AI and blockchain-backed authentication secured all ticket sales.  </li>
+                                            <li>QR/Near Field Communication (NFC) enabled rapid, contactless entry.  </li>
+                                            <li>Real-time analytics platform provided actionable sales and usage insights.  </li>
+                                        </ul>
+
+                                        <h5 class="text-primary mb-3">Results</h5>
+                                        <ul class="ps-3">
+                                            <li>Fraudulent transactions reduced by 35%, building market trust.  </li>
+                                            <li>Entry time accelerated by 50%, improving guest flow and satisfaction. 
+                                            </li>
+                                            <li>Revenue climbed 15% through secure, smart ticket distribution.  </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="accordion py-3" id="entAccordioncase6">
+            <div class="accordion-item" id="Entertainment-Theme-Parks">
+                <h2 class="accordion-header" id="headingOneentcase6">
+                    <button class="accordion-button collapsed fw-bold no-focus-outline" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOneentcase6">
+                        Entertainment & Theme Parks
+                    </button>
+                </h2>
+                <div id="collapseOneentcase6" class="accordion-collapse collapse" [ngClass]="{'show': section === 'Entertainment-Theme-Parks'}" data-bs-parent="#entAccordioncase6">
+
+                    <div class="container py-5">
+                        <div class="row align-items-start g-5">
+                            <div class="col-lg-6">
+                                <img src="./assets/img/ecs6.webp" class="img-fluid rounded shadow" alt="Baseliner Tool">
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="text-primary mb-3">Industry</h5>
+                                        <p class="mb-4">Entertainment & Theme Parks</p>
+
+                                        <h5 class="text-primary mb-3">Product</h5>
+                                        <p class="mb-4"> AI-Powered Dynamic Pricing Engine</p>
+
+                                        <h5 class="text-primary mb-3">Objective</h5>
+                                        <!-- <p class="mb-4">
+                                            Maximize revenue, optimize attendance, and enhance guest affordability with real-time adaptive pricing strategies. 
+                                        </p> -->
+                                        <ul class="mb-4 ps-3">
+                                            <li>Boost revenue with adaptive pricing.    </li>
+                                            <li>Enhance crowd management and ROI with adaptive promotions and guest distribution. </li>
+                                            <li>Deliver personalized, data-driven offers and immersive guest journeys in real time.  </li>
+                                        </ul>
+                                        <h5 class="text-primary mb-3">Problem</h5>
+                                        <ul class="mb-4 ps-3">
+                                            <li>Predefined ticket pricing failed to reflect changing demand and visitor segments, leading to lost revenue. </li>
+                                            <li>Overcrowding at popular rides creates frustration for guests and business.  </li>
+                                            <li>Lack of real-time insights prevents proactive crowd management and personalization of visitor experiences. </li>
+                                        </ul>
+
+                                        <h5 class="text-primary mb-3">Solution</h5>
+                                        <ul class="mb-4 ps-3">
+                                            <li>Implemented an AI pricing engine to predict demand, dynamically set ticket prices.   </li>
+                                            <li>Integrated wearable devices (RFID/NFC) and IoT sensors to capture live guest activity, location, and wellness data.  </li>
+                                            <li>Applied AI-driven crowd flow optimization to guide visitors toward less crowded and relevant attractions.   </li>
+                                            <li>Enabled dynamic storytelling and personalized journeys via AR/VR triggers and mobile push notifications. </li>
+                                        </ul>
+
+                                        <h5 class="text-primary mb-3">Results</h5>
+                                        <ul class="ps-3">
+                                            <li>Ticket revenue up 20% through dynamic optimization and adaptive offers.  </li>
+                                            <li>Guest flow balanced, boosting off-peak attendance 15%. 
+                                            </li>
+                                            <li>Guest satisfaction improved by 20% as visitors enjoyed flexible pricing, reduced wait times, and personalized, immersive experiences. </li>
+                                            <li>AI generated after visit memories and experiences along with recommendation  </li>
+                                            <li>Effective marketing with sharper customer targeting for business </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -794,3 +1133,74 @@
         </div>
     </div>
 </section>
+
+
+<!-- <section class="bg-light py-3">
+    <div class="container">
+        <h2 class="h2 py-3 text-primary typo-space-line">Construction & Manufacturing </h2>
+        <div class="accordion py-3" id="constructionAccordioncase1">
+            <div class="accordion-item" id="Construction-Manufacturing">
+                <h2 class="accordion-header" id="headingOneconstructioncase1">
+                    <button class="accordion-button collapsed fw-bold no-focus-outline"   type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOneconstructioncase1">
+                        Construction & Manufacturing
+                    </button>
+                </h2>
+                <div id="collapseOneconstructioncase1" class="accordion-collapse collapse" [ngClass]="{'show': section === 'Construction-Manufacturing'}"
+                    data-bs-parent="#constructionAccordioncase1">
+
+                    <div class="container py-5">
+                        <div class="row align-items-start g-5">
+                            <div class="col-lg-6">
+                                <img src="./assets/img/cmcs1.webp" class="img-fluid rounded shadow" alt="Baseliner Tool">
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="text-primary mb-3">Industry</h5>
+                                        <p class="mb-4">Construction & Manufacturing</p>
+
+                                        <h5 class="text-primary mb-3">Product</h5>
+                                        <p class="mb-4">Predictive Maintenance System for Heavy Industrial Equipment</p>
+
+                                        <h5 class="text-primary mb-3">Objective</h5>
+                                        <p class="mb-4">
+                                            Reduce equipment downtime, optimize resource utilization, and extend machinery lifespan through predictive analytics. 
+                                        </p>
+
+                                        <h5 class="text-primary mb-3">Problem</h5>
+                                       <ul class="mb-4 ps-3">
+                                            <li>Frequent unexpected breakdowns of heavy machinery caused costly project delays.  </li>
+                                            <li>Reactive maintenance increased spare part inventory costs and labor inefficiencies.  </li>
+                                            <li>Lack of real-time monitoring led to unsafe working conditions and compliance risks. </li>
+                                        </ul>
+
+                                        <h5 class="text-primary mb-3">Solution</h5>
+                                        <ul class="mb-4 ps-3">
+                                            <li>Implemented IoT sensors and AI-driven predictive models for early fault detection.  </li>
+                                            <li>Deployed a centralized dashboard for real-time equipment health monitoring and scheduling.  </li>
+                                            <li>Integrated automated alerts and maintenance workflows to streamline issue resolution.  </li>
+                                        </ul>
+
+                                        <h5 class="text-primary mb-3">Results</h5>
+                                        <ul class="ps-3">
+                                            <li>Reduced unplanned downtime by 30%, accelerating project completion rates. </li>
+                                            <li>Lowered maintenance costs by 20% through proactive part replacements and optimized schedules.  </li>
+                                            <li>Enhanced workforce safety and regulatory compliance with real-time condition tracking. </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+     
+        
+    </div>
+</section> -->
