@@ -19,6 +19,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { blogResolver } from './resolvers/blog.resolver';
 import { clavritServiceResolver } from './resolvers/clavrit-service.resolver';
 import { jobDetailsResolver } from './resolvers/job-details.resolver';
+import { CustomPackagesComponent } from './custom-packages/custom-packages.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
@@ -33,6 +34,7 @@ const routes: Routes = [
     component: AiComponent,
   },
   { path: "about-us", component: AboutUsComponent },
+   { path: "custom-packages", component: CustomPackagesComponent },
   { path: "services", component: ServicesProvidedComponent },
   { path: "services/sap-solutions", component: SapSolutionsComponent },
   { path: "services/:slug", component: DetailViewComponent, resolve: { services: clavritServiceResolver } },
