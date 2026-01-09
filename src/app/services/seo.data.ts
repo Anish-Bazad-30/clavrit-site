@@ -43,6 +43,10 @@ export const SEO_DATA: SEOMap = {
   '/career': {
     title: 'Careers at Clavrit | Join Our Digital Innovation Team',
     description: 'Explore exciting career opportunities at Clavrit. Grow your tech career with us',
+  },
+  '/custom-packages': {
+    title: 'AI & Cloud Transformation Packages',
+    description: 'Fixed-price solutions delivering measurable ROI. 100+ successful projects. 95% client retention.',
   }
   
 };

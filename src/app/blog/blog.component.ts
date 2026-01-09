@@ -39,9 +39,34 @@ fetchBlogs() {
     const allBlogs = Array.isArray(rawData[0]) ? rawData[0] : rawData;
 
     // sort once, store in master
-    this.masterBlogList = allBlogs
-      .filter((b: any) => b.publish?.toLowerCase() === 'published')
-      .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    // this.masterBlogList = allBlogs
+    //   .filter((b: any) => b.publish?.toLowerCase() === 'published')
+    //   .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+this.masterBlogList = allBlogs
+  .filter((b: any) => b.publish?.toLowerCase() === 'published')
+  .sort((a: any, b: any) => {
+
+    const dateA = new Date(
+      a.createdAt[0],
+      a.createdAt[1] - 1, // month fix
+      a.createdAt[2],
+      a.createdAt[3],
+      a.createdAt[4],
+      a.createdAt[5]
+    );
+
+    const dateB = new Date(
+      b.createdAt[0],
+      b.createdAt[1] - 1,
+      b.createdAt[2],
+      b.createdAt[3],
+      b.createdAt[4],
+      b.createdAt[5]
+    );
+
+    return dateB.getTime() - dateA.getTime(); // Newest first
+  });
+
 
     // working copy
     this.blogList = [...this.masterBlogList];
